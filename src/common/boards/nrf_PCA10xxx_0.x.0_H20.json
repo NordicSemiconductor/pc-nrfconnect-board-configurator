@@ -1,0 +1,97 @@
+{
+    "board": {
+        "boardVersion": "PCA10xxx",
+        "boardRevision": "0.x.0",
+        "boardName": "nRF54H20 PDK"
+    },
+    "pins": [
+        {
+            "type": "vcom",
+            "id": "vcom0",
+            "name": "VCOM 0",
+            "enable": {
+                "pin": 42
+            },
+            "hwfc": {
+                "pin": 20
+            }
+        },
+        {
+            "type": "vcom",
+            "id": "vcom1",
+            "name": "VCOM 1",
+            "enable": {
+                "pin": 22
+            },
+            "hwfc": {
+                "pin": 23
+            }
+        },
+        {
+            "type": "slide",
+            "id": "gpio-voltage-1",
+            "title": "GPIO 1 Voltage",
+            "label": "Voltage",
+            "enable": {
+                "pin": 6
+            },
+            "alternatives": [
+                "1V2",
+                "1V8"
+            ]
+        },
+        {
+            "type": "slide",
+            "id": "gpio-voltage-2",
+            "title": "GPIO port 2 Voltage",
+            "label": "Voltage",
+            "enable": {
+                "pin": 7
+            },
+            "alternatives": [
+                "1V2",
+                "1V8"
+            ]
+        },
+        {
+            "type": "slide",
+            "id": "gpio-voltage-7",
+            "title": "GPIO port 7 Voltage",
+            "label": "Voltage",
+            "enable": {
+                "pin": 8
+            },
+            "alternatives": [
+                "1V2",
+                "1V8"
+            ]
+        },
+        {
+            "type": "slide",
+            "id": "gpio-voltage-9",
+            "title": "GPIO port 9 Voltage",
+            "label": "Voltage",
+            "enable": {
+                "pin": 28
+            },
+            "alternatives": [
+                "3V0",
+                "1V8"
+            ]
+        },
+        {
+            "type": "slide",
+            "id": "ledcontrol",
+            "title": "LED Control",
+            "label": "LED Enable",
+            "enable": {
+                "pin": 45
+            },
+            "alternatives": [
+                "GPIO",
+                "LED"
+            ]
+        }
+    ],
+    "pmicPorts": []
+}

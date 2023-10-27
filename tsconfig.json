@@ -1,0 +1,6 @@
+{
+    "compilerOptions": {
+        "jsx": "react"
+    },
+    "extends": "@nordicsemiconductor/pc-nrfconnect-shared/config/tsconfig.json"
+}

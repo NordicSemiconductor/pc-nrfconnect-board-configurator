@@ -1,0 +1,4 @@
+/node_modules
+/dist
+/pc-nrfconnect-*.tgz
+resources/nrfutil-npm/*/logs
