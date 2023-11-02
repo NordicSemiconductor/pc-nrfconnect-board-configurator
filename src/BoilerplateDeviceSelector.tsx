@@ -7,6 +7,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import {
+    AppDispatch,
     Device,
     DeviceSelector,
     logger,
@@ -26,7 +27,6 @@ import {
     setBoardControllerFirmwareVersion,
     setBoardRevision,
 } from './features/Device/deviceSlice';
-import { TDispatch } from './thunk';
 
 /**
  * Configures which device types to show in the device selector.
@@ -62,14 +62,14 @@ const deviceListing: DeviceTraits = {
  * Note that the callbacks releaseCurrentDevice and onDeviceIsReady
  * are only invoked, if a deviceSetup is defined.
  */
-const onDeviceSelected = (dispatch: TDispatch) => (device: Device) => {
+const onDeviceSelected = (dispatch: AppDispatch) => (device: Device) => {
     logger.info(`Selected device with s/n ${device.serialNumber}`);
     getBoardControllerVersion(dispatch, device); // FIXME: Remove this when onDeviceIsReady() is called
 };
 // const releaseCurrentDevice = () => {
 //     logger.info('Will set up selected device');
 // };
-const onDeviceIsReady = (dispatch: TDispatch) => (device: Device) => {
+const onDeviceIsReady = (dispatch: AppDispatch) => (device: Device) => {
     logger.info(
         `Device with s/n ${device.serialNumber} was set up with a firmware`
     );
@@ -78,7 +78,7 @@ const onDeviceIsReady = (dispatch: TDispatch) => (device: Device) => {
 };
 
 const getBoardControllerVersion = async (
-    dispatch: TDispatch,
+    dispatch: AppDispatch,
     device: Device
 ) => {
     if (!device) {
@@ -96,7 +96,7 @@ const getBoardControllerVersion = async (
     dispatch(setBoardControllerFirmwareVersion(bcVersion.data.bc_fw_ver));
 };
 
-const onDeviceDeselected = (dispatch: TDispatch) => () => {
+const onDeviceDeselected = (dispatch: AppDispatch) => () => {
     logger.info('Deselected device');
     dispatch(clearBoardRevision());
     dispatch(clearBoardControllerFirmwareVersion());
