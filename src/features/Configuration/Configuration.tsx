@@ -105,6 +105,10 @@ function buildGui(boardJson) {
                                     vcomEnablePin={pinConfig.enable.pin}
                                     hwfcEnablePin={pinConfig.hwfc.pin}
                                     vcomName={pinConfig.name}
+                                    enableInvert={
+                                        pinConfig.enable.invert ?? false
+                                    }
+                                    hwfcInvert={pinConfig.hwfc.invert ?? false}
                                 />
                             );
                         case 'slide':
@@ -113,6 +117,7 @@ function buildGui(boardJson) {
                                     configTitle={pinConfig.title}
                                     configLabel={pinConfig.label}
                                     configPin={pinConfig.enable.pin}
+                                    invert={pinConfig.enable.invert ?? false}
                                     configAlternatives={pinConfig.alternatives}
                                 />
                             );
@@ -122,6 +127,7 @@ function buildGui(boardJson) {
                                     configTitle={pinConfig.title}
                                     configLabel={pinConfig.label}
                                     configPin={pinConfig.enable.pin}
+                                    invert={pinConfig.enable.invert ?? false}
                                 />
                             );
                     }

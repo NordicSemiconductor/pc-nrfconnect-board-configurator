@@ -21,13 +21,17 @@ const VCOMConfiguration: React.FC<{
     vcomName: string;
     vcomEnablePin: number;
     hwfcEnablePin: number;
-}> = ({ vcomName, vcomEnablePin, hwfcEnablePin }) => {
+    enableInvert: boolean;
+    hwfcInvert: boolean;
+}> = ({ vcomName, vcomEnablePin, hwfcEnablePin, enableInvert, hwfcInvert }) => {
     logger.info(`Rendering VCOMConfiguration for ${vcomName}`);
 
     const dispatch = useDispatch();
 
-    const vcomEnable = useSelector(getConfigValue(vcomEnablePin));
-    const hwfcEnable = useSelector(getConfigValue(hwfcEnablePin));
+    const vcomEnable =
+        useSelector(getConfigValue(vcomEnablePin)) !== enableInvert; // No XOR for booleans in Typescript
+    const hwfcEnable =
+        useSelector(getConfigValue(hwfcEnablePin)) !== hwfcInvert; // No XOR for booleans in Typescript
 
     return (
         <Card
@@ -40,7 +44,7 @@ const VCOMConfiguration: React.FC<{
                             dispatch(
                                 setConfigValue({
                                     configPin: vcomEnablePin,
-                                    configPinState: enableVcom,
+                                    configPinState: enableVcom !== enableInvert, // No XOR for booleans in Typescript
                                 })
                             );
                         }}
@@ -58,7 +62,7 @@ const VCOMConfiguration: React.FC<{
                         dispatch(
                             setConfigValue({
                                 configPin: hwfcEnablePin,
-                                configPinState: enableHwfc,
+                                configPinState: enableHwfc !== hwfcInvert, // No XOR for booleans in Typescript
                             })
                         );
                     }}
