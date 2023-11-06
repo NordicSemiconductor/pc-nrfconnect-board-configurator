@@ -102,7 +102,6 @@ function buildGui(boardJson) {
                         case 'vcom':
                             return (
                                 <VCOMConfiguration
-                                    vcomId="vcom0"
                                     vcomEnablePin={pinConfig.enable.pin}
                                     hwfcEnablePin={pinConfig.hwfc.pin}
                                     vcomName={pinConfig.name}
