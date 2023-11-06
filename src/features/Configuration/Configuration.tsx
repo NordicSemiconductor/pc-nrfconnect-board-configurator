@@ -20,9 +20,9 @@ import ConfigSwitch from '../ConfigSwitch/ConfigSwitch';
 import { getBoardRevisionSemver } from '../Device/deviceSlice';
 import VCOMConfiguration from '../VCOMConfiguration/VCOMConfiguration';
 import VoltageConfiguration from '../VoltageConfiguration/VoltageConfiguration';
+import { setConfig, setPmicConfig } from './boardControllerConfigSlice';
 
 import './configuration.scss';
-import { setConfig, setPmicConfig } from './boardControllerConfigSlice';
 
 const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
     const dispatch = useDispatch();

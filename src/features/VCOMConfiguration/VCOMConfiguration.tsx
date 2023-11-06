@@ -32,7 +32,7 @@ const VCOMConfiguration: React.FC<{
     return (
         <Card
             title={
-                <div className={`d-flex justify-content-between`}>
+                <div className="d-flex justify-content-between">
                     <span>{vcomName}</span>
                     <Toggle
                         isToggled={vcomEnable}
@@ -50,7 +50,7 @@ const VCOMConfiguration: React.FC<{
                 </div>
             }
         >
-            <div className={`d-flex justify-content-between`}>
+            <div className="d-flex justify-content-between">
                 <span>{vcomName} HWFC</span>
                 <Toggle
                     isToggled={hwfcEnable}
