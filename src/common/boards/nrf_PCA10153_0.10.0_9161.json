@@ -101,5 +101,12 @@
             }
         }
     ],
-    "pmicPorts": []
+    "pmicPorts": [
+        {
+            "type": "voltage",
+            "port": 2,
+            "mVmin": 1800,
+            "mVmax": 2500
+        }
+    ]
 }
