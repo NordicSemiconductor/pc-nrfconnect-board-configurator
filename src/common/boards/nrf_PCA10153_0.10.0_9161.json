@@ -11,11 +11,11 @@
             "name": "VCOM 0",
             "enable": {
                 "pin": 42,
-                "inverse": true
+                "invert": true
             },
             "hwfc": {
                 "pin": 20,
-                "inverse": true
+                "invert": true
             }
         },
         {
@@ -24,11 +24,11 @@
             "name": "VCOM 1",
             "enable": {
                 "pin": 22,
-                "inverse": true
+                "invert": true
             },
             "hwfc": {
                 "pin": 23,
-                "inverse": true
+                "invert": true
             }
         },
         {
@@ -87,7 +87,8 @@
             "title": "IO Expander",
             "label": "",
             "enable": {
-                "pin": 45
+                "pin": 45,
+                "invert": true
             }
         },
         {
