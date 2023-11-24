@@ -37,8 +37,7 @@
             "title": "SWD Control",
             "label": "Enable/Disable the SWD connection between the IMCU and target chip. This can be done to e.g. use an external debugger.",
             "enable": {
-                "pin": 6,
-                "default": true
+                "pin": 6
             }
         },
         {

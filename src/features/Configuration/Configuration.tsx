@@ -25,6 +25,9 @@ import { setConfig, setPmicConfig } from './boardControllerConfigSlice';
 import './configuration.scss';
 
 const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
+
+    const typednrf9161json: BoardControllerConfigDefinition = nrf9161json;
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -85,7 +88,57 @@ function unrecognized() {
     );
 }
 
-function buildGui(boardJson) {
+type PinDefinition = {
+    pin: number;
+    invert?: boolean;
+}
+
+type VcomConfigPinDefinition = {
+    type: string;
+    id: string;
+    name: string;
+    enable: PinDefinition;
+    hwfc: PinDefinition;
+}
+
+type SwitchConfigDefinition = {
+    type: string;
+    id: string;
+    title: string;
+    label: string;
+    enable: PinDefinition;
+}
+
+type SlideConfigDefinition = {
+    type: string;
+    id: string;
+    title: string;
+    label: string;
+    enable: PinDefinition;
+    alternatives: [ string, string ];
+}
+
+type PmicPortDefinition = {
+    type: string;
+    port: number;
+    mVmin: number;
+    mVmax: number;
+
+}
+
+type PinType = SwitchConfigDefinition | SlideConfigDefinition | VcomConfigPinDefinition;
+
+type BoardControllerConfigDefinition = {
+    board: {
+        boardVersion: string,
+        boardRevision?: string;
+        boardName?: string;
+    };
+    pins: PinType[];
+    pmicPorts: PmicPortDefinition[];
+}
+
+function buildGui(boardJson: BoardControllerConfigDefinition) {
     const { board, pins, pmicPorts } = boardJson;
     console.dir(pins);
 
@@ -100,34 +153,37 @@ function buildGui(boardJson) {
                 {pins.map(pinConfig => {
                     switch (pinConfig.type) {
                         case 'vcom':
+                            const vcomConfig = pinConfig as VcomConfigPinDefinition;
                             return (
                                 <VCOMConfiguration
-                                    vcomEnablePin={pinConfig.enable.pin}
-                                    hwfcEnablePin={pinConfig.hwfc.pin}
-                                    vcomName={pinConfig.name}
+                                    vcomEnablePin={vcomConfig.enable.pin}
+                                    hwfcEnablePin={vcomConfig.hwfc.pin}
+                                    vcomName={vcomConfig.name}
                                     enableInvert={
-                                        pinConfig.enable.invert ?? false
+                                        vcomConfig.enable.invert ?? false
                                     }
-                                    hwfcInvert={pinConfig.hwfc.invert ?? false}
+                                    hwfcInvert={vcomConfig.hwfc.invert ?? false}
                                 />
                             );
                         case 'slide':
+                            const slideConfig = (pinConfig as SlideConfigDefinition);
                             return (
                                 <ConfigSlideSelector
-                                    configTitle={pinConfig.title}
-                                    configLabel={pinConfig.label}
-                                    configPin={pinConfig.enable.pin}
-                                    invert={pinConfig.enable.invert ?? false}
-                                    configAlternatives={pinConfig.alternatives}
+                                    configTitle={slideConfig.title}
+                                    configLabel={slideConfig.label}
+                                    configPin={slideConfig.enable.pin}
+                                    invert={slideConfig.enable.invert ?? false}
+                                    configAlternatives={slideConfig.alternatives}
                                 />
                             );
                         case 'switch':
+                            const switchConfig = pinConfig as SwitchConfigDefinition;
                             return (
                                 <ConfigSwitch
-                                    configTitle={pinConfig.title}
-                                    configLabel={pinConfig.label}
-                                    configPin={pinConfig.enable.pin}
-                                    invert={pinConfig.enable.invert ?? false}
+                                    configTitle={switchConfig.title}
+                                    configLabel={switchConfig.label}
+                                    configPin={switchConfig.enable.pin}
+                                    invert={switchConfig.enable.invert ?? false}
                                 />
                             );
                     }
@@ -140,7 +196,7 @@ function buildGui(boardJson) {
     );
 }
 
-function setDefaultConfig(dispatch: TDispatch, boardJson) {
+function setDefaultConfig(dispatch: AppDispatch, boardJson: BoardControllerConfigDefinition) {
     if (boardJson?.defaults) {
         const { pins, pmicPort } = boardJson.defaults;
 
