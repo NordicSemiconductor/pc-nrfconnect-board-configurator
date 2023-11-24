@@ -44,6 +44,10 @@ const ConfigDataPreview: React.FC<{
                 ) : null}
             </div>
         );
+    } else {
+        return (
+            <></>
+        )
     }
 };
 

@@ -21,8 +21,8 @@ const ConfigSwitch: React.FC<{
     configTitle: string;
     configLabel: string;
     configPin: number;
-    enableLabel: string;
-    invert: boolean;
+    enableLabel?: string;
+    invert?: boolean;
 }> = ({
     configTitle,
     configLabel,
@@ -43,7 +43,7 @@ const ConfigSwitch: React.FC<{
                     <span>{configTitle}</span>
                 </div>
             }
-        >
+            >
             <div className="d-flex justify-content-between">
                 <div>{configLabel}</div>
                 <Toggle
@@ -55,9 +55,9 @@ const ConfigSwitch: React.FC<{
                                 configPin,
                                 configPinState: enable !== invert, // No XOR for booleans in Typescript
                             })
-                        )
-                    }
-                />
+                            )
+                        }
+                        />
             </div>
         </Card>
     );

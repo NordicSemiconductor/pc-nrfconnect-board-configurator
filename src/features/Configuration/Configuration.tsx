@@ -7,6 +7,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+    AppDispatch,
     Device,
     logger,
     MasonryLayout,
@@ -46,14 +47,14 @@ const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
 
     if (device) {
         console.log('Got device %o %s', device, boardRevision);
-        console.log('Device with boardVersion: %s', device.boardVersion);
+        console.log('Device with boardVersion: %s', device?.devkit?.boardVersion);
 
-        switch (device.boardVersion) {
+        switch (device?.devkit?.boardVersion) {
             case 'PCA10156':
                 // return buildGui(nrf54l15json);
                 // return buildGui(nrf54h20json);
                 if (boardRevision === '0.1.0') {
-                    setDefaultConfig(nrf54l15json);
+                    setDefaultConfig(dispatch, nrf54l15json);
                     return buildGui(nrf54l15json);
                 }
 
@@ -189,7 +190,7 @@ function buildGui(boardJson: BoardControllerConfigDefinition) {
                     }
                 })}
                 {pmicPorts.map(port => (
-                    <VoltageConfiguration pmicPort={port.port} />
+                    <VoltageConfiguration pmicPort={port.port} voltageMin={port.mVmin} voltageMax={port.mVmax} />
                 ))}
             </MasonryLayout>
         </div>

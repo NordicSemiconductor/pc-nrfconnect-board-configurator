@@ -88,12 +88,12 @@ const getBoardControllerVersion = async (
     console.log('Got device state %o', bcVersion);
     dispatch(
         setBoardRevision({
-            major: bcVersion.data.major_ver,
-            minor: bcVersion.data.minor_ver,
-            patch: bcVersion.data.patch_ver,
+            major: bcVersion.major_ver,
+            minor: bcVersion.minor_ver,
+            patch: bcVersion.patch_ver,
         })
     );
-    dispatch(setBoardControllerFirmwareVersion(bcVersion.data.bc_fw_ver));
+    dispatch(setBoardControllerFirmwareVersion(bcVersion.bc_fw_ver));
 };
 
 const onDeviceDeselected = (dispatch: AppDispatch) => () => {

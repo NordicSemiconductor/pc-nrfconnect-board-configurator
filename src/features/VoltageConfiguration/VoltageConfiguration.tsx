@@ -17,9 +17,9 @@ import {
     setPmicConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
 
-const VoltageConfiguration: React.FC<{ pmicPort: number }> = ({ pmicPort }) => {
+const VoltageConfiguration: React.FC<{ pmicPort: number, voltageMin: number, voltageMax: number }> = ({ pmicPort, voltageMin, voltageMax }) => {
     const dispatch = useDispatch();
-    const voltage = useSelector(getPmicConfigValue(pmicPort));
+    const voltage = useSelector(getPmicConfigValue(pmicPort)) ?? voltageMin; // Default to voltageMin
 
     return (
         <Card
@@ -80,7 +80,7 @@ const VoltageConfiguration: React.FC<{ pmicPort: number }> = ({ pmicPort }) => {
                 <NumberInputSliderWithUnit
                     label="Voltage"
                     unit="mV"
-                    range={{ min: 1800, max: 3000, step: 100 }}
+                    range={{ min: voltageMin, max: voltageMax, step: 100 }}
                     value={voltage}
                     onChange={value => {
                         dispatch(
