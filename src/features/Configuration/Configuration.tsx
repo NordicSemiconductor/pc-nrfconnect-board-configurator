@@ -14,7 +14,9 @@ import {
     selectedDevice,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
-import nrf9161json from '../../common/boards/nrf_PCA10153_0.10.0_9161.json';
+import BoardControllerConfigDefinition from '../../common/boards/BoardControllerConfigDefinition';
+import nrf9161v091json from '../../common/boards/nrf_PCA10153_0.9.1_9161.json';
+import nrf9161v0100json from '../../common/boards/nrf_PCA10153_0.10.0_9161.json';
 import nrf54l15json from '../../common/boards/nrf_PCA10156_0.2.0.json';
 import ConfigSlideSelector from '../ConfigSlideSelector/ConfigSlideSelector';
 import ConfigSwitch from '../ConfigSwitch/ConfigSwitch';
@@ -26,8 +28,10 @@ import { setConfig, setPmicConfig } from './boardControllerConfigSlice';
 import './configuration.scss';
 
 const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
-
-    const typednrf9161json: BoardControllerConfigDefinition = nrf9161json;
+    const typednrf9161json =
+        nrf9161v0100json as BoardControllerConfigDefinition;
+    const typednrf9161v091 = nrf9161v091json as BoardControllerConfigDefinition;
+    const typednrf54l15json = nrf54l15json as BoardControllerConfigDefinition;
 
     const dispatch = useDispatch();
 
@@ -51,30 +55,23 @@ const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
 
         switch (device?.devkit?.boardVersion) {
             case 'PCA10156':
-                // return buildGui(nrf54l15json);
-                // return buildGui(nrf54h20json);
-                if (boardRevision === '0.1.0') {
-                    setDefaultConfig(dispatch, nrf54l15json);
-                    return buildGui(nrf54l15json);
-                }
-
-                return unrecognized();
-
-            // return buildGui(nrf9161json);
+                setDefaultConfig(dispatch, typednrf54l15json);
+                return buildGui(typednrf54l15json);
 
             case 'PCA10153':
                 if (boardRevision === '0.10.0') {
-                    return buildGui(nrf9161json);
+                    setDefaultConfig(dispatch, typednrf9161json);
+                    return buildGui(typednrf9161json);
+                }
+                if (boardRevision === '0.9.1') {
+                    setDefaultConfig(dispatch, typednrf9161v091);
+                    return buildGui(typednrf9161v091);
                 }
 
                 return unrecognized();
 
             default:
-                return (
-                    <div>
-                        <p>Nothing to see here</p>
-                    </div>
-                );
+                return unrecognized();
         }
     } else {
         return unrecognized();
@@ -87,56 +84,6 @@ function unrecognized() {
             <p>No Board Controller device recognized.</p>
         </div>
     );
-}
-
-type PinDefinition = {
-    pin: number;
-    invert?: boolean;
-}
-
-type VcomConfigPinDefinition = {
-    type: string;
-    id: string;
-    name: string;
-    enable: PinDefinition;
-    hwfc: PinDefinition;
-}
-
-type SwitchConfigDefinition = {
-    type: string;
-    id: string;
-    title: string;
-    label: string;
-    enable: PinDefinition;
-}
-
-type SlideConfigDefinition = {
-    type: string;
-    id: string;
-    title: string;
-    label: string;
-    enable: PinDefinition;
-    alternatives: [ string, string ];
-}
-
-type PmicPortDefinition = {
-    type: string;
-    port: number;
-    mVmin: number;
-    mVmax: number;
-
-}
-
-type PinType = SwitchConfigDefinition | SlideConfigDefinition | VcomConfigPinDefinition;
-
-type BoardControllerConfigDefinition = {
-    board: {
-        boardVersion: string,
-        boardRevision?: string;
-        boardName?: string;
-    };
-    pins: PinType[];
-    pmicPorts: PmicPortDefinition[];
 }
 
 function buildGui(boardJson: BoardControllerConfigDefinition) {
@@ -154,44 +101,52 @@ function buildGui(boardJson: BoardControllerConfigDefinition) {
                 {pins.map(pinConfig => {
                     switch (pinConfig.type) {
                         case 'vcom':
-                            const vcomConfig = pinConfig as VcomConfigPinDefinition;
                             return (
                                 <VCOMConfiguration
-                                    vcomEnablePin={vcomConfig.enable.pin}
-                                    hwfcEnablePin={vcomConfig.hwfc.pin}
-                                    vcomName={vcomConfig.name}
+                                    vcomEnablePin={pinConfig.enable.pin}
+                                    hwfcEnablePin={pinConfig.hwfc.pin}
+                                    vcomName={pinConfig.name}
                                     enableInvert={
-                                        vcomConfig.enable.invert ?? false
+                                        pinConfig.enable.invert ?? false
                                     }
-                                    hwfcInvert={vcomConfig.hwfc.invert ?? false}
+                                    hwfcInvert={pinConfig.hwfc.invert ?? false}
                                 />
                             );
                         case 'slide':
-                            const slideConfig = (pinConfig as SlideConfigDefinition);
                             return (
                                 <ConfigSlideSelector
-                                    configTitle={slideConfig.title}
-                                    configLabel={slideConfig.label}
-                                    configPin={slideConfig.enable.pin}
-                                    invert={slideConfig.enable.invert ?? false}
-                                    configAlternatives={slideConfig.alternatives}
+                                    configTitle={pinConfig.title}
+                                    configLabel={pinConfig.label}
+                                    configPin={pinConfig.enable.pin}
+                                    invert={pinConfig.enable.invert ?? false}
+                                    configAlternatives={pinConfig.alternatives}
                                 />
                             );
                         case 'switch':
-                            const switchConfig = pinConfig as SwitchConfigDefinition;
                             return (
                                 <ConfigSwitch
-                                    configTitle={switchConfig.title}
-                                    configLabel={switchConfig.label}
-                                    configPin={switchConfig.enable.pin}
-                                    invert={switchConfig.enable.invert ?? false}
+                                    configTitle={pinConfig.title}
+                                    configLabel={pinConfig.label}
+                                    configPin={pinConfig.enable.pin}
+                                    invert={pinConfig.enable.invert ?? false}
                                 />
                             );
+                        default:
+                            logger.warn(
+                                `Error in Board Controller Config Definition file for ${board.boardName}`
+                            );
+                            return null;
                     }
                 })}
-                {pmicPorts.map(port => (
-                    <VoltageConfiguration pmicPort={port.port} voltageMin={port.mVmin} voltageMax={port.mVmax} />
-                ))}
+                {pmicPorts &&
+                    pmicPorts.map(port => (
+                        <VoltageConfiguration
+                            key={`voltage-${port.port}`}
+                            pmicPort={port.port}
+                            voltageMin={port.mVmin}
+                            voltageMax={port.mVmax}
+                        />
+                    ))}
             </MasonryLayout>
         </div>
     );
@@ -199,10 +154,10 @@ function buildGui(boardJson: BoardControllerConfigDefinition) {
 
 function setDefaultConfig(dispatch: AppDispatch, boardJson: BoardControllerConfigDefinition) {
     if (boardJson?.defaults) {
-        const { pins, pmicPort } = boardJson.defaults;
+        const { pins, pmicPorts } = boardJson.defaults;
 
         const defaultConfig: Map<number, boolean> = new Map(pins);
-        const defaultPmicConfig: Map<number, number> = new Map(pmicPort);
+        const defaultPmicConfig: Map<number, number> = new Map(pmicPorts);
 
         dispatch(setConfig({ boardControllerConfig: defaultConfig }));
         dispatch(setPmicConfig({ pmicConfig: defaultPmicConfig }));

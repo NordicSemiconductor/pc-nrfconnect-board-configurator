@@ -1,0 +1,115 @@
+{
+    "board": {
+        "boardVersion": "PCA10153",
+        "boardRevision": "0.9.1",
+        "boardName": "nRF9161-DK v0.9.1"
+    },
+    "pins": [
+        {
+            "type": "vcom",
+            "id": "vcom0",
+            "name": "VCOM 0",
+            "enable": {
+                "pin": 42,
+                "invert": true
+            },
+            "hwfc": {
+                "pin": 20,
+                "invert": true
+            }
+        },
+        {
+            "type": "vcom",
+            "id": "vcom1",
+            "name": "VCOM 1",
+            "enable": {
+                "pin": 22,
+                "invert": true
+            },
+            "hwfc": {
+                "pin": 23,
+                "invert": true
+            }
+        },
+        {
+            "type": "switch",
+            "id": "swd-control",
+            "title": "SWD Control",
+            "label": "Enable/Disable the SWD connection between the IMCU and target chip. This can be done to e.g. use an external debugger.",
+            "enable": {
+                "pin": 6
+            }
+        },
+        {
+            "type": "switch",
+            "id": "shield-reset-in",
+            "title": "Shield Reset In",
+            "label": "Connect reset line from a connected DK shield",
+            "enable": {
+                "pin": 7
+            }
+        },
+        {
+            "type": "switch",
+            "id": "shield-reset-out",
+            "title": "Shield Reset Out",
+            "label": "Connect reset line to a connected DK shield",
+            "enable": {
+                "pin": 8
+            }
+        },
+        {
+            "type": "slide",
+            "id": "sim-select",
+            "title": "SIM Select",
+            "label": "SIM",
+            "enable": {
+                "pin": 14
+            },
+            "alternatives": ["E-sim", "Card"]
+        },
+        {
+            "type": "switch",
+            "id": "modem-coexistence-interface",
+            "title": "Modem Co-Existence Interface",
+            "label": "",
+            "enable": {
+                "pin": 18
+            }
+        },
+        {
+            "type": "switch",
+            "id": "io-expander",
+            "title": "IO Expander",
+            "label": "",
+            "enable": {
+                "pin": 45,
+                "invert": true
+            }
+        },
+        {
+            "type": "switch",
+            "id": "external-memory",
+            "title": "External Memory",
+            "label": "",
+            "enable": {
+                "pin": 47
+            }
+        }
+    ],
+    "defaults": {
+        "pins": [
+            [42, false],
+            [20, false],
+            [22, false],
+            [23, false],
+            [6, false],
+            [7, false],
+            [8, false],
+            [14, false],
+            [18, false],
+            [45, false],
+            [47, true]
+        ]
+    }
+}
