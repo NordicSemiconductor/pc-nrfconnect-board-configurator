@@ -107,5 +107,21 @@
             "mVmin": 1800,
             "mVmax": 2500
         }
-    ]
+    ],
+    "defaults": {
+        "pins": [
+            [42, false],
+            [20, false],
+            [22, false],
+            [23, false],
+            [6, false],
+            [7, false],
+            [8, false],
+            [14, false],
+            [18, false],
+            [45, false],
+            [47, true]
+        ],
+        "pmicPorts": [[2, 1800]]
+    }
 }
