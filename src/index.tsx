@@ -7,16 +7,15 @@
 import React from 'react';
 import { App, render } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
+// If your app uses redux, then specify your root reducer here.
+// It will handle the slice of state under the name `app`.
+// const reducer = undefined;
+import appReducer from './appReducer';
 import BoilerplateDeviceSelector from './BoilerplateDeviceSelector';
 import Configuration from './features/Configuration/Configuration';
 import SidePanel from './SidePanel';
 
 import './index.scss';
-
-// If your app uses redux, then specify your root reducer here.
-// It will handle the slice of state under the name `app`.
-//const reducer = undefined;
-import appReducer from './appReducer';
 
 // nRF Connect boilerplate app
 // ===========================
@@ -32,8 +31,6 @@ render(
         appReducer={appReducer}
         deviceSelect={<BoilerplateDeviceSelector />}
         sidePanel={<SidePanel />}
-        panes={[
-            { name: 'Configuration', Main: Configuration},
-        ]}
+        panes={[{ name: 'Configuration', Main: Configuration }]}
     />
 );

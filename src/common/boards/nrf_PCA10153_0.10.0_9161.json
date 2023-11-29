@@ -66,10 +66,7 @@
             "enable": {
                 "pin": 14
             },
-            "alternatives": [
-                "E-sim",
-                "Card"
-            ]
+            "alternatives": ["E-sim", "Card"]
         },
         {
             "type": "switch",

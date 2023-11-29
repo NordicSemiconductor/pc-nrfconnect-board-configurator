@@ -70,9 +70,9 @@ const boardControllerConfigSlice = createSlice({
 export const getConfigValue =
     (configPin: number) =>
     (state: RootState): boolean =>
-        (state.app.boardControllerConfig.boardControllerConfigData.get(
+        state.app.boardControllerConfig.boardControllerConfigData.get(
             configPin
-        ) === true);
+        ) === true;
 
 export const getPmicConfigValue =
     (pmicPort: number) =>

@@ -51,7 +51,10 @@ const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
 
     if (device) {
         console.log('Got device %o %s', device, boardRevision);
-        console.log('Device with boardVersion: %s', device?.devkit?.boardVersion);
+        console.log(
+            'Device with boardVersion: %s',
+            device?.devkit?.boardVersion
+        );
 
         switch (device?.devkit?.boardVersion) {
             case 'PCA10156':
@@ -152,7 +155,10 @@ function buildGui(boardJson: BoardControllerConfigDefinition) {
     );
 }
 
-function setDefaultConfig(dispatch: AppDispatch, boardJson: BoardControllerConfigDefinition) {
+function setDefaultConfig(
+    dispatch: AppDispatch,
+    boardJson: BoardControllerConfigDefinition
+) {
     if (boardJson?.defaults) {
         const { pins, pmicPorts } = boardJson.defaults;
 
