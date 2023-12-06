@@ -3,10 +3,10 @@
     "version": "0.0.1",
     "description": "Board controller for nRF5340",
     "displayName": "nRF5340 Board Controller",
-    "homepage": "https://github.com/NordicSemiconductor/pc-nrfcosnnect-boilerplate",
+    "homepage": "https://github.com/NordicPlayground/pc-nrfconnect-board-controller",
     "repository": {
         "type": "git",
-        "url": "https://github.com/NordicSemiconductor/pc-nrfconnect-boilerplate.git"
+        "url": "https://github.com/NordicPlayground/pc-nrfconnect-board-controller"
     },
     "author": "Nordic Semiconductor ASA",
     "license": "SEE LICENSE IN LICENSE",
@@ -34,7 +34,7 @@
         "watch:types": "tsc --noEmit --pretty --watch --preserveWatchOutput",
         "build:dev": "run-esbuild",
         "build:prod": "run-esbuild --prod",
-        "test": "jest",
+        "test": "jest --passWithNoTests",
         "check": "run-p --silent --continue-on-error --print-label check:*",
         "check:app": "check-app-properties",
         "check:lint": "eslint --color .",
@@ -44,7 +44,7 @@
         "prepare": "husky install"
     },
     "devDependencies": {
-        "@nordicsemiconductor/pc-nrfconnect-shared": "129.0.0",
+        "@nordicsemiconductor/pc-nrfconnect-shared": "139.0.0",
         "@types/react-test-renderer": "18.0.0"
     },
     "eslintConfig": {

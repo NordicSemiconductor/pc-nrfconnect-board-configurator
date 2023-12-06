@@ -35,10 +35,7 @@
             "enable": {
                 "pin": 45
             },
-            "alternatives": [
-                "GPIO",
-                "LED"
-            ]
+            "alternatives": ["GPIO", "LED"]
         }
     ],
     "pmicPorts": [
@@ -51,32 +48,12 @@
     ],
     "defaults": {
         "pins": [
-            [
-                42,
-                true
-            ],
-            [
-                20,
-                false
-            ],
-            [
-                22,
-                true
-            ],
-            [
-                23,
-                false
-            ],
-            [
-                45,
-                true
-            ]
+            [42, true],
+            [20, false],
+            [22, true],
+            [23, false],
+            [45, true]
         ],
-        "pmicPorts": [
-            [
-                1,
-                1800
-            ]
-        ]
+        "pmicPorts": [[1, 1800]]
     }
 }
