@@ -89,7 +89,7 @@ export const getConfigArray = createSelector(
     [getConfigData, getPmicConfigData],
     (configData: Map<number, boolean>, pmicConfigData: Map<number, number>) => [
         avoidEmptyConfigArray(sortAndFlatten(configData)),
-        sortAndFlatten(pmicConfigData),
+        ...(pmicConfigData.size > 0 ? [sortAndFlatten(pmicConfigData)] : []),
     ]
 );
 
