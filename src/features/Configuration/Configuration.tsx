@@ -60,10 +60,12 @@ const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
 
         switch (device?.devkit?.boardVersion) {
             case 'PCA10156':
+                // nRF54L15
                 setDefaultConfig(dispatch, typednrf54l15json);
                 return buildGui(typednrf54l15json);
 
             case 'PCA10153':
+                // nRF9161
                 if (boardRevision === '0.10.0') {
                     setDefaultConfig(dispatch, typednrf9161json);
                     return buildGui(typednrf9161json);
@@ -76,6 +78,7 @@ const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
                 return unrecognized();
 
             case 'PCA10145':
+                // nRF54H20
                 setDefaultConfig(dispatch, typednrf54h20json);
                 return buildGui(typednrf54h20json);
 
