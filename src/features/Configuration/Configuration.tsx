@@ -68,7 +68,7 @@ const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
                     setDefaultConfig(dispatch, typednrf9161json);
                     return buildGui(typednrf9161json);
                 }
-                if (boardRevision === '0.9.1') {
+                if (boardRevision === '0.9.0' || boardRevision === '0.9.1') {
                     setDefaultConfig(dispatch, typednrf9161v091);
                     return buildGui(typednrf9161v091);
                 }
