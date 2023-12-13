@@ -15,6 +15,7 @@ import {
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import BoardControllerConfigDefinition from '../../common/boards/BoardControllerConfigDefinition';
+import nrf54h20json from '../../common/boards/nrf_PCA10145_54H20.json';
 import nrf9161v091json from '../../common/boards/nrf_PCA10153_0.9.1_9161.json';
 import nrf9161v0100json from '../../common/boards/nrf_PCA10153_0.10.0_9161.json';
 import nrf54l15json from '../../common/boards/nrf_PCA10156_0.2.0.json';
@@ -32,6 +33,7 @@ const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
         nrf9161v0100json as BoardControllerConfigDefinition;
     const typednrf9161v091 = nrf9161v091json as BoardControllerConfigDefinition;
     const typednrf54l15json = nrf54l15json as BoardControllerConfigDefinition;
+    const typednrf54h20json = nrf54h20json as BoardControllerConfigDefinition;
 
     const dispatch = useDispatch();
 
@@ -72,6 +74,10 @@ const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
                 }
 
                 return unrecognized();
+
+            case 'PCA10145':
+                setDefaultConfig(dispatch, typednrf54h20json);
+                return buildGui(typednrf54h20json);
 
             default:
                 return unrecognized();

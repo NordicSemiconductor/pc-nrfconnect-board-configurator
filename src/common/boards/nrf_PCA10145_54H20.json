@@ -1,7 +1,7 @@
 {
     "board": {
-        "boardVersion": "PCA10xxx",
-        "boardRevision": "0.x.0",
+        "boardVersion": "PCA10145",
+        "boardRevision": "0.8.0",
         "boardName": "nRF54H20 PDK"
     },
     "pins": [
@@ -30,12 +30,15 @@
         {
             "type": "slide",
             "id": "gpio-voltage-1",
-            "title": "GPIO 1 Voltage",
+            "title": "GPIO port 1 Voltage",
             "label": "Voltage",
             "enable": {
                 "pin": 6
             },
-            "alternatives": ["1V2", "1V8"]
+            "alternatives": [
+                "1V2",
+                "1V8"
+            ]
         },
         {
             "type": "slide",
@@ -45,7 +48,10 @@
             "enable": {
                 "pin": 7
             },
-            "alternatives": ["1V2", "1V8"]
+            "alternatives": [
+                "1V2",
+                "1V8"
+            ]
         },
         {
             "type": "slide",
@@ -55,7 +61,10 @@
             "enable": {
                 "pin": 8
             },
-            "alternatives": ["1V2", "1V8"]
+            "alternatives": [
+                "1V2",
+                "1V8"
+            ]
         },
         {
             "type": "slide",
@@ -65,7 +74,10 @@
             "enable": {
                 "pin": 28
             },
-            "alternatives": ["3V0", "1V8"]
+            "alternatives": [
+                "1V8",
+                "3V0"
+            ]
         },
         {
             "type": "slide",
@@ -75,7 +87,10 @@
             "enable": {
                 "pin": 45
             },
-            "alternatives": ["GPIO", "LED"]
+            "alternatives": [
+                "GPIO",
+                "LED"
+            ]
         }
     ],
     "pmicPorts": []
