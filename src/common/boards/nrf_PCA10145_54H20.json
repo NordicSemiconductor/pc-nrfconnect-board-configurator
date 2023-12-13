@@ -35,10 +35,7 @@
             "enable": {
                 "pin": 6
             },
-            "alternatives": [
-                "1V2",
-                "1V8"
-            ]
+            "alternatives": ["1V2", "1V8"]
         },
         {
             "type": "slide",
@@ -48,10 +45,7 @@
             "enable": {
                 "pin": 7
             },
-            "alternatives": [
-                "1V2",
-                "1V8"
-            ]
+            "alternatives": ["1V2", "1V8"]
         },
         {
             "type": "slide",
@@ -61,10 +55,7 @@
             "enable": {
                 "pin": 8
             },
-            "alternatives": [
-                "1V2",
-                "1V8"
-            ]
+            "alternatives": ["1V2", "1V8"]
         },
         {
             "type": "slide",
@@ -74,10 +65,7 @@
             "enable": {
                 "pin": 28
             },
-            "alternatives": [
-                "1V8",
-                "3V0"
-            ]
+            "alternatives": ["1V8", "3V0"]
         },
         {
             "type": "slide",
@@ -87,10 +75,7 @@
             "enable": {
                 "pin": 45
             },
-            "alternatives": [
-                "GPIO",
-                "LED"
-            ]
+            "alternatives": ["GPIO", "LED"]
         }
     ],
     "pmicPorts": []
