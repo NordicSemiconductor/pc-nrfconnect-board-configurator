@@ -1,6 +1,6 @@
 {
     "name": "pc-nrfconnect-board-controller",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Board controller for nRF5340",
     "displayName": "nRF5340 Board Controller",
     "homepage": "https://github.com/NordicPlayground/pc-nrfconnect-board-controller",
