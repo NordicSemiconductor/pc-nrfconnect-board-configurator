@@ -16,7 +16,8 @@ interface ConfigState {
 // nRF54H20 default config
 const initialState: ConfigState = {
     boardControllerConfigData: new Map([]),
-    pmicConfigData: new Map([[1, 1800]]),
+    // This might be needed pmicConfigData: new Map([[1, 1800]]),
+    pmicConfigData: new Map([]),
 };
 
 const boardControllerConfigSlice = createSlice({
