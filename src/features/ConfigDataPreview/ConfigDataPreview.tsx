@@ -17,7 +17,7 @@ import {
 const ConfigDataPreview: React.FC<{
     enabled: boolean;
 }> = ({ enabled = true }) => {
-    logger.info('Rendering ConfigDataPreview');
+    logger.debug('Rendering ConfigDataPreview');
 
     const configData = useSelector(getConfigArray);
     const boardRevision = useSelector(getBoardRevisionSemver);

@@ -24,7 +24,7 @@ const VCOMConfiguration: React.FC<{
     enableInvert: boolean;
     hwfcInvert: boolean;
 }> = ({ vcomName, vcomEnablePin, hwfcEnablePin, enableInvert, hwfcInvert }) => {
-    logger.info(`Rendering VCOMConfiguration for ${vcomName}`);
+    logger.debug(`Rendering VCOMConfiguration for ${vcomName}`);
 
     const dispatch = useDispatch();
 

@@ -30,7 +30,7 @@ const ConfigSwitch: React.FC<{
     enableLabel = 'Enable',
     invert = false,
 }) => {
-    logger.info(`Rendering ConfigSwitch for ${configTitle}`);
+    logger.debug(`Rendering ConfigSwitch for ${configTitle}`);
 
     const dispatch = useDispatch();
 

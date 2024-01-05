@@ -39,11 +39,11 @@ const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
 
     useEffect(() => {
         if (active) {
-            logger.info('Showing BoardController pane');
+            logger.debug('Showing BoardController pane');
         }
         return () => {
             if (active) {
-                logger.info('Hiding BoardController pane');
+                logger.debug('Hiding BoardController pane');
             }
         };
     }, [active]);

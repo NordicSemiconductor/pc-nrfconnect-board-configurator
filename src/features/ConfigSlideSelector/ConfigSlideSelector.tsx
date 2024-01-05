@@ -30,7 +30,7 @@ const ConfigSlideSelector: React.FC<{
     configAlternatives,
     invert = false,
 }) => {
-    logger.info(`Rendering ConfigSlideSelector for ${configTitle}`);
+    logger.debug(`Rendering ConfigSlideSelector for ${configTitle}`);
 
     const dispatch = useDispatch();
 

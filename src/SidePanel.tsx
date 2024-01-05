@@ -19,7 +19,7 @@ import ConfigDataPreview from './features/ConfigDataPreview/ConfigDataPreview';
 import { getConfigArray } from './features/Configuration/boardControllerConfigSlice';
 
 export default () => {
-    logger.info('Rendering SidePanel');
+    logger.debug('Rendering SidePanel');
 
     const device = useSelector(selectedDevice);
     const configData = useSelector(getConfigArray);
