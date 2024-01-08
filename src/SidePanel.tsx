@@ -65,22 +65,6 @@ export default () => {
                 >
                     Write config
                 </Button>
-                <Button
-                    disabled={!device}
-                    variant="secondary"
-                    className="w-100"
-                    onClick={() => {
-                        console.dir(device);
-                        if (!device) {
-                            return;
-                        }
-                        const versionPromise =
-                            NrfutilDeviceLib.getBoardControllerVersion(device);
-                        versionPromise.then(val => console.dir(val));
-                    }}
-                >
-                    Get BoardController Version
-                </Button>
             </CollapsibleGroup>
             <ConfigDataPreview enabled />
         </SidePanel>
