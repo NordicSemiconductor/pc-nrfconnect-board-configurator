@@ -74,8 +74,11 @@ const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
                     setDefaultConfig(dispatch, typednrf9161v091);
                     return buildGui(typednrf9161v091);
                 }
+                if (!boardRevision) {
+                    return spinner();
+                }
 
-                return unrecognized();
+                return unrecognizedBoardRevision();
 
             case 'PCA10145':
                 // nRF54H20
@@ -83,17 +86,48 @@ const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
                 return buildGui(typednrf54h20json);
 
             default:
-                return unrecognized();
+                return unrecognizedBoard();
         }
     } else {
-        return unrecognized();
+        return noBoardSelected();
     }
 };
 
-function unrecognized() {
+function noBoardSelected() {
     return (
         <div>
-            <p>No Board Controller device recognized.</p>
+            <p>
+                Please connect to a development kit with the Board Controller
+                feature.
+            </p>
+        </div>
+    );
+}
+
+function spinner() {
+    return (
+        <div>
+            <p>Working..</p>
+        </div>
+    );
+}
+
+function unrecognizedBoard() {
+    return (
+        <div>
+            <p>This development kit does not feature the Board Controller.</p>
+        </div>
+    );
+}
+
+function unrecognizedBoardRevision() {
+    return (
+        <div>
+            <p>
+                This revision of the development kit is not supported. Please
+                update to the latest version of Board Controller Configurator //
+                FIXME
+            </p>
         </div>
     );
 }
