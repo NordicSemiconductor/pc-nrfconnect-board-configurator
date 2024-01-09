@@ -26,50 +26,22 @@ export default () => {
 
     return (
         <SidePanel className="side-panel">
-            <CollapsibleGroup defaultCollapsed={false} heading="Actions">
-                <Button
-                    disabled
-                    variant="secondary"
-                    className="w-100"
-                    onClick={() => {}}
-                >
-                    Load Configuration
-                </Button>
-                <Button
-                    disabled
-                    variant="secondary"
-                    className="w-100"
-                    onClick={() => {}}
-                >
-                    Reset Configuration
-                </Button>
-                <Button
-                    disabled
-                    variant="secondary"
-                    className="w-100"
-                    onClick={() => {}}
-                >
-                    Export Configuration
-                </Button>
-                <Button
-                    disabled={!device}
-                    variant="secondary"
-                    className="w-100"
-                    onClick={() => {
-                        console.dir(device);
-                        if (!device) {
-                            return;
-                        }
-                        NrfutilDeviceLib.boardController(device, configData);
-                    }}
-                >
-                    Write config
-                </Button>
-            </CollapsibleGroup>
-            <CollapsibleGroup
-                defaultCollapsed={true}
-                heading="Configuration data"
+            <CollapsibleGroup defaultCollapsed={false} heading="Actions" />
+            <Button
+                disabled={!device}
+                variant="primary"
+                className="w-100"
+                onClick={() => {
+                    console.dir(device);
+                    if (!device) {
+                        return;
+                    }
+                    NrfutilDeviceLib.boardController(device, configData);
+                }}
             >
+                Write config
+            </Button>
+            <CollapsibleGroup defaultCollapsed heading="Configuration data">
                 <ConfigDataPreview enabled />
             </CollapsibleGroup>
         </SidePanel>
