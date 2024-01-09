@@ -41,23 +41,23 @@ const ConfigSwitch: React.FC<{
             title={
                 <div className="d-flex justify-content-between">
                     <span>{configTitle}</span>
+                    <Toggle
+                        label={enableLabel}
+                        isToggled={toggleEnable}
+                        onToggle={enable =>
+                            dispatch(
+                                setConfigValue({
+                                    configPin,
+                                    configPinState: enable !== invert, // No XOR for booleans in Typescript
+                                })
+                            )
+                        }
+                    />
                 </div>
             }
         >
             <div className="d-flex justify-content-between">
                 <div>{configLabel}</div>
-                <Toggle
-                    label={enableLabel}
-                    isToggled={toggleEnable}
-                    onToggle={enable =>
-                        dispatch(
-                            setConfigValue({
-                                configPin,
-                                configPinState: enable !== invert, // No XOR for booleans in Typescript
-                            })
-                        )
-                    }
-                />
             </div>
         </Card>
     );
