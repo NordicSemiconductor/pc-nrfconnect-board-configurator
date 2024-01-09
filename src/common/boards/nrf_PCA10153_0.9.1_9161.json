@@ -62,11 +62,10 @@
             "type": "slide",
             "id": "sim-select",
             "title": "SIM Select",
-            "label": "SIM",
             "enable": {
                 "pin": 14
             },
-            "alternatives": ["E-sim", "Card"]
+            "alternatives": ["E-sim", "SIM Card"]
         },
         {
             "type": "switch",
@@ -78,14 +77,15 @@
             }
         },
         {
-            "type": "switch",
+            "type": "slide",
             "id": "io-expander",
             "title": "IO Expander",
-            "label": "",
+            "label": "Connect buttons and LEDs through GPIO or I²C IO Expander",
             "enable": {
                 "pin": 45,
                 "invert": true
-            }
+            },
+            "alternatives": ["GPIO", "IO Expander"]
         },
         {
             "type": "switch",
