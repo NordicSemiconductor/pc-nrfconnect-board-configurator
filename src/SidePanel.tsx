@@ -66,7 +66,12 @@ export default () => {
                     Write config
                 </Button>
             </CollapsibleGroup>
-            <ConfigDataPreview enabled />
+            <CollapsibleGroup
+                defaultCollapsed={true}
+                heading="Configuration data"
+            >
+                <ConfigDataPreview enabled />
+            </CollapsibleGroup>
         </SidePanel>
     );
 };
