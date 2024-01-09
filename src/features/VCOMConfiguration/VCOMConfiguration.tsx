@@ -55,7 +55,10 @@ const VCOMConfiguration: React.FC<{
             }
         >
             <div className="d-flex justify-content-between">
-                <span>{vcomName} HWFC</span>
+                <span>
+                    Connect {vcomName} Hardware flow control (HWFC) auto detect
+                    lines
+                </span>
                 <Toggle
                     isToggled={hwfcEnable}
                     onToggle={enableHwfc => {
