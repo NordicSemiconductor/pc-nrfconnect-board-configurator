@@ -45,8 +45,8 @@ const ConfigSlideSelector: React.FC<{
                 </div>
             }
         >
-            <div className="tw-flex tw-gap-2">
-                <span>{configLabel}</span>
+            <div>
+                <p>{configLabel}</p>
                 <StateSelector
                     items={configAlternatives}
                     selectedItem={selectedItem}
