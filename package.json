@@ -1,8 +1,8 @@
 {
     "name": "pc-nrfconnect-board-configurator",
     "version": "0.0.3",
-    "description": "Board Configurator for nRF5340",
-    "displayName": "nRF5340 Board Configurator",
+    "description": "Board Configurator for Board Controller",
+    "displayName": "Board Configurator",
     "homepage": "https://github.com/NordicSemiconductor/pc-nrfconnect-board-configurator",
     "repository": {
         "type": "git",
