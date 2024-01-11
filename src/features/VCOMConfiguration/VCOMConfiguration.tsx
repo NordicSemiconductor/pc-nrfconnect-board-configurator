@@ -40,7 +40,7 @@ const VCOMConfiguration: React.FC<{
         <Card
             title={
                 <div className="d-flex justify-content-between">
-                    <span>{vcomName}</span>
+                    <span>Enable virtual COM port {vcomName}</span>
                     <Toggle
                         isToggled={vcomEnable}
                         onToggle={enableVcom => {
