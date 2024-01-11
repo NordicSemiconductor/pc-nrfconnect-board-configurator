@@ -44,7 +44,7 @@
             "type": "switch",
             "id": "shield-reset-in",
             "title": "Shield Reset In",
-            "label": "Connect reset line from a connected DK shield",
+            "label": "Connect reset line coming from a connected DK shield",
             "enable": {
                 "pin": 7
             }
@@ -53,7 +53,7 @@
             "type": "switch",
             "id": "shield-reset-out",
             "title": "Shield Reset Out",
-            "label": "Connect reset line to a connected DK shield",
+            "label": "Connect reset line going to a connected DK shield",
             "enable": {
                 "pin": 8
             }
@@ -62,6 +62,7 @@
             "type": "slide",
             "id": "sim-select",
             "title": "SIM Select",
+            "label": "Select whether to use SIM card or e-sim",
             "enable": {
                 "pin": 14
             },
@@ -71,7 +72,7 @@
             "type": "switch",
             "id": "modem-coexistence-interface",
             "title": "Modem Co-Existence Interface",
-            "label": "",
+            "label": "Enable/Disable the GPIO pin connection to the coexistence interface. This is done so that the GPIO pins can be used for other use cases.",
             "enable": {
                 "pin": 18
             }
@@ -80,7 +81,7 @@
             "type": "slide",
             "id": "io-expander",
             "title": "IO Expander",
-            "label": "Connect buttons and LEDs through GPIO or I²C IO Expander",
+            "label": "Enable/disable the I²C IO expander module that can control the LEDs and buttons on the DK using other interface than GPIOs if the pins are needed for other use cases.",
             "enable": {
                 "pin": 45,
                 "invert": true
@@ -91,7 +92,7 @@
             "type": "switch",
             "id": "external-memory",
             "title": "External Memory",
-            "label": "",
+            "label": "Enable/disable the external memory chip.",
             "enable": {
                 "pin": 47
             }
