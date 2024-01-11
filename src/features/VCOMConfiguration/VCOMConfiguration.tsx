@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     Card,
     logger,
+    Overlay,
     Toggle,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
@@ -16,6 +17,8 @@ import {
     getConfigValue,
     setConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
+
+import './vcomconfig.scss';
 
 const VCOMConfiguration: React.FC<{
     vcomName: string;
@@ -55,10 +58,21 @@ const VCOMConfiguration: React.FC<{
             }
         >
             <div className="d-flex justify-content-between">
-                <span>
-                    Connect {vcomName} Hardware flow control (HWFC) auto detect
-                    lines
-                </span>
+                <Overlay
+                    tooltipId="foo"
+                    tooltipChildren={
+                        <p className="tooltip-text">
+                            Connect/disconnect the Hardware Flow Control pins
+                            for the virtual COM port. When disconnected the HWFC
+                            GPIO pins for the target chip can be used for other
+                            purposes. When connected an autodetect feature is
+                            used to determine whether or not HWFC is enabled on
+                            the target chip.
+                        </p>
+                    }
+                >
+                    <span>Connect {vcomName} HWFC auto detect lines</span>
+                </Overlay>
                 <Toggle
                     isToggled={hwfcEnable}
                     onToggle={enableHwfc => {
