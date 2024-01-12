@@ -40,7 +40,19 @@ const VCOMConfiguration: React.FC<{
         <Card
             title={
                 <div className="d-flex justify-content-between">
-                    <span>Enable virtual COM port {vcomName}</span>
+                    <Overlay
+                        tooltipId={`tooltip_${vcomName}`}
+                        tooltipChildren={
+                            <p className="tooltip-text">
+                                Connect or disconnect the pins used for the
+                                virtual COM port. When disconnected the
+                                corresponding UART GPIO pins can be used for
+                                other purposes.
+                            </p>
+                        }
+                    >
+                        <span>Enable virtual COM port {vcomName} &#9432;</span>
+                    </Overlay>
                     <Toggle
                         isToggled={vcomEnable}
                         onToggle={enableVcom => {
