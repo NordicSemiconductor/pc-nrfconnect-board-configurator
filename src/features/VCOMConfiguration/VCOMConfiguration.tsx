@@ -59,19 +59,21 @@ const VCOMConfiguration: React.FC<{
         >
             <div className="d-flex justify-content-between">
                 <Overlay
-                    tooltipId="foo"
+                    tooltipId={`tooltip_hwfc_${vcomName}`}
                     tooltipChildren={
                         <p className="tooltip-text">
-                            Connect/disconnect the Hardware Flow Control pins
-                            for the virtual COM port. When disconnected the HWFC
-                            GPIO pins for the target chip can be used for other
-                            purposes. When connected an autodetect feature is
-                            used to determine whether or not HWFC is enabled on
-                            the target chip.
+                            Connect or disconnect the Hardware Flow Control pins
+                            for the virtual COM port. When disconnected, the
+                            HWFC GPIO pins for the target chip can be used for
+                            other purposes. When connected, an autodetect
+                            feature is used to determine whether or not HWFC is
+                            enabled on the target chip.
                         </p>
                     }
                 >
-                    <span>Connect {vcomName} HWFC auto detect lines</span>
+                    <span>
+                        Connect {vcomName} HWFC autodetect lines &#9432;
+                    </span>
                 </Overlay>
                 <Toggle
                     isToggled={hwfcEnable}
