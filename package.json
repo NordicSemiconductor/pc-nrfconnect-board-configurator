@@ -1,12 +1,12 @@
 {
-    "name": "pc-nrfconnect-board-controller",
-    "version": "0.0.3",
-    "description": "Board controller for nRF5340",
-    "displayName": "nRF5340 Board Controller",
-    "homepage": "https://github.com/NordicPlayground/pc-nrfconnect-board-controller",
+    "name": "pc-nrfconnect-board-configurator",
+    "version": "0.0.4",
+    "description": "Configuration tool for Nordic Development Kits",
+    "displayName": "Board Configurator",
+    "homepage": "https://github.com/NordicSemiconductor/pc-nrfconnect-board-configurator",
     "repository": {
         "type": "git",
-        "url": "https://github.com/NordicPlayground/pc-nrfconnect-board-controller"
+        "url": "https://github.com/NordicSemiconductor/pc-nrfconnect-board-configurator"
     },
     "author": "Nordic Semiconductor ASA",
     "license": "SEE LICENSE IN LICENSE",
@@ -44,7 +44,7 @@
         "prepare": "husky install"
     },
     "devDependencies": {
-        "@nordicsemiconductor/pc-nrfconnect-shared": "139.0.0",
+        "@nordicsemiconductor/pc-nrfconnect-shared": "147.0.0",
         "@types/react-test-renderer": "18.0.0"
     },
     "eslintConfig": {

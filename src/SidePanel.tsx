@@ -26,21 +26,22 @@ export default () => {
 
     return (
         <SidePanel className="side-panel">
-            <CollapsibleGroup defaultCollapsed={false} heading="Actions" />
-            <Button
-                disabled={!device}
-                variant="primary"
-                className="w-100"
-                onClick={() => {
-                    console.dir(device);
-                    if (!device) {
-                        return;
-                    }
-                    NrfutilDeviceLib.boardController(device, configData);
-                }}
-            >
-                Write config
-            </Button>
+            <CollapsibleGroup defaultCollapsed={false} heading="Actions">
+                <Button
+                    disabled={!device}
+                    variant="primary"
+                    className="w-100"
+                    onClick={() => {
+                        console.dir(device);
+                        if (!device) {
+                            return;
+                        }
+                        NrfutilDeviceLib.boardController(device, configData);
+                    }}
+                >
+                    Write config
+                </Button>
+            </CollapsibleGroup>
             <CollapsibleGroup defaultCollapsed heading="Configuration data">
                 <ConfigDataPreview enabled />
             </CollapsibleGroup>
