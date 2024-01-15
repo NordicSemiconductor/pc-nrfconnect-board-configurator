@@ -37,7 +37,8 @@
             "title": "SWD Control",
             "label": "Enable or disable the SWD connection between the IMCU and target chip. This can be done to e.g. use an external debugger.",
             "enable": {
-                "pin": 6
+                "pin": 6,
+                "invert": true
             }
         },
         {
@@ -74,7 +75,8 @@
             "title": "Modem Co-Existence Interface",
             "label": "Enable or disable the GPIO pin connection to the coexistence interface. This is done so that the GPIO pins can be used for other use cases.",
             "enable": {
-                "pin": 18
+                "pin": 18,
+                "invert": true
             }
         },
         {
@@ -83,8 +85,7 @@
             "title": "IO Expander",
             "label": "Enable or disable the I²C IO expander module that can control the LEDs and buttons on the DK using other interface than GPIOs if the pins are needed for other use cases.",
             "enable": {
-                "pin": 45,
-                "invert": true
+                "pin": 45
             }
         },
         {
@@ -93,7 +94,8 @@
             "title": "External Memory",
             "label": "Enable or disable the external memory chip.",
             "enable": {
-                "pin": 47
+                "pin": 47,
+                "invert": true
             }
         }
     ],
@@ -106,10 +108,10 @@
             [6, false],
             [7, false],
             [8, false],
-            [14, false],
-            [18, false],
+            [14, true],
+            [18, true],
             [45, false],
-            [47, true]
+            [47, false]
         ]
     }
 }
