@@ -8,7 +8,7 @@ The available options and information change after you **Select Device**.
 
 ## Select Device
 
-Opens the drop-down with the list of devices connected to the computer. You can choose a device from the list of connected devices to perform further actions on the device such as programming.
+Opens the drop-down with the list of devices connected to the computer. You can choose a device from the list of connected devices to perform further actions on the device such as configuring.
 
 ## Actions
 

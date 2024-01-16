@@ -7,6 +7,6 @@ nRF Connect Board Configurator is an application that you can use to update the 
 
 ## Supported devices
 
-- nRF9161 DK
+- nRF9161 DK (v0.9.1)
 
 Board Configurator is installed and updated using [nRF Connect for Desktop](https://docs.nordicsemi.com/bundle/ug_nrf_connect_desktop/page/struct/nrftools_nrfconnect.html).
