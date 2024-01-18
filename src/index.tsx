@@ -31,7 +31,7 @@ render(
         appReducer={appReducer}
         deviceSelect={<BoilerplateDeviceSelector />}
         sidePanel={<SidePanel />}
-        feedback={{}}
+        feedback
         panes={[{ name: 'Configuration', Main: Configuration }]}
     />
 );
