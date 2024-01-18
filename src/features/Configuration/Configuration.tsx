@@ -103,7 +103,9 @@ function noBoardSelected() {
             <p>Currently supported kits:</p>
             <ul>
                 <li>
-                    <a href="#">nRF9161DK (Rev. 0.9.0 and later)</a>
+                    <a href="https://www.nordicsemi.com/Products/nRF9161">
+                        nRF9161DK (Rev. 0.9.0 and later)
+                    </a>
                 </li>
             </ul>
         </div>
