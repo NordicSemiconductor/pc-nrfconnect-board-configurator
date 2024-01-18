@@ -14,6 +14,9 @@
         "nrfconnect": ">=4.3.0"
     },
     "nrfConnectForDesktop": {
+        "supportedDevices": [
+            "PCA10153"
+        ],
         "nrfutil": {
             "device": [
                 "2.0.2"

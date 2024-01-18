@@ -97,9 +97,21 @@ function noBoardSelected() {
     return (
         <div>
             <p>
-                Please connect to a development kit with the Board Controller
-                feature.
+                Please connect to a development kit featuring the Board
+                Controller.
             </p>
+            <p>Currently supported kits:</p>
+            <ul>
+                <li>
+                    <a
+                        href="https://www.nordicsemi.com/Products/nRF9161"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        nRF9161DK (Rev. 0.9.0 and later)
+                    </a>
+                </li>
+            </ul>
         </div>
     );
 }
