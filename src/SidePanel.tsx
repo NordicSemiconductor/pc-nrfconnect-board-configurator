@@ -37,6 +37,7 @@ export default () => {
                             return;
                         }
                         NrfutilDeviceLib.boardController(device, configData);
+                        logger.info('Configuration written');
                     }}
                 >
                     Write config
