@@ -30,9 +30,9 @@ export default () => {
                 <Button
                     disabled={!device}
                     variant="primary"
-                    className="w-100"
+                    className="tw-w-full"
                     onClick={() => {
-                        console.dir(device);
+                        // console.dir(device);
                         if (!device) {
                             return;
                         }
