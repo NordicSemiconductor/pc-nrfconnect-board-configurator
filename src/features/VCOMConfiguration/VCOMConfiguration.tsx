@@ -39,10 +39,14 @@ const VCOMConfiguration = ({
 
     const dispatch = useDispatch();
 
-    const vcomEnable =
-        useSelector(getConfigValue(vcomEnablePin)) !== enableInvert; // No XOR for booleans in Typescript
-    const hwfcEnable =
-        useSelector(getConfigValue(hwfcEnablePin)) !== hwfcInvert; // No XOR for booleans in Typescript
+    const vcomEnable = xor(
+        useSelector(getConfigValue(vcomEnablePin)),
+        enableInvert
+    );
+    const hwfcEnable = xor(
+        useSelector(getConfigValue(hwfcEnablePin)),
+        hwfcInvert
+    );
 
     return (
         <Card
@@ -67,7 +71,10 @@ const VCOMConfiguration = ({
                             dispatch(
                                 setConfigValue({
                                     configPin: vcomEnablePin,
-                                    configPinState: enableVcom !== enableInvert, // No XOR for booleans in Typescript
+                                    configPinState: xor(
+                                        enableVcom,
+                                        enableInvert
+                                    ),
                                 })
                             );
                         }}
@@ -101,7 +108,7 @@ const VCOMConfiguration = ({
                         dispatch(
                             setConfigValue({
                                 configPin: hwfcEnablePin,
-                                configPinState: enableHwfc !== hwfcInvert, // No XOR for booleans in Typescript
+                                configPinState: xor(enableHwfc, hwfcInvert),
                             })
                         );
                     }}
@@ -112,5 +119,7 @@ const VCOMConfiguration = ({
         </Card>
     );
 };
+
+const xor = (a: boolean, b: boolean): boolean => a !== b; // No XOR for booleans in TypeScript
 
 export default VCOMConfiguration;
