@@ -20,13 +20,21 @@ import {
 
 import './vcomconfig.scss';
 
-const VCOMConfiguration: React.FC<{
+interface VCOMConfigurationProps {
     vcomName: string;
     vcomEnablePin: number;
     hwfcEnablePin: number;
     enableInvert: boolean;
     hwfcInvert: boolean;
-}> = ({ vcomName, vcomEnablePin, hwfcEnablePin, enableInvert, hwfcInvert }) => {
+}
+
+const VCOMConfiguration = ({
+    vcomName,
+    vcomEnablePin,
+    hwfcEnablePin,
+    enableInvert,
+    hwfcInvert,
+}: VCOMConfigurationProps) => {
     logger.debug(`Rendering VCOMConfiguration for ${vcomName}`);
 
     const dispatch = useDispatch();
