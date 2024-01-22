@@ -17,11 +17,17 @@ import {
     setPmicConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
 
-const VoltageConfiguration: React.FC<{
+interface VoltageConfigurationProps {
     pmicPort: number;
     voltageMin: number;
     voltageMax: number;
-}> = ({ pmicPort, voltageMin, voltageMax }) => {
+}
+
+const VoltageConfiguration = ({
+    pmicPort,
+    voltageMin,
+    voltageMax,
+}: VoltageConfigurationProps) => {
     const dispatch = useDispatch();
     const voltage = useSelector(getPmicConfigValue(pmicPort)) ?? voltageMin; // Default to voltageMin
 
