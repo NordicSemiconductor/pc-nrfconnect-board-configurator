@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
+import { logger } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import type { RootState } from '../../app/appReducer';
@@ -49,19 +50,14 @@ const deviceSlice = createSlice({
     },
 });
 
-export const getBoardRevision = (state: RootState) => {
-    console.log(
-        'Getting deviceState - returning %o',
-        state.app.device.boardRevision
-    );
-    return state.app.device.boardRevision;
-};
+export const getBoardRevision = (state: RootState) =>
+    state.app.device.boardRevision;
 
 export const getBoardRevisionSemver = (state: RootState) => {
     if (state.app.device.boardRevision === undefined) {
         return undefined;
     }
-    console.log('revision: %o', state.app.device.boardRevision);
+    logger.debug(`revision: ${JSON.stringify(state.app.device.boardRevision)}`);
     const { major, minor, patch } = state.app.device.boardRevision;
     return `${major}.${minor}.${patch}`;
 };
