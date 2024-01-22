@@ -6,7 +6,7 @@
 
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import type { RootState } from '../../appReducer';
+import type { RootState } from '../../app/appReducer';
 
 interface ConfigState {
     boardControllerConfigData: Map<number, boolean>;

@@ -7,8 +7,8 @@
 import { NrfConnectState } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import { combineReducers } from 'redux';
 
-import boardControllerConfigSlice from './features/Configuration/boardControllerConfigSlice';
-import deviceSlice from './features/Device/deviceSlice';
+import boardControllerConfigSlice from '../features/Configuration/boardControllerConfigSlice';
+import deviceSlice from '../features/Device/deviceSlice';
 
 type AppState = ReturnType<typeof appReducer>;
 
