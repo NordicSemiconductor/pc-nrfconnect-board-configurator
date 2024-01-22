@@ -26,7 +26,7 @@ import VCOMConfiguration from '../VCOMConfiguration/VCOMConfiguration';
 import VoltageConfiguration from '../VoltageConfiguration/VoltageConfiguration';
 import { setConfig, setPmicConfig } from './boardControllerConfigSlice';
 
-const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
+const BoardController = ({ active }: { active: boolean }) => {
     const typednrf9161json =
         nrf9161v0100json as BoardControllerConfigDefinition;
     const typednrf9161v091 = nrf9161v091json as BoardControllerConfigDefinition;
