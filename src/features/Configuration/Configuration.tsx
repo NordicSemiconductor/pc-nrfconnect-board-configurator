@@ -50,10 +50,15 @@ const BoardController = ({ active }: { active: boolean }) => {
     const boardRevision = useSelector(getBoardRevisionSemver);
 
     if (device) {
-        console.log('Got device %o %s', device, boardRevision);
-        console.log(
-            'Device with boardVersion: %s',
-            device?.devkit?.boardVersion
+        logger.debug(
+            `Got device ${JSON.stringify(device)} ${JSON.stringify(
+                boardRevision
+            )}`
+        );
+        logger.debug(
+            `Device with boardVersion: ${JSON.stringify(
+                device?.devkit?.boardVersion
+            )}`
         );
 
         switch (device?.devkit?.boardVersion) {
@@ -144,7 +149,7 @@ function unrecognizedBoardRevision() {
 
 function buildGui(boardJson: BoardControllerConfigDefinition) {
     const { board, pins, pmicPorts } = boardJson;
-    console.dir(pins);
+    logger.debug(`buildGui() pins: ${JSON.stringify(pins)}`);
 
     logger.info(`Rendering for ${board.boardName}`);
 
@@ -221,7 +226,7 @@ function setDefaultConfig(
         dispatch(setConfig({ boardControllerConfig: defaultConfig }));
         dispatch(setPmicConfig({ pmicConfig: defaultPmicConfig }));
     } else {
-        console.log('No defaults found in board JSON');
+        logger.warn('No defaults found in board definition JSON');
     }
 }
 
