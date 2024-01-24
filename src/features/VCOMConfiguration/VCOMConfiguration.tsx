@@ -51,7 +51,7 @@ const VCOMConfiguration = ({
     return (
         <Card
             title={
-                <div className="d-flex justify-content-between">
+                <div className="tw-flex tw-justify-between">
                     <Overlay
                         tooltipId={`tooltip_${vcomName}`}
                         tooltipChildren={
@@ -84,7 +84,7 @@ const VCOMConfiguration = ({
                 </div>
             }
         >
-            <div className="d-flex justify-content-between">
+            <div className="tw-flex tw-justify-between">
                 <Overlay
                     tooltipId={`tooltip_hwfc_${vcomName}`}
                     tooltipChildren={

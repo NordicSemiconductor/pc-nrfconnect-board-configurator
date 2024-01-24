@@ -40,7 +40,7 @@ const ConfigSlideSelector = ({
     return (
         <Card
             title={
-                <div className="d-flex justify-content-between">
+                <div className="tw-flex tw-content-between">
                     <span>{configTitle}</span>
                 </div>
             }

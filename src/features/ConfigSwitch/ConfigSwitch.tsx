@@ -39,7 +39,7 @@ const ConfigSwitch = ({
     return (
         <Card
             title={
-                <div className="d-flex justify-content-between">
+                <div className="tw-flex tw-justify-between">
                     <span>{configTitle}</span>
                     <Toggle
                         label={enableLabel}
