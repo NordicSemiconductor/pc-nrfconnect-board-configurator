@@ -34,7 +34,7 @@ const ConfigSwitch = ({
 }: ConfigSwitchProps) => {
     const dispatch = useDispatch();
 
-    const toggleEnable = useSelector(getConfigValue(configPin)) !== invert; // No XOR for booleans in TypeScript :/
+    const toggleEnable = xor(useSelector(getConfigValue(configPin)), invert);
 
     return (
         <Card
@@ -48,7 +48,7 @@ const ConfigSwitch = ({
                             dispatch(
                                 setConfigValue({
                                     configPin,
-                                    configPinState: enable !== invert, // No XOR for booleans in Typescript
+                                    configPinState: xor(enable, invert),
                                 })
                             )
                         }
@@ -56,11 +56,13 @@ const ConfigSwitch = ({
                 </div>
             }
         >
-            <div className="d-flex justify-content-between">
+            <div className="tw-flex tw-content-between">
                 <div>{configLabel}</div>
             </div>
         </Card>
     );
 };
+
+const xor = (a: boolean, b: boolean): boolean => a !== b; // No XOR for booleans in TypeScript :/
 
 export default ConfigSwitch;

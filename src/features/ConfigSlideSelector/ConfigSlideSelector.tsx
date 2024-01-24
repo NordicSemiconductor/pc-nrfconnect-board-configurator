@@ -34,7 +34,7 @@ const ConfigSlideSelector = ({
 }: ConfigSlideSelectorProps) => {
     const dispatch = useDispatch();
 
-    const pinEnable = useSelector(getConfigValue(configPin)) !== invert; // No XOR for booleans in TypeScript :/
+    const pinEnable = xor(useSelector(getConfigValue(configPin)), invert);
     const selectedItem = configAlternatives[pinEnable ? 1 : 0];
 
     return (
@@ -55,7 +55,7 @@ const ConfigSlideSelector = ({
                         dispatch(
                             setConfigValue({
                                 configPin,
-                                configPinState: enable !== invert, // No XOR for booleans in Typescript
+                                configPinState: xor(enable, invert),
                             })
                         );
                     }}
@@ -64,5 +64,7 @@ const ConfigSlideSelector = ({
         </Card>
     );
 };
+
+const xor = (a: boolean, b: boolean): boolean => a !== b; // No XOR for booleans in TypeScript
 
 export default ConfigSlideSelector;
