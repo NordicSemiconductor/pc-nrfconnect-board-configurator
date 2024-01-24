@@ -143,7 +143,9 @@ const UnrecognizedBoardRevision = () => (
 
 const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
     const { board, pins, pmicPorts } = boardJson;
-    logger.debug(`buildGui() pins: ${JSON.stringify(pins)}`);
+    logger.debug(
+        `buildGui() for board definition pins: ${JSON.stringify(pins)}`
+    );
 
     logger.info(`Rendering for ${board.boardName}`);
 
