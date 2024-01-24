@@ -17,21 +17,21 @@ import {
     setConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
 
-const ConfigSwitch: React.FC<{
+interface ConfigSwitchProps {
     configTitle: string;
     configLabel: string;
     configPin: number;
     enableLabel?: string;
     invert?: boolean;
-}> = ({
+}
+
+const ConfigSwitch = ({
     configTitle,
     configLabel,
     configPin,
     enableLabel = 'Enable',
     invert = false,
-}) => {
-    logger.debug(`Rendering ConfigSwitch for ${configTitle}`);
-
+}: ConfigSwitchProps) => {
     const dispatch = useDispatch();
 
     const toggleEnable = useSelector(getConfigValue(configPin)) !== invert; // No XOR for booleans in TypeScript :/

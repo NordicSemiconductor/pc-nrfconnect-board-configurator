@@ -20,9 +20,11 @@ import {
 
 import './configdatapreview.scss';
 
-const ConfigDataPreview: React.FC<{
+interface ConfigDataPreviewProps {
     enabled: boolean;
-}> = ({ enabled = true }) => {
+}
+
+const ConfigDataPreview = ({ enabled = true }: ConfigDataPreviewProps) => {
     logger.debug('Rendering ConfigDataPreview');
 
     const configArray = useSelector(getConfigArray);

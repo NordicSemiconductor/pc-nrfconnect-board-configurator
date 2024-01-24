@@ -17,21 +17,21 @@ import {
     setConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
 
-const ConfigSlideSelector: React.FC<{
+interface ConfigSlideSelectorProps {
     configTitle: string;
     configLabel: string;
     configPin: number;
     configAlternatives: [string, string];
     invert: boolean;
-}> = ({
+}
+
+const ConfigSlideSelector = ({
     configTitle,
     configLabel,
     configPin,
     configAlternatives,
     invert = false,
-}) => {
-    logger.debug(`Rendering ConfigSlideSelector for ${configTitle}`);
-
+}: ConfigSlideSelectorProps) => {
     const dispatch = useDispatch();
 
     const pinEnable = useSelector(getConfigValue(configPin)) !== invert; // No XOR for booleans in TypeScript :/
