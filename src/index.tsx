@@ -7,8 +7,8 @@
 import React from 'react';
 import { App, render } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
-import BoilerplateDeviceSelector from './app/DeviceSelector';
 import appReducer from './app/appReducer';
+import BoilerplateDeviceSelector from './app/DeviceSelector';
 import Configuration from './features/Configuration/Configuration';
 import SidePanel from './SidePanel';
 
