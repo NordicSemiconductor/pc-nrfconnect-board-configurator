@@ -54,16 +54,7 @@ const BoardController = ({ active }: BoardControllerProps) => {
     const boardRevision = useSelector(getBoardRevisionSemver);
 
     if (device) {
-        logger.debug(
-            `Got device ${JSON.stringify(device)} ${JSON.stringify(
-                boardRevision
-            )}`
-        );
-        logger.debug(
-            `Device with boardVersion: ${JSON.stringify(
-                device?.devkit?.boardVersion
-            )}`
-        );
+        logDeviceVersion(device, boardRevision);
 
         switch (device?.devkit?.boardVersion) {
             case 'PCA10156':
@@ -225,5 +216,19 @@ function setDefaultConfig(
         logger.warn('No defaults found in board definition JSON');
     }
 }
+
+const logDeviceVersion = (
+    device: Device,
+    boardRevision: string | undefined
+) => {
+    logger.debug(
+        `Got device ${JSON.stringify(device)} ${JSON.stringify(boardRevision)}`
+    );
+    logger.debug(
+        `Device with boardVersion: ${JSON.stringify(
+            device?.devkit?.boardVersion
+        )}`
+    );
+};
 
 export default BoardController;

@@ -32,7 +32,6 @@ export default () => {
                     variant="primary"
                     className="tw-w-full"
                     onClick={() => {
-                        // console.dir(device);
                         if (!device) {
                             return;
                         }
