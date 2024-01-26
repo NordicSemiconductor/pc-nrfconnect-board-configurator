@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Nordic Semiconductor ASA
+ * Copyright (c) 2024 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
@@ -7,24 +7,18 @@
 import React from 'react';
 import { App, render } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
-// If your app uses redux, then specify your root reducer here.
-// It will handle the slice of state under the name `app`.
-// const reducer = undefined;
-import appReducer from './appReducer';
-import BoilerplateDeviceSelector from './BoilerplateDeviceSelector';
+import appReducer from './app/appReducer';
+import BoilerplateDeviceSelector from './app/DeviceSelector';
 import Configuration from './features/Configuration/Configuration';
 import SidePanel from './SidePanel';
 
-import './index.scss';
-
-// nRF Connect boilerplate app
-// ===========================
+// nRF Connect Board Configurator
+// ==============================
 //
-// In this boilerplate app, we show a dummy implementation of an nRF Connect
-// for Desktop app. We try to show every function but either only provide the
-// simplest implementation we could think of or just have a commented out
-// implementation to hint at what might be used. Adapt everything to make it
-// fit for you and remove what is not needed.
+// The Board Configurator helps configuring the Board Controller on the
+// nRF5340 IMCU on newer nRF devkits. The Board Controller will toggle
+// features on the devkit, like switching between internal or external
+// antenna, or which SIM option to use.
 
 render(
     <App

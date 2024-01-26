@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Nordic Semiconductor ASA
+ * Copyright (c) 2024 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
@@ -30,9 +30,8 @@ export default () => {
                 <Button
                     disabled={!device}
                     variant="primary"
-                    className="w-100"
+                    className="tw-w-full"
                     onClick={() => {
-                        console.dir(device);
                         if (!device) {
                             return;
                         }

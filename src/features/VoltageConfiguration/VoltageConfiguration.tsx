@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Nordic Semiconductor ASA
+ * Copyright (c) 2024 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
@@ -17,18 +17,24 @@ import {
     setPmicConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
 
-const VoltageConfiguration: React.FC<{
+interface VoltageConfigurationProps {
     pmicPort: number;
     voltageMin: number;
     voltageMax: number;
-}> = ({ pmicPort, voltageMin, voltageMax }) => {
+}
+
+const VoltageConfiguration = ({
+    pmicPort,
+    voltageMin,
+    voltageMax,
+}: VoltageConfigurationProps) => {
     const dispatch = useDispatch();
     const voltage = useSelector(getPmicConfigValue(pmicPort)) ?? voltageMin; // Default to voltageMin
 
     return (
         <Card
             title={
-                <div className="d-flex justify-content-between">
+                <div className="tw-flex tw-content-between">
                     <span>Voltage</span>
                 </div>
             }
@@ -36,7 +42,7 @@ const VoltageConfiguration: React.FC<{
             <div className="tw-flex tw-gap-1">
                 <Button
                     variant="secondary"
-                    className="w-100"
+                    className="tw-w-full"
                     onClick={() => {
                         // Set voltage to 1800
                         dispatch(
@@ -51,7 +57,7 @@ const VoltageConfiguration: React.FC<{
                 </Button>
                 <Button
                     variant="secondary"
-                    className="w-100"
+                    className="tw-w-full"
                     onClick={() => {
                         // Set voltage to 1800
                         dispatch(
@@ -66,7 +72,7 @@ const VoltageConfiguration: React.FC<{
                 </Button>
                 <Button
                     variant="secondary"
-                    className="w-100"
+                    className="tw-w-full"
                     onClick={() => {
                         // Set voltage to 3000
                         dispatch(

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Nordic Semiconductor ASA
+ * Copyright (c) 2024 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
@@ -20,13 +20,13 @@ import {
 import {
     clearConfig,
     clearPmicConfig,
-} from './features/Configuration/boardControllerConfigSlice';
+} from '../features/Configuration/boardControllerConfigSlice';
 import {
     clearBoardControllerFirmwareVersion,
     clearBoardRevision,
     setBoardControllerFirmwareVersion,
     setBoardRevision,
-} from './features/Device/deviceSlice';
+} from '../features/Device/deviceSlice';
 
 /**
  * Configures which device types to show in the device selector.
@@ -56,9 +56,6 @@ const deviceListing: DeviceTraits = {
 // };
 
 /*
- * In these callbacks you may react on events when users (de)selected a device.
- * Leave out callbacks you do not need.
- *
  * Note that the callbacks releaseCurrentDevice and onDeviceIsReady
  * are only invoked, if a deviceSetup is defined.
  */
@@ -66,9 +63,7 @@ const onDeviceSelected = (dispatch: AppDispatch) => (device: Device) => {
     logger.info(`Selected device with s/n ${device.serialNumber}`);
     getBoardControllerVersion(dispatch, device); // FIXME: Remove this when onDeviceIsReady() is called
 };
-// const releaseCurrentDevice = () => {
-//     logger.info('Will set up selected device');
-// };
+
 const onDeviceIsReady = (dispatch: AppDispatch) => (device: Device) => {
     logger.info(
         `Device with s/n ${device.serialNumber} was set up with a firmware`

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Nordic Semiconductor ASA
+ * Copyright (c) 2024 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
@@ -26,9 +26,11 @@ import VCOMConfiguration from '../VCOMConfiguration/VCOMConfiguration';
 import VoltageConfiguration from '../VoltageConfiguration/VoltageConfiguration';
 import { setConfig, setPmicConfig } from './boardControllerConfigSlice';
 
-import './configuration.scss';
+interface BoardControllerProps {
+    active: boolean;
+}
 
-const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
+const BoardController = ({ active }: BoardControllerProps) => {
     const typednrf9161json =
         nrf9161v0100json as BoardControllerConfigDefinition;
     const typednrf9161v091 = nrf9161v091json as BoardControllerConfigDefinition;
@@ -52,101 +54,89 @@ const BoardController: React.FC<{ active: boolean }> = ({ active }) => {
     const boardRevision = useSelector(getBoardRevisionSemver);
 
     if (device) {
-        console.log('Got device %o %s', device, boardRevision);
-        console.log(
-            'Device with boardVersion: %s',
-            device?.devkit?.boardVersion
-        );
+        logDeviceVersion(device, boardRevision);
 
         switch (device?.devkit?.boardVersion) {
             case 'PCA10156':
                 // nRF54L15
                 setDefaultConfig(dispatch, typednrf54l15json);
-                return buildGui(typednrf54l15json);
+                return BuildGui(typednrf54l15json);
 
             case 'PCA10153':
                 // nRF9161
                 if (boardRevision === '0.10.0') {
                     setDefaultConfig(dispatch, typednrf9161json);
-                    return buildGui(typednrf9161json);
+                    return BuildGui(typednrf9161json);
                 }
                 if (boardRevision === '0.9.0' || boardRevision === '0.9.1') {
                     setDefaultConfig(dispatch, typednrf9161v091);
-                    return buildGui(typednrf9161v091);
+                    return BuildGui(typednrf9161v091);
                 }
                 if (!boardRevision) {
-                    return spinner();
+                    return Spinner();
                 }
 
-                return unrecognizedBoardRevision();
+                return UnrecognizedBoardRevision();
 
             case 'PCA10145':
                 // nRF54H20
                 setDefaultConfig(dispatch, typednrf54h20json);
-                return buildGui(typednrf54h20json);
+                return BuildGui(typednrf54h20json);
 
             default:
-                return unrecognizedBoard();
+                return UnrecognizedBoard();
         }
     } else {
-        return noBoardSelected();
+        return NoBoardSelected();
     }
 };
 
-function noBoardSelected() {
-    return (
-        <div>
-            <p>
-                Please connect to a development kit featuring the Board
-                Controller.
-            </p>
-            <p>Currently supported kits:</p>
-            <ul>
-                <li>
-                    <a
-                        href="https://www.nordicsemi.com/Products/nRF9161"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        nRF9161DK (Rev. 0.9.0 and later)
-                    </a>
-                </li>
-            </ul>
-        </div>
-    );
-}
+const NoBoardSelected = () => (
+    <div>
+        <p>
+            Please connect to a development kit featuring the Board Controller.
+        </p>
+        <p>Currently supported kits:</p>
+        <ul>
+            <li>
+                <a
+                    href="https://www.nordicsemi.com/Products/nRF9161"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    nRF9161DK (Rev. 0.9.0 and later)
+                </a>
+            </li>
+        </ul>
+    </div>
+);
 
-function spinner() {
-    return (
-        <div>
-            <p>Working..</p>
-        </div>
-    );
-}
+const Spinner = () => (
+    <div>
+        <p>Working..</p>
+    </div>
+);
 
-function unrecognizedBoard() {
-    return (
-        <div>
-            <p>This development kit does not feature the Board Controller.</p>
-        </div>
-    );
-}
+const UnrecognizedBoard = () => (
+    <div>
+        <p>This development kit does not feature the Board Controller.</p>
+    </div>
+);
 
-function unrecognizedBoardRevision() {
-    return (
-        <div>
-            <p>
-                This revision of the development kit is not supported. Please
-                update to the latest version of Board Controller Configurator //
-                FIXME
-            </p>
-        </div>
-    );
-}
+const UnrecognizedBoardRevision = () => (
+    <div>
+        <p>
+            This revision of the development kit is not supported. Please update
+            to the latest version of Board Controller Configurator // FIXME
+        </p>
+    </div>
+);
 
-function buildGui(boardJson: BoardControllerConfigDefinition) {
+const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
     const { board, pins, pmicPorts } = boardJson;
-    console.dir(pins);
+    logger.debug(
+        `buildGui() for board definition pins: ${JSON.stringify(pins)}`
+    );
 
     logger.info(`Rendering for ${board.boardName}`);
 
@@ -208,7 +198,7 @@ function buildGui(boardJson: BoardControllerConfigDefinition) {
             </MasonryLayout>
         </div>
     );
-}
+};
 
 function setDefaultConfig(
     dispatch: AppDispatch,
@@ -223,8 +213,22 @@ function setDefaultConfig(
         dispatch(setConfig({ boardControllerConfig: defaultConfig }));
         dispatch(setPmicConfig({ pmicConfig: defaultPmicConfig }));
     } else {
-        console.log('No defaults found in board JSON');
+        logger.warn('No defaults found in board definition JSON');
     }
 }
+
+const logDeviceVersion = (
+    device: Device,
+    boardRevision: string | undefined
+) => {
+    logger.debug(
+        `Got device ${JSON.stringify(device)} ${JSON.stringify(boardRevision)}`
+    );
+    logger.debug(
+        `Device with boardVersion: ${JSON.stringify(
+            device?.devkit?.boardVersion
+        )}`
+    );
+};
 
 export default BoardController;

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2015 Nordic Semiconductor ASA
+ * Copyright (c) 2024 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
@@ -20,9 +20,11 @@ import {
 
 import './configdatapreview.scss';
 
-const ConfigDataPreview: React.FC<{
+interface ConfigDataPreviewProps {
     enabled: boolean;
-}> = ({ enabled = true }) => {
+}
+
+const ConfigDataPreview = ({ enabled = true }: ConfigDataPreviewProps) => {
     logger.debug('Rendering ConfigDataPreview');
 
     const configArray = useSelector(getConfigArray);

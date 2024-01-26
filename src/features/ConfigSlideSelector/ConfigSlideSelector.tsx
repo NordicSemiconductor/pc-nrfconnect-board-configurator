@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Nordic Semiconductor ASA
+ * Copyright (c) 2024 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
@@ -17,30 +17,30 @@ import {
     setConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
 
-const ConfigSlideSelector: React.FC<{
+interface ConfigSlideSelectorProps {
     configTitle: string;
     configLabel: string;
     configPin: number;
     configAlternatives: [string, string];
     invert: boolean;
-}> = ({
+}
+
+const ConfigSlideSelector = ({
     configTitle,
     configLabel,
     configPin,
     configAlternatives,
     invert = false,
-}) => {
-    logger.debug(`Rendering ConfigSlideSelector for ${configTitle}`);
-
+}: ConfigSlideSelectorProps) => {
     const dispatch = useDispatch();
 
-    const pinEnable = useSelector(getConfigValue(configPin)) !== invert; // No XOR for booleans in TypeScript :/
+    const pinEnable = xor(useSelector(getConfigValue(configPin)), invert);
     const selectedItem = configAlternatives[pinEnable ? 1 : 0];
 
     return (
         <Card
             title={
-                <div className="d-flex justify-content-between">
+                <div className="tw-flex tw-content-between">
                     <span>{configTitle}</span>
                 </div>
             }
@@ -55,7 +55,7 @@ const ConfigSlideSelector: React.FC<{
                         dispatch(
                             setConfigValue({
                                 configPin,
-                                configPinState: enable !== invert, // No XOR for booleans in Typescript
+                                configPinState: xor(enable, invert),
                             })
                         );
                     }}
@@ -64,5 +64,7 @@ const ConfigSlideSelector: React.FC<{
         </Card>
     );
 };
+
+const xor = (a: boolean, b: boolean): boolean => a !== b; // No XOR for booleans in TypeScript
 
 export default ConfigSlideSelector;

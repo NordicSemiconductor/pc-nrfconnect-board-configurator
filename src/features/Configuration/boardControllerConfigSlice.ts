@@ -1,12 +1,12 @@
 /*
- * Copyright (c) 2023 Nordic Semiconductor ASA
+ * Copyright (c) 2024 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import type { RootState } from '../../appReducer';
+import type { RootState } from '../../app/appReducer';
 
 interface ConfigState {
     boardControllerConfigData: Map<number, boolean>;

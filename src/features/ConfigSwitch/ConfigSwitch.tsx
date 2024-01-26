@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2023 Nordic Semiconductor ASA
+ * Copyright (c) 2024 Nordic Semiconductor ASA
  *
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
@@ -17,29 +17,29 @@ import {
     setConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
 
-const ConfigSwitch: React.FC<{
+interface ConfigSwitchProps {
     configTitle: string;
     configLabel: string;
     configPin: number;
     enableLabel?: string;
     invert?: boolean;
-}> = ({
+}
+
+const ConfigSwitch = ({
     configTitle,
     configLabel,
     configPin,
     enableLabel = 'Enable',
     invert = false,
-}) => {
-    logger.debug(`Rendering ConfigSwitch for ${configTitle}`);
-
+}: ConfigSwitchProps) => {
     const dispatch = useDispatch();
 
-    const toggleEnable = useSelector(getConfigValue(configPin)) !== invert; // No XOR for booleans in TypeScript :/
+    const toggleEnable = xor(useSelector(getConfigValue(configPin)), invert);
 
     return (
         <Card
             title={
-                <div className="d-flex justify-content-between">
+                <div className="tw-flex tw-justify-between">
                     <span>{configTitle}</span>
                     <Toggle
                         label={enableLabel}
@@ -48,7 +48,7 @@ const ConfigSwitch: React.FC<{
                             dispatch(
                                 setConfigValue({
                                     configPin,
-                                    configPinState: enable !== invert, // No XOR for booleans in Typescript
+                                    configPinState: xor(enable, invert),
                                 })
                             )
                         }
@@ -56,11 +56,13 @@ const ConfigSwitch: React.FC<{
                 </div>
             }
         >
-            <div className="d-flex justify-content-between">
+            <div className="tw-flex tw-content-between">
                 <div>{configLabel}</div>
             </div>
         </Card>
     );
 };
+
+const xor = (a: boolean, b: boolean): boolean => a !== b; // No XOR for booleans in TypeScript :/
 
 export default ConfigSwitch;
