@@ -31,12 +31,18 @@ export default () => {
                     disabled={!device}
                     variant="primary"
                     className="tw-w-full"
-                    onClick={() => {
+                    onClick={async event => {
+                        const button = event.currentTarget;
+                        button.classList.add('disabled');
                         if (!device) {
                             return;
                         }
-                        NrfutilDeviceLib.boardController(device, configData);
+                        await NrfutilDeviceLib.boardController(
+                            device,
+                            configData
+                        );
                         logger.info('Configuration written');
+                        button.classList.remove('disabled');
                     }}
                 >
                     Write config
