@@ -80,13 +80,14 @@
             }
         },
         {
-            "type": "switch",
+            "type": "slide",
             "id": "io-expander",
-            "title": "IO Expander",
-            "label": "Enable or disable the I²C IO expander module that can control the LEDs and buttons on the DK using other interface than GPIOs if the pins are needed for other use cases.",
+            "title": "LED and button connection",
+            "label": "Connect directly using GPIO pins or through I²C using the IO Expander module. Using IO Expander frees up LED and button GPIO pins on nRF9161.",
             "enable": {
                 "pin": 45
-            }
+            },
+            "alternatives": ["GPIO", "IO Expander"]
         },
         {
             "type": "switch",
