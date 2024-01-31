@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
     Button,
@@ -21,6 +21,8 @@ import { getConfigArray } from './features/Configuration/boardControllerConfigSl
 export default () => {
     logger.debug('Rendering SidePanel');
 
+    const [isWriting, setWriting] = useState(false);
+
     const device = useSelector(selectedDevice);
     const configData = useSelector(getConfigArray);
 
@@ -28,15 +30,23 @@ export default () => {
         <SidePanel className="side-panel">
             <CollapsibleGroup defaultCollapsed={false} heading="Actions">
                 <Button
-                    disabled={!device}
+                    disabled={!device || isWriting}
                     variant="primary"
                     className="tw-w-full"
-                    onClick={() => {
+                    onClick={async event => {
+                        const button = event.currentTarget;
+                        // Set isWriting flag for user ui feedback
+                        setWriting(true);
                         if (!device) {
                             return;
                         }
-                        NrfutilDeviceLib.boardController(device, configData);
+                        await NrfutilDeviceLib.boardController(
+                            device,
+                            configData
+                        );
                         logger.info('Configuration written');
+                        // Clear isWriting flag for user ui feedback
+                        setWriting(false);
                     }}
                 >
                     Write config
