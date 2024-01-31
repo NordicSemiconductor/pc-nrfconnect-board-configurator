@@ -18,7 +18,8 @@ import BoardControllerConfigDefinition from '../../common/boards/BoardController
 import nrf54h20json from '../../common/boards/nrf_PCA10145_54H20.json';
 import nrf9161v091json from '../../common/boards/nrf_PCA10153_0.9.1_9161.json';
 import nrf9161v0100json from '../../common/boards/nrf_PCA10153_0.10.0_9161.json';
-import nrf54l15json from '../../common/boards/nrf_PCA10156_0.2.0.json';
+import nrf54l15v020json from '../../common/boards/nrf_PCA10156_0.2.0.json';
+import nrf54l15v030json from '../../common/boards/nrf_PCA10156_0.3.0.json';
 import ConfigSlideSelector from '../ConfigSlideSelector/ConfigSlideSelector';
 import ConfigSwitch from '../ConfigSwitch/ConfigSwitch';
 import { getBoardRevisionSemver } from '../Device/deviceSlice';
@@ -34,7 +35,10 @@ const BoardController = ({ active }: BoardControllerProps) => {
     const typednrf9161json =
         nrf9161v0100json as BoardControllerConfigDefinition;
     const typednrf9161v091 = nrf9161v091json as BoardControllerConfigDefinition;
-    const typednrf54l15json = nrf54l15json as BoardControllerConfigDefinition;
+    const typednrf54l15v020json =
+        nrf54l15v020json as BoardControllerConfigDefinition;
+    const typednrf54l15v030json =
+        nrf54l15v030json as BoardControllerConfigDefinition;
     const typednrf54h20json = nrf54h20json as BoardControllerConfigDefinition;
 
     const dispatch = useDispatch();
@@ -59,8 +63,14 @@ const BoardController = ({ active }: BoardControllerProps) => {
         switch (device?.devkit?.boardVersion) {
             case 'PCA10156':
                 // nRF54L15
-                setDefaultConfig(dispatch, typednrf54l15json);
-                return BuildGui(typednrf54l15json);
+                if (boardRevision === '0.3.0') {
+                    setDefaultConfig(dispatch, typednrf54l15v030json);
+                    return BuildGui(typednrf54l15v030json);
+                }
+
+                // Default is revision 0.2.0 or 0.2.1
+                setDefaultConfig(dispatch, typednrf54l15v020json);
+                return BuildGui(typednrf54l15v020json);
 
             case 'PCA10153':
                 // nRF9161
