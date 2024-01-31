@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.1.2 - 2024-01-30
+
+EXPERIMENTAL RELEASE
+
+### Added
+
+-   UI Feedback when writing the configuration
+
+### Changed
+
+-   Various improvements and cleanup
+
 ## 0.1.1 - 2024-01-18
 
 EXPERIMENTAL RELEASE
