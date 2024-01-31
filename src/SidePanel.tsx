@@ -13,7 +13,7 @@ import {
     selectedDevice,
     SidePanel,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
-import { NrfutilDeviceLib } from '@nordicsemiconductor/pc-nrfconnect-shared/nrfutil';
+import { NrfutilDeviceLib } from '@nordicsemiconductor/pc-nrfconnect-shared/nrfutil/device';
 
 import ConfigDataPreview from './features/ConfigDataPreview/ConfigDataPreview';
 import { getConfigArray } from './features/Configuration/boardControllerConfigSlice';

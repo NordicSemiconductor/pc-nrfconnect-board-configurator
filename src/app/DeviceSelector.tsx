@@ -15,7 +15,7 @@ import {
 import {
     DeviceTraits,
     NrfutilDeviceLib,
-} from '@nordicsemiconductor/pc-nrfconnect-shared/nrfutil';
+} from '@nordicsemiconductor/pc-nrfconnect-shared/nrfutil/device';
 
 import {
     clearConfig,
