@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.3 - 2024-01-31
+
+EXPERIMENTAL RELEASE
+
+### Added
+
+-   Preliminary support for nRF54L15-DK (rev. 0.2.x and 0.3.0)
+
 ## 0.1.2 - 2024-01-30
 
 EXPERIMENTAL RELEASE
