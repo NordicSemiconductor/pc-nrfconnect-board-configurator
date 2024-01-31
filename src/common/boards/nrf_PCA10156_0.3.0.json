@@ -1,0 +1,69 @@
+{
+    "board": {
+        "boardVersion": "PCA10156",
+        "boardRevision": "0.3.0",
+        "boardName": "nRF54L15 PDK (hw rev. 0.3.0)"
+    },
+    "pins": [
+        {
+            "type": "vcom",
+            "id": "vcom0",
+            "name": "VCOM 0",
+            "enable": {
+                "pin": 42
+            },
+            "hwfc": {
+                "pin": 20
+            }
+        },
+        {
+            "type": "vcom",
+            "id": "vcom1",
+            "name": "VCOM 1",
+            "enable": {
+                "pin": 22
+            },
+            "hwfc": {
+                "pin": 23
+            }
+        },
+        {
+            "type": "slide",
+            "id": "ledcontrol",
+            "title": "LED Control",
+            "label": "LED Enable",
+            "enable": {
+                "pin": 45
+            },
+            "alternatives": ["GPIO", "LED"]
+        },
+        {
+            "type": "switch",
+            "id": "swd-control",
+            "title": "SWD Control",
+            "label": "Enable or disable the SWD connection between the IMCU and target chip. This can be done to e.g. use an external debugger.",
+            "enable": {
+                "pin": 6
+            }
+        }
+    ],
+    "pmicPorts": [
+        {
+            "type": "voltage",
+            "port": 1,
+            "mVmin": 1800,
+            "mVmax": 3000
+        }
+    ],
+    "defaults": {
+        "pins": [
+            [42, true],
+            [20, false],
+            [22, true],
+            [23, false],
+            [45, true],
+            [6, true]
+        ],
+        "pmicPorts": [[1, 1800]]
+    }
+}
