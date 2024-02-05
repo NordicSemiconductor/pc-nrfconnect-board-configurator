@@ -51,6 +51,29 @@ export default () => {
                 >
                     Write config
                 </Button>
+                <Button
+                    disabled={!device}
+                    variant="secondary"
+                    className="w-100"
+                    onClick={async () => {
+                        console.dir(device);
+                        if (!device) {
+                            return;
+                        }
+                        const boardControllerConfig =
+                            await NrfutilDeviceLib.getBoardControllerConfig(
+                                device
+                            );
+                        console.dir(boardControllerConfig);
+                        logger.info(
+                            `Got boardControllerConfig: ${JSON.stringify(
+                                boardControllerConfig
+                            )}`
+                        );
+                    }}
+                >
+                    Get BoardController config
+                </Button>
             </CollapsibleGroup>
             <CollapsibleGroup defaultCollapsed heading="Configuration data">
                 <ConfigDataPreview enabled />

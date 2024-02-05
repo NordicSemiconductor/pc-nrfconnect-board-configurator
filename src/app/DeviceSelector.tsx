@@ -19,8 +19,11 @@ import {
 
 import {
     clearConfig,
+    clearHardwareConfig,
     clearPmicConfig,
+    setHardwareConfig,
 } from '../features/Configuration/boardControllerConfigSlice';
+import { wrapHardwareConfig } from '../features/Configuration/hardwareConfiguration';
 import {
     clearBoardControllerFirmwareVersion,
     clearBoardRevision,
@@ -59,9 +62,10 @@ const deviceListing: DeviceTraits = {
  * Note that the callbacks releaseCurrentDevice and onDeviceIsReady
  * are only invoked, if a deviceSetup is defined.
  */
-const onDeviceSelected = (dispatch: AppDispatch) => (device: Device) => {
+const onDeviceSelected = (dispatch: AppDispatch) => async (device: Device) => {
     logger.info(`Selected device with s/n ${device.serialNumber}`);
-    getBoardControllerVersion(dispatch, device); // FIXME: Remove this when onDeviceIsReady() is called
+    await getBoardControllerVersion(dispatch, device); // FIXME: Remove this when onDeviceIsReady() is called
+    await getCurrentBoardControllerConfig(dispatch, device); // FIXME: Remove this when onDeviceIsReady() is called
 };
 
 const onDeviceIsReady = (dispatch: AppDispatch) => (device: Device) => {
@@ -91,12 +95,28 @@ const getBoardControllerVersion = async (
     dispatch(setBoardControllerFirmwareVersion(bcVersion.bc_fw_ver));
 };
 
+const getCurrentBoardControllerConfig = async (
+    dispatch: AppDispatch,
+    device: Device
+) => {
+    if (!device) {
+        return;
+    }
+    const currentConfig = await NrfutilDeviceLib.getBoardControllerConfig(
+        device
+    );
+    console.log('Read current config %o', currentConfig);
+    const wrappedConfig = wrapHardwareConfig(currentConfig);
+    dispatch(setHardwareConfig({ hardwareConfig: wrappedConfig }));
+};
+
 const onDeviceDeselected = (dispatch: AppDispatch) => () => {
     logger.info('Deselected device');
     dispatch(clearBoardRevision());
     dispatch(clearBoardControllerFirmwareVersion());
     dispatch(clearConfig());
     dispatch(clearPmicConfig());
+    dispatch(clearHardwareConfig());
 };
 
 export default () => {
