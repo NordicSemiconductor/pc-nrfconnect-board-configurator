@@ -1,5 +1,3 @@
-# Changelog
-
 ## 0.1.4 - 2024-02-08
 
 EXPERIMENTAL RELEASE
