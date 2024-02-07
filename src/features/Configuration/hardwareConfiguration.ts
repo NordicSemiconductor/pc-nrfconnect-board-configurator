@@ -22,7 +22,7 @@ export function wrapHardwareConfig(
         return { pins, pmicPorts };
     }
     console.log('No current config to apply');
-    return {};
+    return { pins: new Map<number, boolean>() };
 }
 
 export function wrapPinConfig(hardwarePinConfig: unknown[]) {
