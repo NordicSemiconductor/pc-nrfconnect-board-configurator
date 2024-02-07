@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2024 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
+ */
+
 export interface BoardConfiguration {
     pins?: Map<number, boolean>;
     pmicPorts?: Map<number, number>;
