@@ -6,12 +6,10 @@
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { HashType, logger } from '@nordicsemiconductor/pc-nrfconnect-shared';
+import { logger } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import {
-    getConfigArray,
     getConfigData,
-    getHardwareConfig,
     getPmicConfigData,
 } from '../Configuration/boardControllerConfigSlice';
 import {
