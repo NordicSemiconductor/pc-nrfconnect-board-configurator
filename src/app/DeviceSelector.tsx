@@ -80,9 +80,6 @@ const getBoardControllerVersion = async (
     dispatch: AppDispatch,
     device: Device
 ) => {
-    if (!device) {
-        return;
-    }
     const bcVersion = await NrfutilDeviceLib.getBoardControllerVersion(device);
     console.log('Got device state %o', bcVersion);
     dispatch(
