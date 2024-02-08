@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.4 - 2024-02-08
+
+EXPERIMENTAL RELEASE
+
+### Added
+
+-   Support reading configuration from board controller
+
 ## 0.1.3 - 2024-01-31
 
 EXPERIMENTAL RELEASE

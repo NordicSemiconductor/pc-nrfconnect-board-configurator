@@ -9,7 +9,6 @@ import { useSelector } from 'react-redux';
 import { logger } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import {
-    getConfigArray,
     getConfigData,
     getPmicConfigData,
 } from '../Configuration/boardControllerConfigSlice';
@@ -27,7 +26,6 @@ interface ConfigDataPreviewProps {
 const ConfigDataPreview = ({ enabled = true }: ConfigDataPreviewProps) => {
     logger.debug('Rendering ConfigDataPreview');
 
-    const configArray = useSelector(getConfigArray);
     const configData = useSelector(getConfigData);
     const pmicData = useSelector(getPmicConfigData);
     const boardRevision = useSelector(getBoardRevisionSemver);
@@ -54,7 +52,9 @@ const ConfigDataPreview = ({ enabled = true }: ConfigDataPreviewProps) => {
 
                 {configData && configData.size > 0 && (
                     <>
-                        <h2 className="heading">Toggles</h2>
+                        <h2 className="heading">
+                            Board Controller pin configuration
+                        </h2>
                         <div className="config-block">
                             <table>{configList(configData)}</table>
                         </div>

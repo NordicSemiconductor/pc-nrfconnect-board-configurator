@@ -7,10 +7,12 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import type { RootState } from '../../app/appReducer';
+import { BoardConfiguration } from './hardwareConfiguration';
 
 interface ConfigState {
     boardControllerConfigData: Map<number, boolean>;
     pmicConfigData: Map<number, number>;
+    hardwareConfig: BoardConfiguration;
 }
 
 // nRF54H20 default config
@@ -18,6 +20,7 @@ const initialState: ConfigState = {
     boardControllerConfigData: new Map([]),
     // This might be needed pmicConfigData: new Map([[1, 1800]]),
     pmicConfigData: new Map([]),
+    hardwareConfig: {},
 };
 
 const boardControllerConfigSlice = createSlice({
@@ -65,6 +68,19 @@ const boardControllerConfigSlice = createSlice({
         clearPmicConfig(state) {
             state.pmicConfigData.clear();
         },
+
+        setHardwareConfig(
+            state,
+            {
+                payload: { hardwareConfig },
+            }: PayloadAction<{ hardwareConfig: BoardConfiguration }>
+        ) {
+            state.hardwareConfig = hardwareConfig;
+        },
+
+        clearHardwareConfig(state) {
+            state.hardwareConfig = {};
+        },
     },
 });
 
@@ -85,6 +101,9 @@ export const getConfigData = (state: RootState) =>
 
 export const getPmicConfigData = (state: RootState) =>
     state.app.boardControllerConfig.pmicConfigData;
+
+export const getHardwareConfig = (state: RootState) =>
+    state.app.boardControllerConfig.hardwareConfig;
 
 export const getConfigArray = createSelector(
     [getConfigData, getPmicConfigData],
@@ -114,6 +133,8 @@ export const {
     setPmicConfig,
     setPmicConfigValue,
     clearPmicConfig,
+    setHardwareConfig,
+    clearHardwareConfig,
 } = boardControllerConfigSlice.actions;
 
 export default boardControllerConfigSlice;

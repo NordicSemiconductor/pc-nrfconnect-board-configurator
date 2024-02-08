@@ -25,7 +25,12 @@ import ConfigSwitch from '../ConfigSwitch/ConfigSwitch';
 import { getBoardRevisionSemver } from '../Device/deviceSlice';
 import VCOMConfiguration from '../VCOMConfiguration/VCOMConfiguration';
 import VoltageConfiguration from '../VoltageConfiguration/VoltageConfiguration';
-import { setConfig, setPmicConfig } from './boardControllerConfigSlice';
+import {
+    getHardwareConfig,
+    setConfig,
+    setPmicConfig,
+} from './boardControllerConfigSlice';
+import { BoardConfiguration } from './hardwareConfiguration';
 
 interface BoardControllerProps {
     active: boolean;
@@ -56,6 +61,7 @@ const BoardController = ({ active }: BoardControllerProps) => {
 
     const device: Device | undefined = useSelector(selectedDevice);
     const boardRevision = useSelector(getBoardRevisionSemver);
+    const hardwareConfig = useSelector(getHardwareConfig);
 
     if (device) {
         logDeviceVersion(device, boardRevision);
@@ -64,22 +70,38 @@ const BoardController = ({ active }: BoardControllerProps) => {
             case 'PCA10156':
                 // nRF54L15
                 if (boardRevision === '0.3.0') {
-                    setDefaultConfig(dispatch, typednrf54l15v030json);
+                    setInitialConfig(
+                        dispatch,
+                        hardwareConfig,
+                        typednrf54l15v030json
+                    );
                     return BuildGui(typednrf54l15v030json);
                 }
 
                 // Default is revision 0.2.0 or 0.2.1
-                setDefaultConfig(dispatch, typednrf54l15v020json);
+                setInitialConfig(
+                    dispatch,
+                    hardwareConfig,
+                    typednrf54l15v020json
+                );
                 return BuildGui(typednrf54l15v020json);
 
             case 'PCA10153':
                 // nRF9161
                 if (boardRevision === '0.10.0') {
-                    setDefaultConfig(dispatch, typednrf9161json);
+                    setInitialConfig(
+                        dispatch,
+                        hardwareConfig,
+                        typednrf9161json
+                    );
                     return BuildGui(typednrf9161json);
                 }
                 if (boardRevision === '0.9.0' || boardRevision === '0.9.1') {
-                    setDefaultConfig(dispatch, typednrf9161v091);
+                    setInitialConfig(
+                        dispatch,
+                        hardwareConfig,
+                        typednrf9161v091
+                    );
                     return BuildGui(typednrf9161v091);
                 }
                 if (!boardRevision) {
@@ -90,7 +112,7 @@ const BoardController = ({ active }: BoardControllerProps) => {
 
             case 'PCA10145':
                 // nRF54H20
-                setDefaultConfig(dispatch, typednrf54h20json);
+                setInitialConfig(dispatch, hardwareConfig, typednrf54h20json);
                 return BuildGui(typednrf54h20json);
 
             default:
@@ -210,21 +232,36 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
     );
 };
 
-function setDefaultConfig(
+function setInitialConfig(
     dispatch: AppDispatch,
+    hardwareConfig: BoardConfiguration,
     boardJson: BoardControllerConfigDefinition
 ) {
-    if (boardJson?.defaults) {
-        const { pins, pmicPorts } = boardJson.defaults;
-
-        const defaultConfig: Map<number, boolean> = new Map(pins);
-        const defaultPmicConfig: Map<number, number> = new Map(pmicPorts);
-
-        dispatch(setConfig({ boardControllerConfig: defaultConfig }));
-        dispatch(setPmicConfig({ pmicConfig: defaultPmicConfig }));
-    } else {
+    if (!boardJson?.defaults) {
         logger.warn('No defaults found in board definition JSON');
     }
+
+    // Create defaults map
+    const defaultConfig: Map<number, boolean> = new Map(
+        boardJson.defaults?.pins || []
+    );
+    const defaultPmicConfig: Map<number, number> = new Map(
+        boardJson.defaults?.pmicPorts || []
+    );
+
+    // Merge with currently read hardware config
+    const mergedPinConfig = new Map([
+        ...defaultConfig,
+        ...(hardwareConfig.pins || []),
+    ]);
+
+    const mergedPmicConfig = new Map([
+        ...defaultPmicConfig,
+        ...(hardwareConfig.pmicPorts || []),
+    ]);
+
+    dispatch(setConfig({ boardControllerConfig: mergedPinConfig }));
+    dispatch(setPmicConfig({ pmicConfig: mergedPmicConfig }));
 }
 
 const logDeviceVersion = (

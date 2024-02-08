@@ -33,8 +33,7 @@ export default () => {
                     disabled={!device || isWriting}
                     variant="primary"
                     className="tw-w-full"
-                    onClick={async event => {
-                        const button = event.currentTarget;
+                    onClick={async () => {
                         // Set isWriting flag for user ui feedback
                         setWriting(true);
                         if (!device) {
