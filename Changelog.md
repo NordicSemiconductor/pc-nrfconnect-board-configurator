@@ -8,6 +8,10 @@ EXPERIMENTAL RELEASE
 
 -   Support reading configuration from board controller
 
+### Changed
+
+-   Improved texts
+
 ## 0.1.3 - 2024-01-31
 
 EXPERIMENTAL RELEASE
