@@ -14,7 +14,7 @@ Opens the drop-down with the list of devices connected to the computer. You can 
 
 When you select a device, the following actions become available in the side panel:
 
-- **Write config** - Writes the selected configurations to the development kit.
+- **Write config** - Writes the selected configurations to the development kit by overwriting the defaults from the board definition file.
 
 ## Configuration tab
 
@@ -30,6 +30,10 @@ The Log panel allows you to view the most important log events, tagged with a ti
 - To clear the information currently displayed in the Log panel, use **Clear Log**. The contents of the log file are not affected.
 - To hide or display the Log panel in the user interface, use **Show Log**.
 - To freeze Log panel scrolling, use **Autoscroll Log**.
+
+## Feedback tab
+
+The Feedback tab lets you send feedback about nRF Connect Cellular Monitor application to the application development team.
 
 ## About tab
 

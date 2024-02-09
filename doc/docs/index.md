@@ -1,6 +1,7 @@
 # nRF Connect Board Configurator
 
-nRF Connect Board Configurator is an application that you can use to update the board configuration on Nordic Development kits.
+nRF Connect Board Configurator is an application that you can use to update the configuration of the board controller on Nordic Development kits.
+The board controller is the firmware running on the Interface MCU that controls the behavior of the DK.
 
 !!! note "Note"
       The current Board Configurator version is experimental. This means that the application is incomplete in functionality and verification and will change in the future.
