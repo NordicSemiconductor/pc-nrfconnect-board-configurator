@@ -21,21 +21,25 @@ interface VoltageConfigurationProps {
     pmicPort: number;
     voltageMin: number;
     voltageMax: number;
+    pmicPortLabel?: string;
 }
 
 const VoltageConfiguration = ({
     pmicPort,
     voltageMin,
     voltageMax,
+    pmicPortLabel,
 }: VoltageConfigurationProps) => {
     const dispatch = useDispatch();
     const voltage = useSelector(getPmicConfigValue(pmicPort)) ?? voltageMin; // Default to voltageMin
+
+    const label = pmicPortLabel ?? `Voltage port ${pmicPort}`;
 
     return (
         <Card
             title={
                 <div className="tw-flex tw-content-between">
-                    <span>Voltage</span>
+                    <span>{label}</span>
                 </div>
             }
         >
