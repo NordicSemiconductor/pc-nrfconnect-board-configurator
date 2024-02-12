@@ -104,12 +104,14 @@
         {
             "type": "voltage",
             "port": 1,
+            "portId": "vdd",
             "mVmin": 1800,
             "mVmax": 3300
         },
         {
             "type": "voltage",
             "port": 2,
+            "portId": "vdd-gnss-led",
             "mVmin": 1800,
             "mVmax": 3300
         }

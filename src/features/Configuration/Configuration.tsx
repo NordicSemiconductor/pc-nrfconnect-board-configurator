@@ -239,6 +239,8 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
                             pmicPort={port.port}
                             voltageMin={port.mVmin}
                             voltageMax={port.mVmax}
+                            pmicPortLabel={port.portLabel}
+                            pmicPortDescrtiption={port.portDescription}
                         />
                     ))}
             </MasonryLayout>

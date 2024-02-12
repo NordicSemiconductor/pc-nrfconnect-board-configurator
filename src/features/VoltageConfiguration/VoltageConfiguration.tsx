@@ -22,6 +22,7 @@ interface VoltageConfigurationProps {
     voltageMin: number;
     voltageMax: number;
     pmicPortLabel?: string;
+    pmicPortDescription?: string;
 }
 
 const VoltageConfiguration = ({
@@ -29,11 +30,15 @@ const VoltageConfiguration = ({
     voltageMin,
     voltageMax,
     pmicPortLabel,
+    pmicPortDescription,
 }: VoltageConfigurationProps) => {
     const dispatch = useDispatch();
     const voltage = useSelector(getPmicConfigValue(pmicPort)) ?? voltageMin; // Default to voltageMin
 
     const label = pmicPortLabel ?? `Voltage port ${pmicPort}`;
+    const description =
+        pmicPortDescription ??
+        `Set voltage for PMIC port ${pmicPort} (${label})`;
 
     return (
         <Card
@@ -43,6 +48,9 @@ const VoltageConfiguration = ({
                 </div>
             }
         >
+            <div className="tw-flex tw-gap-1">
+                <p>{description}</p>
+            </div>
             <div className="tw-flex tw-gap-1">
                 <Button
                     variant="secondary"
