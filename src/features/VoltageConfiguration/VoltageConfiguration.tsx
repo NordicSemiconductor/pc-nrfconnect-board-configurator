@@ -48,9 +48,11 @@ const VoltageConfiguration = ({
                 </div>
             }
         >
-            <div className="tw-flex tw-gap-1">
-                <p>{description}</p>
-            </div>
+            {description && (
+                <div>
+                    <p>{description}</p>
+                </div>
+            )}
             <div className="tw-flex tw-gap-1">
                 <Button
                     variant="secondary"

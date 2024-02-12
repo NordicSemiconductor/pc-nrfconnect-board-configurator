@@ -119,7 +119,6 @@ const BoardController = ({ active }: BoardControllerProps) => {
                 return BuildGui(typednrf54h20json);
 
             case 'PCA10171':
-                console.log('HERE!');
                 // nRF9151
                 setInitialConfig(
                     dispatch,
