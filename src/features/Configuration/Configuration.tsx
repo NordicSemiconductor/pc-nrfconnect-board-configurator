@@ -20,6 +20,7 @@ import nrf9161v091json from '../../common/boards/nrf_PCA10153_0.9.1_9161.json';
 import nrf9161v0100json from '../../common/boards/nrf_PCA10153_0.10.0_9161.json';
 import nrf54l15v020json from '../../common/boards/nrf_PCA10156_0.2.0.json';
 import nrf54l15v030json from '../../common/boards/nrf_PCA10156_0.3.0.json';
+import nrf9151v020json from '../../common/boards/nrf_PCA10171_0.2.0_9151.json';
 import ConfigSlideSelector from '../ConfigSlideSelector/ConfigSlideSelector';
 import ConfigSwitch from '../ConfigSwitch/ConfigSwitch';
 import { getBoardRevisionSemver } from '../Device/deviceSlice';
@@ -45,6 +46,8 @@ const BoardController = ({ active }: BoardControllerProps) => {
     const typednrf54l15v030json =
         nrf54l15v030json as BoardControllerConfigDefinition;
     const typednrf54h20json = nrf54h20json as BoardControllerConfigDefinition;
+    const typednrf9151v020json =
+        nrf9151v020json as BoardControllerConfigDefinition;
 
     const dispatch = useDispatch();
 
@@ -114,6 +117,15 @@ const BoardController = ({ active }: BoardControllerProps) => {
                 // nRF54H20
                 setInitialConfig(dispatch, hardwareConfig, typednrf54h20json);
                 return BuildGui(typednrf54h20json);
+
+            case 'PCA10171':
+                // nRF9151
+                setInitialConfig(
+                    dispatch,
+                    hardwareConfig,
+                    typednrf9151v020json
+                );
+                return BuildGui(typednrf9151v020json);
 
             default:
                 return UnrecognizedBoard();
@@ -226,6 +238,8 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
                             pmicPort={port.port}
                             voltageMin={port.mVmin}
                             voltageMax={port.mVmax}
+                            pmicPortLabel={port.portLabel}
+                            pmicPortDescription={port.portDescription}
                         />
                     ))}
             </MasonryLayout>
