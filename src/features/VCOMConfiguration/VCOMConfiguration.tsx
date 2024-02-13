@@ -57,7 +57,7 @@ const VCOMConfiguration = ({
                         tooltipChildren={
                             <p className="tooltip-text">
                                 Connect or disconnect the pins used for the
-                                virtual COM port. When disconnected the
+                                virtual COM port. When disconnected, the
                                 corresponding UART GPIO pins can be used for
                                 other purposes.
                             </p>

@@ -44,7 +44,7 @@ const ConfigDataPreview = ({ enabled = true }: ConfigDataPreviewProps) => {
                             <br /> {boardRevision}
                         </p>
                         <p>
-                            BoardController FW version:
+                            Board Controller FW version:
                             <br /> {boardControllerFirmwareVersion}
                         </p>
                     </div>

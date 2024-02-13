@@ -126,7 +126,8 @@ const BoardController = ({ active }: BoardControllerProps) => {
 const NoBoardSelected = () => (
     <div>
         <p>
-            Please connect to a development kit featuring the Board Controller.
+            Use <b>SELECT DEVICE</b> to connect to a development kit that
+            features the Board Controller.
         </p>
         <p>Currently supported kits:</p>
         <ul>
@@ -145,7 +146,7 @@ const NoBoardSelected = () => (
 
 const Spinner = () => (
     <div>
-        <p>Working..</p>
+        <p>Working...</p>
     </div>
 );
 
@@ -158,8 +159,8 @@ const UnrecognizedBoard = () => (
 const UnrecognizedBoardRevision = () => (
     <div>
         <p>
-            This revision of the development kit is not supported. Please update
-            to the latest version of Board Controller Configurator // FIXME
+            This revision of the development kit is not supported. Update to the
+            latest version of nRF Connect Board Configurator // FIXME
         </p>
     </div>
 );
