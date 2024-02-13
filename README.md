@@ -9,8 +9,8 @@ controller is the firmware running on the Interface MCU that controls the
 behavior of the DK.
 
 **Note:** The current Board Configurator version is experimental. This means
-that the application is incomplete in functionality and verification and will
-change in the future.
+that the application is incomplete in functionality and will change in the
+future.
 
 ![screenshot](resources/screenshot.gif)
 

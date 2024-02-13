@@ -14,7 +14,7 @@ Opens the drop-down with the list of devices connected to the computer. You can 
 
 When you select a device, the following actions become available in the side panel:
 
-- **Write config** - Writes the selected configurations to the development kit by overwriting the defaults from the board definition file.
+- **Write config** - Writes the selected configurations to the development kit, overwriting the defaults.
 
 ## Configuration tab
 
@@ -33,7 +33,7 @@ The Log panel allows you to view the most important log events, tagged with a ti
 
 ## Feedback tab
 
-The Feedback tab lets you send feedback about nRF Connect Cellular Monitor application to the application development team.
+The Feedback tab lets you send feedback about nRF Connect Board Configurator application to the application development team.
 
 ## About tab
 

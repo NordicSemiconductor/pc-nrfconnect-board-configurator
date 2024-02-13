@@ -4,7 +4,7 @@ nRF Connect Board Configurator is an application that you can use to update the 
 The board controller is the firmware running on the Interface MCU that controls the behavior of the DK.
 
 !!! note "Note"
-      The current Board Configurator version is experimental. This means that the application is incomplete in functionality and verification and will change in the future.
+      The current Board Configurator version is experimental. This means that the application is incomplete in functionality and will change in the future.
 
 ## Supported devices
 
