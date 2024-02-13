@@ -1,3 +1,11 @@
+## 0.1.5 - 2024-02-13
+
+EXPERIMENTAL RELEASE
+
+### Added
+
+-   Support for nRF9151-DK
+
 ## 0.1.4 - 2024-02-08
 
 EXPERIMENTAL RELEASE
