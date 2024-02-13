@@ -47,8 +47,8 @@ type BoardDefinition = {
     boardName?: string;
 };
 
-type ConfigPin = [number, boolean];
-type PmicConfigPort = [number, number];
+type ConfigPin = { pin: number; state: boolean };
+type PmicConfigPort = { port: number; voltage: number };
 
 type PinType =
     | SwitchConfigDefinition

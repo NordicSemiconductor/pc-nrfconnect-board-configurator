@@ -244,10 +244,13 @@ function setInitialConfig(
 
     // Create defaults map
     const defaultConfig: Map<number, boolean> = new Map(
-        boardJson.defaults?.pins || []
+        (boardJson.defaults?.pins || []).map(({ pin, state }) => [pin, state])
     );
     const defaultPmicConfig: Map<number, number> = new Map(
-        boardJson.defaults?.pmicPorts || []
+        (boardJson.defaults?.pmicPorts || []).map(({ port, voltage }) => [
+            port,
+            voltage,
+        ])
     );
 
     // Merge with currently read hardware config

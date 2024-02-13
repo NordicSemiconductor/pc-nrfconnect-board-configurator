@@ -107,18 +107,56 @@
     ],
     "defaults": {
         "pins": [
-            [42, false],
-            [20, false],
-            [22, false],
-            [23, false],
-            [6, false],
-            [7, false],
-            [8, false],
-            [14, false],
-            [18, false],
-            [45, false],
-            [47, true]
+            {
+                "pin": 42,
+                "state": false
+            },
+            {
+                "pin": 20,
+                "state": false
+            },
+            {
+                "pin": 22,
+                "state": false
+            },
+            {
+                "pin": 23,
+                "state": false
+            },
+            {
+                "pin": 6,
+                "state": false
+            },
+            {
+                "pin": 7,
+                "state": false
+            },
+            {
+                "pin": 8,
+                "state": false
+            },
+            {
+                "pin": 14,
+                "state": false
+            },
+            {
+                "pin": 18,
+                "state": false
+            },
+            {
+                "pin": 45,
+                "state": false
+            },
+            {
+                "pin": 47,
+                "state": true
+            }
         ],
-        "pmicPorts": [[2, 1800]]
+        "pmicPorts": [
+            {
+                "port": 2,
+                "voltage": 1800
+            }
+        ]
     }
 }

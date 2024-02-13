@@ -57,13 +57,36 @@
     ],
     "defaults": {
         "pins": [
-            [42, true],
-            [20, false],
-            [22, true],
-            [23, false],
-            [45, true],
-            [6, true]
+            {
+                "pin": 42,
+                "state": true
+            },
+            {
+                "pin": 20,
+                "state": false
+            },
+            {
+                "pin": 22,
+                "state": true
+            },
+            {
+                "pin": 23,
+                "state": false
+            },
+            {
+                "pin": 45,
+                "state": true
+            },
+            {
+                "pin": 6,
+                "state": true
+            }
         ],
-        "pmicPorts": [[1, 1800]]
+        "pmicPorts": [
+            {
+                "port": 1,
+                "voltage": 1800
+            }
+        ]
     }
 }
