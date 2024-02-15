@@ -1,20 +1,38 @@
-# nRF Connect Boilerplate
+# nRF Connect Board Configurator
 
 [![Build Status](https://dev.azure.com/NordicSemiconductor/Wayland/_apis/build/status/pc-nrfconnect-boilerplate?branchName=master)](https://dev.azure.com/NordicSemiconductor/Wayland/_build/latest?definitionId=10&branchName=master)
 [![License](https://img.shields.io/badge/license-Modified%20BSD%20License-blue.svg)](LICENSE)
 
-_nRF Connect Boilerplate_ provides a starting point for developing apps that can
-be launched by
-[nRF Connect for Desktop](https://github.com/NordicSemiconductor/pc-nrfconnect-launcher).
+nRF Connect Board Configurator is an application that you can use to update the
+configuration of the board controller on Nordic Development kits. The board
+controller is the firmware running on the Interface MCU that controls the
+behavior of the DK.
+
+**Note:** The current Board Configurator version is experimental. This means
+that the application is incomplete in functionality and will change in the
+future.
+
+![screenshot](resources/screenshot.gif)
+
+## Installation
+
+nRF Connect Board Configurator is installed from nRF Connect from Desktop. For
+detailed steps, see
+[Installing nRF Connect for Desktop apps](https://docs.nordicsemi.com/bundle/nrf-connect-desktop/page/installing_apps.html)
+in the nRF Connect from Desktop documentation.
+
+## Documentation
+
+Read the
+[nRF Connect Board Configurator](https://docs.nordicsemi.com/bundle/nrf-connect-board-configurator/page/index.html)
+official documentation.
 
 ## Development
 
 See the
 [app development](https://nordicsemiconductor.github.io/pc-nrfconnect-docs/)
 pages for details on how to develop apps for the nRF Connect for Desktop
-framework and specifically the description
-[how to create a new app project](https://nordicsemiconductor.github.io/pc-nrfconnect-docs/create_new_app),
-to understand how you may use this project.
+framework.
 
 ## Feedback
 
