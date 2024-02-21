@@ -9,5 +9,6 @@ The board controller is the firmware running on the Interface MCU that controls 
 ## Supported devices
 
 - nRF9161 DK (v0.9.1)
+- nRF9151 DK
 
 Board Configurator is installed and updated using [nRF Connect for Desktop](https://docs.nordicsemi.com/bundle/ug_nrf_connect_desktop/page/struct/nrftools_nrfconnect.html).
