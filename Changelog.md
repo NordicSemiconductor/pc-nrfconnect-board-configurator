@@ -1,3 +1,12 @@
+## 0.1.6 - 2024-02-21
+
+EXPERIMENTAL RELEASE
+
+### Changed
+
+-   Board Configurator now needs nRF Connect for Desktop v4.4.1
+-   Board definitions for nRF9161-DKs are updated
+
 ## 0.1.5 - 2024-02-13
 
 EXPERIMENTAL RELEASE
