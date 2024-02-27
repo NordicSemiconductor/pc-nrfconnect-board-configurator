@@ -19,6 +19,7 @@ import {
 
 import {
     clearConfig,
+    clearDefaultConfig,
     clearHardwareConfig,
     clearPmicConfig,
     setHardwareConfig,
@@ -114,6 +115,7 @@ const onDeviceDeselected = (dispatch: AppDispatch) => () => {
     dispatch(clearConfig());
     dispatch(clearPmicConfig());
     dispatch(clearHardwareConfig());
+    dispatch(clearDefaultConfig());
 };
 
 export default () => {

@@ -15,22 +15,19 @@ import {
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import BoardControllerConfigDefinition from '../../common/boards/BoardControllerConfigDefinition';
-import nrf54h20json from '../../common/boards/nrf_PCA10145_54H20.json';
-import nrf9161v091json from '../../common/boards/nrf_PCA10153_0.9.1_9161.json';
-import nrf9161v0100json from '../../common/boards/nrf_PCA10153_0.10.0_9161.json';
-import nrf54l15v020json from '../../common/boards/nrf_PCA10156_0.2.0.json';
-import nrf54l15v030json from '../../common/boards/nrf_PCA10156_0.3.0.json';
-import nrf9151v020json from '../../common/boards/nrf_PCA10171_0.2.0_9151.json';
 import ConfigSlideSelector from '../ConfigSlideSelector/ConfigSlideSelector';
 import ConfigSwitch from '../ConfigSwitch/ConfigSwitch';
 import { getBoardRevisionSemver } from '../Device/deviceSlice';
 import VCOMConfiguration from '../VCOMConfiguration/VCOMConfiguration';
 import VoltageConfiguration from '../VoltageConfiguration/VoltageConfiguration';
 import {
+    getDefaultConfig,
     getHardwareConfig,
     setConfig,
+    setDefaultConfig,
     setPmicConfig,
 } from './boardControllerConfigSlice';
+import { getBoardDefinition } from './boardDefinitions';
 import { BoardConfiguration } from './hardwareConfiguration';
 
 interface BoardControllerProps {
@@ -38,17 +35,6 @@ interface BoardControllerProps {
 }
 
 const BoardController = ({ active }: BoardControllerProps) => {
-    const typednrf9161json =
-        nrf9161v0100json as BoardControllerConfigDefinition;
-    const typednrf9161v091 = nrf9161v091json as BoardControllerConfigDefinition;
-    const typednrf54l15v020json =
-        nrf54l15v020json as BoardControllerConfigDefinition;
-    const typednrf54l15v030json =
-        nrf54l15v030json as BoardControllerConfigDefinition;
-    const typednrf54h20json = nrf54h20json as BoardControllerConfigDefinition;
-    const typednrf9151v020json =
-        nrf9151v020json as BoardControllerConfigDefinition;
-
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -65,74 +51,36 @@ const BoardController = ({ active }: BoardControllerProps) => {
     const device: Device | undefined = useSelector(selectedDevice);
     const boardRevision = useSelector(getBoardRevisionSemver);
     const hardwareConfig = useSelector(getHardwareConfig);
+    const defaultConfig = useSelector(getDefaultConfig);
 
     if (device) {
         logDeviceVersion(device, boardRevision);
 
-        switch (device?.devkit?.boardVersion) {
-            case 'PCA10156':
-                // nRF54L15
-                if (boardRevision === '0.3.0') {
-                    setInitialConfig(
-                        dispatch,
-                        hardwareConfig,
-                        typednrf54l15v030json
-                    );
-                    return BuildGui(typednrf54l15v030json);
-                }
+        const definition = getBoardDefinition(device, boardRevision);
 
-                // Default is revision 0.2.0 or 0.2.1
-                setInitialConfig(
+        if (definition.boardControllerConfigDefinition) {
+            if (!defaultConfig.pins && !defaultConfig.pmicPorts) {
+                loadDefaultConfig(
                     dispatch,
-                    hardwareConfig,
-                    typednrf54l15v020json
+                    definition.boardControllerConfigDefinition
                 );
-                return BuildGui(typednrf54l15v020json);
-
-            case 'PCA10153':
-                // nRF9161
-                if (boardRevision === '0.10.0') {
-                    setInitialConfig(
-                        dispatch,
-                        hardwareConfig,
-                        typednrf9161json
-                    );
-                    return BuildGui(typednrf9161json);
-                }
-                if (boardRevision === '0.9.0' || boardRevision === '0.9.1') {
-                    setInitialConfig(
-                        dispatch,
-                        hardwareConfig,
-                        typednrf9161v091
-                    );
-                    return BuildGui(typednrf9161v091);
-                }
-                if (!boardRevision) {
-                    return Spinner();
-                }
-
-                return UnrecognizedBoardRevision();
-
-            case 'PCA10145':
-                // nRF54H20
-                setInitialConfig(dispatch, hardwareConfig, typednrf54h20json);
-                return BuildGui(typednrf54h20json);
-
-            case 'PCA10171':
-                // nRF9151
-                setInitialConfig(
-                    dispatch,
-                    hardwareConfig,
-                    typednrf9151v020json
-                );
-                return BuildGui(typednrf9151v020json);
-
-            default:
-                return UnrecognizedBoard();
+            }
+            setInitialConfig(dispatch, hardwareConfig, defaultConfig);
+            return BuildGui(definition.boardControllerConfigDefinition);
         }
-    } else {
-        return NoBoardSelected();
+
+        if (definition.controlFlag?.noRevision) {
+            return Spinner();
+        }
+
+        if (definition.controlFlag?.unknownRevision) {
+            return UnrecognizedBoardRevision();
+        }
+
+        return UnrecognizedBoard();
     }
+
+    return NoBoardSelected();
 };
 
 const NoBoardSelected = () => (
@@ -149,7 +97,16 @@ const NoBoardSelected = () => (
                     target="_blank"
                     rel="noreferrer"
                 >
-                    nRF9161DK (Rev. 0.9.0 and later)
+                    nRF9161-DK (Rev. 0.9.0 and later)
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://www.nordicsemi.com/Products/nRF9151"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    nRF9151-DK
                 </a>
             </li>
         </ul>
@@ -172,7 +129,7 @@ const UnrecognizedBoardRevision = () => (
     <div>
         <p>
             This revision of the development kit is not supported. Update to the
-            latest version of nRF Connect Board Configurator // FIXME
+            latest version of nRF Connect Board Configurator
         </p>
     </div>
 );
@@ -247,13 +204,13 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
     );
 };
 
-function setInitialConfig(
+function loadDefaultConfig(
     dispatch: AppDispatch,
-    hardwareConfig: BoardConfiguration,
     boardJson: BoardControllerConfigDefinition
 ) {
     if (!boardJson?.defaults) {
         logger.warn('No defaults found in board definition JSON');
+        return;
     }
 
     // Create defaults map
@@ -267,14 +224,32 @@ function setInitialConfig(
         ])
     );
 
+    dispatch(
+        setDefaultConfig({
+            defaultConfig: {
+                pins: defaultConfig,
+                pmicPorts: defaultPmicConfig,
+            },
+        })
+    );
+}
+
+function setInitialConfig(
+    dispatch: AppDispatch,
+    hardwareConfig: BoardConfiguration,
+    defaultBoardConfig: BoardConfiguration
+) {
+    const { pins: defaultPinConfig, pmicPorts: defaultPmicConfig } =
+        defaultBoardConfig;
+
     // Merge with currently read hardware config
     const mergedPinConfig = new Map([
-        ...defaultConfig,
+        ...(defaultPinConfig || []),
         ...(hardwareConfig.pins || []),
     ]);
 
     const mergedPmicConfig = new Map([
-        ...defaultPmicConfig,
+        ...(defaultPmicConfig || []),
         ...(hardwareConfig.pmicPorts || []),
     ]);
 
