@@ -13,6 +13,7 @@ interface ConfigState {
     boardControllerConfigData: Map<number, boolean>;
     pmicConfigData: Map<number, number>;
     hardwareConfig: BoardConfiguration;
+    defaultConfig: BoardConfiguration;
 }
 
 // nRF54H20 default config
@@ -21,6 +22,7 @@ const initialState: ConfigState = {
     // This might be needed pmicConfigData: new Map([[1, 1800]]),
     pmicConfigData: new Map([]),
     hardwareConfig: {},
+    defaultConfig: {},
 };
 
 const boardControllerConfigSlice = createSlice({
@@ -81,6 +83,18 @@ const boardControllerConfigSlice = createSlice({
         clearHardwareConfig(state) {
             state.hardwareConfig = {};
         },
+        setDefaultConfig(
+            state,
+            {
+                payload: { defaultConfig },
+            }: PayloadAction<{ defaultConfig: BoardConfiguration }>
+        ) {
+            state.defaultConfig = defaultConfig;
+        },
+
+        clearDefaultConfig(state) {
+            state.defaultConfig = {};
+        },
     },
 });
 
@@ -104,6 +118,9 @@ export const getPmicConfigData = (state: RootState) =>
 
 export const getHardwareConfig = (state: RootState) =>
     state.app.boardControllerConfig.hardwareConfig;
+
+export const getDefaultConfig = (state: RootState) =>
+    state.app.boardControllerConfig.defaultConfig;
 
 export const getConfigArray = createSelector(
     [getConfigData, getPmicConfigData],
@@ -135,6 +152,8 @@ export const {
     clearPmicConfig,
     setHardwareConfig,
     clearHardwareConfig,
+    setDefaultConfig,
+    clearDefaultConfig,
 } = boardControllerConfigSlice.actions;
 
 export default boardControllerConfigSlice;

@@ -5,7 +5,7 @@
  */
 
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     Button,
     CollapsibleGroup,
@@ -16,15 +16,23 @@ import {
 import { NrfutilDeviceLib } from '@nordicsemiconductor/pc-nrfconnect-shared/nrfutil/device';
 
 import ConfigDataPreview from './features/ConfigDataPreview/ConfigDataPreview';
-import { getConfigArray } from './features/Configuration/boardControllerConfigSlice';
+import {
+    getConfigArray,
+    getDefaultConfig,
+    setConfig,
+    setPmicConfig,
+} from './features/Configuration/boardControllerConfigSlice';
 
 export default () => {
     logger.debug('Rendering SidePanel');
 
     const [isWriting, setWriting] = useState(false);
 
+    const dispatch = useDispatch();
+
     const device = useSelector(selectedDevice);
     const configData = useSelector(getConfigArray);
+    const defaultConfig = useSelector(getDefaultConfig);
 
     return (
         <SidePanel className="side-panel">
@@ -49,6 +57,31 @@ export default () => {
                     }}
                 >
                     Write config
+                </Button>
+                <Button
+                    disabled={!device || isWriting || !defaultConfig}
+                    variant="secondary"
+                    className="tw-w-full"
+                    onClick={() => {
+                        logger.info('Reset to default');
+                        const { pins, pmicPorts } = defaultConfig;
+                        if (pins) {
+                            dispatch(
+                                setConfig({
+                                    boardControllerConfig: pins,
+                                })
+                            );
+                        }
+                        if (pmicPorts) {
+                            dispatch(
+                                setPmicConfig({
+                                    pmicConfig: pmicPorts,
+                                })
+                            );
+                        }
+                    }}
+                >
+                    Load default config
                 </Button>
             </CollapsibleGroup>
             <CollapsibleGroup defaultCollapsed heading="Configuration data">
