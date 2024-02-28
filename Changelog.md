@@ -2,6 +2,10 @@
 
 EXPERIMENTAL RELEASE
 
+### Added
+
+-   Reset to board default button
+
 ### Changed
 
 -   Increased required nRF Connect for Desktop version to 4.4.1.
