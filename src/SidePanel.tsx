@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     Button,
-    CollapsibleGroup,
+    Group,
     logger,
     selectedDevice,
     SidePanel,
@@ -36,7 +36,7 @@ export default () => {
 
     return (
         <SidePanel className="side-panel">
-            <CollapsibleGroup defaultCollapsed={false} heading="Actions">
+            <Group defaultCollapsed={false} heading="Actions" collapsible>
                 <Button
                     disabled={!device || isWriting}
                     variant="primary"
@@ -83,10 +83,10 @@ export default () => {
                 >
                     Load default config
                 </Button>
-            </CollapsibleGroup>
-            <CollapsibleGroup defaultCollapsed heading="Configuration data">
+            </Group>
+            <Group heading="Configuration data" collapsible>
                 <ConfigDataPreview enabled />
-            </CollapsibleGroup>
+            </Group>
         </SidePanel>
     );
 };
