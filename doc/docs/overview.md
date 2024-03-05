@@ -15,6 +15,7 @@ Opens the drop-down with the list of devices connected to the computer. You can 
 When you select a device, the following actions become available in the side panel:
 
 - **Write config** - Writes the selected configurations to the development kit, overwriting the defaults.
+- **Load default config** - Loads the default configuration settings into the application UI for the selected device. It does not write anything to the development kit.
 
 ## Configuration tab
 
