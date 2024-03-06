@@ -33,7 +33,8 @@
             "title": "GPIO port 1 Voltage",
             "label": "Voltage",
             "enable": {
-                "pin": 6
+                "pin": 6,
+                "invert": true
             },
             "alternatives": ["1V2", "1V8"]
         },
@@ -43,7 +44,8 @@
             "title": "GPIO port 2 Voltage",
             "label": "Voltage",
             "enable": {
-                "pin": 7
+                "pin": 7,
+                "invert": true
             },
             "alternatives": ["1V2", "1V8"]
         },
@@ -53,7 +55,8 @@
             "title": "GPIO port 7 Voltage",
             "label": "Voltage",
             "enable": {
-                "pin": 8
+                "pin": 8,
+                "invert": true
             },
             "alternatives": ["1V2", "1V8"]
         },
