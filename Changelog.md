@@ -5,6 +5,7 @@ EXPERIMENTAL RELEASE
 ### Added
 
 -   Names and descriptions to the PMIC ports
+-   Support for nRF54H20-DK r0.7.0
 
 ### Changed
 
