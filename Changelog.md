@@ -6,6 +6,10 @@ EXPERIMENTAL RELEASE
 
 -   Names and descriptions to the PMIC ports
 
+### Changed
+
+-   Fix maximum voltage for nRF54L15-DKs
+
 ## 0.1.8 - UNRELEASED
 
 EXPERIMENTAL RELEASE
