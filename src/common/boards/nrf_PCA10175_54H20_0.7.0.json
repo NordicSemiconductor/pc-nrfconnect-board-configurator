@@ -1,0 +1,146 @@
+{
+    "board": {
+        "boardVersion": "PCA10175",
+        "boardRevision": "0.7.0",
+        "boardName": "nRF54H20 DK v0.7.0 UNFINISHED!"
+    },
+    "pins": [
+        {
+            "type": "switch",
+            "id": "swd3-control",
+            "title": "SWD Control",
+            "label": "Connect software debugger (SWD3) on the IMCU to the target chip. This can be changed to e.g. use an external debugger.",
+            "enable": {
+                "pin": 6
+            }
+        },
+        {
+            "type": "vcom",
+            "id": "vcom0",
+            "name": "VCOM 0",
+            "enable": {
+                "pin": 42
+            },
+            "hwfc": {
+                "pin": 20
+            }
+        },
+        {
+            "type": "vcom",
+            "id": "vcom1",
+            "name": "VCOM 1",
+            "enable": {
+                "pin": 22
+            },
+            "hwfc": {
+                "pin": 23
+            }
+        },
+        {
+            "type": "switch",
+            "id": "led-pwr-ctrl",
+            "title": "LED Power",
+            "label": "Enable 3.0V power to the nRF54H20-DK LEDs (LED0-LED3)",
+            "enable": {
+                "pin": 45
+            }
+        },
+        {
+            "type": "switch",
+            "id": "ldos-flash-dis",
+            "title": "Flash Power",
+            "label": "Enable external flash by powering the rails VCCQ_1V8 and VCC_1V8",
+            "enable": {
+                "pin": 47
+            }
+        }
+    ],
+    "pmicPorts": [
+        {
+            "type": "voltage",
+            "port": 1,
+            "portId": "vdd-p7",
+            "portLabel": "VDD-p7 (nPM VOUT1)",
+            "portDescription": "Voltage on the VDD rail of 54H20 P7",
+            "mVmin": 1200,
+            "mVmax": 1800
+        },
+        {
+            "type": "voltage",
+            "port": 2,
+            "portId": "vdd-p9",
+            "portLabel": "VDD-p9 (nPM VOUT2)",
+            "portDescription": "Voltage on the VDD rail of 55H20 P9",
+            "mVmin": 1800,
+            "mVmax": 3300
+        },
+        {
+            "type": "voltage",
+            "port": 3,
+            "portId": "vdd-p1",
+            "portLabel": "VDD-p1 (nPM LDO1)",
+            "portDescription": "Voltage on the VDD rail of 54H20 P1",
+            "mVmin": 1200,
+            "mVmax": 1800
+        },
+        {
+            "type": "voltage",
+            "port": 4,
+            "portId": "vdd-p2",
+            "portLabel": "VDD-p2 (nPM LDO2)",
+            "portDescription": "Voltage on the VDD rail of 54H20 P2",
+            "mVmin": 1200,
+            "mVmax": 1800
+        }
+    ],
+    "defaults": {
+        "pins": [
+            {
+                "pin": 42,
+                "state": true
+            },
+            {
+                "pin": 20,
+                "state": true
+            },
+            {
+                "pin": 22,
+                "state": true
+            },
+            {
+                "pin": 23,
+                "state": true
+            },
+            {
+                "pin": 6,
+                "state": true
+            },
+            {
+                "pin": 45,
+                "state": true
+            },
+            {
+                "pin": 47,
+                "state": true
+            }
+        ],
+        "pmicPorts": [
+            {
+                "port": 1,
+                "voltage": 1800
+            },
+            {
+                "port": 2,
+                "voltage": 1800
+            },
+            {
+                "port": 3,
+                "voltage": 1800
+            },
+            {
+                "port": 4,
+                "voltage": 1800
+            }
+        ]
+    }
+}
