@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { logger } from '@nordicsemiconductor/pc-nrfconnect-shared';
+import { Group, logger } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import {
     getConfigData,
@@ -35,10 +35,9 @@ const ConfigDataPreview = ({ enabled = true }: ConfigDataPreviewProps) => {
 
     if (enabled) {
         return (
-            <div className="sidepanel-group">
-                {boardRevision ? (
-                    <div>
-                        <h3 className="heading">Board Controller</h3>
+            <>
+                {boardRevision && (
+                    <Group heading="Board Controller">
                         <p>
                             Board Hardware Revision:
                             <br /> {boardRevision}
@@ -47,28 +46,25 @@ const ConfigDataPreview = ({ enabled = true }: ConfigDataPreviewProps) => {
                             Board Controller FW version:
                             <br /> {boardControllerFirmwareVersion}
                         </p>
-                    </div>
-                ) : null}
+                    </Group>
+                )}
 
                 {configData && configData.size > 0 && (
-                    <>
-                        <h2 className="heading">
-                            Board Controller pin configuration
-                        </h2>
+                    <Group heading="Board Controller pin configuration">
                         <div className="config-block">
                             <table>{configList(configData)}</table>
                         </div>
-                    </>
+                    </Group>
                 )}
                 {pmicData && pmicData.size > 0 && (
-                    <>
-                        <h2 className="heading">PMIC configuration</h2>
+                    <Group heading="PMIC configuration">
                         <div className="config-block">{pmicList(pmicData)}</div>
-                    </>
+                    </Group>
                 )}
-            </div>
+            </>
         );
     }
+
     return null;
 };
 

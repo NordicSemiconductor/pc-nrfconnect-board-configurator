@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     Button,
     Card,
-    NumberInputSliderWithUnit,
+    NumberInput,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import {
@@ -101,7 +101,8 @@ const VoltageConfiguration = ({
                 </Button>
             </div>
             <div className="tw-flex tw-flex-col">
-                <NumberInputSliderWithUnit
+                <NumberInput
+                    showSlider
                     label="Voltage"
                     unit="mV"
                     range={{ min: voltageMin, max: voltageMax, step: 100 }}
