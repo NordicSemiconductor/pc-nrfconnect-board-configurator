@@ -1,3 +1,12 @@
+## 0.1.10 - 2024-03-06
+
+EXPERIMENTAL RELEASE
+
+### Changed
+
+-   Update dependency of pc-nrfconnect-shared to v166
+-   Lowered required nRF Connect for Desktop version to 4.4.0.
+
 ## 0.1.9 - 2024-03-06
 
 EXPERIMENTAL RELEASE
