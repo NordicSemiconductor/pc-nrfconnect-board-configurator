@@ -10,6 +10,7 @@ EXPERIMENTAL RELEASE
 ### Changed
 
 -   Fix maximum voltage for nRF54L15-DKs
+-   Fix voltage selections on nRF54H20-PDK
 
 ## 0.1.8 - UNRELEASED
 
