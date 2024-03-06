@@ -1,4 +1,4 @@
-## NEXT - UNRELEASED
+## 0.1.9 - 2024-03-06
 
 EXPERIMENTAL RELEASE
 
@@ -12,7 +12,7 @@ EXPERIMENTAL RELEASE
 -   Fix maximum voltage for nRF54L15-DKs
 -   Fix voltage selections on nRF54H20-PDK
 
-## 0.1.8 - UNRELEASED
+## 0.1.8 - 2024-02-28
 
 EXPERIMENTAL RELEASE
 
