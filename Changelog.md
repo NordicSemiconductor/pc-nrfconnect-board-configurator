@@ -1,3 +1,11 @@
+## NEXT - UNRELEASED
+
+EXPERIMENTAL RELEASE
+
+### Added
+
+-   Names and descriptions to the PMIC ports
+
 ## 0.1.8 - UNRELEASED
 
 EXPERIMENTAL RELEASE

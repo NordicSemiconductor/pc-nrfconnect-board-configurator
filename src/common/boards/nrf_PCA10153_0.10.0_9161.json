@@ -102,7 +102,19 @@
     "pmicPorts": [
         {
             "type": "voltage",
+            "port": 1,
+            "portId": "vdd-gnss-led",
+            "portLabel": "VDD for GNSS and LED (nPM VOUT1)",
+            "portDescription": "Voltage driving the Global Navigation Satellite System and the LEDs (NOTE: Possibly not configurable due to swapped TWI lines)",
+            "mVmin": 1800,
+            "mVmax": 3300
+        },
+        {
+            "type": "voltage",
             "port": 2,
+            "portId": "vdd",
+            "portLabel": "VDD (nPM VOUT2)",
+            "portDescription": "Voltage on the VDD rail (NOTE: Possibly not configurable due to swapped TWI lines)",
             "mVmin": 1800,
             "mVmax": 2500
         }
@@ -155,6 +167,10 @@
             }
         ],
         "pmicPorts": [
+            {
+                "port": 1,
+                "voltage": 2700
+            },
             {
                 "port": 2,
                 "voltage": 1800
