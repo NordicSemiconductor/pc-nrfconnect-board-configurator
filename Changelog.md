@@ -1,3 +1,11 @@
+## NEXT - unreleased
+
+EXPERIMENTAL RELEASE
+
+### Changed
+
+-   Showing only the voltage presets that are in range
+
 ## 0.1.10 - 2024-03-06
 
 EXPERIMENTAL RELEASE
