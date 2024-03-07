@@ -41,7 +41,7 @@ const VoltageConfiguration = ({
         `Set voltage for PMIC port ${pmicPort} (${label})`;
 
     // Voltage presets in lieu of presets in board definition files
-    const voltagePresetValues = [1200, 1800, 2500, 3300, 1500]
+    const voltagePresetValues = [1200, 1800, 3300, 2500, 1500]
         .filter(
             filterVoltage =>
                 filterVoltage >= voltageMin && filterVoltage <= voltageMax
