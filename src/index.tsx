@@ -5,9 +5,10 @@
  */
 
 import React from 'react';
-import telemetry, {
+import {
     App,
     render,
+    telemetry,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import appReducer from './app/appReducer';
