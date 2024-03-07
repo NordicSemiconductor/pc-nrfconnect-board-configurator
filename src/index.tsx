@@ -6,7 +6,7 @@
 
 import React from 'react';
 import { App, render } from '@nordicsemiconductor/pc-nrfconnect-shared';
-import telemetry from '@nordicsemiconductor/pc-nrfconnect-shared/src/telemetry/telemetry';
+import telemetry from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import appReducer from './app/appReducer';
 import BoilerplateDeviceSelector from './app/DeviceSelector';
