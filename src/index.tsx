@@ -5,7 +5,11 @@
  */
 
 import React from 'react';
-import { App, render } from '@nordicsemiconductor/pc-nrfconnect-shared';
+import {
+    App,
+    render,
+    telemetry,
+} from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import appReducer from './app/appReducer';
 import BoilerplateDeviceSelector from './app/DeviceSelector';
@@ -19,6 +23,8 @@ import SidePanel from './SidePanel';
 // nRF5340 IMCU on newer nRF devkits. The Board Controller will toggle
 // features on the devkit, like switching between internal or external
 // antenna, or which SIM option to use.
+
+telemetry.enableTelemetry();
 
 render(
     <App
