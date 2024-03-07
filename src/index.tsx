@@ -6,12 +6,12 @@
 
 import React from 'react';
 import { App, render } from '@nordicsemiconductor/pc-nrfconnect-shared';
+import telemetry from '@nordicsemiconductor/pc-nrfconnect-shared/src/telemetry/telemetry';
 
 import appReducer from './app/appReducer';
 import BoilerplateDeviceSelector from './app/DeviceSelector';
 import Configuration from './features/Configuration/Configuration';
 import SidePanel from './SidePanel';
-import telemetry from '@nordicsemiconductor/pc-nrfconnect-shared/src/telemetry/telemetry';
 
 // nRF Connect Board Configurator
 // ==============================
