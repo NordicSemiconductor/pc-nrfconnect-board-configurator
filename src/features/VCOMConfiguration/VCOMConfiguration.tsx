@@ -63,9 +63,10 @@ const VCOMConfiguration = ({
                             </p>
                         }
                     >
-                        <span>Enable virtual COM port {vcomName} &#9432;</span>
+                        <span>Connect virtual COM port {vcomName} &#9432;</span>
                     </Overlay>
                     <Toggle
+                        label=""
                         isToggled={vcomEnable}
                         onToggle={enableVcom => {
                             dispatch(
@@ -103,6 +104,7 @@ const VCOMConfiguration = ({
                     </span>
                 </Overlay>
                 <Toggle
+                    disabled={!vcomEnable}
                     isToggled={hwfcEnable}
                     onToggle={enableHwfc => {
                         dispatch(
