@@ -40,6 +40,15 @@ const VoltageConfiguration = ({
         pmicPortDescription ??
         `Set voltage for PMIC port ${pmicPort} (${label})`;
 
+    // Voltage presets in lieu of presets in board definition files
+    const voltagePresetValues = [1200, 1800, 2000, 3300, 1600, 2400]
+        .filter(
+            filterVoltage =>
+                filterVoltage >= voltageMin && filterVoltage <= voltageMax
+        )
+        .slice(0, 3)
+        .sort((a, b) => a - b);
+
     return (
         <Card
             title={
@@ -53,53 +62,12 @@ const VoltageConfiguration = ({
                     <p>{description}</p>
                 </div>
             )}
-            <div className="tw-flex tw-gap-1">
-                <Button
-                    variant="secondary"
-                    className="tw-w-full"
-                    onClick={() => {
-                        // Set voltage to 1800
-                        dispatch(
-                            setPmicConfigValue({
-                                pmicConfigPort: pmicPort,
-                                configPinState: 1800,
-                            })
-                        );
-                    }}
-                >
-                    1.8V
-                </Button>
-                <Button
-                    variant="secondary"
-                    className="tw-w-full"
-                    onClick={() => {
-                        // Set voltage to 1800
-                        dispatch(
-                            setPmicConfigValue({
-                                pmicConfigPort: pmicPort,
-                                configPinState: 2000,
-                            })
-                        );
-                    }}
-                >
-                    2.0V
-                </Button>
-                <Button
-                    variant="secondary"
-                    className="tw-w-full"
-                    onClick={() => {
-                        // Set voltage to 3000
-                        dispatch(
-                            setPmicConfigValue({
-                                pmicConfigPort: pmicPort,
-                                configPinState: 3000,
-                            })
-                        );
-                    }}
-                >
-                    3.0V
-                </Button>
-            </div>
+
+            <VoltagePresetButtons
+                voltages={voltagePresetValues}
+                pmicPort={pmicPort}
+            />
+
             <div className="tw-flex tw-flex-col">
                 <NumberInput
                     showSlider
@@ -118,6 +86,52 @@ const VoltageConfiguration = ({
                 />
             </div>
         </Card>
+    );
+};
+
+interface VoltagePresetButtonsProps {
+    pmicPort: number;
+    voltages: number[];
+}
+
+const VoltagePresetButtons = ({
+    pmicPort,
+    voltages,
+}: VoltagePresetButtonsProps) => (
+    <div id="preset-buttons" className="tw-flex tw-gap-1">
+        {voltages.map(voltage => (
+            <PresetButton
+                key={`voltage-preset-${pmicPort}-${voltage}`}
+                pmicPort={pmicPort}
+                voltage={voltage}
+            />
+        ))}
+    </div>
+);
+
+interface PresetButtonProps {
+    pmicPort: number;
+    voltage: number;
+}
+
+const PresetButton = ({ pmicPort, voltage }: PresetButtonProps) => {
+    const dispatch = useDispatch();
+
+    return (
+        <Button
+            variant="secondary"
+            className="tw-w-full"
+            onClick={() => {
+                dispatch(
+                    setPmicConfigValue({
+                        pmicConfigPort: pmicPort,
+                        configPinState: voltage,
+                    })
+                );
+            }}
+        >
+            {(voltage / 1000).toFixed(1)}V
+        </Button>
     );
 };
 
