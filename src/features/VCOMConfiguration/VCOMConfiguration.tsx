@@ -51,20 +51,7 @@ const VCOMConfiguration = ({
     return (
         <Card
             title={
-                <div className="tw-flex tw-justify-between">
-                    <Overlay
-                        tooltipId={`tooltip_${vcomName}`}
-                        tooltipChildren={
-                            <p className="tooltip-text">
-                                Connect or disconnect the pins used for the
-                                virtual COM port. When disconnected, the
-                                corresponding UART GPIO pins can be used for
-                                other purposes.
-                            </p>
-                        }
-                    >
-                        <span>Enable virtual COM port {vcomName} &#9432;</span>
-                    </Overlay>
+                <div>
                     <Toggle
                         isToggled={vcomEnable}
                         onToggle={enableVcom => {
@@ -77,33 +64,39 @@ const VCOMConfiguration = ({
                                     ),
                                 })
                             );
+                            // Also diconnect HWFC if VCOM is disconnected
+                            dispatch(
+                                setConfigValue({
+                                    configPin: hwfcEnablePin,
+                                    configPinState: xor(enableVcom, hwfcInvert),
+                                })
+                            );
                         }}
                     >
-                        Enable
+                        <Overlay
+                            tooltipId={`tooltip_${vcomName}`}
+                            tooltipChildren={
+                                <p className="tooltip-text">
+                                    Connect or disconnect the pins used for the
+                                    virtual COM port. When disconnected, the
+                                    corresponding UART GPIO pins can be used for
+                                    other purposes.
+                                </p>
+                            }
+                        >
+                            <span>
+                                Connect virtual COM port {vcomName}{' '}
+                                <span className="mdi mdi-help-circle-outline" />
+                            </span>
+                        </Overlay>
                     </Toggle>
                 </div>
             }
         >
-            <div className="tw-flex tw-justify-between">
-                <Overlay
-                    tooltipId={`tooltip_hwfc_${vcomName}`}
-                    tooltipChildren={
-                        <p className="tooltip-text">
-                            Connect or disconnect the Hardware Flow Control pins
-                            for the virtual COM port. When disconnected, the
-                            HWFC GPIO pins for the target chip can be used for
-                            other purposes. When connected, an autodetect
-                            feature is used to determine whether or not HWFC is
-                            enabled on the target chip.
-                        </p>
-                    }
-                >
-                    <span>
-                        Connect {vcomName} HWFC autodetect lines &#9432;
-                    </span>
-                </Overlay>
+            <div>
                 <Toggle
-                    isToggled={hwfcEnable}
+                    disabled={!vcomEnable}
+                    isToggled={hwfcEnable && vcomEnable}
                     onToggle={enableHwfc => {
                         dispatch(
                             setConfigValue({
@@ -113,7 +106,25 @@ const VCOMConfiguration = ({
                         );
                     }}
                 >
-                    Enable
+                    <Overlay
+                        tooltipId={`tooltip_hwfc_${vcomName}`}
+                        tooltipChildren={
+                            <p className="tooltip-text">
+                                Connect or disconnect the Hardware Flow Control
+                                pins for the virtual COM port. When
+                                disconnected, the HWFC GPIO pins for the target
+                                chip can be used for other purposes. When
+                                connected, an autodetect feature is used to
+                                determine whether or not HWFC is enabled on the
+                                target chip.
+                            </p>
+                        }
+                    >
+                        <span>
+                            Connect {vcomName} HWFC autodetect lines
+                            <span className="mdi mdi-help-circle-outline" />
+                        </span>
+                    </Overlay>
                 </Toggle>
             </div>
         </Card>
