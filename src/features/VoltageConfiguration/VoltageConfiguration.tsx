@@ -57,21 +57,10 @@ const VoltageConfiguration = ({
                 </div>
             }
         >
-            {description && (
-                <div>
-                    <p>{description}</p>
-                </div>
-            )}
-
-            <VoltagePresetButtons
-                voltages={voltagePresetValues}
-                pmicPort={pmicPort}
-            />
-
             <div className="tw-flex tw-flex-col">
                 <NumberInput
                     showSlider
-                    label="Voltage"
+                    label={description}
                     unit="mV"
                     range={{ min: voltageMin, max: voltageMax, step: 100 }}
                     value={voltage}
@@ -85,6 +74,10 @@ const VoltageConfiguration = ({
                     }}
                 />
             </div>
+            <VoltagePresetButtons
+                voltages={voltagePresetValues}
+                pmicPort={pmicPort}
+            />
         </Card>
     );
 };
@@ -98,7 +91,7 @@ const VoltagePresetButtons = ({
     pmicPort,
     voltages,
 }: VoltagePresetButtonsProps) => (
-    <div id="preset-buttons" className="tw-flex tw-gap-1">
+    <div id="preset-buttons" className="tw-flex tw-gap-1 tw-pt-4">
         {voltages.map(voltage => (
             <PresetButton
                 key={`voltage-preset-${pmicPort}-${voltage}`}
@@ -120,7 +113,7 @@ const PresetButton = ({ pmicPort, voltage }: PresetButtonProps) => {
     return (
         <Button
             variant="secondary"
-            className="tw-w-full"
+            className="tw-h-5 tw-w-full"
             onClick={() => {
                 dispatch(
                     setPmicConfigValue({
