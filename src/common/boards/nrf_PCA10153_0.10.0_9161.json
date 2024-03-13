@@ -34,8 +34,9 @@
         {
             "type": "switch",
             "id": "swd-control",
-            "title": "SWD Control",
-            "label": "Enable/Disable the SWD connection between the IMCU and target chip. This can be done to e.g. use an external debugger.",
+            "title": "Connect Software Debugger",
+            "label": "Disable the SWD connection to use an external debugger on the target chip.",
+            "tooltip": "When connected, the IMCU is acting as the debugger. When disconnected, you can use an external debugger connected to the 'Debug in'-header.",
             "enable": {
                 "pin": 6
             }
@@ -43,8 +44,8 @@
         {
             "type": "switch",
             "id": "shield-reset-in",
-            "title": "Shield Reset In",
-            "label": "Connect reset line coming from a connected DK shield",
+            "title": "Connect shield Reset In",
+            "label": "Connect reset line coming from a connected DK shield.",
             "enable": {
                 "pin": 7
             }
@@ -52,8 +53,8 @@
         {
             "type": "switch",
             "id": "shield-reset-out",
-            "title": "Shield Reset Out",
-            "label": "Connect reset line going to a connected DK shield",
+            "title": "Connect shield Reset Out",
+            "label": "Connect reset line going to a connected DK shield.",
             "enable": {
                 "pin": 8
             }
@@ -61,8 +62,7 @@
         {
             "type": "slide",
             "id": "sim-select",
-            "title": "SIM Select",
-            "label": "Select whether to use SIM card or eSIM.",
+            "title": "SIM Option",
             "enable": {
                 "pin": 14
             },
@@ -71,7 +71,7 @@
         {
             "type": "switch",
             "id": "modem-coexistence-interface",
-            "title": "Modem Co-Existence Interface",
+            "title": "Connect modem Co-Existence Interface",
             "label": "Enable or disable the GPIO pin connection to the coexistence interface. This is done so that the GPIO pins can be used for other use cases.",
             "enable": {
                 "pin": 18,
@@ -82,7 +82,7 @@
             "type": "slide",
             "id": "io-expander",
             "title": "LED and button connection",
-            "label": "Connect directly using GPIO pins or through I²C using the IO Expander module. Using IO Expander frees up LED and button GPIO pins on nRF1951.",
+            "label": "Connect directly using GPIO pins or through I²C using the IO Expander module. Using IO Expander frees up LED and button GPIO pins on nRF9161.",
             "enable": {
                 "pin": 45
             },
@@ -91,7 +91,7 @@
         {
             "type": "switch",
             "id": "external-memory",
-            "title": "External Memory",
+            "title": "Enable external memory",
             "label": "Enable or disable the external memory chip.",
             "enable": {
                 "pin": 47,
