@@ -22,6 +22,7 @@ type SwitchConfigDefinition = {
     id: string;
     title: string;
     label: string;
+    tooltip?: string;
     enable: PinDefinition;
 };
 
