@@ -87,7 +87,7 @@ const VCOMConfiguration = ({
                             }
                         >
                             <span>
-                                Connect virtual COM port {vcomName}{' '}
+                                Connect port {vcomName}{' '}
                                 <span className="mdi mdi-help-circle-outline" />
                             </span>
                         </Overlay>
