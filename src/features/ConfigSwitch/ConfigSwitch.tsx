@@ -17,7 +17,6 @@ interface ConfigSwitchProps {
     configTitle: string;
     configLabel: string;
     configPin: number;
-    enableLabel?: string;
     invert?: boolean;
 }
 
@@ -25,7 +24,6 @@ const ConfigSwitch = ({
     configTitle,
     configLabel,
     configPin,
-    enableLabel = 'Enable',
     invert = false,
 }: ConfigSwitchProps) => {
     const dispatch = useDispatch();
@@ -38,7 +36,6 @@ const ConfigSwitch = ({
                 <div className="tw-flex tw-justify-between">
                     <span>{configTitle}</span>
                     <Toggle
-                        label={enableLabel}
                         isToggled={toggleEnable}
                         onToggle={enable =>
                             dispatch(
