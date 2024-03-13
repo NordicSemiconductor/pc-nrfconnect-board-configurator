@@ -31,6 +31,7 @@ type SlideConfigDefinition = {
     id: string;
     title: string;
     label: string;
+    tooltip?: string;
     enable: PinDefinition;
     alternatives: [string, string];
 };

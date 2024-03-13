@@ -6,7 +6,11 @@
 
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card, StateSelector } from '@nordicsemiconductor/pc-nrfconnect-shared';
+import {
+    Card,
+    Overlay,
+    StateSelector,
+} from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import {
     getConfigValue,
@@ -16,6 +20,7 @@ import {
 interface ConfigSlideSelectorProps {
     configTitle: string;
     configLabel: string;
+    configTooltip?: string;
     configPin: number;
     configAlternatives: [string, string];
     invert: boolean;
@@ -24,6 +29,7 @@ interface ConfigSlideSelectorProps {
 const ConfigSlideSelector = ({
     configTitle,
     configLabel,
+    configTooltip,
     configPin,
     configAlternatives,
     invert = false,
@@ -42,7 +48,23 @@ const ConfigSlideSelector = ({
             }
         >
             <div>
-                <p>{configLabel}</p>
+                <div className="tw-flex tw-content-between">
+                    {configLabel && (
+                        <div className="tw-mb-4">{configLabel}</div>
+                    )}
+                    {configTooltip && (
+                        <Overlay
+                            tooltipId="tooltip"
+                            tooltipChildren={
+                                <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
+                                    <p>{configTooltip}</p>
+                                </div>
+                            }
+                        >
+                            <span className="mdi mdi-help-circle-outline" />
+                        </Overlay>
+                    )}
+                </div>
                 <StateSelector
                     items={configAlternatives}
                     selectedItem={selectedItem}
