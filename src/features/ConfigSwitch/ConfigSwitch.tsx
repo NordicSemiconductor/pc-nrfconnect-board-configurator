@@ -33,8 +33,7 @@ const ConfigSwitch = ({
     return (
         <Card
             title={
-                <div className="tw-flex tw-justify-between">
-                    <span>{configTitle}</span>
+                <div>
                     <Toggle
                         isToggled={toggleEnable}
                         onToggle={enable =>
@@ -45,7 +44,9 @@ const ConfigSwitch = ({
                                 })
                             )
                         }
-                    />
+                    >
+                        <span>{configTitle}</span>
+                    </Toggle>
                 </div>
             }
         >
