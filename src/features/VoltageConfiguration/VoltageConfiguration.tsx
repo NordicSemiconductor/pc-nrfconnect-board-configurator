@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     Button,
     Card,
+    classNames,
     NumberInput,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
@@ -57,21 +58,10 @@ const VoltageConfiguration = ({
                 </div>
             }
         >
-            {description && (
-                <div>
-                    <p>{description}</p>
-                </div>
-            )}
-
-            <VoltagePresetButtons
-                voltages={voltagePresetValues}
-                pmicPort={pmicPort}
-            />
-
             <div className="tw-flex tw-flex-col">
                 <NumberInput
                     showSlider
-                    label="Voltage"
+                    label={description}
                     unit="mV"
                     range={{ min: voltageMin, max: voltageMax, step: 100 }}
                     value={voltage}
@@ -85,6 +75,11 @@ const VoltageConfiguration = ({
                     }}
                 />
             </div>
+            <VoltagePresetButtons
+                voltages={voltagePresetValues}
+                pmicPort={pmicPort}
+                setVoltage={voltage}
+            />
         </Card>
     );
 };
@@ -92,18 +87,21 @@ const VoltageConfiguration = ({
 interface VoltagePresetButtonsProps {
     pmicPort: number;
     voltages: number[];
+    setVoltage: number;
 }
 
 const VoltagePresetButtons = ({
     pmicPort,
     voltages,
+    setVoltage,
 }: VoltagePresetButtonsProps) => (
-    <div id="preset-buttons" className="tw-flex tw-gap-1">
+    <div id="preset-buttons" className="tw-mb-2 tw-flex tw-gap-1 tw-pt-4">
         {voltages.map(voltage => (
             <PresetButton
                 key={`voltage-preset-${pmicPort}-${voltage}`}
                 pmicPort={pmicPort}
                 voltage={voltage}
+                selected={setVoltage === voltage}
             />
         ))}
     </div>
@@ -112,15 +110,19 @@ const VoltagePresetButtons = ({
 interface PresetButtonProps {
     pmicPort: number;
     voltage: number;
+    selected?: boolean;
 }
 
-const PresetButton = ({ pmicPort, voltage }: PresetButtonProps) => {
+const PresetButton = ({ pmicPort, voltage, selected }: PresetButtonProps) => {
     const dispatch = useDispatch();
 
     return (
         <Button
             variant="secondary"
-            className="tw-w-full"
+            className={classNames(
+                'tw-h-5 tw-w-full tw-border-gray-200',
+                selected && 'tw-bg-gray-50'
+            )}
             onClick={() => {
                 dispatch(
                     setPmicConfigValue({
