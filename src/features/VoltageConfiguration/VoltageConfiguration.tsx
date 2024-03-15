@@ -91,7 +91,7 @@ const VoltagePresetButtons = ({
     pmicPort,
     voltages,
 }: VoltagePresetButtonsProps) => (
-    <div id="preset-buttons" className="tw-flex tw-gap-1 tw-pt-4">
+    <div id="preset-buttons" className="tw-mb-2 tw-flex tw-gap-1 tw-pt-4">
         {voltages.map(voltage => (
             <PresetButton
                 key={`voltage-preset-${pmicPort}-${voltage}`}
