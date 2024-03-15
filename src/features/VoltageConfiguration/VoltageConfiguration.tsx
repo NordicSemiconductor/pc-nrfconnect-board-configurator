@@ -113,7 +113,7 @@ const PresetButton = ({ pmicPort, voltage }: PresetButtonProps) => {
     return (
         <Button
             variant="secondary"
-            className="tw-h-5 tw-w-full"
+            className="tw-h-5 tw-w-full tw-border-gray-200"
             onClick={() => {
                 dispatch(
                     setPmicConfigValue({
