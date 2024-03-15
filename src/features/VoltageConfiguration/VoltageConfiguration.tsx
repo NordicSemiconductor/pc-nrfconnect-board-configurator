@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     Button,
     Card,
+    classNames,
     NumberInput,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
@@ -77,6 +78,7 @@ const VoltageConfiguration = ({
             <VoltagePresetButtons
                 voltages={voltagePresetValues}
                 pmicPort={pmicPort}
+                setVoltage={voltage}
             />
         </Card>
     );
@@ -85,11 +87,13 @@ const VoltageConfiguration = ({
 interface VoltagePresetButtonsProps {
     pmicPort: number;
     voltages: number[];
+    setVoltage: number;
 }
 
 const VoltagePresetButtons = ({
     pmicPort,
     voltages,
+    setVoltage,
 }: VoltagePresetButtonsProps) => (
     <div id="preset-buttons" className="tw-mb-2 tw-flex tw-gap-1 tw-pt-4">
         {voltages.map(voltage => (
@@ -97,6 +101,7 @@ const VoltagePresetButtons = ({
                 key={`voltage-preset-${pmicPort}-${voltage}`}
                 pmicPort={pmicPort}
                 voltage={voltage}
+                selected={setVoltage === voltage}
             />
         ))}
     </div>
@@ -105,15 +110,19 @@ const VoltagePresetButtons = ({
 interface PresetButtonProps {
     pmicPort: number;
     voltage: number;
+    selected?: boolean;
 }
 
-const PresetButton = ({ pmicPort, voltage }: PresetButtonProps) => {
+const PresetButton = ({ pmicPort, voltage, selected }: PresetButtonProps) => {
     const dispatch = useDispatch();
 
     return (
         <Button
             variant="secondary"
-            className="tw-h-5 tw-w-full tw-border-gray-200"
+            className={classNames(
+                'tw-h-5 tw-w-full tw-border-gray-200',
+                selected && 'tw-bg-gray-50'
+            )}
             onClick={() => {
                 dispatch(
                     setPmicConfigValue({
