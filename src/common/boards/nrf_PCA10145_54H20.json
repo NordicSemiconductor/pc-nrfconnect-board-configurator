@@ -31,7 +31,6 @@
             "type": "slide",
             "id": "gpio-voltage-1",
             "title": "GPIO port 1 Voltage",
-            "label": "Voltage",
             "enable": {
                 "pin": 6,
                 "invert": true
@@ -42,7 +41,6 @@
             "type": "slide",
             "id": "gpio-voltage-2",
             "title": "GPIO port 2 Voltage",
-            "label": "Voltage",
             "enable": {
                 "pin": 7,
                 "invert": true
@@ -53,7 +51,6 @@
             "type": "slide",
             "id": "gpio-voltage-7",
             "title": "GPIO port 7 Voltage",
-            "label": "Voltage",
             "enable": {
                 "pin": 8,
                 "invert": true
@@ -64,7 +61,6 @@
             "type": "slide",
             "id": "gpio-voltage-9",
             "title": "GPIO port 9 Voltage",
-            "label": "Voltage",
             "enable": {
                 "pin": 28
             },
