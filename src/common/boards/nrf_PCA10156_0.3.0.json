@@ -30,8 +30,9 @@
         {
             "type": "slide",
             "id": "ledcontrol",
-            "title": "LED Control",
-            "label": "LED Enable",
+            "title": "LED Power",
+            "label": "Disable LEDs to use the GPIOs for other purposes.",
+            "tooltip": "The LEDs are enabled by providing 3.3V to LED0-LED3.",
             "enable": {
                 "pin": 45
             },
@@ -40,8 +41,9 @@
         {
             "type": "switch",
             "id": "swd-control",
-            "title": "SWD Control",
-            "label": "Enable or disable the SWD connection between the IMCU and target chip. This can be done to e.g. use an external debugger.",
+            "title": "Connect Software Debugger",
+            "label": "Disable the SWD connection to use an external debugger on the target chip.",
+            "tooltip": "When connected, the IMCU is acting as the debugger. When disconnected, you can use an external debugger connected to the 'Debug in'-header.",
             "enable": {
                 "pin": 6
             }
