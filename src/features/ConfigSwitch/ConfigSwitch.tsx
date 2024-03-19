@@ -51,7 +51,7 @@ const ConfigSwitch = ({
                             )
                         }
                     >
-                        <span>{configTitle}</span>
+                        <span className="h5">{configTitle}</span>
                     </Toggle>
                 </div>
             }

@@ -86,7 +86,7 @@ const VCOMConfiguration = ({
                                 </div>
                             }
                         >
-                            <span>
+                            <span className="h5">
                                 Connect port {vcomName}{' '}
                                 <span className="mdi mdi-help-circle-outline" />
                             </span>
@@ -126,7 +126,7 @@ const VCOMConfiguration = ({
                     >
                         <span>
                             {vcomName} HWFC autodetect lines
-                            <span className="mdi mdi-help-circle-outline" />
+                            <span className="mdi mdi-help-circle-outline tw-pl-1" />
                         </span>
                     </Overlay>
                 </Toggle>
