@@ -56,7 +56,7 @@ const ConfigSwitch = ({
                 </div>
             }
         >
-            {(configTooltip && (
+            {configTooltip ? (
                 <Overlay
                     tooltipId="tooltip"
                     tooltipChildren={
@@ -70,7 +70,9 @@ const ConfigSwitch = ({
                         <span className="mdi mdi-help-circle-outline" />
                     </div>
                 </Overlay>
-            )) || <div className="tw-flex-grow">{configLabel}</div>}
+            ) : (
+                <div className="tw-flex-grow">{configLabel}</div>
+            )}
         </Card>
     );
 };
