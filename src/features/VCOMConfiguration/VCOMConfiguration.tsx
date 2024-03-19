@@ -125,7 +125,7 @@ const VCOMConfiguration = ({
                         }
                     >
                         <span>
-                            Connect {vcomName} HWFC autodetect lines
+                            {vcomName} HWFC autodetect lines
                             <span className="mdi mdi-help-circle-outline" />
                         </span>
                     </Overlay>
