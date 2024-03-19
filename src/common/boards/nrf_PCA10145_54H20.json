@@ -69,8 +69,9 @@
         {
             "type": "slide",
             "id": "ledcontrol",
-            "title": "LED Control",
-            "label": "Enable or disable LEDs.",
+            "title": "LED Power",
+            "label": "Disable LEDs to use the GPIOs for other purposes.",
+            "tooltip": "The LEDs are enabled by providing 3.3 V to LED1-LED4.",
             "enable": {
                 "pin": 45
             },
