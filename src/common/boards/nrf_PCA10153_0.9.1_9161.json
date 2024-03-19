@@ -34,9 +34,9 @@
         {
             "type": "switch",
             "id": "swd-control",
-            "title": "Connect Software Debugger",
-            "label": "Disable the SWD connection to use an external debugger on the target chip.",
-            "tooltip": "When connected, the IMCU is acting as the debugger. When disconnected, you can use an external debugger connected to the 'Debug in'-header.",
+            "title": "Software Debugger (SWD)",
+            "label": "Disable to use an external debugger on the target chip.",
+            "tooltip": "When enabled, the SWD is connected and the IMCU is acting as the debugger. When disabled, the SWD is disconnected and you can use an external debugger connected to the Debug In header.",
             "enable": {
                 "pin": 6,
                 "invert": true
@@ -45,7 +45,7 @@
         {
             "type": "switch",
             "id": "shield-reset-in",
-            "title": "Connect shield Reset In",
+            "title": "Shield Reset In",
             "label": "Connect reset line coming from a connected DK shield.",
             "enable": {
                 "pin": 7
@@ -54,7 +54,7 @@
         {
             "type": "switch",
             "id": "shield-reset-out",
-            "title": "Connect shield Reset Out",
+            "title": "Shield Reset Out",
             "label": "Connect reset line going to a connected DK shield.",
             "enable": {
                 "pin": 8
@@ -72,7 +72,7 @@
         {
             "type": "switch",
             "id": "modem-coexistence-interface",
-            "title": "Connect modem Co-Existence Interface",
+            "title": "Modem coexistence interface",
             "label": "Enable or disable the GPIO pin connection to the coexistence interface. This is done so that the GPIO pins can be used for other use cases.",
             "enable": {
                 "pin": 18,
@@ -92,7 +92,7 @@
         {
             "type": "switch",
             "id": "external-memory",
-            "title": "Enable external memory",
+            "title": "External memory",
             "label": "Enable or disable the external memory chip.",
             "enable": {
                 "pin": 47,

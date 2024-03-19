@@ -8,7 +8,7 @@
         {
             "type": "vcom",
             "id": "vcom0",
-            "name": "VCOM 0",
+            "name": "VCOM0",
             "enable": {
                 "pin": 42
             },
@@ -19,7 +19,7 @@
         {
             "type": "vcom",
             "id": "vcom1",
-            "name": "VCOM 1",
+            "name": "VCOM1",
             "enable": {
                 "pin": 22
             },
@@ -30,9 +30,9 @@
         {
             "type": "switch",
             "id": "swd3-control",
-            "title": "Connect Software Debugger",
-            "label": "Disable the SWD connection to use an external debugger on the target chip.",
-            "tooltip": "When connected, the IMCU is acting as the debugger (SWD3). When disconnected, you can use an external debugger connected to the 'Debug in'-header.",
+            "title": "Software Debugger (SWD)",
+            "label": "Disable to use an external debugger on the target chip.",
+            "tooltip": "When enabled, the SWD is connected and the IMCU is acting as the debugger. When disabled, the SWD is disconnected and you can use an external debugger connected to the Debug In header.",
             "enable": {
                 "pin": 6
             }
@@ -42,7 +42,7 @@
             "id": "led-pwr-ctrl",
             "title": "LED Power",
             "label": "Disable LEDs to use the GPIOs for other purposes.",
-            "tooltip": "The LEDs are enabled by providing 5V to LED0-LED3.",
+            "tooltip": "The LEDs are enabled by providing 5 V to LED0-LED3.",
             "enable": {
                 "pin": 45
             }
@@ -52,7 +52,7 @@
             "id": "ldos-flash-dis",
             "title": "External Memory",
             "label": "Enable power to the external flash memory.",
-            "tooltip": "Enable external flash by powering the rails VCCQ_1V8 and VCC_1V8",
+            "tooltip": "Enable external flash by powering the rails VCCQ_1V8 and VCC_1V8.",
             "enable": {
                 "pin": 47,
                 "invert": true
@@ -65,7 +65,7 @@
             "port": 1,
             "portId": "vdd-p7",
             "portLabel": "VDD-p7 (nPM VOUT1)",
-            "portDescription": "Voltage on the VDD rail of 54H20 P7",
+            "portDescription": "Voltage on the VDD rail of nRF54H20 P7.",
             "mVmin": 1200,
             "mVmax": 1800
         },
@@ -74,7 +74,7 @@
             "port": 2,
             "portId": "vdd-p9",
             "portLabel": "VDD-p9 (nPM VOUT2)",
-            "portDescription": "Voltage on the VDD rail of 54H20 P9",
+            "portDescription": "Voltage on the VDD rail of nRF54H20 P9.",
             "mVmin": 1800,
             "mVmax": 3300
         },
@@ -83,7 +83,7 @@
             "port": 3,
             "portId": "vdd-p1",
             "portLabel": "VDD-p1 (nPM LDO1)",
-            "portDescription": "Voltage on the VDD rail of 54H20 P1",
+            "portDescription": "Voltage on the VDD rail of nRF54H20 P1.",
             "mVmin": 1200,
             "mVmax": 1800
         },
@@ -92,7 +92,7 @@
             "port": 4,
             "portId": "vdd-p2",
             "portLabel": "VDD-p2 (nPM LDO2)",
-            "portDescription": "Voltage on the VDD rail of 54H20 P2",
+            "portDescription": "Voltage on the VDD rail of nRF54H20 P2.",
             "mVmin": 1200,
             "mVmax": 1800
         }

@@ -8,7 +8,7 @@
         {
             "type": "vcom",
             "id": "vcom0",
-            "name": "VCOM 0",
+            "name": "VCOM0",
             "enable": {
                 "pin": 42,
                 "invert": true
@@ -21,7 +21,7 @@
         {
             "type": "vcom",
             "id": "vcom1",
-            "name": "VCOM 1",
+            "name": "VCOM1",
             "enable": {
                 "pin": 22,
                 "invert": true
@@ -34,9 +34,9 @@
         {
             "type": "switch",
             "id": "swd-control",
-            "title": "Connect Software Debugger",
-            "label": "Disable the SWD connection to use an external debugger on the target chip.",
-            "tooltip": "When connected, the IMCU is acting as the debugger. When disconnected, you can use an external debugger connected to the 'Debug in'-header.",
+            "title": "Software Debugger (SWD)",
+            "label": "Disable to use an external debugger on the target chip.",
+            "tooltip": "When enabled, the SWD is connected and the IMCU is acting as the debugger. When disabled, the SWD is disconnected and you can use an external debugger connected to the Debug In header.",
             "enable": {
                 "pin": 6
             }
@@ -44,7 +44,7 @@
         {
             "type": "switch",
             "id": "shield-reset-in",
-            "title": "Connect shield Reset In",
+            "title": "Shield Reset In",
             "label": "Connect reset line coming from a connected DK shield.",
             "enable": {
                 "pin": 7
@@ -53,7 +53,7 @@
         {
             "type": "switch",
             "id": "shield-reset-out",
-            "title": "Connect shield Reset Out",
+            "title": "Shield Reset Out",
             "label": "Connect reset line going to a connected DK shield.",
             "enable": {
                 "pin": 8
@@ -71,7 +71,7 @@
         {
             "type": "switch",
             "id": "modem-coexistence-interface",
-            "title": "Connect modem Co-Existence Interface",
+            "title": "Modem coexistence interface",
             "label": "Enable or disable the GPIO pin connection to the coexistence interface. This is done so that the GPIO pins can be used for other use cases.",
             "enable": {
                 "pin": 18,
@@ -91,7 +91,7 @@
         {
             "type": "switch",
             "id": "external-memory",
-            "title": "Enable external memory",
+            "title": "External memory",
             "label": "Enable or disable the external memory chip.",
             "enable": {
                 "pin": 47,
@@ -105,7 +105,7 @@
             "port": 1,
             "portId": "vdd-gnss-led",
             "portLabel": "VDD for GNSS and LED (nPM VOUT1)",
-            "portDescription": "Voltage driving the Global Navigation Satellite System and the LEDs (NOTE: Possibly not configurable due to swapped TWI lines)",
+            "portDescription": "Voltage driving the Global Navigation Satellite System and the LEDs. (Note: Possibly not configurable due to swapped TWI lines.)",
             "mVmin": 1800,
             "mVmax": 3300
         },
@@ -114,7 +114,7 @@
             "port": 2,
             "portId": "vdd",
             "portLabel": "VDD (nPM VOUT2)",
-            "portDescription": "Voltage on the VDD rail (NOTE: Possibly not configurable due to swapped TWI lines)",
+            "portDescription": "Voltage on the VDD rail. (Note: Possibly not configurable due to swapped TWI lines.)",
             "mVmin": 1800,
             "mVmax": 2500
         }

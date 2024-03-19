@@ -8,7 +8,7 @@
         {
             "type": "vcom",
             "id": "vcom0",
-            "name": "VCOM 0",
+            "name": "VCOM0",
             "enable": {
                 "pin": 42
             },
@@ -19,7 +19,7 @@
         {
             "type": "vcom",
             "id": "vcom1",
-            "name": "VCOM 1",
+            "name": "VCOM1",
             "enable": {
                 "pin": 22
             },
@@ -32,7 +32,7 @@
             "id": "ledcontrol",
             "title": "LED Power",
             "label": "Disable LEDs to use the GPIOs for other purposes.",
-            "tooltip": "The LEDs are enabled by providing 3.3V to LED0-LED3.",
+            "tooltip": "The LEDs are enabled by providing 3.3 V to LED0-LED3.",
             "enable": {
                 "pin": 45
             },
@@ -45,7 +45,7 @@
             "port": 1,
             "portId": "vdd",
             "portLabel": "VDD (nPM VOUT1)",
-            "portDescription": "Voltage on the VDD rail",
+            "portDescription": "Voltage on the VDD rail.",
             "mVmin": 1800,
             "mVmax": 3300
         }
