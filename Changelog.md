@@ -1,3 +1,13 @@
+## 0.1.12 - 2024-03-20
+
+EXPERIMENTAL RELEASE
+
+### Changed
+
+-   Updated texts explaining the board controller options.
+-   Updated UI
+-   Updated shared components
+
 ## 0.1.11 - 2024-03-07
 
 EXPERIMENTAL RELEASE
