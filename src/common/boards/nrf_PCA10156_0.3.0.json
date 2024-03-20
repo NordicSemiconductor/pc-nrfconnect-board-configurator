@@ -8,7 +8,7 @@
         {
             "type": "vcom",
             "id": "vcom0",
-            "name": "VCOM 0",
+            "name": "VCOM0",
             "enable": {
                 "pin": 42
             },
@@ -19,7 +19,7 @@
         {
             "type": "vcom",
             "id": "vcom1",
-            "name": "VCOM 1",
+            "name": "VCOM1",
             "enable": {
                 "pin": 22
             },
@@ -30,8 +30,9 @@
         {
             "type": "slide",
             "id": "ledcontrol",
-            "title": "LED Control",
-            "label": "LED Enable",
+            "title": "LED Power",
+            "label": "Disable LEDs to use the GPIOs for other purposes.",
+            "tooltip": "The LEDs are enabled by providing 3.3 V to LED1-LED4.",
             "enable": {
                 "pin": 45
             },
@@ -40,8 +41,9 @@
         {
             "type": "switch",
             "id": "swd-control",
-            "title": "SWD Control",
-            "label": "Enable or disable the SWD connection between the IMCU and target chip. This can be done to e.g. use an external debugger.",
+            "title": "Software Debugger (SWD)",
+            "label": "Disable to use an external debugger on the target chip.",
+            "tooltip": "When enabled, the SWD is connected and the IMCU is acting as the debugger. When disabled, the SWD is disconnected and you can use an external debugger connected to the Debug In header.",
             "enable": {
                 "pin": 6
             }
@@ -53,7 +55,7 @@
             "port": 1,
             "portId": "vdd",
             "portLabel": "VDD (nPM VOUT1)",
-            "portDescription": "Voltage on the VDD rail",
+            "portDescription": "Voltage on the VDD rail.",
             "mVmin": 1800,
             "mVmax": 3300
         }

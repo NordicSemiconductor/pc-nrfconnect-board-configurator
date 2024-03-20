@@ -6,7 +6,11 @@
 
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Card, Toggle } from '@nordicsemiconductor/pc-nrfconnect-shared';
+import {
+    Card,
+    Overlay,
+    Toggle,
+} from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import {
     getConfigValue,
@@ -16,16 +20,16 @@ import {
 interface ConfigSwitchProps {
     configTitle: string;
     configLabel: string;
+    configTooltip?: string;
     configPin: number;
-    enableLabel?: string;
     invert?: boolean;
 }
 
 const ConfigSwitch = ({
     configTitle,
     configLabel,
+    configTooltip,
     configPin,
-    enableLabel = 'Enable',
     invert = false,
 }: ConfigSwitchProps) => {
     const dispatch = useDispatch();
@@ -35,10 +39,8 @@ const ConfigSwitch = ({
     return (
         <Card
             title={
-                <div className="tw-flex tw-justify-between">
-                    <span>{configTitle}</span>
+                <div>
                     <Toggle
-                        label={enableLabel}
                         isToggled={toggleEnable}
                         onToggle={enable =>
                             dispatch(
@@ -48,13 +50,29 @@ const ConfigSwitch = ({
                                 })
                             )
                         }
-                    />
+                    >
+                        <span className="h5">{configTitle}</span>
+                    </Toggle>
                 </div>
             }
         >
-            <div className="tw-flex tw-content-between">
-                <div>{configLabel}</div>
-            </div>
+            {configTooltip ? (
+                <Overlay
+                    tooltipId="tooltip"
+                    tooltipChildren={
+                        <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
+                            <p className="tooltip-text">{configTooltip}</p>
+                        </div>
+                    }
+                >
+                    <div className="tw-flex tw-content-between">
+                        <div className="tw-flex-grow">{configLabel}</div>
+                        <span className="mdi mdi-help-circle-outline" />
+                    </div>
+                </Overlay>
+            ) : (
+                <div className="tw-flex-grow">{configLabel}</div>
+            )}
         </Card>
     );
 };

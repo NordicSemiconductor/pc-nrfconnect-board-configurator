@@ -34,8 +34,9 @@
         {
             "type": "switch",
             "id": "swd-control",
-            "title": "SWD Control",
-            "label": "Enable or disable the SWD connection between the IMCU and target chip. This can be done to e.g. use an external debugger.",
+            "title": "Software Debugger (SWD)",
+            "label": "Disable to use an external debugger on the target chip.",
+            "tooltip": "When enabled, the SWD is connected and the IMCU is acting as the debugger. When disabled, the SWD is disconnected and you can use an external debugger connected to the Debug In header.",
             "enable": {
                 "pin": 6,
                 "invert": true
@@ -62,8 +63,7 @@
         {
             "type": "slide",
             "id": "sim-select",
-            "title": "SIM Select",
-            "label": "Select whether to use SIM card or eSIM.",
+            "title": "SIM Option",
             "enable": {
                 "pin": 14
             },
@@ -72,7 +72,7 @@
         {
             "type": "switch",
             "id": "modem-coexistence-interface",
-            "title": "Modem Co-Existence Interface",
+            "title": "Modem coexistence interface",
             "label": "Enable or disable the GPIO pin connection to the coexistence interface. This is done so that the GPIO pins can be used for other use cases.",
             "enable": {
                 "pin": 18,
@@ -92,7 +92,7 @@
         {
             "type": "switch",
             "id": "external-memory",
-            "title": "External Memory",
+            "title": "External memory",
             "label": "Enable or disable the external memory chip.",
             "enable": {
                 "pin": 47,

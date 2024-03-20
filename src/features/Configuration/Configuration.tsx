@@ -167,6 +167,7 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
                                 <ConfigSlideSelector
                                     configTitle={pinConfig.title}
                                     configLabel={pinConfig.label}
+                                    configTooltip={pinConfig.tooltip}
                                     configPin={pinConfig.enable.pin}
                                     invert={pinConfig.enable.invert ?? false}
                                     configAlternatives={pinConfig.alternatives}
@@ -177,6 +178,7 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
                                 <ConfigSwitch
                                     configTitle={pinConfig.title}
                                     configLabel={pinConfig.label}
+                                    configTooltip={pinConfig.tooltip}
                                     configPin={pinConfig.enable.pin}
                                     invert={pinConfig.enable.invert ?? false}
                                 />

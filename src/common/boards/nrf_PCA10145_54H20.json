@@ -8,7 +8,7 @@
         {
             "type": "vcom",
             "id": "vcom0",
-            "name": "VCOM 0",
+            "name": "VCOM0",
             "enable": {
                 "pin": 42
             },
@@ -19,7 +19,7 @@
         {
             "type": "vcom",
             "id": "vcom1",
-            "name": "VCOM 1",
+            "name": "VCOM1",
             "enable": {
                 "pin": 22
             },
@@ -31,7 +31,6 @@
             "type": "slide",
             "id": "gpio-voltage-1",
             "title": "GPIO port 1 Voltage",
-            "label": "Voltage",
             "enable": {
                 "pin": 6,
                 "invert": true
@@ -42,7 +41,6 @@
             "type": "slide",
             "id": "gpio-voltage-2",
             "title": "GPIO port 2 Voltage",
-            "label": "Voltage",
             "enable": {
                 "pin": 7,
                 "invert": true
@@ -53,7 +51,6 @@
             "type": "slide",
             "id": "gpio-voltage-7",
             "title": "GPIO port 7 Voltage",
-            "label": "Voltage",
             "enable": {
                 "pin": 8,
                 "invert": true
@@ -64,7 +61,6 @@
             "type": "slide",
             "id": "gpio-voltage-9",
             "title": "GPIO port 9 Voltage",
-            "label": "Voltage",
             "enable": {
                 "pin": 28
             },
@@ -73,8 +69,9 @@
         {
             "type": "slide",
             "id": "ledcontrol",
-            "title": "LED Control",
-            "label": "LED Enable",
+            "title": "LED Power",
+            "label": "Disable LEDs to use the GPIOs for other purposes.",
+            "tooltip": "The LEDs are enabled by providing 3.3 V to LED1-LED4.",
             "enable": {
                 "pin": 45
             },
