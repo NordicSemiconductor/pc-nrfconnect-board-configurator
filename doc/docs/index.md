@@ -10,5 +10,5 @@ Board Configurator is installed and updated using [nRF Connect for Desktop](http
 
 ## Supported devices
 
-- nRF9161 DK (v0.9.1)
+- nRF9161 DK
 - nRF9151 DK

@@ -10,6 +10,7 @@ import BoardControllerConfigDefinition from '../../common/boards/BoardController
 import nrf54h20json from '../../common/boards/nrf_PCA10145_54H20.json';
 import nrf9161v091json from '../../common/boards/nrf_PCA10153_0.9.1_9161.json';
 import nrf9161v0100json from '../../common/boards/nrf_PCA10153_0.10.0_9161.json';
+import nrf9161v100json from '../../common/boards/nrf_PCA10153_1.0.0_9161.json';
 import nrf54l15v020json from '../../common/boards/nrf_PCA10156_0.2.0.json';
 import nrf54l15v030json from '../../common/boards/nrf_PCA10156_0.3.0.json';
 import nrf9151v020json from '../../common/boards/nrf_PCA10171_0.2.0_9151.json';
@@ -26,6 +27,7 @@ export type BoardDefinition = {
 
 const typednrf9161json = nrf9161v0100json as BoardControllerConfigDefinition;
 const typednrf9161v091 = nrf9161v091json as BoardControllerConfigDefinition;
+const typednrf9161v100 = nrf9161v100json as BoardControllerConfigDefinition;
 const typednrf54l15v020json =
     nrf54l15v020json as BoardControllerConfigDefinition;
 const typednrf54l15v030json =
@@ -58,6 +60,9 @@ export function getBoardDefinition(
             }
             if (boardRevision === '0.9.0' || boardRevision === '0.9.1') {
                 return { boardControllerConfigDefinition: typednrf9161v091 };
+            }
+            if (boardRevision === '1.0.0') {
+                return { boardControllerConfigDefinition: typednrf9161v100 };
             }
 
             if (!boardRevision) {
