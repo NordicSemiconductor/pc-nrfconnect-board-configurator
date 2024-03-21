@@ -13,7 +13,7 @@ import nrf9161v0100json from '../../common/boards/nrf_PCA10153_0.10.0_9161.json'
 import nrf54l15v020json from '../../common/boards/nrf_PCA10156_0.2.0.json';
 import nrf54l15v030json from '../../common/boards/nrf_PCA10156_0.3.0.json';
 import nrf9151v020json from '../../common/boards/nrf_PCA10171_0.2.0_9151.json';
-import nrf54h20v070json from '../../common/boards/nrf_PCA10175_54H20_0.7.0.json';
+import nrf54h20v070json from '../../common/boards/nrf_PCA10175_0.7.0_54H20.json';
 
 export type BoardDefinition = {
     boardControllerConfigDefinition?: BoardControllerConfigDefinition;
