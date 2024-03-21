@@ -7,7 +7,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-    Button,
     Card,
     classNames,
     NumberInput,
@@ -117,11 +116,12 @@ const PresetButton = ({ pmicPort, voltage, selected }: PresetButtonProps) => {
     const dispatch = useDispatch();
 
     return (
-        <Button
-            variant="secondary"
+        <button
+            type="button"
             className={classNames(
-                'tw-h-5 tw-w-full tw-border-gray-200',
-                selected && 'tw-bg-gray-50'
+                'tw-preflight tw-h-5 tw-w-full tw-border-gray-200 tw-px-2 tw-text-xs',
+                'tw-border tw-text-gray-700 active:enabled:tw-bg-gray-50',
+                selected ? 'tw-bg-gray-50' : 'tw-bg-white'
             )}
             onClick={() => {
                 dispatch(
@@ -133,7 +133,7 @@ const PresetButton = ({ pmicPort, voltage, selected }: PresetButtonProps) => {
             }}
         >
             {(voltage / 1000).toFixed(1)}V
-        </Button>
+        </button>
     );
 };
 
