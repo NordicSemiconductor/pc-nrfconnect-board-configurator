@@ -7,7 +7,7 @@
 import { Device } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import BoardControllerConfigDefinition from '../../common/boards/BoardControllerConfigDefinition';
-import nrf54h20json from '../../common/boards/nrf_PCA10145_54H20.json';
+import nrf54h20pdk080json from '../../common/boards/nrf_PCA10145_0.8.0_54H20.json';
 import nrf9161v091json from '../../common/boards/nrf_PCA10153_0.9.1_9161.json';
 import nrf9161v0100json from '../../common/boards/nrf_PCA10153_0.10.0_9161.json';
 import nrf54l15v020json from '../../common/boards/nrf_PCA10156_0.2.0.json';
@@ -30,7 +30,7 @@ const typednrf54l15v020json =
     nrf54l15v020json as BoardControllerConfigDefinition;
 const typednrf54l15v030json =
     nrf54l15v030json as BoardControllerConfigDefinition;
-const typednrf54h20json = nrf54h20json as BoardControllerConfigDefinition;
+const typednrf54h20json = nrf54h20pdk080json as BoardControllerConfigDefinition;
 const typednrf54h20v070json =
     nrf54h20v070json as BoardControllerConfigDefinition;
 const typednrf9151v020json = nrf9151v020json as BoardControllerConfigDefinition;
