@@ -1,10 +1,18 @@
+## 0.2.0 - 2024-03-22
+
+EXPERIMENTAL RELEASE
+
+### Added
+
+-   Support for nRF9161-DK r1.0.0, including PMIC configuration.
+
 ## 0.1.13 - 2024-03-21
 
 EXPERIMENTAL RELEASE
 
 ### Added
 
--   Support for nRF9161-DK r1.0.0
+-   Support for nRF9161-DK r1.0.0.
 
 ## 0.1.12 - 2024-03-20
 
