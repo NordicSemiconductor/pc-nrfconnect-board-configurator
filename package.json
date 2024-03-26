@@ -47,7 +47,7 @@
         "prepare": "husky install"
     },
     "devDependencies": {
-        "@nordicsemiconductor/pc-nrfconnect-shared": "^167.0.0",
+        "@nordicsemiconductor/pc-nrfconnect-shared": "^170.0.0",
         "@types/react-test-renderer": "18.0.0"
     },
     "eslintConfig": {
