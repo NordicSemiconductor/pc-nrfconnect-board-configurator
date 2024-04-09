@@ -17,13 +17,13 @@ import { NrfutilDeviceLib } from '@nordicsemiconductor/pc-nrfconnect-shared/nrfu
 
 import BoardInformation from './features/BoardInformation/BoardInformation';
 import ConfigDataPreview from './features/ConfigDataPreview/ConfigDataPreview';
+import ConfigJsonRender from './features/ConfigJsonRender/ConfigJsonRender';
 import {
     getConfigArray,
     getDefaultConfig,
     setConfig,
     setPmicConfig,
 } from './features/Configuration/boardControllerConfigSlice';
-import ConfigJsonRender from './features/ConfigJsonRender/ConfigJsonRender';
 
 export default () => {
     logger.debug('Rendering SidePanel');
