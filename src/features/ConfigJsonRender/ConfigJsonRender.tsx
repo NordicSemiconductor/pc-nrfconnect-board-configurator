@@ -50,14 +50,6 @@ const ConfigJsonRender = ({ enabled = true }: ConfigJsonRenderProps) => {
                     <div>
                         <DialogButton
                             onClick={() => {
-                                // eslint-disable-next-line no-alert
-                                alert('should copy');
-                            }}
-                        >
-                            Copy
-                        </DialogButton>
-                        <DialogButton
-                            onClick={() => {
                                 enableJsonDialog(false);
                             }}
                         >
