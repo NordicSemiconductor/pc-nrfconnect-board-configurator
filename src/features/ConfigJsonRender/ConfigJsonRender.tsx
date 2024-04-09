@@ -10,7 +10,6 @@ import {
     Button,
     DialogButton,
     InfoDialog,
-    logger,
     selectedDevice,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import { clipboard } from 'electron';
@@ -18,8 +17,6 @@ import { clipboard } from 'electron';
 import { getConfigArray } from '../Configuration/boardControllerConfigSlice';
 
 const ConfigJsonRender = () => {
-    logger.debug('Rendering ConfigJsonRender');
-
     const device = useSelector(selectedDevice);
     const configData = useSelector(getConfigArray);
 

@@ -10,7 +10,6 @@ import {
     classNames,
     Device,
     Group,
-    logger,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import {
@@ -32,8 +31,6 @@ interface ConfigDataPreviewProps {
 }
 
 const ConfigDataPreview = ({ device }: ConfigDataPreviewProps) => {
-    logger.debug('Rendering ConfigDataPreview');
-
     const configData = useSelector(getConfigData);
     const pmicData = useSelector(getPmicConfigData);
     const boardRevision = useSelector(getBoardRevisionSemver);

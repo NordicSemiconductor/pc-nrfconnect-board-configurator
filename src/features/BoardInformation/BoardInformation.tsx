@@ -6,7 +6,6 @@
 
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { logger } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import {
     getBoardControllerFirmwareVersion,
@@ -14,8 +13,6 @@ import {
 } from '../Device/deviceSlice';
 
 const BoardInformation = () => {
-    logger.debug('Rendering BoardInformation');
-
     const boardRevision = useSelector(getBoardRevisionSemver);
     const boardControllerFirmwareVersion = useSelector(
         getBoardControllerFirmwareVersion
