@@ -87,9 +87,13 @@ export default () => {
                 </Button>
             </div>
             <Group heading="Board Controller info" collapsible>
-                {device && <BoardInformation />}
-                {device && <ConfigDataPreview device={device} />}
-                {device && <ConfigJsonRender />}
+                {device && (
+                    <>
+                        <BoardInformation />
+                        <ConfigDataPreview device={device} />
+                        <ConfigJsonRender />
+                    </>
+                )}
             </Group>
         </SidePanel>
     );
