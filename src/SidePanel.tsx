@@ -15,6 +15,7 @@ import {
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import { NrfutilDeviceLib } from '@nordicsemiconductor/pc-nrfconnect-shared/nrfutil/device';
 
+import BoardInformation from './features/BoardInformation/BoardInformation';
 import ConfigDataPreview from './features/ConfigDataPreview/ConfigDataPreview';
 import {
     getConfigArray,
@@ -22,6 +23,7 @@ import {
     setConfig,
     setPmicConfig,
 } from './features/Configuration/boardControllerConfigSlice';
+import ConfigJsonRender from './features/ConfigJsonRender/ConfigJsonRender';
 
 export default () => {
     logger.debug('Rendering SidePanel');
@@ -36,11 +38,11 @@ export default () => {
 
     return (
         <SidePanel className="side-panel">
-            <Group defaultCollapsed={false} heading="Actions" collapsible>
-                <Button
+            <div className="tw-flex tw-flex-col tw-gap-2">
+                <button
+                    type="button"
                     disabled={!device || isWriting}
-                    variant="primary"
-                    className="tw-w-full"
+                    className="tw-preflight tw-h-8 tw-w-full  tw-border tw-border-gray-700 tw-bg-white tw-px-2 tw-text-xs tw-text-gray-700"
                     onClick={async () => {
                         // Set isWriting flag for user ui feedback
                         setWriting(true);
@@ -57,7 +59,7 @@ export default () => {
                     }}
                 >
                     Write config
-                </Button>
+                </button>
                 <Button
                     disabled={!device || isWriting || !defaultConfig}
                     variant="secondary"
@@ -83,9 +85,11 @@ export default () => {
                 >
                     Load default config
                 </Button>
-            </Group>
-            <Group heading="Configuration data" collapsible>
-                <ConfigDataPreview enabled />
+            </div>
+            <Group heading="Board Controller info" collapsible>
+                {device && <BoardInformation enabled />}
+                {device && <ConfigDataPreview enabled device={device} />}
+                {device && <ConfigJsonRender enabled />}
             </Group>
         </SidePanel>
     );

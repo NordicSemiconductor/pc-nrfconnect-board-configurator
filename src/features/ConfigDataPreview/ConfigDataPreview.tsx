@@ -5,60 +5,59 @@
  */
 
 import React from 'react';
-import { useSelector } from 'react-redux';
-import { Group, logger } from '@nordicsemiconductor/pc-nrfconnect-shared';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    classNames,
+    Device,
+    Group,
+    logger,
+} from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import {
     getConfigData,
     getPmicConfigData,
+    setConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
 import {
-    getBoardControllerFirmwareVersion,
-    getBoardRevisionSemver,
-} from '../Device/deviceSlice';
+    BoardDefinition,
+    generatePinMap,
+    getBoardDefinition,
+} from '../Configuration/boardDefinitions';
+import { getBoardRevisionSemver } from '../Device/deviceSlice';
 
 import './configdatapreview.scss';
 
 interface ConfigDataPreviewProps {
     enabled: boolean;
+    device: Device;
 }
 
-const ConfigDataPreview = ({ enabled = true }: ConfigDataPreviewProps) => {
+const ConfigDataPreview = ({
+    enabled = true,
+    device,
+}: ConfigDataPreviewProps) => {
     logger.debug('Rendering ConfigDataPreview');
 
     const configData = useSelector(getConfigData);
     const pmicData = useSelector(getPmicConfigData);
     const boardRevision = useSelector(getBoardRevisionSemver);
-    const boardControllerFirmwareVersion = useSelector(
-        getBoardControllerFirmwareVersion
-    );
+    const boardDefinition = getBoardDefinition(device, boardRevision);
 
     if (enabled) {
         return (
             <>
-                {boardRevision && (
-                    <Group heading="Board Controller">
-                        <p>
-                            Board Hardware Revision:
-                            <br /> {boardRevision}
-                        </p>
-                        <p>
-                            Board Controller FW version:
-                            <br /> {boardControllerFirmwareVersion}
-                        </p>
-                    </Group>
-                )}
-
                 {configData && configData.size > 0 && (
-                    <Group heading="Board Controller pin configuration">
-                        <div className="config-block">
-                            <table>{configList(configData)}</table>
-                        </div>
+                    <Group heading="Pin configuration">
+                        <ConfigList
+                            configData={configData}
+                            boardDefinition={boardDefinition}
+                        />
+                        <p className="dip-label">/ = active low</p>
                     </Group>
                 )}
                 {pmicData && pmicData.size > 0 && (
                     <Group heading="PMIC configuration">
-                        <div className="config-block">{pmicList(pmicData)}</div>
+                        <PmicList pmicData={pmicData} />
                     </Group>
                 )}
             </>
@@ -68,26 +67,127 @@ const ConfigDataPreview = ({ enabled = true }: ConfigDataPreviewProps) => {
     return null;
 };
 
-function configList(configData: Map<number, boolean>) {
-    const pins = Array.from(configData.keys()).sort((a, b) => a - b);
-    return pins.map(pin => (
-        <tr key={`pin-${pin}`}>
-            <td className="config-pin">{pin}</td>
-            <td className="config-value">
-                {configData.get(pin) ? 'true' : 'false'}
-            </td>
-        </tr>
-    ));
+interface ConfigListProps {
+    configData: Map<number, boolean>;
+    boardDefinition: BoardDefinition;
 }
 
-function pmicList(pmicData: Map<number, number>) {
-    const ports = Array.from(pmicData.keys()).sort();
-    return ports.map(port => (
-        <div key={`port-${port}`}>
-            <span className="config-pin">{port}</span>
-            <span className="config-value">{pmicData.get(port)}</span>
+const ConfigList = ({ configData, boardDefinition }: ConfigListProps) => {
+    const pins = Array.from(configData.keys()).sort((a, b) => a - b);
+    const pinMap = generatePinMap(
+        boardDefinition.boardControllerConfigDefinition
+    );
+
+    return (
+        <div className="config-block tw-ml-px tw-mt-px">
+            {pins.map(pin => {
+                const { id, inverted } = pinMap.get(pin) || {
+                    id: 'unknown',
+                    inverted: false,
+                };
+
+                return (
+                    <div
+                        className="config-pin tw-h-10x -tw-mt-px tw-flex tw-w-full tw-items-center"
+                        key={`pin-${pin}`}
+                    >
+                        <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-w-8 tw-flex-none tw-items-center tw-border  tw-border-solid tw-border-gray-200 tw-p-1 tw-text-center tw-align-middle tw-text-gray-700">
+                            <div className="dip-label tw-m-auto">{pin}</div>
+                        </div>
+                        <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-flex-1 tw-items-center tw-truncate tw-border  tw-border-solid tw-border-gray-200 tw-p-1">
+                            <div className="dip-label tw-w-full tw-flex-1 tw-truncate tw-pl-1">
+                                {inverted && '/'}
+                                {id}
+                            </div>
+                        </div>
+                        <ConfigDipSwitch
+                            enable={configData.get(pin) === true}
+                            pinNumber={pin}
+                        />
+                    </div>
+                );
+            })}
         </div>
-    ));
+    );
+};
+
+interface ConfigSwitchProps {
+    enable: boolean;
+    pinNumber: number;
 }
+const ConfigDipSwitch = ({ pinNumber, enable }: ConfigSwitchProps) => {
+    const dispatch = useDispatch();
+
+    return (
+        <div className="dip-switch-container tw-p-1x -tw-ml-px tw-flex tw-h-8 tw-flex-none tw-items-center tw-border tw-border-solid tw-border-gray-200 tw-bg-gray-700">
+            <button
+                type="button"
+                className={classNames(
+                    'tw-preflight tw-ml-2 tw-mr-1 tw-h-4 tw-w-9',
+                    'tw-flex tw-items-center tw-justify-center', // Center contained item
+                    !enable
+                        ? 'dip-switch-selected tw-rounded-sm tw-bg-gray-50 tw-text-gray-700'
+                        : 'dip-switch-unselected tw-text-gray-100'
+                )}
+                onClick={() => {
+                    dispatch(
+                        setConfigValue({
+                            configPin: pinNumber,
+                            configPinState: false,
+                        })
+                    );
+                }}
+            >
+                <span className="dip-switch tw-font-bold">OFF</span>
+            </button>
+            <button
+                type="button"
+                className={classNames(
+                    'tw-preflight tw-ml-1 tw-mr-2 tw-h-4 tw-w-9',
+                    'tw-flex tw-items-center tw-justify-center', // Center contained item
+                    enable
+                        ? 'dip-switch-selected tw-rounded-sm tw-bg-gray-50 tw-text-gray-700'
+                        : 'dip-switch-unselected tw-text-gray-100'
+                )}
+                onClick={() => {
+                    dispatch(
+                        setConfigValue({
+                            configPin: pinNumber,
+                            configPinState: true,
+                        })
+                    );
+                }}
+            >
+                <span className="dip-switch tw-font-bold">ON</span>
+            </button>
+        </div>
+    );
+};
+
+interface PmicListProps {
+    pmicData: Map<number, number>;
+}
+const PmicList = ({ pmicData }: PmicListProps) => {
+    const ports = Array.from(pmicData.keys()).sort();
+    return (
+        <div className="config-block tw-mb-6 tw-w-full">
+            {ports.map(port => (
+                <div
+                    className="config-pin tw-h-10x -tw-mt-px tw-flex tw-w-full tw-items-center"
+                    key={`port-${port}`}
+                >
+                    <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-w-8 tw-flex-none tw-items-center tw-border  tw-border-solid tw-border-gray-200 tw-p-1 tw-text-center tw-align-middle tw-text-gray-700">
+                        <div className="dip-label tw-m-auto">{port}</div>
+                    </div>
+                    <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-flex-1 tw-items-center tw-truncate tw-border  tw-border-solid tw-border-gray-200 tw-p-1">
+                        <div className="dip-label tw-w-full tw-flex-1 tw-truncate tw-pl-1">
+                            {pmicData.get(port)} mV
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+};
 
 export default ConfigDataPreview;
