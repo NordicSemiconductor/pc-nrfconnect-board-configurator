@@ -13,11 +13,7 @@ import {
     getBoardRevisionSemver,
 } from '../Device/deviceSlice';
 
-interface BoardInformationProps {
-    enabled: boolean;
-}
-
-const BoardInformation = ({ enabled = true }: BoardInformationProps) => {
+const BoardInformation = () => {
     logger.debug('Rendering BoardInformation');
 
     const boardRevision = useSelector(getBoardRevisionSemver);
@@ -25,7 +21,7 @@ const BoardInformation = ({ enabled = true }: BoardInformationProps) => {
         getBoardControllerFirmwareVersion
     );
 
-    return enabled ? (
+    return (
         <div className="sidepanel-information tw-mb-6 tw-w-full tw-border tw-border-solid tw-border-gray-200 tw-p-2">
             <div className="tw-flex tw-justify-between">
                 <div>DK Hardware Revision:</div>
@@ -38,7 +34,7 @@ const BoardInformation = ({ enabled = true }: BoardInformationProps) => {
                 </div>
             </div>
         </div>
-    ) : null;
+    );
 };
 
 export default BoardInformation;

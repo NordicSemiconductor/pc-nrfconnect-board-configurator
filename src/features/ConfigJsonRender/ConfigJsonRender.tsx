@@ -17,11 +17,7 @@ import { clipboard } from 'electron';
 
 import { getConfigArray } from '../Configuration/boardControllerConfigSlice';
 
-interface ConfigJsonRenderProps {
-    enabled: boolean;
-}
-
-const ConfigJsonRender = ({ enabled = true }: ConfigJsonRenderProps) => {
+const ConfigJsonRender = () => {
     logger.debug('Rendering ConfigJsonRender');
 
     const device = useSelector(selectedDevice);
@@ -29,7 +25,7 @@ const ConfigJsonRender = ({ enabled = true }: ConfigJsonRenderProps) => {
 
     const [jsonDialogEnabled, enableJsonDialog] = useState(false);
 
-    return enabled ? (
+    return (
         <>
             <Button
                 disabled={!device}
@@ -71,7 +67,7 @@ const ConfigJsonRender = ({ enabled = true }: ConfigJsonRenderProps) => {
                 </pre>
             </InfoDialog>
         </>
-    ) : null;
+    );
 };
 
 export default ConfigJsonRender;

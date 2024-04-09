@@ -28,14 +28,10 @@ import { getBoardRevisionSemver } from '../Device/deviceSlice';
 import './configdatapreview.scss';
 
 interface ConfigDataPreviewProps {
-    enabled: boolean;
     device: Device;
 }
 
-const ConfigDataPreview = ({
-    enabled = true,
-    device,
-}: ConfigDataPreviewProps) => {
+const ConfigDataPreview = ({ device }: ConfigDataPreviewProps) => {
     logger.debug('Rendering ConfigDataPreview');
 
     const configData = useSelector(getConfigData);
@@ -43,28 +39,24 @@ const ConfigDataPreview = ({
     const boardRevision = useSelector(getBoardRevisionSemver);
     const boardDefinition = getBoardDefinition(device, boardRevision);
 
-    if (enabled) {
-        return (
-            <>
-                {configData && configData.size > 0 && (
-                    <Group heading="Pin configuration">
-                        <ConfigList
-                            configData={configData}
-                            boardDefinition={boardDefinition}
-                        />
-                        <p className="dip-label">/ = active low</p>
-                    </Group>
-                )}
-                {pmicData && pmicData.size > 0 && (
-                    <Group heading="PMIC configuration">
-                        <PmicList pmicData={pmicData} />
-                    </Group>
-                )}
-            </>
-        );
-    }
-
-    return null;
+    return (
+        <>
+            {configData && configData.size > 0 && (
+                <Group heading="Pin configuration">
+                    <ConfigList
+                        configData={configData}
+                        boardDefinition={boardDefinition}
+                    />
+                    <p className="dip-label">/ = active low</p>
+                </Group>
+            )}
+            {pmicData && pmicData.size > 0 && (
+                <Group heading="PMIC configuration">
+                    <PmicList pmicData={pmicData} />
+                </Group>
+            )}
+        </>
+    );
 };
 
 interface ConfigListProps {
