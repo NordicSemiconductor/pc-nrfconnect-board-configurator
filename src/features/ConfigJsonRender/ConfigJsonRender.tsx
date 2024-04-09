@@ -13,6 +13,7 @@ import {
     logger,
     selectedDevice,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
+import { clipboard } from 'electron';
 
 import { getConfigArray } from '../Configuration/boardControllerConfigSlice';
 
@@ -47,7 +48,14 @@ const ConfigJsonRender = ({ enabled = true }: ConfigJsonRenderProps) => {
                 }}
                 title="Configuration JSON"
                 footer={
-                    <div>
+                    <div className="tw-flex tw-gap-2">
+                        <DialogButton
+                            onClick={() => {
+                                clipboard.writeText(JSON.stringify(configData));
+                            }}
+                        >
+                            Copy
+                        </DialogButton>
                         <DialogButton
                             onClick={() => {
                                 enableJsonDialog(false);
