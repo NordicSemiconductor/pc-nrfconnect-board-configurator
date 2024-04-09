@@ -126,7 +126,7 @@ const ConfigDipSwitch = ({ pinNumber, enable }: ConfigSwitchProps) => {
                     'tw-preflight tw-ml-2 tw-mr-1 tw-h-4 tw-w-9',
                     'tw-flex tw-items-center tw-justify-center', // Center contained item
                     !enable
-                        ? 'dip-switch-selected tw-rounded-sm tw-bg-gray-50 tw-text-gray-700'
+                        ? 'dip-switch-selected tw-rounded-sm tw-bg-white tw-text-gray-700'
                         : 'dip-switch-unselected tw-text-gray-100'
                 )}
                 onClick={() => {
@@ -146,7 +146,7 @@ const ConfigDipSwitch = ({ pinNumber, enable }: ConfigSwitchProps) => {
                     'tw-preflight tw-ml-1 tw-mr-2 tw-h-4 tw-w-9',
                     'tw-flex tw-items-center tw-justify-center', // Center contained item
                     enable
-                        ? 'dip-switch-selected tw-rounded-sm tw-bg-gray-50 tw-text-gray-700'
+                        ? 'dip-switch-selected tw-rounded-sm tw-bg-white tw-text-gray-700'
                         : 'dip-switch-unselected tw-text-gray-100'
                 )}
                 onClick={() => {
