@@ -104,52 +104,49 @@ interface ConfigSwitchProps {
     enable: boolean;
     pinNumber: number;
 }
-const ConfigDipSwitch = ({ pinNumber, enable }: ConfigSwitchProps) => {
-    const dispatch = useDispatch();
+const ConfigDipSwitch = ({ pinNumber, enable }: ConfigSwitchProps) => (
+    <div className="dip-switch-container tw-p-1x -tw-ml-px tw-flex tw-h-8 tw-flex-none tw-items-center tw-border tw-border-solid tw-border-gray-200 tw-bg-gray-700">
+        <DipSwitchButton type="off" pinNumber={pinNumber} selected={!enable} />
+        <DipSwitchButton type="on" pinNumber={pinNumber} selected={enable} />
+    </div>
+);
 
+interface DipSwitchButtonProps {
+    type: 'on' | 'off';
+    selected: boolean;
+    pinNumber: number;
+}
+const DipSwitchButton = ({
+    type,
+    selected,
+    pinNumber,
+}: DipSwitchButtonProps) => {
+    const dispatch = useDispatch();
     return (
-        <div className="dip-switch-container tw-p-1x -tw-ml-px tw-flex tw-h-8 tw-flex-none tw-items-center tw-border tw-border-solid tw-border-gray-200 tw-bg-gray-700">
-            <button
-                type="button"
-                className={classNames(
-                    'tw-preflight tw-ml-2 tw-mr-1 tw-h-4 tw-w-9',
-                    'tw-flex tw-items-center tw-justify-center', // Center contained item
-                    !enable
-                        ? 'dip-switch-selected tw-rounded-sm tw-bg-white tw-text-gray-700'
-                        : 'dip-switch-unselected tw-text-gray-100'
-                )}
-                onClick={() => {
-                    dispatch(
-                        setConfigValue({
-                            configPin: pinNumber,
-                            configPinState: false,
-                        })
-                    );
-                }}
-            >
-                <span className="dip-switch tw-font-bold">OFF</span>
-            </button>
-            <button
-                type="button"
-                className={classNames(
-                    'tw-preflight tw-ml-1 tw-mr-2 tw-h-4 tw-w-9',
-                    'tw-flex tw-items-center tw-justify-center', // Center contained item
-                    enable
-                        ? 'dip-switch-selected tw-rounded-sm tw-bg-white tw-text-gray-700'
-                        : 'dip-switch-unselected tw-text-gray-100'
-                )}
-                onClick={() => {
-                    dispatch(
-                        setConfigValue({
-                            configPin: pinNumber,
-                            configPinState: true,
-                        })
-                    );
-                }}
-            >
-                <span className="dip-switch tw-font-bold">ON</span>
-            </button>
-        </div>
+        <button
+            type="button"
+            className={classNames(
+                'tw-preflight',
+                'tw-h-4 tw-w-9', // Dimensions
+                'tw-flex tw-items-center tw-justify-center', // Center contained item
+                type === 'on' ? 'tw-ml-1 tw-mr-2' : 'tw-ml-2 tw-mr-1', // Outside margin
+                selected
+                    ? 'dip-switch-selected tw-rounded-sm tw-bg-white tw-text-gray-700'
+                    : 'dip-switch-unselected tw-text-gray-100'
+            )}
+            onClick={() => {
+                dispatch(
+                    setConfigValue({
+                        configPin: pinNumber,
+                        configPinState: type === 'on',
+                    })
+                );
+            }}
+        >
+            <span className="dip-switch tw-font-bold">
+                {type === 'on' ? 'ON' : 'OFF'}
+            </span>
+        </button>
     );
 };
 
