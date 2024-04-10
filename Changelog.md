@@ -1,3 +1,12 @@
+## 0.3.0 - 2024-04-10
+
+EXPERIMENTAL RELEASE
+
+### Added
+
+-   Dialog to view the JSON config, and copy it to the clipboard.
+-   Updated config view in the side panel.
+
 ## 0.2.0 - 2024-03-22
 
 EXPERIMENTAL RELEASE
