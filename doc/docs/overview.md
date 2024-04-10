@@ -17,6 +17,20 @@ When you select a device, the following actions become available in the side pan
 - **Write config** - Writes the selected configurations to the development kit, overwriting the defaults.
 - **Load default config** - Loads the default configuration settings into the application UI for the selected device. It does not write anything to the development kit.
 
+## Board controller info
+
+This side panel area lists advanced information about the board controller configuration:
+
+* **DK Hardware Revision** - Version of the selected device.
+* **Board Controller FW version** - Version of the Interface MCU firmware that you are going to [configure](updating.md).
+* **Pin Configuration** - List of available GPIO pins, with their respective pin number. Depending on the connected device and its hardware design, different pins are connected to different features.
+
+    !!! note "Note"
+        Some of the pins on the list are inverted (active low). This is indicated by the forward slash (`/`). Enabling such pins might disable a setting in the **Configuration** tab, and vice-versa. For example, disabling **Software Debugger** on the nRF9161 DK will enable the `swd-control` pin in the **Pin Configuration**.
+
+* **PMIC Configuration** - List of the BUCK output ports available for configuration. These correspond to the **nPM VUOT** settings in the **Configuration** tab.
+* **Show Config JSON** - Click to open the JSON array that lets you review the configuration sent to the board controller. You can copy the configuration to use it in [nRF Util](https://docs.nordicsemi.com/bundle/nrfutil/page/README.html) using the `nrfutil device x-boardcontroller-program` command.
+
 ## Configuration tab
 
 In the **Configuration** tab, you can see the options that are configurable for the selected development kit.

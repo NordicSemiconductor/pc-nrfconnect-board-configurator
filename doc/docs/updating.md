@@ -15,7 +15,8 @@ To update the configuration of a development kit, complete the following steps:
 1. Configure the settings in the [**Configuration**](./overview.md#configuration-tab) tab.
 
     !!! note "Note"
-          Some options are interdependable. For example, if the VCOM is disconnected, the Hardware Flow Control will automatically be disconnected too.
+          - Some options are interdependable. For example, if the VCOM is disconnected, the Hardware Flow Control will automatically be disconnected too.
+          - Advanced users can also configure some of the settings by toggling pins in the [**Pin Configuration**](overview.md#board-controller-info) section.
 
 1. Click [**Write config**](./overview.md#actions) to upload the config to the device.</br>
    The application overwrites the default board controller configuration with the updated settings.
