@@ -88,3 +88,43 @@ export function getBoardDefinition(
             return { controlFlag: { unrecognizedBoard: true } };
     }
 }
+
+type PinDescription = {
+    id: string;
+    inverted: boolean;
+};
+
+export function generatePinMap(
+    boardControllerConfigDefinition: BoardControllerConfigDefinition | undefined
+): Map<number, PinDescription> {
+    const pinMap = new Map<number, PinDescription>();
+
+    boardControllerConfigDefinition?.pins.forEach(pin => {
+        switch (pin.type) {
+            case 'switch':
+                pinMap.set(pin.enable.pin, {
+                    id: pin.id,
+                    inverted: pin.enable.invert === true,
+                });
+                break;
+            case 'slide':
+                pinMap.set(pin.enable.pin, {
+                    id: pin.id,
+                    inverted: pin.enable.invert === true,
+                });
+                break;
+            case 'vcom':
+                pinMap.set(pin.enable.pin, {
+                    id: pin.id,
+                    inverted: pin.enable.invert === true,
+                });
+                pinMap.set(pin.hwfc.pin, {
+                    id: `${pin.id}-hwfc`,
+                    inverted: pin.hwfc.invert === true,
+                });
+                break;
+        }
+    });
+
+    return pinMap;
+}

@@ -144,9 +144,6 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
 
     return (
         <div>
-            <div>
-                <p>{board.boardName}</p>
-            </div>
             <MasonryLayout minWidth={300}>
                 {pins.map(pinConfig => {
                     switch (pinConfig.type) {
