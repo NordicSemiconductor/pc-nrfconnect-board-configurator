@@ -68,7 +68,7 @@ const ConfigList = ({ configData, boardDefinition }: ConfigListProps) => {
     );
 
     return (
-        <div className="config-block tw-ml-px tw-mt-px">
+        <div className="tw-ml-px tw-mt-px">
             {pins.map(pin => {
                 const { id, inverted } = pinMap.get(pin) || {
                     id: 'unknown',
@@ -77,14 +77,16 @@ const ConfigList = ({ configData, boardDefinition }: ConfigListProps) => {
 
                 return (
                     <div
-                        className="config-pin tw-h-10x -tw-mt-px tw-flex tw-w-full tw-items-center"
+                        className="tw-h-10x -tw-mt-px tw-flex tw-w-full tw-items-center"
                         key={`pin-${pin}`}
                     >
                         <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-w-8 tw-flex-none tw-items-center tw-border  tw-border-solid tw-border-gray-200 tw-p-1 tw-text-center tw-align-middle tw-text-gray-700">
-                            <div className="dip-label tw-m-auto">{pin}</div>
+                            <div className="dip-label-text tw-m-auto">
+                                {pin}
+                            </div>
                         </div>
                         <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-flex-1 tw-items-center tw-truncate tw-border  tw-border-solid tw-border-gray-200 tw-p-1">
-                            <div className="dip-label tw-w-full tw-flex-1 tw-truncate tw-pl-1">
+                            <div className="dip-label-text tw-w-full tw-flex-1 tw-truncate tw-pl-1">
                                 {inverted && '/'}
                                 {id}
                             </div>
@@ -105,7 +107,7 @@ interface ConfigSwitchProps {
     pinNumber: number;
 }
 const ConfigDipSwitch = ({ pinNumber, enable }: ConfigSwitchProps) => (
-    <div className="dip-switch-container tw-p-1x -tw-ml-px tw-flex tw-h-8 tw-flex-none tw-items-center tw-border tw-border-solid tw-border-gray-200 tw-bg-gray-700">
+    <div className="tw-p-1x -tw-ml-px tw-flex tw-h-8 tw-flex-none tw-items-center tw-border tw-border-solid tw-border-gray-200 tw-bg-gray-700">
         <DipSwitchButton type="off" pinNumber={pinNumber} selected={!enable} />
         <DipSwitchButton type="on" pinNumber={pinNumber} selected={enable} />
     </div>
@@ -131,8 +133,8 @@ const DipSwitchButton = ({
                 'tw-flex tw-items-center tw-justify-center', // Center contained item
                 type === 'on' ? 'tw-ml-1 tw-mr-2' : 'tw-ml-2 tw-mr-1', // Outside margin
                 selected
-                    ? 'dip-switch-selected tw-rounded-sm tw-bg-white tw-text-gray-700'
-                    : 'dip-switch-unselected tw-text-gray-100'
+                    ? 'tw-rounded-sm tw-bg-white tw-text-gray-700'
+                    : 'tw-text-gray-100'
             )}
             onClick={() => {
                 dispatch(
@@ -143,7 +145,7 @@ const DipSwitchButton = ({
                 );
             }}
         >
-            <span className="dip-switch tw-font-bold">
+            <span className="dip-switch-button-text tw-font-bold">
                 {type === 'on' ? 'ON' : 'OFF'}
             </span>
         </button>
