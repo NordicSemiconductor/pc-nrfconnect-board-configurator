@@ -29,7 +29,7 @@ This side panel area lists advanced information about the board controller confi
         Some of the pins on the list are inverted (active low). This is indicated by the forward slash (`/`). Enabling such pins might disable a setting in the **Configuration** tab, and vice-versa. For example, disabling **Software Debugger** on the nRF9161 DK will enable the `swd-control` pin in the **Pin Configuration**.
 
 * **PMIC Configuration** - List of the BUCK output ports available for configuration. These correspond to the **nPM VUOT** settings in the **Configuration** tab.
-* **Show Config JSON** - Click to open the JSON array that lets you review the configuration sent to the board controller. You can copy the configuration to use it in [nRF Util](https://docs.nordicsemi.com/bundle/nrfutil/page/README.html) using the `nrfutil device x-boardcontroller-program` command.
+* **Show Config JSON** - Click to open the JSON array that lets you review the configuration sent to the board controller. You can copy the configuration to use it in [nRF Util](https://docs.nordicsemi.com/bundle/nrfutil/page/README.html) using the `nrfutil device x-execute-batch` or `nrfutil device x-execute` commands.
 
 ## Configuration tab
 
