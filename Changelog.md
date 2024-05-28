@@ -1,3 +1,11 @@
+## 0.3.1 - 2024-05-28
+
+EXPERIMENTAL RELEASE
+
+### Added
+
+-   Support for Apple silicon.
+
 ## 0.3.0 - 2024-04-10
 
 EXPERIMENTAL RELEASE
