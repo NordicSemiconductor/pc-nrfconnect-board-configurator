@@ -1,3 +1,11 @@
+## 0.3.2 - UNRELEASED
+
+EXPERIMENTAL RELEASE
+
+### Added
+
+-   Support for nRF54L15-PDK r0.7.0.
+
 ## 0.3.1 - 2024-05-28
 
 EXPERIMENTAL RELEASE

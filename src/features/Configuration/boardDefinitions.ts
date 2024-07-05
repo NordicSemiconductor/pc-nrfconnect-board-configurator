@@ -44,14 +44,18 @@ export function getBoardDefinition(
     switch (device?.devkit?.boardVersion) {
         case 'PCA10156':
             // nRF54L15
-            if (boardRevision === '0.3.0') {
+            if (
+                boardRevision === '0.1.0' || // Probably r0.2.0 with a firmware configuration error
+                boardRevision === '0.2.0' ||
+                boardRevision === '0.2.1'
+            ) {
                 return {
-                    boardControllerConfigDefinition: typednrf54l15v030json,
+                    boardControllerConfigDefinition: typednrf54l15v020json,
                 };
             }
 
-            // Default is revision 0.2.0 or 0.2.1
-            return { boardControllerConfigDefinition: typednrf54l15v020json };
+            // Default is revision 0.3.0 or higher
+            return { boardControllerConfigDefinition: typednrf54l15v030json };
 
         case 'PCA10153':
             // nRF9161
