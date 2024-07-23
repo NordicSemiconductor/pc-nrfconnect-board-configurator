@@ -1,3 +1,11 @@
+## 0.3.3 - Unreleased
+
+EXPERIMENTAL RELEASE
+
+### Fixed
+
+-   Incompatibility with new j-link drivers.
+
 ## 0.3.2 - 2024-07-09
 
 EXPERIMENTAL RELEASE
