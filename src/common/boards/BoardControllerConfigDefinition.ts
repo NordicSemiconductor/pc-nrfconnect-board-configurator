@@ -43,6 +43,7 @@ type PmicPortDefinition = {
     mVmax: number;
     portLabel?: string;
     portDescription?: string;
+    portId?: string;
 };
 
 type BoardDefinition = {

@@ -12,8 +12,10 @@ import {
     NumberInput,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
+import DirtyDot from '../../app/DirtyDot';
 import {
     getPmicConfigValue,
+    getPmicConfigValueDirty,
     setPmicConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
 
@@ -35,6 +37,8 @@ const VoltageConfiguration = ({
     const dispatch = useDispatch();
     const voltage = useSelector(getPmicConfigValue(pmicPort)) ?? voltageMin; // Default to voltageMin
 
+    const dirty = useSelector(getPmicConfigValueDirty(pmicPort));
+
     const label = pmicPortLabel ?? `Voltage port ${pmicPort}`;
     const description =
         pmicPortDescription ??
@@ -53,7 +57,13 @@ const VoltageConfiguration = ({
         <Card
             title={
                 <div className="tw-flex tw-content-between">
-                    <span>{label}</span>
+                    <span>
+                        {label}
+                        <DirtyDot
+                            dirty={dirty}
+                            className="tw-absolute tw-ml-1 -tw-translate-y-2"
+                        />
+                    </span>
                 </div>
             }
         >

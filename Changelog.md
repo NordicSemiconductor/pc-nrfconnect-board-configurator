@@ -1,3 +1,11 @@
+## 0.3.4 - 2024-09-16
+
+EXPERIMENTAL RELEASE
+
+### Added
+
+-   Indicators showing unwritten changes
+
 ## 0.3.3 - 2024-08-01
 
 EXPERIMENTAL RELEASE

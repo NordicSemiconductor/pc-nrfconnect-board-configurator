@@ -12,14 +12,18 @@ import {
     Group,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
+import DirtyDot from '../../app/DirtyDot';
 import {
     getConfigData,
+    getConfigDataDirty,
     getPmicConfigData,
+    getPmicConfigDataDirty,
     setConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
 import {
     BoardDefinition,
     generatePinMap,
+    generatePortMap,
     getBoardDefinition,
 } from '../Configuration/boardDefinitions';
 import { getBoardRevisionSemver } from '../Device/deviceSlice';
@@ -32,7 +36,9 @@ interface ConfigDataPreviewProps {
 
 const ConfigDataPreview = ({ device }: ConfigDataPreviewProps) => {
     const configData = useSelector(getConfigData);
+    const configDataDirty = useSelector(getConfigDataDirty);
     const pmicData = useSelector(getPmicConfigData);
+    const pmicDataDirty = useSelector(getPmicConfigDataDirty);
     const boardRevision = useSelector(getBoardRevisionSemver);
     const boardDefinition = getBoardDefinition(device, boardRevision);
 
@@ -42,6 +48,7 @@ const ConfigDataPreview = ({ device }: ConfigDataPreviewProps) => {
                 <Group heading="Pin configuration">
                     <ConfigList
                         configData={configData}
+                        configDataDirty={configDataDirty}
                         boardDefinition={boardDefinition}
                     />
                     <p className="dip-label">/ = active low</p>
@@ -49,7 +56,11 @@ const ConfigDataPreview = ({ device }: ConfigDataPreviewProps) => {
             )}
             {pmicData && pmicData.size > 0 && (
                 <Group heading="PMIC configuration">
-                    <PmicList pmicData={pmicData} />
+                    <PmicList
+                        pmicData={pmicData}
+                        pmicDataDirty={pmicDataDirty}
+                        boardDefinition={boardDefinition}
+                    />
                 </Group>
             )}
         </>
@@ -58,10 +69,15 @@ const ConfigDataPreview = ({ device }: ConfigDataPreviewProps) => {
 
 interface ConfigListProps {
     configData: Map<number, boolean>;
+    configDataDirty: Map<number, boolean>;
     boardDefinition: BoardDefinition;
 }
 
-const ConfigList = ({ configData, boardDefinition }: ConfigListProps) => {
+const ConfigList = ({
+    configData,
+    configDataDirty,
+    boardDefinition,
+}: ConfigListProps) => {
     const pins = Array.from(configData.keys()).sort((a, b) => a - b);
     const pinMap = generatePinMap(
         boardDefinition.boardControllerConfigDefinition
@@ -75,15 +91,21 @@ const ConfigList = ({ configData, boardDefinition }: ConfigListProps) => {
                     inverted: false,
                 };
 
+                const dirty = configDataDirty.get(pin) === true;
+
                 return (
                     <div
                         className="tw-h-10x -tw-mt-px tw-flex tw-w-full tw-items-center"
                         key={`pin-${pin}`}
                     >
-                        <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-w-8 tw-flex-none tw-items-center tw-border  tw-border-solid tw-border-gray-200 tw-p-1 tw-text-center tw-align-middle tw-text-gray-700">
+                        <div className="tw-mr-1x tw-relative -tw-ml-px tw-flex tw-h-8 tw-w-8 tw-flex-none tw-items-center tw-border  tw-border-solid tw-border-gray-200 tw-p-1 tw-text-center tw-align-middle tw-text-gray-700">
                             <div className="dip-label-text tw-m-auto">
                                 {pin}
                             </div>
+                            <DirtyDot
+                                dirty={dirty}
+                                className="dirtydot-tiny tw-absolute tw-end-0.5 tw-top-0.5"
+                            />
                         </div>
                         <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-flex-1 tw-items-center tw-truncate tw-border  tw-border-solid tw-border-gray-200 tw-p-1">
                             <div className="dip-label-text tw-w-full tw-flex-1 tw-truncate tw-pl-1">
@@ -154,26 +176,49 @@ const DipSwitchButton = ({
 
 interface PmicListProps {
     pmicData: Map<number, number>;
+    pmicDataDirty: Map<number, boolean>;
+    boardDefinition: BoardDefinition;
 }
-const PmicList = ({ pmicData }: PmicListProps) => {
+const PmicList = ({
+    pmicData,
+    pmicDataDirty,
+    boardDefinition,
+}: PmicListProps) => {
     const ports = Array.from(pmicData.keys()).sort();
+    const portMap = generatePortMap(
+        boardDefinition.boardControllerConfigDefinition
+    );
     return (
         <div className="tw-mb-6 tw-w-full">
-            {ports.map(port => (
-                <div
-                    className="tw-h-10x -tw-mt-px tw-flex tw-w-full tw-items-center"
-                    key={`port-${port}`}
-                >
-                    <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-w-8 tw-flex-none tw-items-center tw-border  tw-border-solid tw-border-gray-200 tw-p-1 tw-text-center tw-align-middle tw-text-gray-700">
-                        <div className="dip-label-text tw-m-auto">{port}</div>
-                    </div>
-                    <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-flex-1 tw-items-center tw-truncate tw-border  tw-border-solid tw-border-gray-200 tw-p-1">
-                        <div className="dip-label-text tw-w-full tw-flex-1 tw-truncate tw-pl-1">
-                            {pmicData.get(port)} mV
+            {ports.map(port => {
+                const { id } = portMap.get(port) || { id: 'Unknown' };
+                return (
+                    <div
+                        className="tw-h-10x -tw-mt-px tw-flex tw-w-full tw-items-center"
+                        key={`port-${port}`}
+                    >
+                        <div className="tw-mr-1x tw-relative -tw-ml-px tw-flex tw-h-8 tw-w-8 tw-flex-none tw-items-center tw-border  tw-border-solid tw-border-gray-200 tw-p-1 tw-text-center tw-align-middle tw-text-gray-700">
+                            <div className="dip-label-text tw-m-auto">
+                                {port}
+                            </div>
+                            <DirtyDot
+                                dirty={pmicDataDirty.get(port) === true}
+                                className="dirtydot-tiny tw-absolute tw-end-0.5 tw-top-0.5"
+                            />
+                        </div>
+                        <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-flex-1 tw-items-center tw-truncate tw-border  tw-border-solid tw-border-gray-200 tw-p-1">
+                            <div className="dip-label-text tw-w-full tw-flex-1 tw-truncate tw-text-center">
+                                {id}
+                            </div>
+                        </div>
+                        <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-flex-1 tw-items-center tw-truncate tw-border  tw-border-solid tw-border-gray-200 tw-p-1">
+                            <div className="dip-label-text tw-w-full tw-flex-1 tw-truncate tw-text-center">
+                                {pmicData.get(port)} mV
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                );
+            })}
         </div>
     );
 };

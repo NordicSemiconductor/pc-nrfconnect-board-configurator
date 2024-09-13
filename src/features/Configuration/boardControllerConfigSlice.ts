@@ -11,7 +11,9 @@ import { BoardConfiguration } from './hardwareConfiguration';
 
 interface ConfigState {
     boardControllerConfigData: Map<number, boolean>;
+    boardControllerConfigDataDirty: Map<number, boolean>;
     pmicConfigData: Map<number, number>;
+    pmicConfigDataDirty: Map<number, boolean>;
     hardwareConfig: BoardConfiguration;
     defaultConfig: BoardConfiguration;
 }
@@ -19,8 +21,10 @@ interface ConfigState {
 // nRF54H20 default config
 const initialState: ConfigState = {
     boardControllerConfigData: new Map([]),
+    boardControllerConfigDataDirty: new Map([]),
     // This might be needed pmicConfigData: new Map([[1, 1800]]),
     pmicConfigData: new Map([]),
+    pmicConfigDataDirty: new Map([]),
     hardwareConfig: {},
     defaultConfig: {},
 };
@@ -45,10 +49,26 @@ const boardControllerConfigSlice = createSlice({
             }: PayloadAction<{ configPin: number; configPinState: boolean }>
         ) {
             state.boardControllerConfigData.set(configPin, configPinState);
+
+            const currentConfig = state.hardwareConfig.pins?.get(configPin);
+
+            // Set the pin dirty if..
+            state.boardControllerConfigDataDirty.set(
+                configPin,
+                // ..the current config is not what is stored on the board
+                (currentConfig !== undefined &&
+                    configPinState !== currentConfig) ||
+                    // .. or current config is not the default when no value is stored on the board
+                    (currentConfig === undefined &&
+                        configPinState !==
+                            state.defaultConfig.pins?.get(configPin))
+            );
         },
 
         clearConfig(state) {
             state.boardControllerConfigData.clear();
+            state.boardControllerConfigDataDirty.clear();
+            state.pmicConfigDataDirty.clear();
         },
 
         setPmicConfig(
@@ -66,6 +86,21 @@ const boardControllerConfigSlice = createSlice({
             }: PayloadAction<{ pmicConfigPort: number; configPinState: number }>
         ) {
             state.pmicConfigData.set(pmicConfigPort, configPinState);
+
+            const currentConfig =
+                state.hardwareConfig.pmicPorts?.get(pmicConfigPort);
+
+            // Set the port dirty if..
+            state.pmicConfigDataDirty.set(
+                pmicConfigPort,
+                // ..the current config is not what is stored on the board
+                (currentConfig !== undefined &&
+                    configPinState !== currentConfig) ||
+                    // .. or current config is not the default when no value is stored on the board
+                    (currentConfig === undefined &&
+                        configPinState !==
+                            state.defaultConfig.pmicPorts?.get(pmicConfigPort))
+            );
         },
         clearPmicConfig(state) {
             state.pmicConfigData.clear();
@@ -110,11 +145,46 @@ export const getPmicConfigValue =
     (state: RootState): number | undefined =>
         state.app.boardControllerConfig.pmicConfigData.get(pmicPort);
 
+export const getConfigPinDirty =
+    (configPin: number) =>
+    (state: RootState): boolean =>
+        state.app.boardControllerConfig.boardControllerConfigDataDirty.get(
+            configPin
+        ) === true;
+
+export const getPmicConfigValueDirty =
+    (pmicPort: number) =>
+    (state: RootState): boolean =>
+        state.app.boardControllerConfig.pmicConfigDataDirty.get(pmicPort) ===
+        true;
+
+export const getAnyConfigPinDirty = (state: RootState) =>
+    Array.from(
+        (
+            state.app.boardControllerConfig
+                .boardControllerConfigDataDirty as Map<number, boolean>
+        ).values()
+    ).includes(true) ||
+    Array.from(
+        (
+            state.app.boardControllerConfig.pmicConfigDataDirty as Map<
+                number,
+                boolean
+            >
+        ).values()
+    ).includes(true);
+
 export const getConfigData = (state: RootState) =>
     state.app.boardControllerConfig.boardControllerConfigData;
 
+export const getConfigDataDirty = (state: RootState) =>
+    state.app.boardControllerConfig.boardControllerConfigDataDirty;
+
 export const getPmicConfigData = (state: RootState) =>
     state.app.boardControllerConfig.pmicConfigData;
+
+export const getPmicConfigDataDirty = (state: RootState) =>
+    state.app.boardControllerConfig.pmicConfigDataDirty;
 
 export const getHardwareConfig = (state: RootState) =>
     state.app.boardControllerConfig.hardwareConfig;

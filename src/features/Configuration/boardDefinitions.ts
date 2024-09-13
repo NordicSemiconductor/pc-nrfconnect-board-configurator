@@ -132,3 +132,21 @@ export function generatePinMap(
 
     return pinMap;
 }
+
+type PmicPortDescription = {
+    id: string;
+};
+
+export function generatePortMap(
+    boardControllerConfigDefinition: BoardControllerConfigDefinition | undefined
+): Map<number, PmicPortDescription> {
+    const pinMap = new Map<number, PmicPortDescription>();
+
+    boardControllerConfigDefinition?.pmicPorts?.forEach(port => {
+        if (port.portId) {
+            pinMap.set(port.port, { id: port.portId });
+        }
+    });
+
+    return pinMap;
+}
