@@ -4,7 +4,8 @@ EXPERIMENTAL RELEASE
 
 ### Added
 
--   Indicators showing unwritten changes
+-   Indicators showing unwritten changes.
+-   Icon and metadata for nRF54 series.
 
 ## 0.3.3 - 2024-08-01
 
