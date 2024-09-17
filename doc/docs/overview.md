@@ -15,6 +15,12 @@ Opens the drop-down with the list of devices connected to the computer. You can 
 When you select a device, the following actions become available in the side panel:
 
 - **Write config** - Writes the selected configurations to the development kit, overwriting the defaults.
+
+    !!! note "Note"
+         When you have unwritten changes to the board configuration, a blue dot appears next to the **Write config** button.
+
+          ![Blue dot indicating unwritten changes](./screenshots/board_configurator_unwritten_config.png "Blue dot indicating unwritten changes")
+
 - **Load default config** - Loads the default configuration settings into the application UI for the selected device. It does not write anything to the development kit.
 
 ## Board controller info
@@ -33,7 +39,7 @@ This side panel area lists advanced information about the board controller confi
 
 ## Configuration tab
 
-In the **Configuration** tab, you can see the options that are configurable for the selected development kit.
+In the **Configuration** tab, you can see the options that you can [configure](updating.md) for the selected development kit.
 
 ![Board Configurator configuration tab](./screenshots/board_configurator_connected.png "Board Configurator configuration tab")
 
