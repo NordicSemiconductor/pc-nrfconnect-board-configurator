@@ -4,7 +4,7 @@ EXPERIMENTAL RELEASE
 
 ### Added
 
--   Indicators showing unwritten changes.
+-   Blue dot indicators for configuration options with unwritten changes.
 -   Icon and metadata for the nRF54L and nRF54H Series devices.
 
 ## 0.3.3 - 2024-08-01
