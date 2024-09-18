@@ -50,18 +50,14 @@ const boardControllerConfigSlice = createSlice({
         ) {
             state.boardControllerConfigData.set(configPin, configPinState);
 
-            const currentConfig = state.hardwareConfig.pins?.get(configPin);
-
-            // Set the pin dirty if..
+            // Update dirty flag
             state.boardControllerConfigDataDirty.set(
                 configPin,
-                // ..the current config is not what is stored on the board
-                (currentConfig !== undefined &&
-                    configPinState !== currentConfig) ||
-                    // .. or current config is not the default when no value is stored on the board
-                    (currentConfig === undefined &&
-                        configPinState !==
-                            state.defaultConfig.pins?.get(configPin))
+                computeDirtyFlag(
+                    configPinState,
+                    state.hardwareConfig.pins?.get(configPin),
+                    state.defaultConfig.pins?.get(configPin)
+                )
             );
         },
 
@@ -87,19 +83,14 @@ const boardControllerConfigSlice = createSlice({
         ) {
             state.pmicConfigData.set(pmicConfigPort, configPinState);
 
-            const currentConfig =
-                state.hardwareConfig.pmicPorts?.get(pmicConfigPort);
-
-            // Set the port dirty if..
+            // Update dirty flag
             state.pmicConfigDataDirty.set(
                 pmicConfigPort,
-                // ..the current config is not what is stored on the board
-                (currentConfig !== undefined &&
-                    configPinState !== currentConfig) ||
-                    // .. or current config is not the default when no value is stored on the board
-                    (currentConfig === undefined &&
-                        configPinState !==
-                            state.defaultConfig.pmicPorts?.get(pmicConfigPort))
+                computeDirtyFlag(
+                    configPinState,
+                    state.hardwareConfig.pmicPorts?.get(pmicConfigPort),
+                    state.defaultConfig.pmicPorts?.get(pmicConfigPort)
+                )
             );
         },
         clearPmicConfig(state) {
@@ -211,6 +202,21 @@ function avoidEmptyConfigArray(array: (number | boolean | undefined)[]) {
     }
 
     return array;
+}
+
+function computeDirtyFlag<T>(
+    configState: T,
+    currentHardwareConfig: T,
+    defaultConfig: T
+): boolean {
+    // The value is dirty if..
+    return (
+        // the current config is not what is stored on the board
+        (currentHardwareConfig !== undefined &&
+            configState !== currentHardwareConfig) ||
+        // .. or current config is not the default when no value is stored on the board
+        (currentHardwareConfig === undefined && configState !== defaultConfig)
+    );
 }
 
 export const {
