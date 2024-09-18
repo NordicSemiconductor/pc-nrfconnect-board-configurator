@@ -131,7 +131,7 @@ const PresetButton = ({ pmicPort, voltage, selected }: PresetButtonProps) => {
             className={classNames(
                 'tw-preflight tw-h-5 tw-w-full tw-border-gray-200 tw-px-2 tw-text-xs',
                 'tw-border tw-text-gray-700 active:enabled:tw-bg-gray-50',
-                selected ? 'tw-bg-gray-50' : 'tw-bg-white'
+                selected ? 'tw-bg-white' : 'tw-bg-gray-50'
             )}
             onClick={() => {
                 dispatch(
