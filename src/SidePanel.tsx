@@ -15,10 +15,12 @@ import {
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import { NrfutilDeviceLib } from '@nordicsemiconductor/pc-nrfconnect-shared/nrfutil/device';
 
+import DirtyDot from './app/DirtyDot';
 import BoardInformation from './features/BoardInformation/BoardInformation';
 import ConfigDataPreview from './features/ConfigDataPreview/ConfigDataPreview';
 import ConfigJsonRender from './features/ConfigJsonRender/ConfigJsonRender';
 import {
+    getAnyConfigPinDirty,
     getConfigArray,
     getDefaultConfig,
     setConfig,
@@ -34,6 +36,7 @@ export default () => {
 
     const device = useSelector(selectedDevice);
     const configData = useSelector(getConfigArray);
+    const configDirty = useSelector(getAnyConfigPinDirty);
     const defaultConfig = useSelector(getDefaultConfig);
 
     return (
@@ -42,7 +45,7 @@ export default () => {
                 <button
                     type="button"
                     disabled={!device || isWriting}
-                    className="tw-preflight tw-h-8 tw-w-full  tw-border tw-border-gray-700 tw-bg-white tw-px-2 tw-text-xs tw-text-gray-700"
+                    className="tw-preflight tw-relative tw-h-8 tw-w-full  tw-border tw-border-gray-700 tw-bg-white tw-px-2 tw-text-xs tw-text-gray-700"
                     onClick={async () => {
                         // Set isWriting flag for user ui feedback
                         setWriting(true);
@@ -59,6 +62,10 @@ export default () => {
                     }}
                 >
                     Write config
+                    <DirtyDot
+                        className="tw-absolute tw-end-1.5 tw-top-1"
+                        dirty={configDirty}
+                    />
                 </button>
                 <Button
                     disabled={!device || isWriting || !defaultConfig}

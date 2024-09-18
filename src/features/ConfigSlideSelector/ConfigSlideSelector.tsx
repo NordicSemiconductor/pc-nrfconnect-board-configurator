@@ -12,7 +12,9 @@ import {
     StateSelector,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
+import DirtyDot from '../../app/DirtyDot';
 import {
+    getConfigPinDirty,
     getConfigValue,
     setConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
@@ -39,11 +41,19 @@ const ConfigSlideSelector = ({
     const pinEnable = xor(useSelector(getConfigValue(configPin)), invert);
     const selectedItem = configAlternatives[pinEnable ? 1 : 0];
 
+    const dirty = useSelector(getConfigPinDirty(configPin));
+
     return (
         <Card
             title={
                 <div className="tw-flex tw-content-between">
-                    <span>{configTitle}</span>
+                    <span>
+                        {configTitle}
+                        <DirtyDot
+                            dirty={dirty}
+                            className="tw-absolute tw-ml-1 -tw-translate-y-2"
+                        />
+                    </span>
                 </div>
             }
         >

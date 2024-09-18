@@ -12,7 +12,9 @@ import {
     Toggle,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
+import DirtyDot from '../../app/DirtyDot';
 import {
+    getConfigPinDirty,
     getConfigValue,
     setConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
@@ -36,6 +38,8 @@ const ConfigSwitch = ({
 
     const toggleEnable = xor(useSelector(getConfigValue(configPin)), invert);
 
+    const dirty = useSelector(getConfigPinDirty(configPin));
+
     return (
         <Card
             title={
@@ -51,7 +55,13 @@ const ConfigSwitch = ({
                             )
                         }
                     >
-                        <span className="h5">{configTitle}</span>
+                        <span>
+                            <span className="h5">{configTitle}</span>
+                            <DirtyDot
+                                dirty={dirty}
+                                className="tw-absolute tw-ml-1 -tw-translate-x-1 -tw-translate-y-1/2"
+                            />
+                        </span>
                     </Toggle>
                 </div>
             }

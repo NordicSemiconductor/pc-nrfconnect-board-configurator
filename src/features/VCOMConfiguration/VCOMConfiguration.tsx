@@ -13,7 +13,9 @@ import {
     Toggle,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
+import DirtyDot from '../../app/DirtyDot';
 import {
+    getConfigPinDirty,
     getConfigValue,
     setConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
@@ -47,6 +49,9 @@ const VCOMConfiguration = ({
         useSelector(getConfigValue(hwfcEnablePin)),
         hwfcInvert
     );
+
+    const vcomEnableDirty = useSelector(getConfigPinDirty(vcomEnablePin));
+    const hwfcEnableDirty = useSelector(getConfigPinDirty(hwfcEnablePin));
 
     return (
         <Card
@@ -89,6 +94,10 @@ const VCOMConfiguration = ({
                             <span className="h5">
                                 Connect port {vcomName}{' '}
                                 <span className="mdi mdi-help-circle-outline" />
+                                <DirtyDot
+                                    dirty={vcomEnableDirty}
+                                    className="tw-absolute tw-ml-1 -tw-translate-y-2"
+                                />
                             </span>
                         </Overlay>
                     </Toggle>
@@ -127,6 +136,10 @@ const VCOMConfiguration = ({
                         <span>
                             {vcomName} HWFC autodetect lines
                             <span className="mdi mdi-help-circle-outline tw-pl-1" />
+                            <DirtyDot
+                                dirty={hwfcEnableDirty}
+                                className="tw-absolute tw-ml-1 -tw-translate-y-2"
+                            />
                         </span>
                     </Overlay>
                 </Toggle>
