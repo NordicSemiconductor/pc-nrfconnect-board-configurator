@@ -1,4 +1,4 @@
-## 0.3.4 - 2024-09-16
+## 0.3.4 - 2024-09-19
 
 EXPERIMENTAL RELEASE
 
@@ -6,6 +6,10 @@ EXPERIMENTAL RELEASE
 
 -   Blue dot indicators for configuration options with unwritten changes.
 -   Icon and metadata for the nRF54L and nRF54H Series devices.
+
+### Changed
+
+-   Updated shared components
 
 ## 0.3.3 - 2024-08-01
 
