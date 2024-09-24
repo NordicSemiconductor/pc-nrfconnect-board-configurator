@@ -67,6 +67,11 @@ const boardControllerConfigSlice = createSlice({
             state.pmicConfigDataDirty.clear();
         },
 
+        clearDirtyFlags(state) {
+            state.boardControllerConfigDataDirty.clear();
+            state.pmicConfigDataDirty.clear();
+        },
+
         setPmicConfig(
             state,
             {
@@ -223,6 +228,7 @@ export const {
     setConfig,
     setConfigValue,
     clearConfig,
+    clearDirtyFlags,
     setPmicConfig,
     setPmicConfigValue,
     clearPmicConfig,

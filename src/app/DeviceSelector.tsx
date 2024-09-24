@@ -66,7 +66,7 @@ const deviceListing: DeviceTraits = {
 const onDeviceSelected = (dispatch: AppDispatch) => async (device: Device) => {
     logger.info(`Selected device with s/n ${device.serialNumber}`);
     await getBoardControllerVersion(dispatch, device); // FIXME: Remove this when onDeviceIsReady() is called
-    await getCurrentBoardControllerConfig(dispatch, device); // FIXME: Remove this when onDeviceIsReady() is called
+    await readCurrentBoardControllerConfig(dispatch, device); // FIXME: Remove this when onDeviceIsReady() is called
 };
 
 const onDeviceIsReady = (dispatch: AppDispatch) => (device: Device) => {
@@ -93,7 +93,7 @@ const getBoardControllerVersion = async (
     dispatch(setBoardControllerFirmwareVersion(bcVersion.bc_fw_ver));
 };
 
-const getCurrentBoardControllerConfig = async (
+export const readCurrentBoardControllerConfig = async (
     dispatch: AppDispatch,
     device: Device
 ) => {
