@@ -1,3 +1,11 @@
+## 0.3.5 - 2024-09-24
+
+EXPERIMENTAL RELEASE
+
+### Fixed
+
+-   Bug where indicator of unwritten changes was not cleared on config write.
+
 ## 0.3.4 - 2024-09-19
 
 EXPERIMENTAL RELEASE
@@ -9,7 +17,7 @@ EXPERIMENTAL RELEASE
 
 ### Changed
 
--   Updated shared components
+-   Updated shared components.
 
 ## 0.3.3 - 2024-08-01
 

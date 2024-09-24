@@ -1,6 +1,6 @@
 {
     "name": "pc-nrfconnect-board-configurator",
-    "version": "0.3.4",
+    "version": "0.3.5",
     "description": "Configuration tool for Nordic Development Kits",
     "displayName": "Board Configurator",
     "homepage": "https://github.com/NordicSemiconductor/pc-nrfconnect-board-configurator",
