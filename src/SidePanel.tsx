@@ -15,11 +15,13 @@ import {
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import { NrfutilDeviceLib } from '@nordicsemiconductor/pc-nrfconnect-shared/nrfutil/device';
 
+import { readCurrentBoardControllerConfig } from './app/DeviceSelector';
 import DirtyDot from './app/DirtyDot';
 import BoardInformation from './features/BoardInformation/BoardInformation';
 import ConfigDataPreview from './features/ConfigDataPreview/ConfigDataPreview';
 import ConfigJsonRender from './features/ConfigJsonRender/ConfigJsonRender';
 import {
+    clearDirtyFlags,
     getAnyConfigPinDirty,
     getConfigArray,
     getDefaultConfig,
@@ -56,6 +58,14 @@ export default () => {
                             device,
                             configData
                         );
+
+                        // Re-read the current board config
+                        await readCurrentBoardControllerConfig(
+                            dispatch,
+                            device
+                        );
+                        dispatch(clearDirtyFlags());
+
                         logger.info('Configuration written');
                         // Clear isWriting flag for user ui feedback
                         setWriting(false);
