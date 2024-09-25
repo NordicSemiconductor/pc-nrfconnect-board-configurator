@@ -12,3 +12,5 @@ Board Configurator is installed and updated using [nRF Connect for Desktop](http
 
 - nRF9161 DK
 - nRF9151 DK
+- nRF54H20 DK
+- nRF54L15 DK
