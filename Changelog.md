@@ -1,3 +1,12 @@
+## 0.3.6 - 2024-09-25
+
+EXPERIMENTAL RELEASE
+
+### Fixed
+
+-   Bug where indicator of unwritten changes was not updated when loading
+    default config.
+
 ## 0.3.5 - 2024-09-24
 
 EXPERIMENTAL RELEASE

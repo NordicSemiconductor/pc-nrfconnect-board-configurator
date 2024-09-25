@@ -4,7 +4,12 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
-import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+    createSelector,
+    createSlice,
+    Draft,
+    PayloadAction,
+} from '@reduxjs/toolkit';
 
 import type { RootState } from '../../app/appReducer';
 import { BoardConfiguration } from './hardwareConfiguration';
@@ -40,6 +45,11 @@ const boardControllerConfigSlice = createSlice({
             }: PayloadAction<{ boardControllerConfig: Map<number, boolean> }>
         ) {
             state.boardControllerConfigData = boardControllerConfig;
+
+            // Update dirty flags on all config pins
+            boardControllerConfig.forEach((_, configPin) => {
+                updateConfigPinDirtyFlag(state, configPin);
+            });
         },
 
         setConfigValue(
@@ -50,15 +60,7 @@ const boardControllerConfigSlice = createSlice({
         ) {
             state.boardControllerConfigData.set(configPin, configPinState);
 
-            // Update dirty flag
-            state.boardControllerConfigDataDirty.set(
-                configPin,
-                computeDirtyFlag(
-                    configPinState,
-                    state.hardwareConfig.pins?.get(configPin),
-                    state.defaultConfig.pins?.get(configPin)
-                )
-            );
+            updateConfigPinDirtyFlag(state, configPin);
         },
 
         clearConfig(state) {
@@ -79,6 +81,10 @@ const boardControllerConfigSlice = createSlice({
             }: PayloadAction<{ pmicConfig: Map<number, number> }>
         ) {
             state.pmicConfigData = pmicConfig;
+
+            pmicConfig.forEach((_, pmicPort) =>
+                updatePmicConfigPortDirtyFlag(state, pmicPort)
+            );
         },
         setPmicConfigValue(
             state,
@@ -88,15 +94,7 @@ const boardControllerConfigSlice = createSlice({
         ) {
             state.pmicConfigData.set(pmicConfigPort, configPinState);
 
-            // Update dirty flag
-            state.pmicConfigDataDirty.set(
-                pmicConfigPort,
-                computeDirtyFlag(
-                    configPinState,
-                    state.hardwareConfig.pmicPorts?.get(pmicConfigPort),
-                    state.defaultConfig.pmicPorts?.get(pmicConfigPort)
-                )
-            );
+            updatePmicConfigPortDirtyFlag(state, pmicConfigPort);
         },
         clearPmicConfig(state) {
             state.pmicConfigData.clear();
@@ -207,6 +205,36 @@ function avoidEmptyConfigArray(array: (number | boolean | undefined)[]) {
     }
 
     return array;
+}
+
+function updateConfigPinDirtyFlag(
+    state: Draft<ConfigState>,
+    configPin: number
+) {
+    // Update dirty flag
+    state.boardControllerConfigDataDirty.set(
+        configPin,
+        computeDirtyFlag(
+            state.boardControllerConfigData.get(configPin),
+            state.hardwareConfig.pins?.get(configPin),
+            state.defaultConfig.pins?.get(configPin)
+        )
+    );
+}
+
+function updatePmicConfigPortDirtyFlag(
+    state: Draft<ConfigState>,
+    configPort: number
+) {
+    // Update dirty flag
+    state.pmicConfigDataDirty.set(
+        configPort,
+        computeDirtyFlag(
+            state.pmicConfigData.get(configPort),
+            state.hardwareConfig.pmicPorts?.get(configPort),
+            state.defaultConfig.pmicPorts?.get(configPort)
+        )
+    );
 }
 
 function computeDirtyFlag<T>(
