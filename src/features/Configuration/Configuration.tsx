@@ -109,6 +109,24 @@ const NoBoardSelected = () => (
                     nRF9151-DK
                 </a>
             </li>
+            <li>
+                <a
+                    href="https://www.nordicsemi.com/Products/nRF54L15"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    nRF54L15-PDK
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://www.nordicsemi.com/Products/nRF54H20"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    nRF54H20-PDK
+                </a>
+            </li>
         </ul>
     </div>
 );
