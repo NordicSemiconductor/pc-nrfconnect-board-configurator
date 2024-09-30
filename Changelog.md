@@ -1,3 +1,11 @@
+## 0.3.7 - 2024-09-30
+
+EXPERIMENTAL RELEASE
+
+### Fixed
+
+-   Added note about new supported kits.
+
 ## 0.3.6 - 2024-09-26
 
 EXPERIMENTAL RELEASE

@@ -97,7 +97,7 @@ const NoBoardSelected = () => (
                     target="_blank"
                     rel="noreferrer"
                 >
-                    nRF9161-DK (Rev. 0.9.0 and later)
+                    nRF9161 DK (Rev. 0.9.0 and later)
                 </a>
             </li>
             <li>
@@ -106,7 +106,25 @@ const NoBoardSelected = () => (
                     target="_blank"
                     rel="noreferrer"
                 >
-                    nRF9151-DK
+                    nRF9151 DK
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://www.nordicsemi.com/Products/nRF54L15"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    nRF54L15 DK
+                </a>
+            </li>
+            <li>
+                <a
+                    href="https://www.nordicsemi.com/Products/nRF54H20"
+                    target="_blank"
+                    rel="noreferrer"
+                >
+                    nRF54H20 PDK
                 </a>
             </li>
         </ul>
