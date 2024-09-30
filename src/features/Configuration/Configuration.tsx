@@ -124,7 +124,7 @@ const NoBoardSelected = () => (
                     target="_blank"
                     rel="noreferrer"
                 >
-                    nRF54H20 DK
+                    nRF54H20 PDK
                 </a>
             </li>
         </ul>
