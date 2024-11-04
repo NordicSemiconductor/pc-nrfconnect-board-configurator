@@ -1,3 +1,11 @@
+## 0.3.8 - unreleased
+
+EXPERIMENTAL RELEASE
+
+### Changed
+
+-   Updated `nrfutil device` to v2.7.3.
+
 ## 0.3.7 - 2024-09-30
 
 EXPERIMENTAL RELEASE
