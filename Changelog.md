@@ -1,4 +1,4 @@
-## 0.3.8 - unreleased
+## 0.3.8 - 2024-10-04
 
 EXPERIMENTAL RELEASE
 
