@@ -1,10 +1,10 @@
 # Updating the board configuration
 
-In Board Configurator, you can update the configuration of the board controller on a [supported Nordic Semiconductor Development Kit](index.md#supported-devices).
+In the {{app_name}}, you can update the configuration of the board controller on a [supported Nordic Semiconductor Development Kit](index.md#supported-devices).
 
 To update the configuration of a development kit, complete the following steps:
 
-1. Open nRF Connect for Desktop and open nRF Connect Board Configurator.
+1. Open nRF Connect for Desktop and open the {{app_name}}.
 1. Connect a development kit to the computer with a USB cable and turn it on.
 1. Click [**Select Device**](./overview.md#select-device) and select the device from the drop-down list.</br>
    The application reads the Interface MCU configuration on the board.
