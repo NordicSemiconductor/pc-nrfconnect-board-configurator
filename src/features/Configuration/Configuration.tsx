@@ -147,7 +147,7 @@ const UnrecognizedBoardRevision = () => (
     <div>
         <p>
             This revision of the development kit is not supported. Update to the
-            latest version of nRF Connect Board Configurator
+            latest version of the Board Configurator app
         </p>
     </div>
 );
