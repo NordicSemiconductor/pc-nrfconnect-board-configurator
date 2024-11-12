@@ -28,15 +28,14 @@
             }
         },
         {
-            "type": "slide",
+            "type": "switch",
             "id": "ledcontrol",
-            "title": "LED Power",
-            "label": "Disable LEDs to use the GPIOs for other purposes.",
-            "tooltip": "The LEDs are enabled by providing 3.3 V to LED1-LED4.",
+            "title": "Power to LEDs",
+            "label": "Disable to have LEDs unpowered (and kept off).",
+            "tooltip": "Enabling this option provides LEDs from LED0 to LED3 with 3.3 V of power.",
             "enable": {
                 "pin": 45
-            },
-            "alternatives": ["GPIO", "LED"]
+            }
         },
         {
             "type": "switch",
