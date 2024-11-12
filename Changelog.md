@@ -1,3 +1,11 @@
+## 0.3.9 - UNRELEASED
+
+EXPERIMENTAL RELEASE
+
+### Changed
+
+-   Update board definition for nRF54L15-PDK
+
 ## 0.3.8 - 2024-11-04
 
 EXPERIMENTAL RELEASE
