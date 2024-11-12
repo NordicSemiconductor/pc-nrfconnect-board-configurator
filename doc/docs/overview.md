@@ -1,8 +1,8 @@
 # Overview and user interface
 
-After starting Board Configurator, the main application window is displayed.
+After starting the {{app_name}}, the main application window is displayed.
 
-![Board Configurator application window](./screenshots/board_configurator_overview.png "Board Configurator application window")
+![{{app_name}} window](./screenshots/board_configurator_overview.png "{{app_name}} window")
 
 The available options and information change after you **Select Device**.
 
@@ -41,7 +41,7 @@ This side panel area lists advanced information about the board controller confi
 
 In the **Configuration** tab, you can see the options that you can [configure](updating.md) for the selected development kit.
 
-![Board Configurator configuration tab](./screenshots/board_configurator_connected.png "Board Configurator configuration tab")
+![{{app_name}} configuration tab](./screenshots/board_configurator_connected.png "{{app_name}} configuration tab")
 
 ## Log
 
@@ -54,7 +54,7 @@ The Log panel allows you to view the most important log events, tagged with a ti
 
 ## Feedback tab
 
-The Feedback tab lets you send feedback about nRF Connect Board Configurator application to the application development team.
+The Feedback tab lets you send feedback about the {{app_name}} to the application development team.
 
 ## About tab
 
