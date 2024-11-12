@@ -4,12 +4,12 @@
 [![License](https://img.shields.io/badge/license-Modified%20BSD%20License-blue.svg)](LICENSE)
 
 The Board Configurator app in nRF Connect for Desktop lets you update the
-configuration of the board controller on some Development Kits from Nordic Semiconductor. The board
-controller is the firmware running on the Interface MCU that controls the
-behavior of the DK.
+configuration of the board controller on some Development Kits from Nordic
+Semiconductor. The board controller is the firmware running on the Interface MCU
+that controls the behavior of the DK.
 
-**Note:** Currently, the Board Configurator app is experimental. This means that the application is
-incomplete in functionality and will change in the future.
+**Note:** Currently, the Board Configurator app is experimental. This means that
+the application is incomplete in functionality and will change in the future.
 
 ![screenshot](resources/screenshot.gif)
 
