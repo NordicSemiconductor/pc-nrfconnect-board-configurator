@@ -16,7 +16,7 @@ To update the configuration of a development kit, complete the following steps:
 
     !!! info "Note"
           - Some options are interdependable. For example, if the VCOM is disconnected, the Hardware Flow Control will automatically be disconnected too.
-          - If you are working with nRF54H20, make sure to enable the **External memory** chip option to avoid [issues with DFU or some samples](troubleshooting.md#unable-to-perform-dfu-or-work-with-samples-on-nrf54h20).
+          - If you are working with nRF54H20, make sure to enable the **External memory** chip option to avoid [issues with DFU](./troubleshooting.md#unable-to-perform-dfu-with-external-flash-on-nrf54h20).
           - Advanced users can also configure some of the settings by toggling pins in the [**Pin Configuration**](overview.md#board-controller-info) section.
 
     The unwritten changes are highlighted with the blue dot next to the modified configuration option, as in the following example.
