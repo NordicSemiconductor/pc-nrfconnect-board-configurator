@@ -18,3 +18,7 @@ You can restart the {{app_name}} by pressing Ctrl+R in Windows and command+R in 
 - A device is reset while it is connected to the {{app_name}}.</br>
   In this case, you may not see all COM ports in the drop-down list while selecting the device in the app.
 - Other errors occur.
+
+## Unable to perform DFU with external flash on nRF54H20
+
+Verify that you have enabled the **External memory** chip option in the [**Configuration**](overview.md#configuration-tab) tab.

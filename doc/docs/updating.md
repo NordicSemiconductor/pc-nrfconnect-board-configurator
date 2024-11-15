@@ -14,13 +14,14 @@ To update the configuration of a development kit, complete the following steps:
 
 1. Configure the settings in the [**Configuration**](./overview.md#configuration-tab) tab.
 
-    !!! note "Note"
+    !!! info "Note"
           - Some options are interdependable. For example, if the VCOM is disconnected, the Hardware Flow Control will automatically be disconnected too.
+          - If you are working with nRF54H20, make sure to enable the **External memory** chip option to avoid [issues with DFU](./troubleshooting.md#unable-to-perform-dfu-with-external-flash-on-nrf54h20).
           - Advanced users can also configure some of the settings by toggling pins in the [**Pin Configuration**](overview.md#board-controller-info) section.
 
     The unwritten changes are highlighted with the blue dot next to the modified configuration option, as in the following example.
 
-     ![Example of the blue dot indicating unwritten changes](./screenshots/board_configurator_unwritten_options.png "Example of the blue dot indicating unwritten changes")
+      ![Example of the blue dot indicating unwritten changes](./screenshots/board_configurator_unwritten_options.png "Example of the blue dot indicating unwritten changes")
 
 1. Click [**Write config**](./overview.md#actions) to upload the config to the device.</br>
    The application overwrites the default board controller configuration with the updated settings.
