@@ -1,3 +1,12 @@
+## 0.3.10 - UNRELEASED
+
+EXPERIMENTAL RELEASE
+
+### Changed
+
+-   Updated `nrfutil device` to v2.7.6. Resolving bug where disabling SWD on the
+    DK prevented Board Configurator from reconnecting.
+
 ## 0.3.9 - 2024-11-12
 
 EXPERIMENTAL RELEASE
