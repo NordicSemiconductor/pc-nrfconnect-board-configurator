@@ -14,3 +14,8 @@ The {{app_name}} is installed and updated using [nRF Connect for Desktop](https:
 - nRF9151 DK
 - nRF54H20 DK
 - nRF54L15 DK
+
+## Application source code
+
+The code of the application is open source and [available on GitHub](https://github.com/NordicSemiconductor/pc-nrfconnect-board-configurator).
+Feel free to fork the repository and clone it for secondary development or feature contributions.
