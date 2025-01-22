@@ -15,6 +15,7 @@ import nrf54l15v020json from '../../common/boards/nrf_PCA10156_0.2.0.json';
 import nrf54l15v030json from '../../common/boards/nrf_PCA10156_0.3.0.json';
 import nrf9151v020json from '../../common/boards/nrf_PCA10171_0.2.0_9151.json';
 import nrf54h20v070json from '../../common/boards/nrf_PCA10175_0.7.0_54H20.json';
+import nrf54h20v100json from '../../common/boards/nrf_PCA10175_1.0.0_54H20.json';
 
 export type BoardDefinition = {
     boardControllerConfigDefinition?: BoardControllerConfigDefinition;
@@ -35,6 +36,8 @@ const typednrf54l15v030json =
 const typednrf54h20json = nrf54h20pdk080json as BoardControllerConfigDefinition;
 const typednrf54h20v070json =
     nrf54h20v070json as BoardControllerConfigDefinition;
+const typednrf54h20v100json =
+    nrf54h20v100json as BoardControllerConfigDefinition;
 const typednrf9151v020json = nrf9151v020json as BoardControllerConfigDefinition;
 
 export function getBoardDefinition(
@@ -86,7 +89,13 @@ export function getBoardDefinition(
 
         case 'PCA10175':
             // nRF54H20
-            return { boardControllerConfigDefinition: typednrf54h20v070json };
+            if (boardRevision === '0.7.0') {
+                return {
+                    boardControllerConfigDefinition: typednrf54h20v070json,
+                };
+            }
+
+            return { boardControllerConfigDefinition: typednrf54h20v100json };
 
         default:
             return { controlFlag: { unrecognizedBoard: true } };

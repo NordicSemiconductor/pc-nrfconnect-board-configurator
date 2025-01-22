@@ -1,0 +1,111 @@
+{
+    "board": {
+        "boardVersion": "PCA10175",
+        "boardRevision": "0.7.0",
+        "boardName": "nRF54H20 DK v0.7.0"
+    },
+    "pins": [
+        {
+            "type": "vcom",
+            "id": "vcom0",
+            "name": "VCOM0",
+            "enable": {
+                "pin": 42
+            },
+            "hwfc": {
+                "pin": 20
+            }
+        },
+        {
+            "type": "vcom",
+            "id": "vcom1",
+            "name": "VCOM1",
+            "enable": {
+                "pin": 22
+            },
+            "hwfc": {
+                "pin": 23
+            }
+        },
+        {
+            "type": "switch",
+            "id": "swd3-control",
+            "title": "Software Debugger (SWD)",
+            "label": "Disable to use an external debugger on the target chip.",
+            "tooltip": "When enabled, the SWD is connected and the IMCU is acting as the debugger. When disabled, the SWD is disconnected and you can use an external debugger connected to the Debug In header.",
+            "enable": {
+                "pin": 6
+            }
+        },
+        {
+            "type": "switch",
+            "id": "led-pwr-ctrl",
+            "title": "LED Power",
+            "label": "Disable LEDs to use the GPIOs for other purposes.",
+            "tooltip": "The LEDs are enabled by providing 5 V to LED0-LED3.",
+            "enable": {
+                "pin": 45
+            }
+        },
+        {
+            "type": "switch",
+            "id": "ldos-flash-dis",
+            "title": "External Memory",
+            "label": "Enable power to the external flash memory.",
+            "tooltip": "Enable external flash by powering the rails VCCQ_1V8 and VCC_1V8.",
+            "enable": {
+                "pin": 47,
+                "invert": true
+            }
+        }
+    ],
+    "pmicPorts": [
+        {
+            "type": "voltage",
+            "port": 1,
+            "portId": "vdd-p9",
+            "portLabel": "VDD-p9 (nPM VOUT2)",
+            "portDescription": "Voltage on the VDD rail of nRF54H20 P9.",
+            "mVmin": 1800,
+            "mVmax": 3300
+        }
+    ],
+    "defaults": {
+        "pins": [
+            {
+                "pin": 42,
+                "state": true
+            },
+            {
+                "pin": 20,
+                "state": true
+            },
+            {
+                "pin": 22,
+                "state": true
+            },
+            {
+                "pin": 23,
+                "state": true
+            },
+            {
+                "pin": 6,
+                "state": true
+            },
+            {
+                "pin": 45,
+                "state": true
+            },
+            {
+                "pin": 47,
+                "state": true
+            }
+        ],
+        "pmicPorts": [
+            {
+                "port": 1,
+                "voltage": 1800
+            }
+        ]
+    }
+}
