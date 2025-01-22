@@ -46,33 +46,3 @@ for details.
 ## License
 
 See the [LICENSE](LICENSE) file for details.
-
-
-# Notes
-hwfc - hardware flow control
-
-HOW TO ADD NEW BOARDS??
-Adding new board - pay attention to the polarity of the pins 
-
-Reading: hardware schematics & device tree files
-Source: https://nordicsemi.atlassian.net/wiki/spaces/APPS/pages/67295432/nRF5340+Board+Controller+-+1.6+nRF5340+Pinout
-
-Board controller project lead - Bjorn Spokeli 
-
-BC App = docs for the end users
-
-getBoardDefinition() switch - should be more sophisticated 
-
------
-Plan:
-- to have board definition file selection automatic - have getBoardDefinition() file automatic, like to have list of board revisions in the file
-- update board configuarator FW, but use case is small; also we don't know what FW will be correct for the specific board & revision
-- 
-
-TODO: ask Ingar why not 1.x release
-
-
-
-
-
-
