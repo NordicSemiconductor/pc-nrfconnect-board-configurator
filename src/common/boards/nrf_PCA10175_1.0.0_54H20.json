@@ -62,7 +62,7 @@
     "pmicPorts": [
         {
             "type": "voltage",
-            "port": 1,
+            "port": 2,
             "portId": "vdd-p9",
             "portLabel": "VDD-p9 (nPM VOUT2)",
             "portDescription": "Voltage on the VDD rail of nRF54H20 P9.",
@@ -103,7 +103,7 @@
         ],
         "pmicPorts": [
             {
-                "port": 1,
+                "port": 2,
                 "voltage": 1800
             }
         ]
