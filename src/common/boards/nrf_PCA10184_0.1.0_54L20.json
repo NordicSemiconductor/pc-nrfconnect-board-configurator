@@ -1,0 +1,110 @@
+{
+    "board": {
+        "boardVersion": "PCA10184",
+        "boardRevision": "0.1.0",
+        "boardName": "nRF54L20 PDK (hw rev. 0.1.0)"
+    },
+    "pins": [
+        {
+            "type": "vcom",
+            "id": "vcom0",
+            "name": "VCOM0",
+            "enable": {
+                "pin": 42
+            },
+            "hwfc": {
+                "pin": 20
+            }
+        },
+        {
+            "type": "vcom",
+            "id": "vcom1",
+            "name": "VCOM1",
+            "enable": {
+                "pin": 22
+            },
+            "hwfc": {
+                "pin": 23
+            }
+        },
+        {
+            "type": "slide",
+            "id": "ledcontrol",
+            "title": "LED Power",
+            "label": "Disable LEDs to use the GPIOs for other purposes.",
+            "tooltip": "The LEDs are enabled by providing 3.3 V to LED0-LED3.",
+            "enable": {
+                "pin": 45
+            },
+            "alternatives": ["GPIO", "LED"]
+        },
+        {
+            "type": "switch",
+            "id": "swd-control",
+            "title": "Software Debugger (SWD)",
+            "label": "Disable to use an external debugger on the target chip.",
+            "tooltip": "When enabled, the SWD is connected and the IMCU is acting as the debugger. When disabled, the SWD is disconnected and you can use an external debugger connected to the Debug In header.",
+            "enable": {
+                "pin": 6
+            }
+        }
+    ],
+    "pmicPorts": [
+        {
+            "type": "voltage",
+            "port": 1,
+            "portId": "vddio",
+            "portLabel": "VDDIO (nPM VOUT1)",
+            "portDescription": "Voltage on the VDDIO rail.",
+            "mVmin": 1800,
+            "mVmax": 3300
+        },
+        {
+            "type": "voltage",
+            "port": 2,
+            "portId": "vdd-dbgr",
+            "portLabel": "VDD_DBGR (nPM VOUT2)",
+            "portDescription": "Voltage on the VDD_DBGR rail.",
+            "mVmin": 1800,
+            "mVmax": 3300
+        }
+    ],
+    "defaults": {
+        "pins": [
+            {
+                "pin": 42,
+                "state": true
+            },
+            {
+                "pin": 20,
+                "state": true
+            },
+            {
+                "pin": 22,
+                "state": true
+            },
+            {
+                "pin": 23,
+                "state": true
+            },
+            {
+                "pin": 45,
+                "state": true
+            },
+            {
+                "pin": 6,
+                "state": true
+            }
+        ],
+        "pmicPorts": [
+            {
+                "port": 1,
+                "voltage": 1800
+            },
+            {
+                "port": 2,
+                "voltage": 1800
+            }
+        ]
+    }
+}
