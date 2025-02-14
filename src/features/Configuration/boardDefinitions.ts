@@ -46,6 +46,8 @@ export function getBoardDefinition(
 ): BoardDefinition {
     switch (device?.devkit?.boardVersion) {
         case 'PCA10156':
+            // TODO: remove this placeholder; does not belong here
+            return { boardControllerConfigDefinition: typednrf54l20v010json };
             // nRF54L15
             if (
                 boardRevision === '0.1.0' || // Probably r0.2.0 with a firmware configuration error
@@ -149,10 +151,27 @@ export function generatePortMap(
 ): Map<number, PmicPortDescription> {
     const pinMap = new Map<number, PmicPortDescription>();
 
+    // TODO: check all these isArray() stuff; looks dirty
     boardControllerConfigDefinition?.pmicPorts?.forEach(port => {
-        if (port.portId) {
-            pinMap.set(port.port, { id: port.portId });
+        if (!port.portId) {
+            return;
         }
+
+        if (Array.isArray(port.port) && Array.isArray(port.portId)) {
+            port.port.forEach((p, idx) => {
+                // @ts-expect-error TODO: check why it says port.portId can be undefined
+                pinMap.set(p, { id: port.portId[idx] });
+            });
+
+            return;
+        }
+
+        if (Array.isArray(port.port) || Array.isArray(port.portId)) {
+            console.warn(`Port must not be an array`, port);
+            return;
+        }
+
+        pinMap.set(port.port, { id: port.portId });
     });
 
     return pinMap;

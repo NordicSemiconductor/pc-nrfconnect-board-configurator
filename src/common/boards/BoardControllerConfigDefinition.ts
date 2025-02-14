@@ -38,12 +38,12 @@ type SlideConfigDefinition = {
 
 type PmicPortDefinition = {
     type: 'voltage';
-    port: number;
+    port: number | number[];
     mVmin: number;
     mVmax: number;
     portLabel?: string;
     portDescription?: string;
-    portId?: string;
+    portId?: string | string[];
 };
 
 type BoardDefinition = {
