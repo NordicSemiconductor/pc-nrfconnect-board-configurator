@@ -17,16 +17,18 @@ import {
     getPmicConfigValue,
     getPmicConfigValueDirty,
     setPmicConfigValue,
+    tempGetBoardControllerConfig,
 } from '../Configuration/boardControllerConfigSlice';
 
 interface VoltageConfigurationProps {
-    pmicPort: number;
+    pmicPort: number | number[];
     voltageMin: number;
     voltageMax: number;
     pmicPortLabel?: string;
     pmicPortDescription?: string;
 }
 
+// TODO: when writing with nrfutil array must be converted
 const VoltageConfiguration = ({
     pmicPort,
     voltageMin,
@@ -35,9 +37,18 @@ const VoltageConfiguration = ({
     pmicPortDescription,
 }: VoltageConfigurationProps) => {
     const dispatch = useDispatch();
-    const voltage = useSelector(getPmicConfigValue(pmicPort)) ?? voltageMin; // Default to voltageMin
 
-    const dirty = useSelector(getPmicConfigValueDirty(pmicPort));
+    const pmicPortLocal = Array.isArray(pmicPort) ? pmicPort[0] : pmicPort;
+    const voltage =
+        useSelector(getPmicConfigValue(pmicPortLocal)) ?? voltageMin; // Default to voltageMin
+    const tempBoardControllerConfig = useSelector(tempGetBoardControllerConfig);
+
+    // console.log('voltage', voltage);
+    // console.log('tempBoardControllerConfig', tempBoardControllerConfig);
+
+    const dirty = useSelector(getPmicConfigValueDirty(pmicPortLocal));
+
+    // console.log('dirty', dirty);
 
     const label = pmicPortLabel ?? `Voltage port ${pmicPort}`;
     const description =
@@ -75,6 +86,18 @@ const VoltageConfiguration = ({
                     range={{ min: voltageMin, max: voltageMax, step: 100 }}
                     value={voltage}
                     onChange={value => {
+                        if (Array.isArray(pmicPort)) {
+                            pmicPort.forEach(p => {
+                                dispatch(
+                                    setPmicConfigValue({
+                                        pmicConfigPort: p,
+                                        configPinState: value,
+                                    })
+                                );
+                            });
+                            return;
+                        }
+
                         dispatch(
                             setPmicConfigValue({
                                 pmicConfigPort: pmicPort,
@@ -94,7 +117,7 @@ const VoltageConfiguration = ({
 };
 
 interface VoltagePresetButtonsProps {
-    pmicPort: number;
+    pmicPort: number | number[];
     voltages: number[];
     setVoltage: number;
 }
@@ -117,7 +140,7 @@ const VoltagePresetButtons = ({
 );
 
 interface PresetButtonProps {
-    pmicPort: number;
+    pmicPort: number | number[];
     voltage: number;
     selected?: boolean;
 }
@@ -134,6 +157,18 @@ const PresetButton = ({ pmicPort, voltage, selected }: PresetButtonProps) => {
                 selected ? 'tw-bg-white' : 'tw-bg-gray-50'
             )}
             onClick={() => {
+                if (Array.isArray(pmicPort)) {
+                    pmicPort.forEach(p => {
+                        dispatch(
+                            setPmicConfigValue({
+                                pmicConfigPort: p,
+                                configPinState: voltage,
+                            })
+                        );
+                    });
+                    return;
+                }
+
                 dispatch(
                     setPmicConfigValue({
                         pmicConfigPort: pmicPort,
