@@ -1,4 +1,3 @@
-
 ## 0.3.11 - unreleased
 
 EXPERIMENTAL RELEASE
@@ -15,6 +14,8 @@ EXPERIMENTAL RELEASE
 
 -   Updated `nrfutil device` to v2.7.6. Resolving bug where disabling SWD on the
     DK prevented Board Configurator from reconnecting.
+-   Improve Configuration JSON modal and set distinct difference between primary
+    and secondary button.
 
 ## 0.3.9 - 2024-11-12
 
