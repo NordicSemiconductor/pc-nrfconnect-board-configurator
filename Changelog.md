@@ -1,3 +1,12 @@
+
+## 0.3.11 - unreleased
+
+EXPERIMENTAL RELEASE
+
+### Changed
+
+-   Update dependencies to support the nRF Connect for Desktop v5.2.0 release.
+
 ## 0.3.10 - 2024-11-20
 
 EXPERIMENTAL RELEASE
