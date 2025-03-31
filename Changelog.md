@@ -5,6 +5,8 @@ EXPERIMENTAL RELEASE
 ### Changed
 
 -   Update dependencies to support the nRF Connect for Desktop v5.2.0 release.
+-   Improve Configuration JSON modal and set distinct difference between primary
+    and secondary button.
 
 ## 0.3.10 - 2024-11-20
 
@@ -14,8 +16,6 @@ EXPERIMENTAL RELEASE
 
 -   Updated `nrfutil device` to v2.7.6. Resolving bug where disabling SWD on the
     DK prevented Board Configurator from reconnecting.
--   Improve Configuration JSON modal and set distinct difference between primary
-    and secondary button.
 
 ## 0.3.9 - 2024-11-12
 
