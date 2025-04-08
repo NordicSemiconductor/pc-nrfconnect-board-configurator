@@ -64,16 +64,11 @@ const deviceListing: DeviceTraits = {
  * are only invoked, if a deviceSetup is defined.
  */
 const onDeviceSelected = (dispatch: AppDispatch) => async (device: Device) => {
-    logger.info(`Selected device with s/n ${device.serialNumber}`);
     await getBoardControllerVersion(dispatch, device); // FIXME: Remove this when onDeviceIsReady() is called
     await readCurrentBoardControllerConfig(dispatch, device); // FIXME: Remove this when onDeviceIsReady() is called
 };
 
 const onDeviceIsReady = (dispatch: AppDispatch) => (device: Device) => {
-    logger.info(
-        `Device with s/n ${device.serialNumber} was set up with a firmware`
-    );
-
     getBoardControllerVersion(dispatch, device);
 };
 
@@ -109,7 +104,6 @@ export const readCurrentBoardControllerConfig = async (
 };
 
 const onDeviceDeselected = (dispatch: AppDispatch) => () => {
-    logger.info('Deselected device');
     dispatch(clearBoardRevision());
     dispatch(clearBoardControllerFirmwareVersion());
     dispatch(clearConfig());
