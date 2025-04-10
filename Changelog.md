@@ -2,6 +2,10 @@
 
 EXPERIMENTAL RELEASE
 
+### Added
+
+-   Support for the nRF54L20 DK.
+
 ### Changed
 
 -   Update dependencies to support the nRF Connect for Desktop v5.2.0 release.
