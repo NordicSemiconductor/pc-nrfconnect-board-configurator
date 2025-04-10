@@ -1,6 +1,6 @@
 {
     "name": "pc-nrfconnect-board-configurator",
-    "version": "0.3.10",
+    "version": "0.3.11",
     "description": "Configuration tool for Nordic Development Kits",
     "displayName": "Board Configurator",
     "homepage": "https://github.com/NordicSemiconductor/pc-nrfconnect-board-configurator",
@@ -19,7 +19,7 @@
         ],
         "nrfutil": {
             "device": [
-                "2.7.6"
+                "2.8.6"
             ]
         },
         "html": "dist/index.html"
@@ -47,7 +47,7 @@
         "prepare": "husky install"
     },
     "devDependencies": {
-        "@nordicsemiconductor/pc-nrfconnect-shared": "^188.0.0",
+        "@nordicsemiconductor/pc-nrfconnect-shared": "^204.0.0",
         "@types/react-test-renderer": "18.0.0"
     },
     "eslintConfig": {
