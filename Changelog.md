@@ -1,4 +1,4 @@
-## 0.3.12 - unreleased
+## 0.3.11 - unreleased
 
 EXPERIMENTAL RELEASE
 

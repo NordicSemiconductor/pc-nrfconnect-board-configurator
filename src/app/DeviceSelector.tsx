@@ -10,7 +10,6 @@ import {
     AppDispatch,
     Device,
     DeviceSelector,
-    logger,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import {
     DeviceTraits,
