@@ -19,7 +19,7 @@
         ],
         "nrfutil": {
             "device": [
-                "2.10.1"
+                "2.10.2"
             ]
         },
         "html": "dist/index.html"
@@ -47,7 +47,7 @@
         "prepare": "husky install"
     },
     "devDependencies": {
-        "@nordicsemiconductor/pc-nrfconnect-shared": "^208.0.0",
+        "@nordicsemiconductor/pc-nrfconnect-shared": "^209.0.0",
         "@types/react-test-renderer": "18.0.0"
     },
     "eslintConfig": {
