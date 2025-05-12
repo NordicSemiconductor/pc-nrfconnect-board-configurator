@@ -5,6 +5,8 @@ EXPERIMENTAL RELEASE
 ### Changed
 
 -   Update dependencies to support the nRF Connect for Desktop v5.2.0 release.
+-   Improve Configuration JSON modal and set distinct difference between primary
+    and secondary button.
 
 ## 0.3.10 - 2024-11-20
 

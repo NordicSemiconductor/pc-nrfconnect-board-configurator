@@ -44,17 +44,18 @@ const ConfigJsonRender = () => {
                     <div className="tw-flex tw-gap-2">
                         <DialogButton
                             onClick={() => {
-                                clipboard.writeText(JSON.stringify(configData));
-                            }}
-                        >
-                            Copy
-                        </DialogButton>
-                        <DialogButton
-                            onClick={() => {
                                 enableJsonDialog(false);
                             }}
                         >
                             Close
+                        </DialogButton>
+                        <DialogButton
+                            variant="primary"
+                            onClick={() => {
+                                clipboard.writeText(JSON.stringify(configData));
+                            }}
+                        >
+                            Copy
                         </DialogButton>
                     </div>
                 }
