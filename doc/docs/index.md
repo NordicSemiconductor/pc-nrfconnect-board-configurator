@@ -13,6 +13,7 @@ The {{app_name}} is installed and updated using [nRF Connect for Desktop](https:
 - nRF9161 DK
 - nRF9151 DK
 - nRF54H20 DK
+- nRF54L20 DK
 - nRF54L15 DK
 
 ## Application source code

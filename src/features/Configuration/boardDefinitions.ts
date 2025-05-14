@@ -15,6 +15,7 @@ import nrf54l15v020json from '../../common/boards/nrf_PCA10156_0.2.0.json';
 import nrf54l15v030json from '../../common/boards/nrf_PCA10156_0.3.0.json';
 import nrf9151v020json from '../../common/boards/nrf_PCA10171_0.2.0_9151.json';
 import nrf54h20v070json from '../../common/boards/nrf_PCA10175_0.7.0_54H20.json';
+import nrf54l20v010json from '../../common/boards/nrf_PCA10184_0.1.0_54L20.json';
 
 export type BoardDefinition = {
     boardControllerConfigDefinition?: BoardControllerConfigDefinition;
@@ -36,6 +37,8 @@ const typednrf54h20json = nrf54h20pdk080json as BoardControllerConfigDefinition;
 const typednrf54h20v070json =
     nrf54h20v070json as BoardControllerConfigDefinition;
 const typednrf9151v020json = nrf9151v020json as BoardControllerConfigDefinition;
+const typednrf54l20v010json =
+    nrf54l20v010json as BoardControllerConfigDefinition;
 
 export function getBoardDefinition(
     device: Device,
@@ -43,6 +46,8 @@ export function getBoardDefinition(
 ): BoardDefinition {
     switch (device?.devkit?.boardVersion) {
         case 'PCA10156':
+            // TODO: remove this placeholder; does not belong here
+            return { boardControllerConfigDefinition: typednrf54l20v010json };
             // nRF54L15
             if (
                 boardRevision === '0.1.0' || // Probably r0.2.0 with a firmware configuration error
@@ -87,6 +92,10 @@ export function getBoardDefinition(
         case 'PCA10175':
             // nRF54H20
             return { boardControllerConfigDefinition: typednrf54h20v070json };
+
+        case 'PCA10184':
+            // nRF54L20
+            return { boardControllerConfigDefinition: typednrf54l20v010json };
 
         default:
             return { controlFlag: { unrecognizedBoard: true } };
@@ -142,10 +151,27 @@ export function generatePortMap(
 ): Map<number, PmicPortDescription> {
     const pinMap = new Map<number, PmicPortDescription>();
 
+    // TODO: check all these isArray() stuff; looks dirty
     boardControllerConfigDefinition?.pmicPorts?.forEach(port => {
-        if (port.portId) {
-            pinMap.set(port.port, { id: port.portId });
+        if (!port.portId) {
+            return;
         }
+
+        if (Array.isArray(port.port) && Array.isArray(port.portId)) {
+            port.port.forEach((p, idx) => {
+                // @ts-expect-error TODO: check why it says port.portId can be undefined
+                pinMap.set(p, { id: port.portId[idx] });
+            });
+
+            return;
+        }
+
+        if (Array.isArray(port.port) || Array.isArray(port.portId)) {
+            console.warn(`Port must not be an array`, port);
+            return;
+        }
+
+        pinMap.set(port.port, { id: port.portId });
     });
 
     return pinMap;
