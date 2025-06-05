@@ -1,0 +1,187 @@
+{
+    "board": {
+        "boardVersion": "PCA10180",
+        "boardRevision": "0.1.0",
+        "boardName": "nRF9280-PDK v0.1.0"
+    },
+    "pins": [
+        {
+            "type": "vcom",
+            "id": "vcom0",
+            "name": "VCOM0",
+            "enable": {
+                "pin": 42,
+                "invert": true
+            },
+            "hwfc": {
+                "pin": 20,
+                "invert": true
+            }
+        },
+        {
+            "type": "vcom",
+            "id": "vcom1",
+            "name": "VCOM1",
+            "enable": {
+                "pin": 22,
+                "invert": true
+            },
+            "hwfc": {
+                "pin": 23,
+                "invert": true
+            }
+        },
+        {
+            "type": "switch",
+            "id": "swd-control",
+            "title": "Software Debugger (SWD)",
+            "label": "Disable to use an external debugger on the target chip.",
+            "tooltip": "When enabled, the SWD is connected and the IMCU is acting as the debugger. When disabled, the SWD is disconnected and you can use an external debugger connected to the Debug In header.",
+            "enable": {
+                "pin": 6,
+                "invert": true
+            }
+        },
+        {
+            "type": "switch",
+            "id": "shield-reset-in",
+            "title": "Shield Reset In",
+            "label": "Connect reset line coming from a connected DK shield.",
+            "enable": {
+                "pin": 7
+            }
+        },
+        {
+            "type": "switch",
+            "id": "shield-reset-out",
+            "title": "Shield Reset Out",
+            "label": "Connect reset line going to a connected DK shield.",
+            "enable": {
+                "pin": 8
+            }
+        },
+        {
+            "type": "slide",
+            "id": "sim-select",
+            "title": "SIM Option",
+            "enable": {
+                "pin": 14
+            },
+            "alternatives": [
+                "eSIM",
+                "SIM Card"
+            ]
+        },
+        {
+            "type": "switch",
+            "id": "modem-coexistence-interface",
+            "title": "Modem coexistence interface",
+            "label": "Enable or disable the GPIO pin connection to the coexistence interface. This is done so that the GPIO pins can be used for other use cases.",
+            "enable": {
+                "pin": 18,
+                "invert": true
+            }
+        },
+        {
+            "type": "slide",
+            "id": "io-expander",
+            "title": "LED and button connection",
+            "label": "Connect directly using GPIO pins or through I²C using the IO Expander module. Using IO Expander frees up LED and button GPIO pins on nRF1951.",
+            "enable": {
+                "pin": 45
+            },
+            "alternatives": [
+                "GPIO",
+                "IO Expander"
+            ]
+        },
+        {
+            "type": "switch",
+            "id": "external-memory",
+            "title": "External memory",
+            "label": "Enable or disable the external memory chip.",
+            "enable": {
+                "pin": 47,
+                "invert": true
+            }
+        }
+    ],
+    "pmicPorts": [
+        {
+            "type": "voltage",
+            "port": 1,
+            "portId": "vdd",
+            "portLabel": "VDD (nPM VOUT1)",
+            "portDescription": "Voltage on the VDD rail.",
+            "mVmin": 1800,
+            "mVmax": 3300
+        },
+        {
+            "type": "voltage",
+            "port": 2,
+            "portId": "vdd-gnss-led",
+            "portLabel": "VDD for GNSS and LED (nPM VOUT2)",
+            "portDescription": "Voltage driving the Global Navigation Satellite System and the LEDs.",
+            "mVmin": 1800,
+            "mVmax": 3300
+        }
+    ],
+    "defaults": {
+        "pins": [
+            {
+                "pin": 42,
+                "state": false
+            },
+            {
+                "pin": 20,
+                "state": false
+            },
+            {
+                "pin": 22,
+                "state": false
+            },
+            {
+                "pin": 23,
+                "state": false
+            },
+            {
+                "pin": 6,
+                "state": false
+            },
+            {
+                "pin": 7,
+                "state": false
+            },
+            {
+                "pin": 8,
+                "state": false
+            },
+            {
+                "pin": 14,
+                "state": true
+            },
+            {
+                "pin": 18,
+                "state": true
+            },
+            {
+                "pin": 45,
+                "state": false
+            },
+            {
+                "pin": 47,
+                "state": false
+            }
+        ],
+        "pmicPorts": [
+            {
+                "port": 1,
+                "voltage": 1800
+            },
+            {
+                "port": 2,
+                "voltage": 3000
+            }
+        ]
+    }
+}
