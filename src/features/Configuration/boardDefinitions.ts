@@ -15,6 +15,7 @@ import nrf54l15v020json from '../../common/boards/nrf_PCA10156_0.2.0.json';
 import nrf54l15v030json from '../../common/boards/nrf_PCA10156_0.3.0.json';
 import nrf9151v020json from '../../common/boards/nrf_PCA10171_0.2.0_9151.json';
 import nrf54h20v070json from '../../common/boards/nrf_PCA10175_0.7.0_54H20.json';
+import nrf9280v010json from '../../common/boards/nrf_PCA10160_0.1.0_9280.json';
 
 export type BoardDefinition = {
     boardControllerConfigDefinition?: BoardControllerConfigDefinition;
@@ -36,6 +37,7 @@ const typednrf54h20json = nrf54h20pdk080json as BoardControllerConfigDefinition;
 const typednrf54h20v070json =
     nrf54h20v070json as BoardControllerConfigDefinition;
 const typednrf9151v020json = nrf9151v020json as BoardControllerConfigDefinition;
+const typednrf9280v010json = nrf9280v010json as BoardControllerConfigDefinition;
 
 export function getBoardDefinition(
     device: Device,
@@ -79,6 +81,10 @@ export function getBoardDefinition(
         case 'PCA10145':
             // nRF54H20
             return { boardControllerConfigDefinition: typednrf54h20json };
+
+        case 'PCA10160':
+            // nRF9280
+            return { boardControllerConfigDefinition: typednrf9280v010json };
 
         case 'PCA10171':
             // nRF9151
