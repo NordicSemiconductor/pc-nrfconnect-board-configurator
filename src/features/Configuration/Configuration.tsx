@@ -120,16 +120,6 @@ const NoBoardSelected = () => (
             </li>
             <li>
                 <a
-                    // TODO: check if link will work
-                    href="https://www.nordicsemi.com/Products/nRF54L20"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    nRF54L20 DK
-                </a>
-            </li>
-            <li>
-                <a
                     href="https://www.nordicsemi.com/Products/nRF54H20"
                     target="_blank"
                     rel="noreferrer"
@@ -178,7 +168,7 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
                         case 'vcom':
                             return (
                                 <VCOMConfiguration
-                                    key={pinConfig.id} // not related to the task fix
+                                    key={pinConfig.id}
                                     vcomEnablePin={pinConfig.enable.pin}
                                     hwfcEnablePin={pinConfig.hwfc.pin}
                                     vcomName={pinConfig.name}
@@ -191,7 +181,7 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
                         case 'slide':
                             return (
                                 <ConfigSlideSelector
-                                    key={pinConfig.id} // not related to the task fix
+                                    key={pinConfig.id}
                                     configTitle={pinConfig.title}
                                     configLabel={pinConfig.label}
                                     configTooltip={pinConfig.tooltip}
@@ -203,7 +193,7 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
                         case 'switch':
                             return (
                                 <ConfigSwitch
-                                    key={pinConfig.id} // not related to the task fix
+                                    key={pinConfig.id}
                                     configTitle={pinConfig.title}
                                     configLabel={pinConfig.label}
                                     configTooltip={pinConfig.tooltip}
@@ -221,15 +211,11 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
                 {pmicPorts &&
                     pmicPorts.map(port => (
                         <VoltageConfiguration
-                            // TODO: refactor as dirty code
-                            key={`voltage-${
-                                Array.isArray(port.portId)
-                                    ? port.portId.reduce(
-                                          (a, b) => `${a}${b}`,
-                                          ''
-                                      )
-                                    : port.portId
-                            }`}
+                            key={`voltage-${port.port.reduce(
+                                (a, b) => `${a}${b}`,
+                                ''
+                            )}`}
+                            tooltip={port.portDescriptionTooltip}
                             pmicPort={port.port}
                             voltageMin={port.mVmin}
                             voltageMax={port.mVmax}

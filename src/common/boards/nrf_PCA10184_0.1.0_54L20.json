@@ -55,7 +55,8 @@
             "port": [1, 2],
             "portId": ["vddio", "vdd-dbgr"],
             "portLabel": "VDDIO (nPM VOUT1) and VDD_DBGR (nPM VOUT2)",
-            "portDescription": "Voltage on the VDDIO rail and voltage on the VDD_DBGR rail",
+            "portDescription": "Voltage",
+            "portDescriptionTooltip": "Voltage on the VDDIO rail and voltage on the VDD_DBGR rail",
             "mVmin": 1800,
             "mVmax": 3300
         }

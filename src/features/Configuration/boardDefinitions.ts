@@ -150,28 +150,21 @@ export function generatePortMap(
     boardControllerConfigDefinition: BoardControllerConfigDefinition | undefined
 ): Map<number, PmicPortDescription> {
     const pinMap = new Map<number, PmicPortDescription>();
-
-    // TODO: check all these isArray() stuff; looks dirty
     boardControllerConfigDefinition?.pmicPorts?.forEach(port => {
-        if (!port.portId) {
+        const portId = port.portId;
+
+        if (!portId) {
             return;
         }
 
-        if (Array.isArray(port.port) && Array.isArray(port.portId)) {
-            port.port.forEach((p, idx) => {
-                // @ts-expect-error TODO: check why it says port.portId can be undefined
-                pinMap.set(p, { id: port.portId[idx] });
-            });
-
-            return;
-        }
-
-        if (Array.isArray(port.port) || Array.isArray(port.portId)) {
+        if (!Array.isArray(port.port) || !Array.isArray(port.portId)) {
             console.warn(`Port must not be an array`, port);
             return;
         }
 
-        pinMap.set(port.port, { id: port.portId });
+        port.port.forEach((p, idx) => {
+            pinMap.set(p, { id: portId[idx] });
+        });
     });
 
     return pinMap;

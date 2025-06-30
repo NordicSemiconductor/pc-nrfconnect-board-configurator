@@ -36,14 +36,15 @@ type SlideConfigDefinition = {
     alternatives: [string, string];
 };
 
-type PmicPortDefinition = {
+export type PmicPortDefinition = {
     type: 'voltage';
-    port: number | number[];
+    port: number[];
     mVmin: number;
     mVmax: number;
     portLabel?: string;
     portDescription?: string;
-    portId?: string | string[];
+    portDescriptionTooltip?: string;
+    portId?: string[];
 };
 
 type BoardDefinition = {
