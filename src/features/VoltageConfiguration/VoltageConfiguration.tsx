@@ -29,7 +29,6 @@ interface VoltageConfigurationProps {
     tooltip?: string;
 }
 
-// TODO: when writing with nrfutil array must be converted
 const VoltageConfiguration = ({
     pmicPort,
     voltageMin,
@@ -66,7 +65,7 @@ const VoltageConfiguration = ({
                 <div className="tw-relative tw-flex tw-content-between">
                     <span className="tw-pr-4 tw-text-left tw-leading-5">
                         {label}
-                        <span className="tw-ml-1 tw-inline-flex tw-items-start align-top">
+                        <span className="align-top tw-ml-1 tw-inline-flex tw-items-start">
                             <DirtyDot dirty={dirty} />
                         </span>
                     </span>

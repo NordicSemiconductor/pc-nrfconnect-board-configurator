@@ -12,15 +12,6 @@ describe('PMIC Ports Properties Validation', () => {
         .filter(file => file.endsWith('.json') && file.startsWith('nrf_'))
         .map(file => path.join(boardsDir, file));
 
-    // todo: all props will be arrays, then no helper is needed
-    // Helper function to get length of value (array or single value)
-    const getLength = (value: any): number => {
-        if (Array.isArray(value)) {
-            return value.length;
-        }
-        return 1; // Single value has length 1
-    };
-
     jsonFiles.forEach(jsonFile => {
         const fileName = path.basename(jsonFile);
 
@@ -35,8 +26,8 @@ describe('PMIC Ports Properties Validation', () => {
             // Validate each pmicPort entry
             boardConfig.pmicPorts.forEach(
                 (pmicPort: PmicPortDefinition, index: number) => {
-                    const portLength = getLength(pmicPort.port);
-                    const portIdLength = getLength(pmicPort.portId);
+                    const portLength = pmicPort.port.length;
+                    const portIdLength = pmicPort.portId?.length;
 
                     expect(portIdLength).toBe(portLength);
 
@@ -74,14 +65,18 @@ describe('PMIC Ports Properties Validation', () => {
                     if (!Array.isArray(pmicPort.port)) {
                         throw new Error(
                             `pmicPorts[${index}].port in ${fileName} should be an array, ` +
-                                `but got: ${typeof pmicPort.port} (${JSON.stringify(pmicPort.port)})`
+                                `but got: ${typeof pmicPort.port} (${JSON.stringify(
+                                    pmicPort.port
+                                )})`
                         );
                     }
 
                     if (!Array.isArray(pmicPort.portId)) {
                         throw new Error(
                             `pmicPorts[${index}].portId in ${fileName} should be an array, ` +
-                                `but got: ${typeof pmicPort.portId} (${JSON.stringify(pmicPort.portId)})`
+                                `but got: ${typeof pmicPort.portId} (${JSON.stringify(
+                                    pmicPort.portId
+                                )})`
                         );
                     }
                 }

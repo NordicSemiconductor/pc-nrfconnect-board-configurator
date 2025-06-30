@@ -168,9 +168,6 @@ export const getAnyConfigPinDirty = (state: RootState) =>
         ).values()
     ).includes(true);
 
-export const tempGetBoardControllerConfig = (state: RootState) =>
-    state.app.boardControllerConfig;
-
 export const getConfigData = (state: RootState) =>
     state.app.boardControllerConfig.boardControllerConfigData;
 
