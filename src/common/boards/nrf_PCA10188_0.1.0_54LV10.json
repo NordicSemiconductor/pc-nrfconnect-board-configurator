@@ -31,8 +31,8 @@
             "type": "switch",
             "id": "ledcontrol",
             "title": "Power to LEDs",
-            "label": "Disable to have LEDs unpowered (and kept off).",
-            "tooltip": "Enabling this option provides LEDs from LED0 to LED3 with 3.3 V of power.",
+            "label": "Control power supply to LEDs.",
+            "tooltip": "When enabled, provides LEDs from LED0 to LED3 with 3.3 V of power. When disabled, the LEDs are unpowered and kept off.",
             "enable": {
                 "pin": 45
             }
@@ -51,7 +51,7 @@
             "type": "switch",
             "id": "ls-en",
             "title": "Load Switch",
-            "label": "Voltage level shifter",
+            "label": "Connect or disconnect the voltage level shifter",
             "tooltip": "Enables voltage level shifter between Board Controller and nRF54L MCU when active. When disabled, the voltage level shifter is disconnected.",
             "enable": {
                 "pin": 18
