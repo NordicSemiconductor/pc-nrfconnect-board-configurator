@@ -19,7 +19,7 @@
         ],
         "nrfutil": {
             "device": [
-                "2.8.6"
+                "2.12.1"
             ]
         },
         "html": "dist/index.html"
