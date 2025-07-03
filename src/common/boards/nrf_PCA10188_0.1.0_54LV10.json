@@ -62,7 +62,7 @@
             "id": "swo-control",
             "title": "SWO Control",
             "label": "Connect or disconnect the SWO signal",
-            "tooltip": "Enables SWO signal connection to nRF54L SWO pin when enabled. When disabled, the SWO signal is disconnected.",
+            "tooltip": "When enabled, connects the SWO signal connection to the SWO pin on nRF54L. When disabled, the SWO signal is disconnected.",
             "enable": {
                 "pin": 9
             }
