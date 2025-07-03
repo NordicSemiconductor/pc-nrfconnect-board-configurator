@@ -98,7 +98,6 @@ export function getBoardDefinition(
             // nRF54H20
             return { boardControllerConfigDefinition: typednrf54h20v070json };
 
-        case 'PCA10184': // why 2 numbers?
         case 'PCA10197':
             // nRF54LM20
             return { boardControllerConfigDefinition: typednrf54l20v010json };
