@@ -2,7 +2,7 @@
     "board": {
         "boardVersion": "PCA10188",
         "boardRevision": "0.1.0",
-        "boardName": "nRF54LV10 DK (hw rev. 0.1.0)"
+        "boardName": "nRF54LV10 DK (HW rev. 0.1.0)"
     },
     "pins": [
         {
