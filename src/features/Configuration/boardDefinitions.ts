@@ -16,6 +16,7 @@ import nrf54l15v030json from '../../common/boards/nrf_PCA10156_0.3.0.json';
 import nrf9151v020json from '../../common/boards/nrf_PCA10171_0.2.0_9151.json';
 import nrf54h20v070json from '../../common/boards/nrf_PCA10175_0.7.0_54H20.json';
 import nrf54l20v010json from '../../common/boards/nrf_PCA10184_0.1.0_54L20.json';
+import nrf54lv10v010json from '../../common/boards/nrf_PCA10188_0.1.0_54LV10.json';
 
 export type BoardDefinition = {
     boardControllerConfigDefinition?: BoardControllerConfigDefinition;
@@ -37,6 +38,8 @@ const typednrf54h20json = nrf54h20pdk080json as BoardControllerConfigDefinition;
 const typednrf54h20v070json =
     nrf54h20v070json as BoardControllerConfigDefinition;
 const typednrf9151v020json = nrf9151v020json as BoardControllerConfigDefinition;
+const typednrf54lv10v010json =
+    nrf54lv10v010json as BoardControllerConfigDefinition;
 const typednrf54l20v010json =
     nrf54l20v010json as BoardControllerConfigDefinition;
 
@@ -46,8 +49,6 @@ export function getBoardDefinition(
 ): BoardDefinition {
     switch (device?.devkit?.boardVersion) {
         case 'PCA10156':
-            // TODO: remove this placeholder; does not belong here
-            return { boardControllerConfigDefinition: typednrf54l20v010json };
             // nRF54L15
             if (
                 boardRevision === '0.1.0' || // Probably r0.2.0 with a firmware configuration error
@@ -85,6 +86,10 @@ export function getBoardDefinition(
             // nRF54H20
             return { boardControllerConfigDefinition: typednrf54h20json };
 
+        case 'PCA10188':
+            // nRF54LV10
+            return { boardControllerConfigDefinition: typednrf54lv10v010json };
+
         case 'PCA10171':
             // nRF9151
             return { boardControllerConfigDefinition: typednrf9151v020json };
@@ -93,8 +98,9 @@ export function getBoardDefinition(
             // nRF54H20
             return { boardControllerConfigDefinition: typednrf54h20v070json };
 
-        case 'PCA10184':
-            // nRF54L20
+        case 'PCA10184': // why 2 numbers?
+        case 'PCA10197':
+            // nRF54LM20
             return { boardControllerConfigDefinition: typednrf54l20v010json };
 
         default:
@@ -150,6 +156,7 @@ export function generatePortMap(
     boardControllerConfigDefinition: BoardControllerConfigDefinition | undefined
 ): Map<number, PmicPortDescription> {
     const pinMap = new Map<number, PmicPortDescription>();
+
     boardControllerConfigDefinition?.pmicPorts?.forEach(port => {
         const portId = port.portId;
 
