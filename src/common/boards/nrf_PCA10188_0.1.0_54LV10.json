@@ -52,7 +52,7 @@
             "id": "ls-en",
             "title": "Load Switch",
             "label": "Connect or disconnect the voltage level shifter.",
-            "tooltip": "Enables voltage level shifter between Board Controller and nRF54L MCU when active. When disabled, the voltage level shifter is disconnected.",
+            "tooltip": "When enabled, connects the voltage level shifter between the Board Controller and the MCU of nRF54L. When disabled, the voltage level shifter is disconnected.",
             "enable": {
                 "pin": 18
             }
