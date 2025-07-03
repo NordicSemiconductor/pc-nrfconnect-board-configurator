@@ -15,6 +15,7 @@ import nrf54l15v020json from '../../common/boards/nrf_PCA10156_0.2.0.json';
 import nrf54l15v030json from '../../common/boards/nrf_PCA10156_0.3.0.json';
 import nrf9151v020json from '../../common/boards/nrf_PCA10171_0.2.0_9151.json';
 import nrf54h20v070json from '../../common/boards/nrf_PCA10175_0.7.0_54H20.json';
+import nrf54l20v010json from '../../common/boards/nrf_PCA10184_0.1.0_54L20.json';
 import nrf54lv10v010json from '../../common/boards/nrf_PCA10188_0.1.0_54LV10.json';
 
 export type BoardDefinition = {
@@ -39,6 +40,8 @@ const typednrf54h20v070json =
 const typednrf9151v020json = nrf9151v020json as BoardControllerConfigDefinition;
 const typednrf54lv10v010json =
     nrf54lv10v010json as BoardControllerConfigDefinition;
+const typednrf54l20v010json =
+    nrf54l20v010json as BoardControllerConfigDefinition;
 
 export function getBoardDefinition(
     device: Device,
@@ -95,6 +98,10 @@ export function getBoardDefinition(
             // nRF54H20
             return { boardControllerConfigDefinition: typednrf54h20v070json };
 
+        case 'PCA10197':
+            // nRF54LM20
+            return { boardControllerConfigDefinition: typednrf54l20v010json };
+
         default:
             return { controlFlag: { unrecognizedBoard: true } };
     }
@@ -150,9 +157,20 @@ export function generatePortMap(
     const pinMap = new Map<number, PmicPortDescription>();
 
     boardControllerConfigDefinition?.pmicPorts?.forEach(port => {
-        if (port.portId) {
-            pinMap.set(port.port, { id: port.portId });
+        const portId = port.portId;
+
+        if (!portId) {
+            return;
         }
+
+        if (!Array.isArray(port.port) || !Array.isArray(port.portId)) {
+            console.warn(`Port must not be an array`, port);
+            return;
+        }
+
+        port.port.forEach((p, idx) => {
+            pinMap.set(p, { id: portId[idx] });
+        });
     });
 
     return pinMap;

@@ -103,8 +103,8 @@
     "pmicPorts": [
         {
             "type": "voltage",
-            "port": 1,
-            "portId": "vdd",
+            "port": [1],
+            "portId": ["vdd"],
             "portLabel": "VDD (nPM VOUT1)",
             "portDescription": "Voltage on the VDD rail.",
             "mVmin": 1800,
@@ -112,8 +112,8 @@
         },
         {
             "type": "voltage",
-            "port": 2,
-            "portId": "vdd-gnss-led",
+            "port": [2],
+            "portId": ["vdd-gnss-led"],
             "portLabel": "VDD for GNSS and LED (nPM VOUT2)",
             "portDescription": "Voltage driving the Global Navigation Satellite System and the LEDs.",
             "mVmin": 1800,

@@ -188,6 +188,7 @@ const PmicList = ({
     const portMap = generatePortMap(
         boardDefinition.boardControllerConfigDefinition
     );
+
     return (
         <div className="tw-mb-6 tw-w-full">
             {ports.map(port => {

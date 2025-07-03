@@ -1,8 +1,8 @@
 {
     "board": {
-        "boardVersion": "PCA10156",
-        "boardRevision": "0.3.0",
-        "boardName": "nRF54L15 PDK (hw rev. 0.3.0)"
+        "boardVersion": "PCA10184",
+        "boardRevision": "0.1.0",
+        "boardName": "nRF54L20 PDK (hw rev. 0.1.0)"
     },
     "pins": [
         {
@@ -28,14 +28,15 @@
             }
         },
         {
-            "type": "switch",
+            "type": "slide",
             "id": "ledcontrol",
-            "title": "Power to LEDs",
-            "label": "Disable to have LEDs unpowered (and kept off).",
-            "tooltip": "Enabling this option provides LEDs from LED0 to LED3 with 3.3 V of power.",
+            "title": "LED Power",
+            "label": "Disable LEDs to use the GPIOs for other purposes.",
+            "tooltip": "The LEDs are enabled by providing 3.3 V to LED0-LED3.",
             "enable": {
                 "pin": 45
-            }
+            },
+            "alternatives": ["GPIO", "LED"]
         },
         {
             "type": "switch",
@@ -51,10 +52,11 @@
     "pmicPorts": [
         {
             "type": "voltage",
-            "port": [1],
-            "portId": ["vdd"],
-            "portLabel": "VDD (nPM VOUT1)",
-            "portDescription": "Voltage on the VDD rail.",
+            "port": [1, 2],
+            "portId": ["vddio", "vdd-dbgr"],
+            "portLabel": "VDDIO (nPM VOUT1) and VDD_DBGR (nPM VOUT2)",
+            "portDescription": "Voltage",
+            "portDescriptionTooltip": "Voltage on the VDDIO rail and voltage on the VDD_DBGR rail",
             "mVmin": 1800,
             "mVmax": 3300
         }
@@ -67,7 +69,7 @@
             },
             {
                 "pin": 20,
-                "state": false
+                "state": true
             },
             {
                 "pin": 22,
@@ -75,7 +77,7 @@
             },
             {
                 "pin": 23,
-                "state": false
+                "state": true
             },
             {
                 "pin": 45,
@@ -89,6 +91,10 @@
         "pmicPorts": [
             {
                 "port": 1,
+                "voltage": 1800
+            },
+            {
+                "port": 2,
                 "voltage": 1800
             }
         ]

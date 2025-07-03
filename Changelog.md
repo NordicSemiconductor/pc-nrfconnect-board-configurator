@@ -1,3 +1,11 @@
+## 0.3.12 - unreleased
+
+EXPERIMENTAL RELEASE
+
+### Changed
+
+-   Maintenance release to update the dependencies.
+
 ## 0.3.11 - 2025-05-22
 
 EXPERIMENTAL RELEASE

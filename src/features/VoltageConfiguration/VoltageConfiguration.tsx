@@ -10,6 +10,7 @@ import {
     Card,
     classNames,
     NumberInput,
+    Overlay,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import DirtyDot from '../../app/DirtyDot';
@@ -20,11 +21,12 @@ import {
 } from '../Configuration/boardControllerConfigSlice';
 
 interface VoltageConfigurationProps {
-    pmicPort: number;
+    pmicPort: number[];
     voltageMin: number;
     voltageMax: number;
     pmicPortLabel?: string;
     pmicPortDescription?: string;
+    tooltip?: string;
 }
 
 const VoltageConfiguration = ({
@@ -33,11 +35,15 @@ const VoltageConfiguration = ({
     voltageMax,
     pmicPortLabel,
     pmicPortDescription,
+    tooltip,
 }: VoltageConfigurationProps) => {
     const dispatch = useDispatch();
-    const voltage = useSelector(getPmicConfigValue(pmicPort)) ?? voltageMin; // Default to voltageMin
 
-    const dirty = useSelector(getPmicConfigValueDirty(pmicPort));
+    const pmicPortLocal = pmicPort[0];
+    const voltage =
+        useSelector(getPmicConfigValue(pmicPortLocal)) ?? voltageMin; // Default to voltageMin
+
+    const dirty = useSelector(getPmicConfigValueDirty(pmicPortLocal));
 
     const label = pmicPortLabel ?? `Voltage port ${pmicPort}`;
     const description =
@@ -56,13 +62,12 @@ const VoltageConfiguration = ({
     return (
         <Card
             title={
-                <div className="tw-flex tw-content-between">
-                    <span>
+                <div className="tw-relative tw-flex tw-content-between">
+                    <span className="tw-pr-4 tw-text-left tw-leading-5">
                         {label}
-                        <DirtyDot
-                            dirty={dirty}
-                            className="tw-absolute tw-ml-1 -tw-translate-y-2"
-                        />
+                        <span className="align-top tw-ml-1 tw-inline-flex tw-items-start">
+                            <DirtyDot dirty={dirty} />
+                        </span>
                     </span>
                 </div>
             }
@@ -70,23 +75,43 @@ const VoltageConfiguration = ({
             <div className="tw-flex tw-flex-col">
                 <NumberInput
                     showSlider
-                    label={description}
+                    label={
+                        tooltip ? (
+                            <Overlay
+                                tooltipId="tooltip"
+                                tooltipChildren={
+                                    <div className="tw-preflight tw-flex tw-flex-col tw-gap-4 tw-bg-gray-900 tw-px-4 tw-py-2 tw-text-left tw-text-gray-100">
+                                        <p>{tooltip}</p>
+                                    </div>
+                                }
+                            >
+                                <span>
+                                    {description}{' '}
+                                    <span className="mdi mdi-help-circle-outline" />
+                                </span>
+                            </Overlay>
+                        ) : (
+                            description
+                        )
+                    }
                     unit="mV"
                     range={{ min: voltageMin, max: voltageMax, step: 100 }}
                     value={voltage}
                     onChange={value => {
-                        dispatch(
-                            setPmicConfigValue({
-                                pmicConfigPort: pmicPort,
-                                configPinState: value,
-                            })
-                        );
+                        pmicPort.forEach(p => {
+                            dispatch(
+                                setPmicConfigValue({
+                                    pmicConfigPort: p,
+                                    configPinState: value,
+                                })
+                            );
+                        });
                     }}
                 />
             </div>
             <VoltagePresetButtons
                 voltages={voltagePresetValues}
-                pmicPort={pmicPort}
+                pmicPorts={pmicPort}
                 setVoltage={voltage}
             />
         </Card>
@@ -94,21 +119,21 @@ const VoltageConfiguration = ({
 };
 
 interface VoltagePresetButtonsProps {
-    pmicPort: number;
+    pmicPorts: number[];
     voltages: number[];
     setVoltage: number;
 }
 
 const VoltagePresetButtons = ({
-    pmicPort,
+    pmicPorts,
     voltages,
     setVoltage,
 }: VoltagePresetButtonsProps) => (
     <div id="preset-buttons" className="tw-mb-2 tw-flex tw-gap-1 tw-pt-4">
         {voltages.map(voltage => (
             <PresetButton
-                key={`voltage-preset-${pmicPort}-${voltage}`}
-                pmicPort={pmicPort}
+                key={`voltage-preset-${pmicPorts}-${voltage}`}
+                pmicPorts={pmicPorts}
                 voltage={voltage}
                 selected={setVoltage === voltage}
             />
@@ -117,12 +142,12 @@ const VoltagePresetButtons = ({
 );
 
 interface PresetButtonProps {
-    pmicPort: number;
+    pmicPorts: number[];
     voltage: number;
     selected?: boolean;
 }
 
-const PresetButton = ({ pmicPort, voltage, selected }: PresetButtonProps) => {
+const PresetButton = ({ pmicPorts, voltage, selected }: PresetButtonProps) => {
     const dispatch = useDispatch();
 
     return (
@@ -134,12 +159,14 @@ const PresetButton = ({ pmicPort, voltage, selected }: PresetButtonProps) => {
                 selected ? 'tw-bg-white' : 'tw-bg-gray-50'
             )}
             onClick={() => {
-                dispatch(
-                    setPmicConfigValue({
-                        pmicConfigPort: pmicPort,
-                        configPinState: voltage,
-                    })
-                );
+                pmicPorts.forEach(p => {
+                    dispatch(
+                        setPmicConfigValue({
+                            pmicConfigPort: p,
+                            configPinState: voltage,
+                        })
+                    );
+                });
             }}
         >
             {(voltage / 1000).toFixed(1)}V

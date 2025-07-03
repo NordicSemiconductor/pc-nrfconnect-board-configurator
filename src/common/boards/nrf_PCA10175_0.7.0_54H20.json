@@ -62,8 +62,8 @@
     "pmicPorts": [
         {
             "type": "voltage",
-            "port": 1,
-            "portId": "vdd-p7",
+            "port": [1],
+            "portId": ["vdd-p7"],
             "portLabel": "VDD-p7 (nPM VOUT1)",
             "portDescription": "Voltage on the VDD rail of nRF54H20 P7.",
             "mVmin": 1200,
@@ -71,8 +71,8 @@
         },
         {
             "type": "voltage",
-            "port": 2,
-            "portId": "vdd-p9",
+            "port": [2],
+            "portId": ["vdd-p9"],
             "portLabel": "VDD-p9 (nPM VOUT2)",
             "portDescription": "Voltage on the VDD rail of nRF54H20 P9.",
             "mVmin": 1800,
@@ -80,8 +80,8 @@
         },
         {
             "type": "voltage",
-            "port": 3,
-            "portId": "vdd-p1",
+            "port": [3],
+            "portId": ["vdd-p1"],
             "portLabel": "VDD-p1 (nPM LDO1)",
             "portDescription": "Voltage on the VDD rail of nRF54H20 P1.",
             "mVmin": 1200,
@@ -89,8 +89,8 @@
         },
         {
             "type": "voltage",
-            "port": 4,
-            "portId": "vdd-p2",
+            "port": [4],
+            "portId": ["vdd-p2"],
             "portLabel": "VDD-p2 (nPM LDO2)",
             "portDescription": "Voltage on the VDD rail of nRF54H20 P2.",
             "mVmin": 1200,

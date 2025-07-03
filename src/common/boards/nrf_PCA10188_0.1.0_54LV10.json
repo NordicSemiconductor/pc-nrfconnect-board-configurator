@@ -71,8 +71,8 @@
     "pmicPorts": [
         {
             "type": "voltage",
-            "port": 1,
-            "portId": "vdd",
+            "port": [1],
+            "portId": ["vdd"],
             "portLabel": "VDD (nPM VOUT1)",
             "portDescription": "Voltage on the VDD rail.",
             "mVmin": 1200,
