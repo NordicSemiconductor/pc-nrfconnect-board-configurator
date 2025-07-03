@@ -1,0 +1,124 @@
+{
+    "board": {
+        "boardVersion": "PCA10188",
+        "boardRevision": "0.1.0",
+        "boardName": "nRF54LV10 DK (HW rev. 0.1.0)"
+    },
+    "pins": [
+        {
+            "type": "vcom",
+            "id": "vcom0",
+            "name": "VCOM0",
+            "enable": {
+                "pin": 42
+            },
+            "hwfc": {
+                "pin": 20
+            }
+        },
+        {
+            "type": "vcom",
+            "id": "vcom1",
+            "name": "VCOM1",
+            "enable": {
+                "pin": 22
+            },
+            "hwfc": {
+                "pin": 23
+            }
+        },
+        {
+            "type": "switch",
+            "id": "ledcontrol",
+            "title": "Power to LEDs",
+            "label": "Control power supply to LEDs.",
+            "tooltip": "When enabled, provides LEDs from LED0 to LED3 with 3.3 V of power. When disabled, the LEDs are unpowered and kept off.",
+            "enable": {
+                "pin": 45
+            }
+        },
+        {
+            "type": "switch",
+            "id": "swd-control",
+            "title": "Software Debugger (SWD)",
+            "label": "Disable to use an external debugger on the target chip.",
+            "tooltip": "When enabled, the SWD is connected and the IMCU is acting as the debugger. When disabled, the SWD is disconnected and you can use an external debugger connected to the Debug In header.",
+            "enable": {
+                "pin": 6
+            }
+        },
+        {
+            "type": "switch",
+            "id": "ls-en",
+            "title": "Load Switch",
+            "label": "Connect or disconnect the voltage level shifter.",
+            "tooltip": "When enabled, connects the voltage level shifter between the Board Controller and the MCU of nRF54L. When disabled, the voltage level shifter is disconnected.",
+            "enable": {
+                "pin": 18
+            }
+        },
+        {
+            "type": "switch",
+            "id": "swo-control",
+            "title": "SWO Control",
+            "label": "Connect or disconnect the SWO signal",
+            "tooltip": "When enabled, connects the SWO signal connection to the SWO pin on nRF54L. When disabled, the SWO signal is disconnected.",
+            "enable": {
+                "pin": 9
+            }
+        }
+    ],
+    "pmicPorts": [
+        {
+            "type": "voltage",
+            "port": 1,
+            "portId": "vdd",
+            "portLabel": "VDD (nPM VOUT1)",
+            "portDescription": "Voltage on the VDD rail.",
+            "mVmin": 1200,
+            "mVmax": 1700
+        }
+    ],
+    "defaults": {
+        "pins": [
+            {
+                "pin": 42,
+                "state": true
+            },
+            {
+                "pin": 20,
+                "state": true
+            },
+            {
+                "pin": 22,
+                "state": true
+            },
+            {
+                "pin": 23,
+                "state": true
+            },
+            {
+                "pin": 45,
+                "state": true
+            },
+            {
+                "pin": 6,
+                "state": true
+            },
+            {
+                "pin": 18,
+                "state": true
+            },
+            {
+                "pin": 9,
+                "state": false
+            }
+        ],
+        "pmicPorts": [
+            {
+                "port": 1,
+                "voltage": 1500
+            }
+        ]
+    }
+}
