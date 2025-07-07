@@ -1,4 +1,4 @@
-## 0.3.12 - unreleased
+## 0.3.12 - 2025-07-07
 
 EXPERIMENTAL RELEASE
 
