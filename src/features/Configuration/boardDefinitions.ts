@@ -98,8 +98,12 @@ export function getBoardDefinition(
             // nRF54H20
             return { boardControllerConfigDefinition: typednrf54h20v070json };
 
-        case 'PCA10197':
+        case 'PCA10184':
             // nRF54LM20
+            return { boardControllerConfigDefinition: typednrf54l20v010json };
+
+        case 'PCA10197':
+            // also nRF54LM20
             return { boardControllerConfigDefinition: typednrf54l20v010json };
 
         default:
