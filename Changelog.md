@@ -1,3 +1,11 @@
+## 0.3.13 - 2025-07-14
+
+EXPERIMENTAL RELEASE
+
+### Fixed
+
+-   Issue with selecting devices when logging is set to verbose.
+
 ## 0.3.12 - 2025-07-08
 
 EXPERIMENTAL RELEASE
