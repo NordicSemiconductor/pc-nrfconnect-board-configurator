@@ -106,7 +106,8 @@ export function getBoardDefinition(
             return { boardControllerConfigDefinition: typednrf54h20v070json };
 
         case 'PCA10184':
-            if (boardRevision === '0.1.0') {
+            // 0.1.x
+            if (boardRevision && /^0\.1\.\d+$/.test(boardRevision)) {
                 return {
                     boardControllerConfigDefinition: typednrf54lm20v010json,
                 };
