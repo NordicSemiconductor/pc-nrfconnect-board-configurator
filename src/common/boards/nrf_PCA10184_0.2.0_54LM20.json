@@ -2,7 +2,7 @@
     "board": {
         "boardVersion": "PCA10184",
         "boardRevision": "0.2.0",
-        "boardName": "nRF54L20 PDK (hw rev. 0.2.0)"
+        "boardName": "nRF54L20 PDK (rev. 0.2.0)"
     },
     "pins": [
         {
@@ -52,7 +52,7 @@
             "type": "switch",
             "id": "ldo1-control",
             "title": "Power to P15",
-            "label": "Enables the 5.0V power to P15.",
+            "label": "Enable 5.0-V power supply to P15.",
             "tooltip": "LDO1 CTRL is also connected to P15. For customer to utilise for their purposes.",
             "enable": {
                 "pin": 47
