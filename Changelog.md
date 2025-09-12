@@ -1,10 +1,10 @@
-## 0.3.14 - unreleased
+## 0.4.0 - unreleased
 
 EXPERIMENTAL RELEASE
 
-### Changed
+### Added
 
--   Maintenance release to update the dependencies.
+-   Support for HW revisions of nRF54LM20 DK v0.2.0 and 0.3.0.
 
 ## 0.3.13 - 2025-07-14
 
