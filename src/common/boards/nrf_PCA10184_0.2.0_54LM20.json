@@ -53,7 +53,7 @@
             "id": "ldo1-control",
             "title": "Power to P15",
             "label": "Enable 5.0-V power supply to P15.",
-            "tooltip": "LDO1 CTRL is also connected to P15. For customer to utilise for their purposes.",
+            "tooltip": "When enabled, the nPM1300 LDO1 outputs 5 V to the P15 header. When disabled, LDO1 is disabled.",
             "enable": {
                 "pin": 47
             }
