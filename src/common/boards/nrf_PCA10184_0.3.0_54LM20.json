@@ -1,0 +1,116 @@
+{
+    "board": {
+        "boardVersion": "PCA10184",
+        "boardRevision": "0.3.0",
+        "boardName": "nRF54L20 PDK (rev. 0.3.0)"
+    },
+    "pins": [
+        {
+            "type": "vcom",
+            "id": "vcom0",
+            "name": "VCOM0",
+            "enable": {
+                "pin": 42
+            },
+            "hwfc": {
+                "pin": 20
+            }
+        },
+        {
+            "type": "vcom",
+            "id": "vcom1",
+            "name": "VCOM1",
+            "enable": {
+                "pin": 22
+            },
+            "hwfc": {
+                "pin": 23
+            }
+        },
+        {
+            "type": "slide",
+            "id": "ledcontrol",
+            "title": "LED Power",
+            "label": "Disable LEDs to use the GPIOs for other purposes.",
+            "tooltip": "The LEDs are enabled by providing 3.3 V to LED0-LED3.",
+            "enable": {
+                "pin": 45
+            },
+            "alternatives": ["GPIO", "LED"]
+        },
+        {
+            "type": "switch",
+            "id": "swd-control",
+            "title": "Software Debugger (SWD)",
+            "label": "Disable to use an external debugger on the target chip.",
+            "tooltip": "When enabled, the SWD is connected and the IMCU is acting as the debugger. When disabled, the SWD is disconnected and you can use an external debugger connected to the Debug In header.",
+            "enable": {
+                "pin": 6
+            }
+        },
+        {
+            "type": "switch",
+            "id": "qspi-control",
+            "title": "External memory",
+            "label": "Enable external flash",
+            "tooltip": "When enabled, the QSPI pins (P2.00-P2.05) are connected to the external memory. When disabled, the QSPI pins are routed to the PORT2 header (P4).",
+            "enable": {
+                "pin": 47
+            }
+        }
+    ],
+    "pmicPorts": [
+        {
+            "type": "voltage",
+            "port": [1, 2],
+            "portId": ["vddio", "vdd-dbgr"],
+            "portLabel": "VDDIO (nPM VOUT1) and VDD_DBGR (nPM VOUT2)",
+            "portDescription": "Voltage",
+            "portDescriptionTooltip": "Voltage on the VDDIO rail and voltage on the VDD_DBGR rail",
+            "mVmin": 1800,
+            "mVmax": 3300
+        }
+    ],
+    "defaults": {
+        "pins": [
+            {
+                "pin": 42,
+                "state": true
+            },
+            {
+                "pin": 20,
+                "state": true
+            },
+            {
+                "pin": 22,
+                "state": true
+            },
+            {
+                "pin": 23,
+                "state": true
+            },
+            {
+                "pin": 45,
+                "state": true
+            },
+            {
+                "pin": 47,
+                "state": true
+            },
+            {
+                "pin": 6,
+                "state": true
+            }
+        ],
+        "pmicPorts": [
+            {
+                "port": 1,
+                "voltage": 1800
+            },
+            {
+                "port": 2,
+                "voltage": 1800
+            }
+        ]
+    }
+}

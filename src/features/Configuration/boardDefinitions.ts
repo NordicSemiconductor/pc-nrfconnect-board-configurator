@@ -15,7 +15,9 @@ import nrf54l15v020json from '../../common/boards/nrf_PCA10156_0.2.0.json';
 import nrf54l15v030json from '../../common/boards/nrf_PCA10156_0.3.0.json';
 import nrf9151v020json from '../../common/boards/nrf_PCA10171_0.2.0_9151.json';
 import nrf54h20v070json from '../../common/boards/nrf_PCA10175_0.7.0_54H20.json';
-import nrf54l20v010json from '../../common/boards/nrf_PCA10184_0.1.0_54L20.json';
+import nrf54lm20v010json from '../../common/boards/nrf_PCA10184_0.1.0_54LM20.json';
+import nrf54lm20v020json from '../../common/boards/nrf_PCA10184_0.2.0_54LM20.json';
+import nrf54lm20v030json from '../../common/boards/nrf_PCA10184_0.3.0_54LM20.json';
 import nrf54lv10v010json from '../../common/boards/nrf_PCA10188_0.1.0_54LV10.json';
 
 export type BoardDefinition = {
@@ -40,8 +42,13 @@ const typednrf54h20v070json =
 const typednrf9151v020json = nrf9151v020json as BoardControllerConfigDefinition;
 const typednrf54lv10v010json =
     nrf54lv10v010json as BoardControllerConfigDefinition;
-const typednrf54l20v010json =
-    nrf54l20v010json as BoardControllerConfigDefinition;
+
+const typednrf54lm20v010json =
+    nrf54lm20v010json as BoardControllerConfigDefinition;
+const typednrf54lm20v020json =
+    nrf54lm20v020json as BoardControllerConfigDefinition;
+const typednrf54lm20v030json =
+    nrf54lm20v030json as BoardControllerConfigDefinition;
 
 export function getBoardDefinition(
     device: Device,
@@ -99,12 +106,25 @@ export function getBoardDefinition(
             return { boardControllerConfigDefinition: typednrf54h20v070json };
 
         case 'PCA10184':
-            // nRF54LM20
-            return { boardControllerConfigDefinition: typednrf54l20v010json };
+            // 0.1.x
+            if (boardRevision && /^0\.1\.\d+$/.test(boardRevision)) {
+                return {
+                    boardControllerConfigDefinition: typednrf54lm20v010json,
+                };
+            }
+
+            // 0.2.x
+            if (boardRevision && /^0\.2\.\d+$/.test(boardRevision)) {
+                return {
+                    boardControllerConfigDefinition: typednrf54lm20v020json,
+                };
+            }
+
+            return { boardControllerConfigDefinition: typednrf54lm20v030json };
 
         case 'PCA10197':
             // also nRF54LM20
-            return { boardControllerConfigDefinition: typednrf54l20v010json };
+            return { boardControllerConfigDefinition: typednrf54lm20v010json };
 
         default:
             return { controlFlag: { unrecognizedBoard: true } };
