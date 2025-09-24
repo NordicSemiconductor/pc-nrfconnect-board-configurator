@@ -22,7 +22,7 @@
                 "2.12.3"
             ]
         },
-        "nrfutilCore": "8.0.0",
+        "nrfutilCore": "8.1.1",
         "html": "dist/index.html"
     },
     "main": "dist/bundle.js",
