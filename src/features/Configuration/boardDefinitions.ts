@@ -57,20 +57,20 @@ export function getBoardDefinition(
     device: Device,
     boardRevision: string | undefined
 ): BoardDefinition {
+    // 0.1.0 is probably r0.2.0 with a firmware configuration error
+    const primalRevisionsL15 = ['0.1.0', '0.2.0', '0.2.1'];
+    const midRevisionsL15Pattern = /^0\.[3-9]\.\d+$/;
+
     switch (device?.devkit?.boardVersion) {
+        // nRF54L15
         case 'PCA10156':
-            // nRF54L15
-            if (
-                boardRevision === '0.1.0' || // Probably r0.2.0 with a firmware configuration error
-                boardRevision === '0.2.0' ||
-                boardRevision === '0.2.1'
-            ) {
+            if (boardRevision && primalRevisionsL15.includes(boardRevision)) {
                 return {
                     boardControllerConfigDefinition: typednrf54l15v020json,
                 };
             }
 
-            if (boardRevision === '0.3.0') {
+            if (boardRevision && midRevisionsL15Pattern.test(boardRevision)) {
                 return {
                     boardControllerConfigDefinition: typednrf54l15v030json,
                 };
