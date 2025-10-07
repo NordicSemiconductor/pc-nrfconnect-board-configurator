@@ -4,7 +4,7 @@ EXPERIMENTAL RELEASE
 
 ### Added
 
--   Support for HW revisions of nRF54LM15 DK v0.10.0 and above.
+-   Support for the HW revisions v0.10.0 and above of the nRF54LM15 DK.
 
 ## 0.4.0 - 2025-09-18
 
