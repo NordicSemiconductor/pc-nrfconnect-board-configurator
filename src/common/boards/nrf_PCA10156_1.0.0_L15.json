@@ -1,0 +1,125 @@
+{
+    "board": {
+        "boardVersion": "PCA10156",
+        "boardRevision": "1.0.0",
+        "boardName": "nRF54L15 PDK (rev. 1.0.0)"
+    },
+    "pins": [
+        {
+            "type": "vcom",
+            "id": "vcom0",
+            "name": "VCOM0",
+            "enable": {
+                "pin": 42
+            },
+            "hwfc": {
+                "pin": 20
+            }
+        },
+        {
+            "type": "vcom",
+            "id": "vcom1",
+            "name": "VCOM1",
+            "enable": {
+                "pin": 22
+            },
+            "hwfc": {
+                "pin": 23
+            }
+        },
+        {
+            "type": "switch",
+            "id": "ledcontrol",
+            "title": "Power to LEDs",
+            "label": "Disable to have LEDs unpowered (and kept off).",
+            "tooltip": "Enabling this option provides LEDs from LED0 to LED3 with 3.3 V of power.",
+            "enable": {
+                "pin": 45
+            }
+        },
+        {
+            "type": "switch",
+            "id": "swd-control",
+            "title": "Software Debugger (SWD)",
+            "label": "Disable to use an external debugger on the target chip.",
+            "tooltip": "When enabled, the SWD is connected and the IMCU is acting as the debugger. When disabled, the SWD is disconnected and you can use an external debugger connected to the Debug In header.",
+            "enable": {
+                "pin": 6
+            }
+        },
+        {
+            "type": "switch",
+            "id": "swo-control",
+            "title": "SWO Control",
+            "label": "Connect or disconnect the SWO signal",
+            "tooltip": "When enabled, connects the SWO signal connection to the SWO P2.07 pin on nRF54L15. When disabled, the SWO signal is disconnected.",
+            "enable": {
+                "pin": 9,
+                "invert": true
+            }
+        },
+        {
+            "type": "switch",
+            "id": "qspi-control",
+            "title": "External memory",
+            "label": "Enable external flash",
+            "tooltip": "When enabled, the QSPI pins (P2.00-P2.05) are connected to the external memory. When disabled, the QSPI pins are routed to the PORT2 header (P2).",
+            "enable": {
+                "pin": 47
+            }
+        }
+    ],
+    "pmicPorts": [
+        {
+            "type": "voltage",
+            "port": [1],
+            "portId": ["vdd"],
+            "portLabel": "VDD (nPM VOUT1)",
+            "portDescription": "Voltage on the VDD rail.",
+            "mVmin": 1800,
+            "mVmax": 3300
+        }
+    ],
+    "defaults": {
+        "pins": [
+            {
+                "pin": 42,
+                "state": true
+            },
+            {
+                "pin": 20,
+                "state": false
+            },
+            {
+                "pin": 22,
+                "state": true
+            },
+            {
+                "pin": 23,
+                "state": false
+            },
+            {
+                "pin": 45,
+                "state": true
+            },
+            {
+                "pin": 6,
+                "state": true
+            },
+            {
+                "pin": 9,
+                "state": false
+            },
+            {
+                "pin": 47,
+                "state": true
+            }
+        ],
+        "pmicPorts": [
+            {
+                "port": 1,
+                "voltage": 1800
+            }
+        ]
+    }
+}
