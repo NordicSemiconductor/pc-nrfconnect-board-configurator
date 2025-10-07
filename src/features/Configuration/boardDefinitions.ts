@@ -62,8 +62,8 @@ export function getBoardDefinition(
     const midRevisionsL15Pattern = /^0\.[3-9]\.\d+$/;
 
     switch (device?.devkit?.boardVersion) {
-        // nRF54L15
         case 'PCA10156':
+            // nRF54L15
             if (boardRevision && primalRevisionsL15.includes(boardRevision)) {
                 return {
                     boardControllerConfigDefinition: typednrf54l15v020json,
