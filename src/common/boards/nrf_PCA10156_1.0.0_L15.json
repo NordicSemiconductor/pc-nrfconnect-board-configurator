@@ -63,7 +63,7 @@
             "id": "qspi-control",
             "title": "External memory",
             "label": "Enable external flash",
-            "tooltip": "When enabled, the QSPI pins (P2.01-P2.05) are connected to the external memory. When disabled, the QSPI pins are routed to the PORT2 header (P4).",
+            "tooltip": "When enabled, the QSPI pins (P2.00-P2.05) are connected to the external memory. When disabled, the QSPI pins are routed to the PORT2 header (P2).",
             "enable": {
                 "pin": 47
             }
