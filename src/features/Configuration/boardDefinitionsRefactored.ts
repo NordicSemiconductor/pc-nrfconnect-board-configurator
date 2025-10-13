@@ -1,3 +1,9 @@
+/*
+ * Copyright (c) 2025 Nordic Semiconductor ASA
+ *
+ * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
+ */
+
 import { Device } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import BoardControllerConfigDefinition from '../../common/boards/BoardControllerConfigDefinition';
