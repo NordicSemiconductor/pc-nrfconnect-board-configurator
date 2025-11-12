@@ -69,7 +69,7 @@ const VCOMConfiguration = ({
                                     ),
                                 }),
                             );
-                            // Also diconnect HWFC if VCOM is disconnected
+                            // Also disconnect HWFC if VCOM is disconnected
                             dispatch(
                                 setConfigValue({
                                     configPin: hwfcEnablePin,
