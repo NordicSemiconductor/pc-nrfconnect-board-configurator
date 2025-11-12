@@ -1,18 +1,22 @@
 ## 1.0.0 - unreleased
 
+The Board Configurator app is now fully supported and no longer experimental.
+
 ### Added
 
-- nRF9151 SMA DK support.
+- Support for the nRF9151 SMA DK.
 
 ### Changed
 
-- Welcome screen is now blank. Supported kits list is moved to the sidebar.
+- Moved the list of supported development kits to the side panel area. The list
+  has been updated.
 - Updated list of the supported devices.
-- Board Controller info accordion now persists it's state.
+- The app now saves the UI state of the Board Controller info component between
+  sessions.
 
 ### Removed
 
-- Controls for configuring voltage for GPIO Ports 1,2 and 7 for nRF54H20 DK.
+- nRF54H20 DK: Controls for configuring voltage for GPIO Ports 1, 2, and 7.
 
 ## 0.5.0 - 2025-10-07
 
