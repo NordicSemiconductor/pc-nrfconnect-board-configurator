@@ -42,7 +42,7 @@ const boardControllerConfigSlice = createSlice({
             state,
             {
                 payload: { boardControllerConfig },
-            }: PayloadAction<{ boardControllerConfig: Map<number, boolean> }>
+            }: PayloadAction<{ boardControllerConfig: Map<number, boolean> }>,
         ) {
             state.boardControllerConfigData = boardControllerConfig;
 
@@ -56,7 +56,7 @@ const boardControllerConfigSlice = createSlice({
             state,
             {
                 payload: { configPin, configPinState },
-            }: PayloadAction<{ configPin: number; configPinState: boolean }>
+            }: PayloadAction<{ configPin: number; configPinState: boolean }>,
         ) {
             state.boardControllerConfigData.set(configPin, configPinState);
 
@@ -78,19 +78,22 @@ const boardControllerConfigSlice = createSlice({
             state,
             {
                 payload: { pmicConfig },
-            }: PayloadAction<{ pmicConfig: Map<number, number> }>
+            }: PayloadAction<{ pmicConfig: Map<number, number> }>,
         ) {
             state.pmicConfigData = pmicConfig;
 
             pmicConfig.forEach((_, pmicPort) =>
-                updatePmicConfigPortDirtyFlag(state, pmicPort)
+                updatePmicConfigPortDirtyFlag(state, pmicPort),
             );
         },
         setPmicConfigValue(
             state,
             {
                 payload: { pmicConfigPort, configPinState },
-            }: PayloadAction<{ pmicConfigPort: number; configPinState: number }>
+            }: PayloadAction<{
+                pmicConfigPort: number;
+                configPinState: number;
+            }>,
         ) {
             state.pmicConfigData.set(pmicConfigPort, configPinState);
 
@@ -104,7 +107,7 @@ const boardControllerConfigSlice = createSlice({
             state,
             {
                 payload: { hardwareConfig },
-            }: PayloadAction<{ hardwareConfig: BoardConfiguration }>
+            }: PayloadAction<{ hardwareConfig: BoardConfiguration }>,
         ) {
             state.hardwareConfig = hardwareConfig;
         },
@@ -116,7 +119,7 @@ const boardControllerConfigSlice = createSlice({
             state,
             {
                 payload: { defaultConfig },
-            }: PayloadAction<{ defaultConfig: BoardConfiguration }>
+            }: PayloadAction<{ defaultConfig: BoardConfiguration }>,
         ) {
             state.defaultConfig = defaultConfig;
         },
@@ -131,7 +134,7 @@ export const getConfigValue =
     (configPin: number) =>
     (state: RootState): boolean =>
         state.app.boardControllerConfig.boardControllerConfigData.get(
-            configPin
+            configPin,
         ) === true;
 
 export const getPmicConfigValue =
@@ -143,7 +146,7 @@ export const getConfigPinDirty =
     (configPin: number) =>
     (state: RootState): boolean =>
         state.app.boardControllerConfig.boardControllerConfigDataDirty.get(
-            configPin
+            configPin,
         ) === true;
 
 export const getPmicConfigValueDirty =
@@ -157,7 +160,7 @@ export const getAnyConfigPinDirty = (state: RootState) =>
         (
             state.app.boardControllerConfig
                 .boardControllerConfigDataDirty as Map<number, boolean>
-        ).values()
+        ).values(),
     ).includes(true) ||
     Array.from(
         (
@@ -165,7 +168,7 @@ export const getAnyConfigPinDirty = (state: RootState) =>
                 number,
                 boolean
             >
-        ).values()
+        ).values(),
     ).includes(true);
 
 export const getConfigData = (state: RootState) =>
@@ -191,7 +194,7 @@ export const getConfigArray = createSelector(
     (configData: Map<number, boolean>, pmicConfigData: Map<number, number>) => [
         avoidEmptyConfigArray(sortAndFlatten(configData)),
         ...(pmicConfigData.size > 0 ? [sortAndFlatten(pmicConfigData)] : []),
-    ]
+    ],
 );
 
 function sortAndFlatten(pinMap: Map<number, number | boolean>) {
@@ -209,7 +212,7 @@ function avoidEmptyConfigArray(array: (number | boolean | undefined)[]) {
 
 function updateConfigPinDirtyFlag(
     state: Draft<ConfigState>,
-    configPin: number
+    configPin: number,
 ) {
     // Update dirty flag
     state.boardControllerConfigDataDirty.set(
@@ -217,14 +220,14 @@ function updateConfigPinDirtyFlag(
         computeDirtyFlag(
             state.boardControllerConfigData.get(configPin),
             state.hardwareConfig.pins?.get(configPin),
-            state.defaultConfig.pins?.get(configPin)
-        )
+            state.defaultConfig.pins?.get(configPin),
+        ),
     );
 }
 
 function updatePmicConfigPortDirtyFlag(
     state: Draft<ConfigState>,
-    configPort: number
+    configPort: number,
 ) {
     // Update dirty flag
     state.pmicConfigDataDirty.set(
@@ -232,15 +235,15 @@ function updatePmicConfigPortDirtyFlag(
         computeDirtyFlag(
             state.pmicConfigData.get(configPort),
             state.hardwareConfig.pmicPorts?.get(configPort),
-            state.defaultConfig.pmicPorts?.get(configPort)
-        )
+            state.defaultConfig.pmicPorts?.get(configPort),
+        ),
     );
 }
 
 function computeDirtyFlag<T>(
     configState: T,
     currentHardwareConfig: T,
-    defaultConfig: T
+    defaultConfig: T,
 ): boolean {
     // The value is dirty if..
     return (

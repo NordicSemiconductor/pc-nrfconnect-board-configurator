@@ -84,7 +84,7 @@ const ConfigSlideSelector = ({
                             setConfigValue({
                                 configPin,
                                 configPinState: xor(enable, invert),
-                            })
+                            }),
                         );
                     }}
                 />

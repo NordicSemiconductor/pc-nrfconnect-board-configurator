@@ -54,7 +54,7 @@ const VoltageConfiguration = ({
     const voltagePresetValues = [1200, 1800, 3300, 2500, 1500]
         .filter(
             filterVoltage =>
-                filterVoltage >= voltageMin && filterVoltage <= voltageMax
+                filterVoltage >= voltageMin && filterVoltage <= voltageMax,
         )
         .slice(0, 3)
         .sort((a, b) => a - b);
@@ -103,7 +103,7 @@ const VoltageConfiguration = ({
                                 setPmicConfigValue({
                                     pmicConfigPort: p,
                                     configPinState: value,
-                                })
+                                }),
                             );
                         });
                     }}
@@ -156,7 +156,7 @@ const PresetButton = ({ pmicPorts, voltage, selected }: PresetButtonProps) => {
             className={classNames(
                 'tw-preflight tw-h-5 tw-w-full tw-border-gray-200 tw-px-2 tw-text-xs',
                 'tw-border tw-text-gray-700 active:enabled:tw-bg-gray-50',
-                selected ? 'tw-bg-white' : 'tw-bg-gray-50'
+                selected ? 'tw-bg-white' : 'tw-bg-gray-50',
             )}
             onClick={() => {
                 pmicPorts.forEach(p => {
@@ -164,7 +164,7 @@ const PresetButton = ({ pmicPorts, voltage, selected }: PresetButtonProps) => {
                         setPmicConfigValue({
                             pmicConfigPort: p,
                             configPinState: voltage,
-                        })
+                        }),
                     );
                 });
             }}

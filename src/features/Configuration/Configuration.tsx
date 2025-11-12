@@ -62,7 +62,7 @@ const BoardController = ({ active }: BoardControllerProps) => {
             if (!defaultConfig.pins && !defaultConfig.pmicPorts) {
                 loadDefaultConfig(
                     dispatch,
-                    definition.boardControllerConfigDefinition
+                    definition.boardControllerConfigDefinition,
                 );
             }
             setInitialConfig(dispatch, hardwareConfig, defaultConfig);
@@ -83,53 +83,7 @@ const BoardController = ({ active }: BoardControllerProps) => {
     return NoBoardSelected();
 };
 
-const NoBoardSelected = () => (
-    <div>
-        <p>
-            Use <b>SELECT DEVICE</b> to connect to a development kit that
-            features the Board Controller.
-        </p>
-        <p>Currently supported kits:</p>
-        <ul>
-            <li>
-                <a
-                    href="https://www.nordicsemi.com/Products/nRF9161"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    nRF9161 DK (Rev. 0.9.0 and later)
-                </a>
-            </li>
-            <li>
-                <a
-                    href="https://www.nordicsemi.com/Products/nRF9151"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    nRF9151 DK
-                </a>
-            </li>
-            <li>
-                <a
-                    href="https://www.nordicsemi.com/Products/nRF54L15"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    nRF54L15 DK
-                </a>
-            </li>
-            <li>
-                <a
-                    href="https://www.nordicsemi.com/Products/nRF54H20"
-                    target="_blank"
-                    rel="noreferrer"
-                >
-                    nRF54H20 PDK
-                </a>
-            </li>
-        </ul>
-    </div>
-);
+const NoBoardSelected = () => null;
 
 const Spinner = () => (
     <div>
@@ -155,7 +109,7 @@ const UnrecognizedBoardRevision = () => (
 const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
     const { board, pins, pmicPorts } = boardJson;
     logger.debug(
-        `buildGui() for board definition pins: ${JSON.stringify(pins)}`
+        `buildGui() for board definition pins: ${JSON.stringify(pins)}`,
     );
 
     logger.info(`Rendering for ${board.boardName}`);
@@ -203,7 +157,7 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
                             );
                         default:
                             logger.warn(
-                                `Error in Board Controller Config Definition file for ${board.boardName}`
+                                `Error in Board Controller Config Definition file for ${board.boardName}`,
                             );
                             return null;
                     }
@@ -213,7 +167,7 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
                         <VoltageConfiguration
                             key={`voltage-${port.port.reduce(
                                 (a, b) => `${a}${b}`,
-                                ''
+                                '',
                             )}`}
                             tooltip={port.portDescriptionTooltip}
                             pmicPort={port.port}
@@ -230,7 +184,7 @@ const BuildGui = (boardJson: BoardControllerConfigDefinition) => {
 
 function loadDefaultConfig(
     dispatch: AppDispatch,
-    boardJson: BoardControllerConfigDefinition
+    boardJson: BoardControllerConfigDefinition,
 ) {
     if (!boardJson?.defaults) {
         logger.warn('No defaults found in board definition JSON');
@@ -239,13 +193,13 @@ function loadDefaultConfig(
 
     // Create defaults map
     const defaultConfig: Map<number, boolean> = new Map(
-        (boardJson.defaults?.pins || []).map(({ pin, state }) => [pin, state])
+        (boardJson.defaults?.pins || []).map(({ pin, state }) => [pin, state]),
     );
     const defaultPmicConfig: Map<number, number> = new Map(
         (boardJson.defaults?.pmicPorts || []).map(({ port, voltage }) => [
             port,
             voltage,
-        ])
+        ]),
     );
 
     dispatch(
@@ -254,14 +208,14 @@ function loadDefaultConfig(
                 pins: defaultConfig,
                 pmicPorts: defaultPmicConfig,
             },
-        })
+        }),
     );
 }
 
 function setInitialConfig(
     dispatch: AppDispatch,
     hardwareConfig: BoardConfiguration,
-    defaultBoardConfig: BoardConfiguration
+    defaultBoardConfig: BoardConfiguration,
 ) {
     const { pins: defaultPinConfig, pmicPorts: defaultPmicConfig } =
         defaultBoardConfig;
@@ -283,15 +237,15 @@ function setInitialConfig(
 
 const logDeviceVersion = (
     device: Device,
-    boardRevision: string | undefined
+    boardRevision: string | undefined,
 ) => {
     logger.debug(
-        `Got device ${JSON.stringify(device)} ${JSON.stringify(boardRevision)}`
+        `Got device ${JSON.stringify(device)} ${JSON.stringify(boardRevision)}`,
     );
     logger.debug(
         `Device with boardVersion: ${JSON.stringify(
-            device?.devkit?.boardVersion
-        )}`
+            device?.devkit?.boardVersion,
+        )}`,
     );
 };
 

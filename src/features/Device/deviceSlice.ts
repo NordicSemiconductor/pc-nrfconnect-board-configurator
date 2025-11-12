@@ -28,7 +28,7 @@ const deviceSlice = createSlice({
     reducers: {
         setBoardRevision(
             state,
-            { payload: boardRevision }: PayloadAction<BoardRevision>
+            { payload: boardRevision }: PayloadAction<BoardRevision>,
         ) {
             state.boardRevision = boardRevision;
         },
@@ -39,7 +39,7 @@ const deviceSlice = createSlice({
 
         setBoardControllerFirmwareVersion(
             state,
-            { payload: bcFwRevision }: PayloadAction<string>
+            { payload: bcFwRevision }: PayloadAction<string>,
         ) {
             state.boardControllerFirmwareVersion = bcFwRevision;
         },

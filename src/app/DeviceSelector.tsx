@@ -73,7 +73,7 @@ const onDeviceIsReady = (dispatch: AppDispatch) => (device: Device) => {
 
 const getBoardControllerVersion = async (
     dispatch: AppDispatch,
-    device: Device
+    device: Device,
 ) => {
     const bcVersion = await NrfutilDeviceLib.getBoardControllerVersion(device);
     console.log('Got device state %o', bcVersion);
@@ -82,21 +82,20 @@ const getBoardControllerVersion = async (
             major: bcVersion.major_ver,
             minor: bcVersion.minor_ver,
             patch: bcVersion.patch_ver,
-        })
+        }),
     );
     dispatch(setBoardControllerFirmwareVersion(bcVersion.bc_fw_ver));
 };
 
 export const readCurrentBoardControllerConfig = async (
     dispatch: AppDispatch,
-    device: Device
+    device: Device,
 ) => {
     if (!device) {
         return;
     }
-    const currentConfig = await NrfutilDeviceLib.getBoardControllerConfig(
-        device
-    );
+    const currentConfig =
+        await NrfutilDeviceLib.getBoardControllerConfig(device);
     console.log('Read current config %o', currentConfig);
     const wrappedConfig = wrapHardwareConfig(currentConfig);
     dispatch(setHardwareConfig({ hardwareConfig: wrappedConfig }));

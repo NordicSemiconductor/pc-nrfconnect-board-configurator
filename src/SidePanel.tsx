@@ -56,13 +56,13 @@ export default () => {
                         }
                         await NrfutilDeviceLib.boardController(
                             device,
-                            configData
+                            configData,
                         );
 
                         // Re-read the current board config
                         await readCurrentBoardControllerConfig(
                             dispatch,
-                            device
+                            device,
                         );
                         dispatch(clearDirtyFlags());
 
@@ -88,14 +88,14 @@ export default () => {
                             dispatch(
                                 setConfig({
                                     boardControllerConfig: pins,
-                                })
+                                }),
                             );
                         }
                         if (pmicPorts) {
                             dispatch(
                                 setPmicConfig({
                                     pmicConfig: pmicPorts,
-                                })
+                                }),
                             );
                         }
                     }}
@@ -103,7 +103,64 @@ export default () => {
                     Load default config
                 </Button>
             </div>
-            <Group heading="Board Controller info" collapsible>
+            {!device && (
+                <Group heading="Supported Kits">
+                    <ul className="tw-pl-4 tw-mb-0">
+                        <li>
+                            <a
+                                href="https://www.nordicsemi.com/Products/nRF9161"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                nRF9161 DK (Rev. 0.9.0 and later)
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.nordicsemi.com/Products/nRF9151"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                nRF9151 DK
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.nordicsemi.com/Products/nRF9151"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                nRF9151 SMA DK
+                            </a>
+                        </li>
+                        <li>nRF54LV10 DK</li>
+                        <li>
+                            <a
+                                href="https://www.nordicsemi.com/Products/nRF54L15"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                nRF54L15 DK
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.nordicsemi.com/Products/nRF54H20"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                nRF54H20 PDK
+                            </a>
+                        </li>
+                    </ul>
+                </Group>
+            )}
+            {/* TODO: test as state is persisted if can be hidden when no deice */}
+            <Group
+                heading="Board Controller info"
+                collapsible
+                collapseStatePersistanceId="b_c_info_group"
+            >
                 {device && (
                     <>
                         <BoardInformation />

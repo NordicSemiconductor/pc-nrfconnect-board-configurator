@@ -32,5 +32,5 @@ render(
         deviceSelect={<BoilerplateDeviceSelector />}
         sidePanel={<SidePanel />}
         panes={[{ name: 'Configuration', Main: Configuration }]}
-    />
+    />,
 );
