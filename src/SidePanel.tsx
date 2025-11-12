@@ -164,20 +164,19 @@ export default () => {
                     </ul>
                 </Group>
             )}
-            {/* TODO: test as state is persisted if can be hidden when no deice */}
-            <Group
-                heading="Board Controller info"
-                collapsible
-                collapseStatePersistanceId="b_c_info_group"
-            >
-                {device && (
+            {device && (
+                <Group
+                    heading="Board Controller info"
+                    collapsible
+                    collapseStatePersistanceId="b_c_info_group"
+                >
                     <>
                         <BoardInformation />
                         <ConfigDataPreview device={device} />
                         <ConfigJsonRender />
                     </>
-                )}
-            </Group>
+                </Group>
+            )}
         </SidePanel>
     );
 };
