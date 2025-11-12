@@ -8,7 +8,7 @@
 
 - Welcome screen is now blank. Supported kits list is moved to the sidebar.
 - Updated list of the supported devices.
-- Board Controller info accordion now persists it's state.
+- Board Controller info accordion now persists its state.
 
 ### Removed
 
