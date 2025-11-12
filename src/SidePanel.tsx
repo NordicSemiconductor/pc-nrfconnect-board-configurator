@@ -145,6 +145,15 @@ export default () => {
                         </li>
                         <li>
                             <a
+                                href="https://www.nordicsemi.com/Products/nRF54LM20A"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                nRF54LM20 DK
+                            </a>
+                        </li>
+                        <li>
+                            <a
                                 href="https://www.nordicsemi.com/Products/nRF54H20"
                                 target="_blank"
                                 rel="noreferrer"
