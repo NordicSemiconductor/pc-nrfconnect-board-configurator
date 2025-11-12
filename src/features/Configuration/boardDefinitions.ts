@@ -101,7 +101,7 @@ export function getBoardDefinition(
             return { controlFlag: { unknownRevision: true } };
 
         case 'PCA10145':
-            // nRF54H20
+            // nRF54H20 PDK
             return { boardControllerConfigDefinition: typednrf54h20json };
 
         case 'PCA10188':

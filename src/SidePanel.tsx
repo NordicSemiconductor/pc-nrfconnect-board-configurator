@@ -108,7 +108,7 @@ export default () => {
                     <ul className="tw-pl-4 tw-mb-0">
                         <li>
                             <a
-                                href="https://www.nordicsemi.com/Products/nRF9161"
+                                href="https://www.nordicsemi.com/Products/Development-hardware/nRF9161-DK"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -117,26 +117,18 @@ export default () => {
                         </li>
                         <li>
                             <a
-                                href="https://www.nordicsemi.com/Products/nRF9151"
+                                href="https://www.nordicsemi.com/Products/Development-hardware/nRF9151-DK"
                                 target="_blank"
                                 rel="noreferrer"
                             >
                                 nRF9151 DK
                             </a>
                         </li>
-                        <li>
-                            <a
-                                href="https://www.nordicsemi.com/Products/nRF9151"
-                                target="_blank"
-                                rel="noreferrer"
-                            >
-                                nRF9151 SMA DK
-                            </a>
-                        </li>
+                        <li>nRF9151 SMA DK</li>
                         <li>nRF54LV10 DK</li>
                         <li>
                             <a
-                                href="https://www.nordicsemi.com/Products/nRF54L15"
+                                href="https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -145,7 +137,7 @@ export default () => {
                         </li>
                         <li>
                             <a
-                                href="https://www.nordicsemi.com/Products/nRF54LM20A"
+                                href="https://www.nordicsemi.com/Products/Development-hardware/nRF54LM20-DK"
                                 target="_blank"
                                 rel="noreferrer"
                             >
@@ -154,7 +146,7 @@ export default () => {
                         </li>
                         <li>
                             <a
-                                href="https://www.nordicsemi.com/Products/nRF54H20"
+                                href="https://www.nordicsemi.com/Products/Development-hardware/nRF54H20-DK"
                                 target="_blank"
                                 rel="noreferrer"
                             >
