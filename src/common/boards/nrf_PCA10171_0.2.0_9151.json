@@ -83,7 +83,7 @@
             "type": "slide",
             "id": "io-expander",
             "title": "LED and button connection",
-            "label": "Connect directly using GPIO pins or through I²C using the IO Expander module. Using IO Expander frees up LED and button GPIO pins on nRF1951.",
+            "label": "Connect directly using GPIO pins or through I²C using the IO Expander module. Using IO Expander frees up LED and button GPIO pins on nRF9151.",
             "enable": {
                 "pin": 45
             },
