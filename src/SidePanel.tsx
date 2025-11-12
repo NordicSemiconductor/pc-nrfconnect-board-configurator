@@ -105,51 +105,51 @@ export default () => {
             </div>
             {!device && (
                 <Group heading="Supported Kits">
-                  <ul className="tw-pl-4 tw-mb-0">
-                    <li>
-                      <a
-                        href="https://www.nordicsemi.com/Products/Development-hardware/nRF9161-DK"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        nRF9161 DK (Rev. 0.9.0 and later)
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.nordicsemi.com/Products/Development-hardware/nRF9151-DK"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        nRF9151 DK
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        nRF54L15 DK
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="https://www.nordicsemi.com/Products/Development-hardware/nRF54LM20-DK"
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        nRF54LM20 DK
-                      </a>
-                    </li>
-                    <li>nRF9151 SMA DK</li>
-                    <li>nRF54LV10 DK</li>
-                    <li>nRF54H20 DK</li>
-                  </ul>
+                    <ul className="tw-pl-4 tw-mb-0">
+                        <li>
+                            <a
+                                href="https://www.nordicsemi.com/Products/Development-hardware/nRF9161-DK"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                nRF9161 DK (Rev. 0.9.0 and later)
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.nordicsemi.com/Products/Development-hardware/nRF9151-DK"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                nRF9151 DK
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.nordicsemi.com/Products/Development-hardware/nRF54L15-DK"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                nRF54L15 DK
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.nordicsemi.com/Products/Development-hardware/nRF54LM20-DK"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                nRF54LM20 DK
+                            </a>
+                        </li>
+                        <li>nRF9151 SMA DK</li>
+                        <li>nRF54LV10 DK</li>
+                        <li>nRF54H20 DK</li>
+                    </ul>
                 </Group>
             )}
-          {device && (
-            <Group
+            {device && (
+                <Group
                     heading="Board Controller info"
                     collapsible
                     collapseStatePersistanceId="b_c_info_group"
