@@ -1,9 +1,18 @@
 ## 1.0.0 - unreleased
 
+### Added
+
+- nRF9151 SMA DK support.
+
 ### Changed
 
 - Welcome screen is now blank. Supported kits list is moved to the sidebar.
+- Updated list of the supported devices.
 - Board Controller info accordion now persists it's state.
+
+### Removed
+
+- Controls for configuring voltage for GPIO Ports 1,2 and 7 for nRF54H20 DK.
 
 ## 0.5.0 - 2025-10-07
 
