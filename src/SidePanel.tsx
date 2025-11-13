@@ -152,7 +152,7 @@ export default () => {
                 <Group
                     heading="Board Controller info"
                     collapsible
-                    collapseStatePersistanceId="b_c_info_group"
+                    collapseStatePersistenceId="b_c_info_group"
                 >
                     <>
                         <BoardInformation />
