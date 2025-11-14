@@ -10,7 +10,6 @@ The Board Configurator app is now fully supported and no longer experimental.
 
 - Moved the list of supported development kits to the side panel area. The list
   has been updated.
-- Updated list of the supported devices.
 - The app now saves the UI state of the Board Controller info component between
   sessions.
 
