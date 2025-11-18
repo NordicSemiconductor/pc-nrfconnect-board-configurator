@@ -5,16 +5,15 @@ The board controller is the firmware running on the Interface MCU that controls 
 
 The {{app_name}} is installed and updated using [nRF Connect for Desktop](https://docs.nordicsemi.com/bundle/nrf-connect-desktop/page/index.html) (v4.4.1 or later).
 
-!!! note "Note"
-      Currently, the {{app_name}} is experimental. This means that the application is incomplete in functionality and will change in the future.
-
 ## Supported devices
 
 - nRF9161 DK
 - nRF9151 DK
+- nRF9151 SMA DK
 - nRF54H20 DK
 - nRF54LM20 DK
 - nRF54L15 DK
+- nRF54LV10 DK
 
 ## Application source code
 

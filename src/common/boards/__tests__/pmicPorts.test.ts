@@ -42,11 +42,11 @@ describe('PMIC Ports Properties Validation', () => {
                             `Mismatch in pmicPorts[${index}] for ${fileName}: ` +
                                 `portId length (${portIdLength}) !== port length (${portLength}). ` +
                                 `portId: ${JSON.stringify(
-                                    pmicPort.portId
-                                )}, port: ${JSON.stringify(pmicPort.port)}`
+                                    pmicPort.portId,
+                                )}, port: ${JSON.stringify(pmicPort.port)}`,
                         );
                     }
-                }
+                },
             );
         });
     });
@@ -72,8 +72,8 @@ describe('PMIC Ports Properties Validation', () => {
                         throw new Error(
                             `pmicPorts[${index}].port in ${fileName} should be an array, ` +
                                 `but got: ${typeof pmicPort.port} (${JSON.stringify(
-                                    pmicPort.port
-                                )})`
+                                    pmicPort.port,
+                                )})`,
                         );
                     }
 
@@ -81,11 +81,11 @@ describe('PMIC Ports Properties Validation', () => {
                         throw new Error(
                             `pmicPorts[${index}].portId in ${fileName} should be an array, ` +
                                 `but got: ${typeof pmicPort.portId} (${JSON.stringify(
-                                    pmicPort.portId
-                                )})`
+                                    pmicPort.portId,
+                                )})`,
                         );
                     }
-                }
+                },
             );
         });
     });

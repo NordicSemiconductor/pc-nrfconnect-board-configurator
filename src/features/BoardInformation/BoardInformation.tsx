@@ -15,7 +15,7 @@ import {
 const BoardInformation = () => {
     const boardRevision = useSelector(getBoardRevisionSemver);
     const boardControllerFirmwareVersion = useSelector(
-        getBoardControllerFirmwareVersion
+        getBoardControllerFirmwareVersion,
     );
 
     return (

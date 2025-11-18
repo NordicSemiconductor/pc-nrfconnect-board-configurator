@@ -80,7 +80,7 @@ const ConfigList = ({
 }: ConfigListProps) => {
     const pins = Array.from(configData.keys()).sort((a, b) => a - b);
     const pinMap = generatePinMap(
-        boardDefinition.boardControllerConfigDefinition
+        boardDefinition.boardControllerConfigDefinition,
     );
 
     return (
@@ -156,14 +156,14 @@ const DipSwitchButton = ({
                 type === 'on' ? 'tw-ml-1 tw-mr-2' : 'tw-ml-2 tw-mr-1', // Outside margin
                 selected
                     ? 'tw-rounded-sm tw-bg-white tw-text-gray-700'
-                    : 'tw-text-gray-100'
+                    : 'tw-text-gray-100',
             )}
             onClick={() => {
                 dispatch(
                     setConfigValue({
                         configPin: pinNumber,
                         configPinState: type === 'on',
-                    })
+                    }),
                 );
             }}
         >
@@ -186,7 +186,7 @@ const PmicList = ({
 }: PmicListProps) => {
     const ports = Array.from(pmicData.keys()).sort();
     const portMap = generatePortMap(
-        boardDefinition.boardControllerConfigDefinition
+        boardDefinition.boardControllerConfigDefinition,
     );
 
     return (

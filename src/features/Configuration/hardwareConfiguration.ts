@@ -10,13 +10,13 @@ export interface BoardConfiguration {
 }
 
 export function wrapHardwareConfig(
-    hardwareConfig: unknown[][]
+    hardwareConfig: unknown[][],
 ): BoardConfiguration {
     if (hardwareConfig && hardwareConfig.length !== 0) {
         const pins = wrapPinConfig(hardwareConfig[0]);
 
         const pmicPorts = wrapPmicConfig(
-            hardwareConfig.length > 1 ? hardwareConfig[1] : undefined
+            hardwareConfig.length > 1 ? hardwareConfig[1] : undefined,
         );
 
         return { pins, pmicPorts };
@@ -32,7 +32,7 @@ export function wrapPinConfig(hardwarePinConfig: unknown[]) {
     for (let i = 0; i < hardwarePinConfig.length; i += 2) {
         pins.set(
             Number(hardwarePinConfig[i]),
-            Boolean(hardwarePinConfig[i + 1])
+            Boolean(hardwarePinConfig[i + 1]),
         );
     }
 
@@ -49,7 +49,7 @@ export function wrapPmicConfig(hardwarePmicConfig: unknown[] | undefined) {
     for (let i = 0; i < hardwarePmicConfig.length; i += 2) {
         ports.set(
             Number(hardwarePmicConfig[i]),
-            Number(hardwarePmicConfig[i + 1])
+            Number(hardwarePmicConfig[i + 1]),
         );
     }
 

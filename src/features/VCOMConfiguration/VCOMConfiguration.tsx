@@ -43,11 +43,11 @@ const VCOMConfiguration = ({
 
     const vcomEnable = xor(
         useSelector(getConfigValue(vcomEnablePin)),
-        enableInvert
+        enableInvert,
     );
     const hwfcEnable = xor(
         useSelector(getConfigValue(hwfcEnablePin)),
-        hwfcInvert
+        hwfcInvert,
     );
 
     const vcomEnableDirty = useSelector(getConfigPinDirty(vcomEnablePin));
@@ -65,16 +65,16 @@ const VCOMConfiguration = ({
                                     configPin: vcomEnablePin,
                                     configPinState: xor(
                                         enableVcom,
-                                        enableInvert
+                                        enableInvert,
                                     ),
-                                })
+                                }),
                             );
-                            // Also diconnect HWFC if VCOM is disconnected
+                            // Also disconnect HWFC if VCOM is disconnected
                             dispatch(
                                 setConfigValue({
                                     configPin: hwfcEnablePin,
                                     configPinState: xor(enableVcom, hwfcInvert),
-                                })
+                                }),
                             );
                         }}
                     >
@@ -113,7 +113,7 @@ const VCOMConfiguration = ({
                             setConfigValue({
                                 configPin: hwfcEnablePin,
                                 configPinState: xor(enableHwfc, hwfcInvert),
-                            })
+                            }),
                         );
                     }}
                 >

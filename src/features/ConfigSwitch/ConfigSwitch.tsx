@@ -51,7 +51,7 @@ const ConfigSwitch = ({
                                 setConfigValue({
                                     configPin,
                                     configPinState: xor(enable, invert),
-                                })
+                                }),
                             )
                         }
                     >

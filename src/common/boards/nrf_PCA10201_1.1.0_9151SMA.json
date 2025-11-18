@@ -1,8 +1,8 @@
 {
     "board": {
-        "boardVersion": "PCA10171",
-        "boardRevision": "0.2.0",
-        "boardName": "nRF9151-DK v0.2.0"
+        "boardVersion": "PCA10201",
+        "boardRevision": "1.1.0",
+        "boardName": "nRF9151-DK SMA v1.1.0"
     },
     "pins": [
         {

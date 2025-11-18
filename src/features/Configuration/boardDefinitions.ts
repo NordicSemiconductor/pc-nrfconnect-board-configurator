@@ -20,6 +20,7 @@ import nrf54lm20v010json from '../../common/boards/nrf_PCA10184_0.1.0_54LM20.jso
 import nrf54lm20v020json from '../../common/boards/nrf_PCA10184_0.2.0_54LM20.json';
 import nrf54lm20v030json from '../../common/boards/nrf_PCA10184_0.3.0_54LM20.json';
 import nrf54lv10v010json from '../../common/boards/nrf_PCA10188_0.1.0_54LV10.json';
+import nrf9151SMAv110json from '../../common/boards/nrf_PCA10201_1.1.0_9151SMA.json';
 
 export type BoardDefinition = {
     boardControllerConfigDefinition?: BoardControllerConfigDefinition;
@@ -43,6 +44,8 @@ const typednrf54h20json = nrf54h20pdk080json as BoardControllerConfigDefinition;
 const typednrf54h20v070json =
     nrf54h20v070json as BoardControllerConfigDefinition;
 const typednrf9151v020json = nrf9151v020json as BoardControllerConfigDefinition;
+const typednrf9151SMAv110json =
+    nrf9151SMAv110json as BoardControllerConfigDefinition;
 const typednrf54lv10v010json =
     nrf54lv10v010json as BoardControllerConfigDefinition;
 
@@ -55,7 +58,7 @@ const typednrf54lm20v030json =
 
 export function getBoardDefinition(
     device: Device,
-    boardRevision: string | undefined
+    boardRevision: string | undefined,
 ): BoardDefinition {
     // 0.1.0 is probably r0.2.0 with a firmware configuration error
     const primalRevisionsL15 = ['0.1.0', '0.2.0', '0.2.1'];
@@ -98,7 +101,7 @@ export function getBoardDefinition(
             return { controlFlag: { unknownRevision: true } };
 
         case 'PCA10145':
-            // nRF54H20
+            // nRF54H20 PDK
             return { boardControllerConfigDefinition: typednrf54h20json };
 
         case 'PCA10188':
@@ -108,6 +111,10 @@ export function getBoardDefinition(
         case 'PCA10171':
             // nRF9151
             return { boardControllerConfigDefinition: typednrf9151v020json };
+
+        case 'PCA10201':
+            // nRF9151 SMA
+            return { boardControllerConfigDefinition: typednrf9151SMAv110json };
 
         case 'PCA10175':
             // nRF54H20
@@ -145,7 +152,9 @@ type PinDescription = {
 };
 
 export function generatePinMap(
-    boardControllerConfigDefinition: BoardControllerConfigDefinition | undefined
+    boardControllerConfigDefinition:
+        | BoardControllerConfigDefinition
+        | undefined,
 ): Map<number, PinDescription> {
     const pinMap = new Map<number, PinDescription>();
 
@@ -184,7 +193,9 @@ type PmicPortDescription = {
 };
 
 export function generatePortMap(
-    boardControllerConfigDefinition: BoardControllerConfigDefinition | undefined
+    boardControllerConfigDefinition:
+        | BoardControllerConfigDefinition
+        | undefined,
 ): Map<number, PmicPortDescription> {
     const pinMap = new Map<number, PmicPortDescription>();
 
