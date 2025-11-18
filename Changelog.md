@@ -1,4 +1,4 @@
-## 1.0.0 - 2025-11-17
+## 1.0.0 - 2025-11-18
 
 The Board Configurator app is now fully supported and no longer experimental.
 

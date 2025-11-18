@@ -64,7 +64,7 @@
             "type": "voltage",
             "port": [2],
             "portId": ["vdd-p9"],
-            "portLabel": "VDD-p9 (nPM VOUT2)",
+            "portLabel": "VDD-P9 (nPM VOUT2)",
             "portDescription": "Voltage on the VDD rail of nRF54H20 P9.",
             "mVmin": 1800,
             "mVmax": 3300
