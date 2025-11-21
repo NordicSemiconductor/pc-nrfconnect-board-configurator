@@ -20,6 +20,7 @@ import nrf54lm20v010json from '../../common/boards/nrf_PCA10184_0.1.0_54LM20.jso
 import nrf54lm20v020json from '../../common/boards/nrf_PCA10184_0.2.0_54LM20.json';
 import nrf54lm20v030json from '../../common/boards/nrf_PCA10184_0.3.0_54LM20.json';
 import nrf54lv10v010json from '../../common/boards/nrf_PCA10188_0.1.0_54LV10.json';
+import nrf54lv10v070json from '../../common/boards/nrf_PCA10188_0.7.0_54LV10.json';
 import nrf9151SMAv110json from '../../common/boards/nrf_PCA10201_1.1.0_9151SMA.json';
 
 export type BoardDefinition = {
@@ -48,6 +49,8 @@ const typednrf9151SMAv110json =
     nrf9151SMAv110json as BoardControllerConfigDefinition;
 const typednrf54lv10v010json =
     nrf54lv10v010json as BoardControllerConfigDefinition;
+const typednrf54lv10v070json =
+    nrf54lv10v070json as BoardControllerConfigDefinition;
 
 const typednrf54lm20v010json =
     nrf54lm20v010json as BoardControllerConfigDefinition;
@@ -63,6 +66,7 @@ export function getBoardDefinition(
     // 0.1.0 is probably r0.2.0 with a firmware configuration error
     const primalRevisionsL15 = ['0.1.0', '0.2.0', '0.2.1'];
     const midRevisionsL15Pattern = /^0\.[3-9]\.\d+$/;
+    const revisionsLV10Pattern = /^0\.[1-6]\.\d+$/;
 
     switch (device?.devkit?.boardVersion) {
         case 'PCA10156':
@@ -106,7 +110,24 @@ export function getBoardDefinition(
 
         case 'PCA10188':
             // nRF54LV10
-            return { boardControllerConfigDefinition: typednrf54lv10v010json };
+
+            if (boardRevision && revisionsLV10Pattern.test(boardRevision)) {
+                return {
+                    boardControllerConfigDefinition: typednrf54lv10v010json,
+                };
+            }
+
+            if (boardRevision) {
+                return {
+                    boardControllerConfigDefinition: typednrf54lv10v070json,
+                };
+            }
+
+            if (!boardRevision) {
+                return { controlFlag: { noRevision: true } };
+            }
+
+            return { controlFlag: { unrecognizedBoard: true } };
 
         case 'PCA10171':
             // nRF9151
