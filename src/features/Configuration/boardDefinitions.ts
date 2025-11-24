@@ -123,11 +123,7 @@ export function getBoardDefinition(
                 };
             }
 
-            if (!boardRevision) {
-                return { controlFlag: { noRevision: true } };
-            }
-
-            return { controlFlag: { unrecognizedBoard: true } };
+            return { controlFlag: { noRevision: true } };
 
         case 'PCA10171':
             // nRF9151
