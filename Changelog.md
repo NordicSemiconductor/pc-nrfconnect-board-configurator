@@ -2,7 +2,7 @@
 
 ### Added
 
-- Support for v0.7.0 HW revision of the nRF54LV10 DK.
+- Support for the revision v0.7.0 of the nRF54LV10 DK.
 
 ## 1.0.0 - 2025-11-18
 
