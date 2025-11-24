@@ -1,3 +1,9 @@
+## 1.0.0 - 2025-11-24
+
+### Added
+
+- Support for the revision v0.7.0 of the nRF54LV10 DK.
+
 ## 1.0.0 - 2025-11-18
 
 The Board Configurator app is now fully supported and no longer experimental.
