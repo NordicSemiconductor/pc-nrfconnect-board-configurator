@@ -2,7 +2,7 @@
 
 ### Changed
 
-- Updated VCOM0_HWFC and VCOM1_HWFC pin settings for all revisions nRF91x1 DKs
+- VCOM0_HWFC and VCOM1_HWFC pin mapping for the nRF9151 DK, nRF9151 SMA DK, and nRF9161 DK.
 
 ## 1.1.0 - 2025-11-24
 
