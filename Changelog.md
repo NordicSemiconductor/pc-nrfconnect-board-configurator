@@ -1,3 +1,9 @@
+## 1.1.1 - 2025-11-28
+
+### Changed
+
+- Updated VCOM0_HWFC and VCOM1_HWFC pin settings for all revisions nRF91x1 DKs
+
 ## 1.1.0 - 2025-11-24
 
 ### Added
