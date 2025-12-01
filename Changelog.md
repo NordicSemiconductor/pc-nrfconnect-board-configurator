@@ -1,3 +1,10 @@
+## 1.1.1 - 2025-12-01
+
+### Changed
+
+- VCOM0_HWFC and VCOM1_HWFC pin mapping for the nRF9151 DK, the nRF9151 SMA DK,
+  and the nRF9161 DK.
+
 ## 1.1.0 - 2025-11-24
 
 ### Added

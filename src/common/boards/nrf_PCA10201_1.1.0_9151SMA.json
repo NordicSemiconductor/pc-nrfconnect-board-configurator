@@ -14,7 +14,7 @@
                 "invert": true
             },
             "hwfc": {
-                "pin": 20,
+                "pin": 23,
                 "invert": true
             }
         },
@@ -27,7 +27,7 @@
                 "invert": true
             },
             "hwfc": {
-                "pin": 23,
+                "pin": 20,
                 "invert": true
             }
         },
