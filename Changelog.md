@@ -2,8 +2,7 @@
 
 ### Added
 
-- Links to product pages of the nRF9151 SMA DK, nRF54LV10 DK and the nrf54H20
-  DK.
+- Links to product pages of the nRF9151 SMA DK and the nRF54LV10 DK
 
 ## 1.1.1 - 2025-12-01
 
