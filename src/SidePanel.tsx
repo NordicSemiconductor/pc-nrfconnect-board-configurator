@@ -142,9 +142,33 @@ export default () => {
                                 nRF54LM20 DK
                             </a>
                         </li>
-                        <li>nRF9151 SMA DK</li>
-                        <li>nRF54LV10 DK</li>
-                        <li>nRF54H20 DK</li>
+                        <li>
+                            <a
+                                href="https://www.nordicsemi.com/Products/Development-hardware/nRF9151-SMA-DK"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                nRF9151 SMA DK
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.nordicsemi.com/Products/Development-hardware/nRF54LV10-DK"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                nRF54LV10 DK
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://www.nordicsemi.com/Products/Development-hardware/nRF54H20-DK"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                nRF54H20 DK
+                            </a>
+                        </li>
                     </ul>
                 </Group>
             )}
