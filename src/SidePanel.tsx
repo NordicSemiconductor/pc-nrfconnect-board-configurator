@@ -47,7 +47,7 @@ export default () => {
                 <button
                     type="button"
                     disabled={!device || isWriting}
-                    className="tw-preflight tw-relative tw-h-8 tw-w-full  tw-border tw-border-gray-700 tw-bg-white tw-px-2 tw-text-xs tw-text-gray-700"
+                    className="tw-preflight tw-relative tw-h-8 tw-w-full tw-border tw-border-gray-700 tw-bg-white tw-px-2 tw-text-xs tw-text-gray-700"
                     onClick={async () => {
                         // Set isWriting flag for user ui feedback
                         setWriting(true);
@@ -105,7 +105,7 @@ export default () => {
             </div>
             {!device && (
                 <Group heading="Supported Kits">
-                    <ul className="tw-pl-4 tw-mb-0">
+                    <ul className="tw-mb-0 tw-pl-4">
                         <li>
                             <a
                                 href="https://www.nordicsemi.com/Products/Development-hardware/nRF9161-DK"
