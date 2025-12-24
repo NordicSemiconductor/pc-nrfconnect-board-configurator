@@ -1,3 +1,10 @@
+## 1.1.3 - unreleased
+
+### Added
+
+- Warning for the revisions v0.3.x of the nRF54LM20 DK that LEDs on the DK stop
+  functioning if VDD_NRF and VDDIO is set higher than 2.7V.
+
 ## 1.1.2 - 2025-12-24
 
 ### Added
