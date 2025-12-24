@@ -114,13 +114,13 @@ const VoltageConfiguration = ({
                 />
             </div>
             {pmicPortWarning && (
-                <div className="tw-mt-4 tw-mb-2">
-                  <NoticeBox
-                    mdiIcon="mdi-lightbulb-alert-outline"
-                    color="tw-text-red"
-                    title={pmicPortWarning}
-                    content={null}
-                  />
+                <div className="tw-mb-2 tw-mt-4">
+                    <NoticeBox
+                        mdiIcon="mdi-lightbulb-alert-outline"
+                        color="tw-text-red"
+                        title={pmicPortWarning}
+                        content={null}
+                    />
                 </div>
             )}
             <VoltagePresetButtons
