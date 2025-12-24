@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     Card,
     classNames,
+    NoticeBox,
     NumberInput,
     Overlay,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
@@ -26,6 +27,7 @@ interface VoltageConfigurationProps {
     voltageMax: number;
     pmicPortLabel?: string;
     pmicPortDescription?: string;
+    pmicPortWarning?: string;
     tooltip?: string;
 }
 
@@ -35,6 +37,7 @@ const VoltageConfiguration = ({
     voltageMax,
     pmicPortLabel,
     pmicPortDescription,
+    pmicPortWarning,
     tooltip,
 }: VoltageConfigurationProps) => {
     const dispatch = useDispatch();
@@ -109,6 +112,16 @@ const VoltageConfiguration = ({
                     }}
                 />
             </div>
+            {pmicPortWarning && (
+                <div className="tw-mb-2 tw-mt-4">
+                    <NoticeBox
+                        mdiIcon="mdi-lightbulb-alert-outline"
+                        color="tw-text-red"
+                        title={pmicPortWarning}
+                        content={null}
+                    />
+                </div>
+            )}
             <VoltagePresetButtons
                 voltages={voltagePresetValues}
                 pmicPorts={pmicPort}

@@ -44,6 +44,7 @@ export type PmicPortDefinition = {
     portLabel?: string;
     portDescription?: string;
     portDescriptionTooltip?: string;
+    portWarning?: string;
     portId?: string[];
 };
 

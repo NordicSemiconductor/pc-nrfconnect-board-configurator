@@ -1,8 +1,8 @@
 {
     "board": {
         "boardVersion": "PCA10184",
-        "boardRevision": "0.3.0",
-        "boardName": "nRF54L20 PDK (rev. 0.3.0)"
+        "boardRevision": "0.5.0",
+        "boardName": "nRF54L20 PDK (rev. 0.5.0)"
     },
     "pins": [
         {
@@ -67,7 +67,6 @@
             "portLabel": "VDD_NRF (nPM VOUT1) and VDDIO (nPM VOUT2)",
             "portDescription": "Voltage",
             "portDescriptionTooltip": "Voltage on the VDDIO rail and voltage on the VDD_DBGR rail",
-            "portWarning": "LEDs on the DK stop functioning if VDD_NRF and VDDIO is set higher than 2.7V.",
             "mVmin": 1800,
             "mVmax": 3300
         }
