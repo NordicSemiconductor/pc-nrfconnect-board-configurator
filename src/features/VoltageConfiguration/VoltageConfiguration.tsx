@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     Card,
     classNames,
-    IssueBox,
     NoticeBox,
     NumberInput,
     Overlay,
