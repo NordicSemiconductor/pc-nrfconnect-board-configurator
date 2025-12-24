@@ -1,3 +1,9 @@
+## 1.1.2 - 2025-12-24
+
+### Added
+
+- Links to product pages of the nRF9151 SMA DK and the nRF54LV10 DK.
+
 ## 1.1.1 - 2025-12-01
 
 ### Changed

@@ -98,7 +98,7 @@ const ConfigList = ({
                         className="tw-h-10x -tw-mt-px tw-flex tw-w-full tw-items-center"
                         key={`pin-${pin}`}
                     >
-                        <div className="tw-mr-1x tw-relative -tw-ml-px tw-flex tw-h-8 tw-w-8 tw-flex-none tw-items-center tw-border  tw-border-solid tw-border-gray-200 tw-p-1 tw-text-center tw-align-middle tw-text-gray-700">
+                        <div className="tw-mr-1x tw-relative -tw-ml-px tw-flex tw-h-8 tw-w-8 tw-flex-none tw-items-center tw-border tw-border-solid tw-border-gray-200 tw-p-1 tw-text-center tw-align-middle tw-text-gray-700">
                             <div className="dip-label-text tw-m-auto">
                                 {pin}
                             </div>
@@ -107,7 +107,7 @@ const ConfigList = ({
                                 className="dirtydot-tiny tw-absolute tw-end-0.5 tw-top-0.5"
                             />
                         </div>
-                        <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-flex-1 tw-items-center tw-truncate tw-border  tw-border-solid tw-border-gray-200 tw-p-1">
+                        <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-flex-1 tw-items-center tw-truncate tw-border tw-border-solid tw-border-gray-200 tw-p-1">
                             <div className="dip-label-text tw-w-full tw-flex-1 tw-truncate tw-pl-1">
                                 {inverted && '/'}
                                 {id}
@@ -198,7 +198,7 @@ const PmicList = ({
                         className="tw-h-10x -tw-mt-px tw-flex tw-w-full tw-items-center"
                         key={`port-${port}`}
                     >
-                        <div className="tw-mr-1x tw-relative -tw-ml-px tw-flex tw-h-8 tw-w-8 tw-flex-none tw-items-center tw-border  tw-border-solid tw-border-gray-200 tw-p-1 tw-text-center tw-align-middle tw-text-gray-700">
+                        <div className="tw-mr-1x tw-relative -tw-ml-px tw-flex tw-h-8 tw-w-8 tw-flex-none tw-items-center tw-border tw-border-solid tw-border-gray-200 tw-p-1 tw-text-center tw-align-middle tw-text-gray-700">
                             <div className="dip-label-text tw-m-auto">
                                 {port}
                             </div>
@@ -207,12 +207,12 @@ const PmicList = ({
                                 className="dirtydot-tiny tw-absolute tw-end-0.5 tw-top-0.5"
                             />
                         </div>
-                        <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-flex-1 tw-items-center tw-truncate tw-border  tw-border-solid tw-border-gray-200 tw-p-1">
+                        <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-flex-1 tw-items-center tw-truncate tw-border tw-border-solid tw-border-gray-200 tw-p-1">
                             <div className="dip-label-text tw-w-full tw-flex-1 tw-truncate tw-text-center">
                                 {id}
                             </div>
                         </div>
-                        <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-flex-1 tw-items-center tw-truncate tw-border  tw-border-solid tw-border-gray-200 tw-p-1">
+                        <div className="tw-mr-1x -tw-ml-px tw-flex tw-h-8 tw-flex-1 tw-items-center tw-truncate tw-border tw-border-solid tw-border-gray-200 tw-p-1">
                             <div className="dip-label-text tw-w-full tw-flex-1 tw-truncate tw-text-center">
                                 {pmicData.get(port)} mV
                             </div>
