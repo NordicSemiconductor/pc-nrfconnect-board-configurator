@@ -68,7 +68,7 @@
             "portDescription": "Voltage",
             "portDescriptionTooltip": "Voltage on the VDDIO rail and voltage on the VDD_DBGR rail",
             "portWarning": {
-                "message": "LEDs on the DK stop functioning if VDD_NRF and VDDIO is set higher than 2.7V.",
+                "message": "LEDs on the DK stop functioning if the value for VDD_NRF and VDDIO is set to more than 2.7 V.",
                 "condition": "voltage-min",
                 "threshold": 2700
             },
