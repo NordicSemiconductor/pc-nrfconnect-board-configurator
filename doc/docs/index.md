@@ -1,9 +1,9 @@
-# {{app_name}}
+# Board Configurator app
 
-The {{app_name}} in nRF Connect for Desktop lets you update the configuration of the board controller on some Development Kits from Nordic Semiconductor.
+The Board Configurator app in nRF Connect for Desktop lets you update the configuration of the board controller on some Development Kits from Nordic Semiconductor.
 The board controller is the firmware running on the Interface MCU that controls the behavior of the DK.
 
-The {{app_name}} is installed and updated using [nRF Connect for Desktop](https://docs.nordicsemi.com/bundle/nrf-connect-desktop/page/index.html) (v4.4.1 or later).
+The Board Configurator app is installed and updated using [nRF Connect for Desktop](https://docs.nordicsemi.com/bundle/nrf-connect-desktop/page/index.html) (v4.4.1 or later).
 
 ## Supported devices
 
