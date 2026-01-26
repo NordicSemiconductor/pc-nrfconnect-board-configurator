@@ -63,7 +63,10 @@ const VoltageConfiguration = ({
         .slice(0, 3)
         .sort((a, b) => a - b);
 
-    const showWarning = pmicPortWarning && (voltage > pmicPortWarning.threshold) && (pmicPortWarning.condition === 'voltage-min');
+    const showWarning =
+        pmicPortWarning &&
+        voltage > pmicPortWarning.threshold &&
+        pmicPortWarning.condition === 'voltage-min';
 
     return (
         <Card
