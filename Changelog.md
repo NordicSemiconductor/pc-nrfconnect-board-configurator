@@ -3,7 +3,8 @@
 ### Added
 
 - Warning for the revisions v0.3.x of the nRF54LM20 DK that LEDs on the DK stop
-  functioning if the voltage value for VDD_NRF and VDDIO is set to more than 2.7 V.
+  functioning if the voltage value for VDD_NRF and VDDIO is set to more than 2.7
+  V.
 
 ## 1.1.2 - 2025-12-24
 
