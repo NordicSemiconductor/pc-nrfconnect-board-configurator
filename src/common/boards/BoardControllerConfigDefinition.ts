@@ -36,6 +36,12 @@ type SlideConfigDefinition = {
     alternatives: [string, string];
 };
 
+export type PortWarningDefinition = {
+    message: string;
+    condition: 'voltage-min';
+    threshold: number;
+};
+
 export type PmicPortDefinition = {
     type: 'voltage';
     port: number[];
@@ -44,7 +50,7 @@ export type PmicPortDefinition = {
     portLabel?: string;
     portDescription?: string;
     portDescriptionTooltip?: string;
-    portWarning?: string;
+    portWarning?: PortWarningDefinition;
     portId?: string[];
 };
 

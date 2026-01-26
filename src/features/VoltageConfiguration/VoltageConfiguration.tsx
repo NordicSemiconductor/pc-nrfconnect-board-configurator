@@ -15,6 +15,7 @@ import {
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import DirtyDot from '../../app/DirtyDot';
+import { PortWarningDefinition } from '../../common/boards/BoardControllerConfigDefinition';
 import {
     getPmicConfigValue,
     getPmicConfigValueDirty,
@@ -27,7 +28,7 @@ interface VoltageConfigurationProps {
     voltageMax: number;
     pmicPortLabel?: string;
     pmicPortDescription?: string;
-    pmicPortWarning?: string;
+    pmicPortWarning?: PortWarningDefinition;
     tooltip?: string;
 }
 
@@ -61,6 +62,8 @@ const VoltageConfiguration = ({
         )
         .slice(0, 3)
         .sort((a, b) => a - b);
+
+    const showWarning = pmicPortWarning && (voltage > pmicPortWarning.threshold) && (pmicPortWarning.condition === 'voltage-min');
 
     return (
         <Card
@@ -112,12 +115,12 @@ const VoltageConfiguration = ({
                     }}
                 />
             </div>
-            {pmicPortWarning && (
+            {showWarning && (
                 <div className="tw-mb-2 tw-mt-4">
                     <NoticeBox
                         mdiIcon="mdi-lightbulb-alert-outline"
                         color="tw-text-red"
-                        title={pmicPortWarning}
+                        title={pmicPortWarning?.message}
                         content={null}
                     />
                 </div>
