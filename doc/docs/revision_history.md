@@ -2,6 +2,7 @@
 
 | Date       | Description   |
 |------------|---------------|
+| January 2026   | - Renamed the Home page to [Get started](./index.md).<br/>- Removed the separate Installing the Board Configurator app page. This page is now a section of the Get started page. |
 | November 2025   | - Added the nRF54LV10 DK and the nRF9151 SMA DK to the list of [supported devices](index.md#supported-devices).<br/>- Removed the note about the experimental status of the app. |
 | September 2025  | Added the nRF54LM20 DK to the list of [supported devices](index.md#supported-devices). |
 | January 2025   | Added the [Application source code](./index.md#application-source-code) section on the [Home](./index.md) page |
