@@ -7,14 +7,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-    AppDispatch,
-    Device,
+    type AppDispatch,
+    type Device,
     logger,
     MasonryLayout,
     selectedDevice,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
-import BoardControllerConfigDefinition from '../../common/boards/BoardControllerConfigDefinition';
+import type BoardControllerConfigDefinition from '../../common/boards/BoardControllerConfigDefinition';
 import ConfigSlideSelector from '../ConfigSlideSelector/ConfigSlideSelector';
 import ConfigSwitch from '../ConfigSwitch/ConfigSwitch';
 import { getBoardRevisionSemver } from '../Device/deviceSlice';
@@ -28,7 +28,7 @@ import {
     setPmicConfig,
 } from './boardControllerConfigSlice';
 import { getBoardDefinition } from './boardDefinitions';
-import { BoardConfiguration } from './hardwareConfiguration';
+import { type BoardConfiguration } from './hardwareConfiguration';
 
 interface BoardControllerProps {
     active: boolean;
