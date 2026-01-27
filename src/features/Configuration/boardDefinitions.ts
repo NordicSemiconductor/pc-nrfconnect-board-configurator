@@ -4,9 +4,9 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
-import { Device } from '@nordicsemiconductor/pc-nrfconnect-shared';
+import { type Device } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
-import BoardControllerConfigDefinition from '../../common/boards/BoardControllerConfigDefinition';
+import type BoardControllerConfigDefinition from '../../common/boards/BoardControllerConfigDefinition';
 import nrf54h20pdk080json from '../../common/boards/nrf_PCA10145_0.8.0_54H20.json';
 import nrf9161v091json from '../../common/boards/nrf_PCA10153_0.9.1_9161.json';
 import nrf9161v0100json from '../../common/boards/nrf_PCA10153_0.10.0_9161.json';
