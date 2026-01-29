@@ -15,7 +15,7 @@ import {
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
 import DirtyDot from '../../app/DirtyDot';
-import { PortWarningDefinition } from '../../common/boards/BoardControllerConfigDefinition';
+import { type PortWarningDefinition } from '../../common/boards/BoardControllerConfigDefinition';
 import {
     getPmicConfigValue,
     getPmicConfigValueDirty,
