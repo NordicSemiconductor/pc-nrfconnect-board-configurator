@@ -7,7 +7,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import { PmicPortDefinition } from '../BoardControllerConfigDefinition';
+import { type PmicPortDefinition } from '../BoardControllerConfigDefinition';
 
 describe('PMIC Ports Properties Validation', () => {
     const boardsDir = path.join(__dirname, '..');

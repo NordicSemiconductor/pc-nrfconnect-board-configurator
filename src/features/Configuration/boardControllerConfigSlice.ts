@@ -7,12 +7,12 @@
 import {
     createSelector,
     createSlice,
-    Draft,
-    PayloadAction,
+    type Draft,
+    type PayloadAction,
 } from '@reduxjs/toolkit';
 
 import type { RootState } from '../../app/appReducer';
-import { BoardConfiguration } from './hardwareConfiguration';
+import { type BoardConfiguration } from './hardwareConfiguration';
 
 interface ConfigState {
     boardControllerConfigData: Map<number, boolean>;

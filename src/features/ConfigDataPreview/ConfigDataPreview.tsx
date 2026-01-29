@@ -8,7 +8,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     classNames,
-    Device,
+    type Device,
     Group,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 
@@ -21,7 +21,7 @@ import {
     setConfigValue,
 } from '../Configuration/boardControllerConfigSlice';
 import {
-    BoardDefinition,
+    type BoardDefinition,
     generatePinMap,
     generatePortMap,
     getBoardDefinition,

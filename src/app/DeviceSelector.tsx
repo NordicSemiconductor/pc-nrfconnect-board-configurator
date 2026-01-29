@@ -7,12 +7,12 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import {
-    AppDispatch,
-    Device,
+    type AppDispatch,
+    type Device,
     DeviceSelector,
 } from '@nordicsemiconductor/pc-nrfconnect-shared';
 import {
-    DeviceTraits,
+    type DeviceTraits,
     NrfutilDeviceLib,
 } from '@nordicsemiconductor/pc-nrfconnect-shared/nrfutil/device';
 
