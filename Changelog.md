@@ -1,3 +1,9 @@
+## 1.1.4 - Unreleased
+
+### Changed
+
+- Now disable action buttons when unsupported device is selected.
+
 ## 1.1.3 - 2026-02-02
 
 ### Added

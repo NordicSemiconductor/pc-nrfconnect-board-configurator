@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: LicenseRef-Nordic-4-Clause
  */
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     Button,
@@ -28,25 +28,50 @@ import {
     setConfig,
     setPmicConfig,
 } from './features/Configuration/boardControllerConfigSlice';
+import { getBoardDefinition } from './features/Configuration/boardDefinitions';
+import { getBoardRevisionSemver } from './features/Device/deviceSlice';
 
 export default () => {
     logger.debug('Rendering SidePanel');
 
     const [isWriting, setWriting] = useState(false);
+    const [isDeviceSupported, setIsDeviceSupported] = useState(false);
 
     const dispatch = useDispatch();
 
     const device = useSelector(selectedDevice);
+    const boardRevision = useSelector(getBoardRevisionSemver);
+
     const configData = useSelector(getConfigArray);
     const configDirty = useSelector(getAnyConfigPinDirty);
     const defaultConfig = useSelector(getDefaultConfig);
+
+    useEffect(() => {
+        if (!device) {
+            setIsDeviceSupported(false);
+            return;
+        }
+
+        let supported = true;
+
+        const definition = getBoardDefinition(device, boardRevision);
+
+        if (
+            definition.controlFlag?.unknownRevision ||
+            definition.controlFlag?.unrecognizedBoard
+        ) {
+            supported = false;
+        }
+
+        setIsDeviceSupported(supported);
+    }, [boardRevision, device]);
 
     return (
         <SidePanel className="side-panel">
             <div className="tw-flex tw-flex-col tw-gap-2">
                 <button
                     type="button"
-                    disabled={!device || isWriting}
+                    disabled={!isDeviceSupported || isWriting}
                     className="tw-preflight tw-relative tw-h-8 tw-w-full tw-border tw-border-gray-700 tw-bg-white tw-px-2 tw-text-xs tw-text-gray-700"
                     onClick={async () => {
                         // Set isWriting flag for user ui feedback
@@ -78,7 +103,7 @@ export default () => {
                     />
                 </button>
                 <Button
-                    disabled={!device || isWriting || !defaultConfig}
+                    disabled={!isDeviceSupported || isWriting || !defaultConfig}
                     variant="secondary"
                     className="tw-w-full"
                     onClick={() => {
@@ -103,7 +128,7 @@ export default () => {
                     Load default config
                 </Button>
             </div>
-            {!device && (
+            {!isDeviceSupported && (
                 <Group heading="Supported Kits">
                     <ul className="tw-mb-0 tw-pl-4">
                         <li>
@@ -164,7 +189,7 @@ export default () => {
                     </ul>
                 </Group>
             )}
-            {device && (
+            {device && isDeviceSupported && (
                 <Group
                     heading="Board Controller info"
                     collapsible
