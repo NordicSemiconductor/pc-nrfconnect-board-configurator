@@ -2,7 +2,7 @@
 
 These troubleshooting instructions can help you fix issues you might encounter when working with the Board Configurator app.
 
-Remember to check the [Log](https://docs.nordicsemi.com/bundle/nrf-connect-desktop/page/common_interface.html#log) panel whenever you encounter a problem.
+Remember to check the [Log](https://docs.nordicsemi.com/bundle/swtools_docs/page/common_interface.html#log) panel whenever you encounter a problem.
 To view more detailed information, use the **Open log file** option to open the current log file in a text editor.
 
 The Board Configurator app shares several of the troubleshooting issues and suggested solutions with the [Bluetooth® Low Energy app](https://docs.nordicsemi.com/bundle/nrf-connect-ble/page/index.html) app. Refer to the [troubleshooting section in the Bluetooth® Low Energy app user guide](https://docs.nordicsemi.com/bundle/nrf-connect-ble/page/troubleshooting.html) for the list of issues.
