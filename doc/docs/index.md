@@ -7,7 +7,7 @@ The Board Configurator app is installed and updated using [nRF Connect for Deskt
 
 ## Installing the Board Configurator app
 
-For installation instructions, see [Installing nRF Connect for Desktop apps](https://docs.nordicsemi.com/bundle/nrf-connect-desktop/page/installing_apps.html) in the nRF Connect for Desktop documentation.
+For installation instructions, see [Installing nRF Connect for Desktop apps](https://docs.nordicsemi.com/bundle/nrf-connect-desktop/page/installing_apps.html).
 
 ## Supported devices
 
