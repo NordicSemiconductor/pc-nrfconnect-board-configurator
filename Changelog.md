@@ -2,7 +2,7 @@
 
 ### Changed
 
-- Now disable action buttons when unsupported device is selected.
+- Side panel buttons are now disabled when an unsupported device is selected.
 
 ## 1.1.3 - 2026-02-02
 
