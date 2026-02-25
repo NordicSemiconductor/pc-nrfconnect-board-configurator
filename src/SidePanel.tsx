@@ -45,26 +45,6 @@ export default () => {
     const configDirty = useSelector(getAnyConfigPinDirty);
     const defaultConfig = useSelector(getDefaultConfig);
 
-    // useEffect(() => {
-    //     if (!device) {
-    //         setIsDeviceSupported(false);
-    //         return;
-    //     }
-    //
-    //     let supported = true;
-    //
-    //     const definition = getBoardDefinition(device, boardRevision);
-    //
-    //     if (
-    //         definition.controlFlag?.unknownRevision ||
-    //         definition.controlFlag?.unrecognizedBoard
-    //     ) {
-    //         supported = false;
-    //     }
-    //
-    //     setIsDeviceSupported(supported);
-    // }, [boardRevision, device]);
-
     const definition = device
         ? getBoardDefinition(device, boardRevision)
         : undefined;
