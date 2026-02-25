@@ -35,7 +35,6 @@ export default () => {
     logger.debug('Rendering SidePanel');
 
     const [isWriting, setWriting] = useState(false);
-    const [isDeviceSupported, setIsDeviceSupported] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -46,25 +45,35 @@ export default () => {
     const configDirty = useSelector(getAnyConfigPinDirty);
     const defaultConfig = useSelector(getDefaultConfig);
 
-    useEffect(() => {
-        if (!device) {
-            setIsDeviceSupported(false);
-            return;
-        }
+    // useEffect(() => {
+    //     if (!device) {
+    //         setIsDeviceSupported(false);
+    //         return;
+    //     }
+    //
+    //     let supported = true;
+    //
+    //     const definition = getBoardDefinition(device, boardRevision);
+    //
+    //     if (
+    //         definition.controlFlag?.unknownRevision ||
+    //         definition.controlFlag?.unrecognizedBoard
+    //     ) {
+    //         supported = false;
+    //     }
+    //
+    //     setIsDeviceSupported(supported);
+    // }, [boardRevision, device]);
 
-        let supported = true;
+    const definition = device
+        ? getBoardDefinition(device, boardRevision)
+        : undefined;
 
-        const definition = getBoardDefinition(device, boardRevision);
-
-        if (
-            definition.controlFlag?.unknownRevision ||
-            definition.controlFlag?.unrecognizedBoard
-        ) {
-            supported = false;
-        }
-
-        setIsDeviceSupported(supported);
-    }, [boardRevision, device]);
+    const isDeviceSupported = Boolean(
+        device &&
+            !definition?.controlFlag?.unknownRevision &&
+            !definition?.controlFlag?.unrecognizedBoard,
+    );
 
     return (
         <SidePanel className="side-panel">
