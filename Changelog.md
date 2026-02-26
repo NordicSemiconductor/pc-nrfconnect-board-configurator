@@ -1,3 +1,9 @@
+## 1.1.4 - Unreleased
+
+### Changed
+
+- Side panel buttons are now disabled when an unsupported device is selected.
+
 ## 1.1.3 - 2026-02-02
 
 ### Added
