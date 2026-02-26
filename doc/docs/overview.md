@@ -12,7 +12,7 @@ Opens the drop-down with the list of devices connected to the computer. You can 
 
 ## Actions
 
-When you select a device, the following actions become available in the side panel:
+When you select a [device supported by the app](index.md#supported-devices), the following actions become available in the side panel:
 
 - **Write config** - Writes the selected configurations to the development kit, overwriting the defaults.
 
