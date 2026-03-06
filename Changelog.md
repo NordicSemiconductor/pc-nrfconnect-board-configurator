@@ -3,6 +3,7 @@
 ### Changed
 
 - Side panel buttons are now disabled when an unsupported device is selected.
+- Updated `nrfutil device` to v2.17.3.
 
 ## 1.1.3 - 2026-02-02
 
