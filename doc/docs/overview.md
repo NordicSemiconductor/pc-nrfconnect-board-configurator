@@ -4,11 +4,11 @@ After starting the Board Configurator app, the main application window is displa
 
 ![Board Configurator app window](./screenshots/board_configurator_overview.png "Board Configurator app window")
 
-The available options and information change after you **Select Device**.
+## Common interface
 
-## Select Device
+This app uses the nRF Connect for Desktop UI framework. Shared UI elements such as **Select device**, **About** tab, and **Log** panel are described in the [Common user interface](https://docs.nordicsemi.com/bundle/swtools_docs/page/common_interface.html) documentation.
 
-Opens the drop-down with the list of devices connected to the computer. You can choose a device from the list of connected devices to perform further actions on the device such as configuring.
+The available options and information change after you select a device.
 
 ## Actions
 
@@ -42,20 +42,3 @@ This side panel area lists advanced information about the board controller confi
 In the **Configuration** tab, you can see the options that you can [configure](updating.md) for the selected development kit.
 
 ![Board Configurator app configuration tab](./screenshots/board_configurator_connected.png "Board Configurator app configuration tab")
-
-## Log
-
-The Log panel allows you to view the most important log events, tagged with a timestamp. Each time you open the app, a new session log file is created. You can find the Log panel and its controls, below the main application Window.
-
-- When troubleshooting, to view more detailed information than shown in the Log panel, use **Open log file** to open the current log file in a text editor.
-- To clear the information currently displayed in the Log panel, use **Clear Log**. The contents of the log file are not affected.
-- To hide or display the Log panel in the user interface, use **Show Log**.
-- To freeze Log panel scrolling, use **Autoscroll Log**.
-
-## Feedback tab
-
-The Feedback tab lets you send feedback about the Board Configurator app to the application development team.
-
-## About tab
-
-You can view application information, restore defaults, access source code, and documentation. You also can find information on the selected device, access support tools, and enable verbose logging.

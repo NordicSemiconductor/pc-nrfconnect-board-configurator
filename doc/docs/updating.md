@@ -6,7 +6,7 @@ To update the configuration of a development kit, complete the following steps:
 
 1. Open nRF Connect for Desktop and open the Board Configurator app.
 1. Connect a development kit to the computer with a USB cable and turn it on.
-1. Click [**Select Device**](./overview.md#select-device) and select the device from the drop-down list.</br>
+1. Click [**Select device**](https://docs.nordicsemi.com/bundle/swtools_docs/page/common_interface.html#select-device) and select the device from the drop-down list.</br>
    The application reads the Interface MCU configuration on the board.
    The button text changes to the name and serial number of the selected device and the configuration options for the selected device appear, indicating that the device is connected.
 
