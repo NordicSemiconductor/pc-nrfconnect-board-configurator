@@ -17,13 +17,13 @@ the application is incomplete in functionality and will change in the future.
 
 The Board Configurator app is installed from nRF Connect from Desktop. For
 detailed steps, see
-[Installing nRF Connect for Desktop apps](https://docs.nordicsemi.com/bundle/nrf-connect-desktop/page/installing_apps.html)
+[Installing nRF Connect for Desktop apps](https://docs.nordicsemi.com/bundle/swtools_docs/page/app/nrf-connect-desktop/installing_apps.html)
 in the nRF Connect from Desktop documentation.
 
 ## Documentation
 
 Read the
-[Board Configurator app](https://docs.nordicsemi.com/bundle/nrf-connect-board-configurator/page/index.html)
+[Board Configurator app](https://docs.nordicsemi.com/bundle/swtools_docs/page/app/pc-nrfconnect-board-configurator/index.html)
 official documentation.
 
 ## Development
