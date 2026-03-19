@@ -1,3 +1,9 @@
+## 1.1.5 - Unreleased
+
+### Fixed
+
+- SWO control is now active high for the nRF54L15 DK.
+
 ## 1.1.4 - 2026-03-10
 
 ### Changed
