@@ -2,7 +2,7 @@
 
 ### Fixed
 
-- SWO control is now active high for the nRF54L15 DK.
+- Issue where SWO control was incorrectly set for the nRF54L15 DK. It is now correctly set to active high.
 
 ## 1.1.4 - 2026-03-10
 
